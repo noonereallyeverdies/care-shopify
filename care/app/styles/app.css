@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add other base styles or component layer styles here */
+
+/* Basic CSS Loader for Spline Fallback */
+@layer components {
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF; /* White border */
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+:root {
+  --color-primary: theme(colors.primary);
+  --color-contrast: theme(colors.contrast);
+  --color-accent: theme(colors.accent);
+  --color-brand: theme(colors.brand);
+  --color-red-light-accent: theme(colors.red-light-accent);
+  --color-shop-pay: 27, 29, 29;
+  --black: var(--color-primary); /* Define --black for GlowingEffect */
+}
+
+/* Ensure body uses theme colors by default */
+body {
+  @apply bg-contrast text-primary/80 font-sans;
+}
+
+/* ... rest of your app.css */ 

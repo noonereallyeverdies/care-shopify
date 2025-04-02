@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@splinetool/react-spline": "^4.0.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.6.2",
+    "lucide-react": "^0.485.0",
+    "motion": "^12.6.2",
+    "simplex-noise": "^4.0.3",
+    "tailwind-merge": "^3.0.2"
+  }
+}
