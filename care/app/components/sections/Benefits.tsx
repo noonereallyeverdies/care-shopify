@@ -1,152 +1,132 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { AnimatedGradient } from "~/components/ui/AnimatedGradient";
-import { Section } from "~/components/Text";
-import { CheckCircle, Zap, ShieldCheck, Clock } from 'lucide-react';
-import { cn } from '~/lib/utils';
+'use client'; // Required for hooks
 
-interface BentoCardProps {
-  title: string;
-  value: string;
-  subtitle?: string;
-  colors: string[];
-  delay: number;
+import React from 'react';
+
+import {Activity, Award, Leaf, Zap, Droplet} from 'lucide-react'; // Added Droplet, removed HeartHandshake
+
+// Import motion
+import { motion } from 'framer-motion';
+
+import {GlowingEffect} from '~/components/ui/GlowingEffect';
+import {cn} from '~/lib/utils';
+
+export function GlowingBenefits() {
+  return (
+    // Using SectionWrapper styling consistency from _index.tsx
+    <section className="w-full max-w-5xl mx-auto px-6 md:px-8 py-20 md:py-28 lg:py-32">
+      <motion.h2 
+        className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary text-center mb-16 md:mb-20 lowercase"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95] }}
+      >
+        rediscover your hair&apos;s natural confidence
+      </motion.h2>
+      {/* Apply stagger animation to the list */}
+      <motion.ul 
+        className="grid grid-cols-1 grid-rows-none gap-8 md:grid-cols-12 md:grid-rows-2 lg:gap-10"
+        variants={{ 
+          whileInView: { transition: { staggerChildren: 0.15 } } // Stagger grid items
+        }}
+        initial="initial" 
+        whileInView="whileInView" 
+        viewport={{ once: true, amount: 0.1 }} // Trigger earlier for grid
+      >
+        {/* Pass animation variants down to GridItem */}
+        <GridItem
+          area="md:[grid-area:1/1/2/5] xl:[grid-area:1/1/2/4]"
+          icon={<Zap className="h-5 w-5" />}
+          title="re-energize follicles"
+          description="Targeted red light wavelengths encourage resting follicles back towards vitality and growth."
+        />
+        <GridItem
+          area="md:[grid-area:1/5/2/9] xl:[grid-area:1/4/2/7]"
+          icon={<Droplet className="h-5 w-5" />}
+          title="boost nourishment"
+          description="Precise application ensures your nourishing oils/serums reach the scalp directly, maximizing their benefits."
+        />
+        <GridItem
+          area="md:[grid-area:1/9/2/13] xl:[grid-area:1/7/2/10]"
+          icon={<Activity className="h-5 w-5" />}
+          title="enhance circulation"
+          description="The combination of massage and light improves delivery of vital oxygen and nutrients while calming the scalp."
+        />
+        <GridItem
+          area="md:[grid-area:2/1/3/7] xl:[grid-area:2/1/3/6]"
+          icon={<Leaf className="h-5 w-5" />}
+          title="cultivate scalp health"
+          description="Reduce inflammation and create a balanced, comfortable foundation for hair to truly thrive."
+        />
+        <GridItem
+          area="md:[grid-area:2/7/3/13] xl:[grid-area:2/6/3/10]"
+          icon={<Award className="h-5 w-5" />}
+          title="feel stronger strands"
+          description="Promotes hair that feels thicker and resists breakage, building your confidence with every touch."
+        />
+      </motion.ul>
+    </section>
+  );
 }
 
-const BentoCard: React.FC<BentoCardProps> = ({
-  title,
-  value,
-  subtitle,
-  colors,
-  delay,
-}) => {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: delay + 0.3,
-      },
-    },
-  };
+interface GridItemProps {
+  area: string;
+  icon: React.ReactNode;
+  title: string;
+  description: React.ReactNode;
+}
 
-  const item = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { duration: 0.5 } },
-  };
-
-  return (
-    <motion.div
-      className="relative overflow-hidden h-full bg-contrast"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay }}
-    >
-      <AnimatedGradient colors={colors} speed={0.05} blur="medium" />
-      <motion.div
-        className="relative z-10 p-6 md:p-8 text-primary backdrop-blur-sm h-full"
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.h3 
-          className="text-sm md:text-base uppercase tracking-wide" 
-          variants={item}
-        >
-          {title}
-        </motion.h3>
-        <motion.p
-          className="text-xl md:text-2xl font-light mt-2 mb-4"
-          variants={item}
-        >
-          {value}
-        </motion.p>
-        {subtitle && (
-          <motion.p 
-            className="text-sm text-primary/70" 
-            variants={item}
-          >
-            {subtitle}
-          </motion.p>
-        )}
-      </motion.div>
-    </motion.div>
-  );
+// Grid item animation variant
+const gridItemVariants = {
+  initial: { opacity: 0, y: 20, scale: 0.98 },
+  whileInView: { opacity: 1, y: 0, scale: 1 },
+  transition: { duration: 0.6, ease: [0.6, 0.01, 0.05, 0.95] }
 };
 
-const benefitsData = [
-  {
-    id: 'growth',
-    icon: Zap,
-    title: "Promotes Hair Growth",
-    description: "Stimulates follicles at a cellular level for new growth cycles.",
-  },
-  {
-    id: 'thinning',
-    icon: CheckCircle,
-    title: "Reduces Hair Thinning",
-    description: "Strengthens existing hair, improving density for a fuller look.",
-  },
-  {
-    id: 'sessions',
-    icon: Clock,
-    title: "Quick & Easy Sessions",
-    description: "Just 15 minutes daily fits seamlessly into any routine.",
-  },
-  {
-    id: 'safety',
-    icon: ShieldCheck,
-    title: "Safe & Non-Invasive",
-    description: "A natural, drug-free approach, gentle enough for all.",
-  }
-];
-
-export function Benefits() {
-  const redGradients = {
-    light: ["#FFE4E6", "#FECDD3", "#FDA4AF"],
-    medium: ["#FDA4AF", "#FB7185", "#F43F5E"],
-    deep: ["#FB7185", "#F43F5E", "#E11D48"],
-  };
-
+const GridItem = ({area, icon, title, description}: GridItemProps) => {
   return (
-    <Section className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto max-w-7xl px-4">
-        <h2 className="text-3xl md:text-4xl font-medium text-neutral-800 text-center mb-12 md:mb-16 font-sans">
-          Real Results, Real Science
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {benefitsData.map((benefit, index) => (
-            <div 
-              key={benefit.id} 
-              className={cn(
-                "flex flex-col items-start rounded-3xl border border-neutral-200/60 p-8 shadow-sm",
-                index === 0 
-                  ? "bg-neutral-800 text-white"
-                  : "bg-neutral-50 text-neutral-800"
-              )}
-            >
-              <benefit.icon className={cn(
-                "h-10 w-10 mb-4",
-                index === 0 ? "text-red-400" : "text-red-500"
-              )} />
-              <h3 className={cn(
-                "font-sans text-2xl mb-2",
-                index === 0 ? "font-semibold text-white" : "font-medium text-neutral-800"
-              )}>
-                {benefit.title}
-              </h3>
-              <p className={cn(
-                "font-sans text-base leading-relaxed",
-                index === 0 ? "text-neutral-300" : "text-neutral-600"
-              )}>
-                {benefit.description}
-              </p>
+    // Wrap li in motion.li and apply variants
+    <motion.li 
+      className={cn('min-h-[14rem] md:min-h-[16rem] list-none', area)} // Increased min-height
+      variants={gridItemVariants}
+      // Initial/whileInView are inherited from parent ul
+    >
+      {/* Add hover effect to the outer container */}
+      <motion.div 
+        className="relative h-full rounded-[1.5rem] border border-primary/10 p-3 bg-contrast transition-shadow duration-300"
+        whileHover={{ 
+          scale: 1.03, 
+          boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+          borderColor: "rgba(var(--color-primary) / 0.2)" // Example: slightly brighten border on hover
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }} // Spring physics for hover
+      >
+        {/* Glowing Effect - Consider if this interacts well with hover scale */}
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false} 
+          proximity={64}
+          inactiveZone={0.01}
+          borderWidth={1} 
+          variant="default"
+          movementDuration={1.5}
+        />
+        <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl border border-primary/5 bg-primary/5 p-5 md:p-6 shadow-sm">
+          <div className="flex flex-col gap-3">
+            <div className="w-fit rounded-lg border border-primary/10 bg-contrast p-2.5 text-primary"> {/* Slightly larger icon padding */} 
+              {icon}
             </div>
-          ))}
+            <h3 className="text-lg md:text-xl font-semibold text-primary tracking-tight lowercase">
+              {title}
+            </h3>
+          </div>
+          {/* Adjusted text size and leading */}
+          <p className="text-sm md:text-base leading-relaxed text-primary/80">
+            {description}
+          </p>
         </div>
-      </div>
-    </Section>
+      </motion.div>
+    </motion.li>
   );
-} 
+};
