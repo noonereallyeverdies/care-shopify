@@ -11,7 +11,6 @@ import {seoPayload} from '~/lib/seo.server';
 import {Suspense} from 'react';
 import {Hero} from '~/components/sections/Hero';
 import {Benefits} from '~/components/sections/Benefits';
-import {ScienceOfTransformation} from '~/components/sections/ScienceOfTransformation';
 import {LampDemo} from '~/components/ui/Lamp';
 import {HOMEPAGE_PRODUCT_QUERY} from '~/queries/homepage';
 import type {Shop, MoneyV2} from '@shopify/hydrogen/storefront-api-types';
@@ -168,7 +167,6 @@ export default function Homepage() {
       </Suspense>
       <LampDemo />
       <Benefits />
-      <ScienceOfTransformation />
       <Testimonials />
     </>
   );

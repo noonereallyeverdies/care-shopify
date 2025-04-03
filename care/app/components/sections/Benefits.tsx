@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { AnimatedGradient } from "~/components/ui/AnimatedGradient";
 import { Section } from "~/components/Text";
+import { CheckCircle, Zap, ShieldCheck, Clock } from 'lucide-react';
+import { cn } from '~/lib/utils';
 
 interface BentoCardProps {
   title: string;
@@ -73,6 +75,33 @@ const BentoCard: React.FC<BentoCardProps> = ({
   );
 };
 
+const benefitsData = [
+  {
+    id: 'growth',
+    icon: Zap,
+    title: "Promotes Hair Growth",
+    description: "Stimulates follicles at a cellular level for new growth cycles.",
+  },
+  {
+    id: 'thinning',
+    icon: CheckCircle,
+    title: "Reduces Hair Thinning",
+    description: "Strengthens existing hair, improving density for a fuller look.",
+  },
+  {
+    id: 'sessions',
+    icon: Clock,
+    title: "Quick & Easy Sessions",
+    description: "Just 15 minutes daily fits seamlessly into any routine.",
+  },
+  {
+    id: 'safety',
+    icon: ShieldCheck,
+    title: "Safe & Non-Invasive",
+    description: "A natural, drug-free approach, gentle enough for all.",
+  }
+];
+
 export function Benefits() {
   const redGradients = {
     light: ["#FFE4E6", "#FECDD3", "#FDA4AF"],
@@ -81,48 +110,41 @@ export function Benefits() {
   };
 
   return (
-    <Section className="py-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-light text-primary text-center mb-12">
-          the science of <span className="font-normal">transformation</span>
+    <Section className="py-16 md:py-24 bg-white">
+      <div className="container mx-auto max-w-7xl px-4">
+        <h2 className="text-3xl md:text-4xl font-medium text-neutral-800 text-center mb-12 md:mb-16 font-sans">
+          Real Results, Real Science
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <div className="md:col-span-2">
-            <BentoCard
-              title="Clinically Proven"
-              value="Visible Results in 12 Weeks"
-              subtitle="93% of users reported improved hair thickness and reduced shedding"
-              colors={redGradients.light}
-              delay={0.2}
-            />
-          </div>
-          <BentoCard
-            title="Red Light Power"
-            value="660nm Wavelength"
-            subtitle="Optimal spectrum for deep follicle penetration"
-            colors={redGradients.medium}
-            delay={0.4}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <BentoCard
-            title="Treatment Time"
-            value="15 Minutes"
-            subtitle="Quick daily sessions for maximum effectiveness"
-            colors={redGradients.deep}
-            delay={0.6}
-          />
-          <div className="md:col-span-2">
-            <BentoCard
-              title="Safety First"
-              value="FDA Cleared Technology"
-              subtitle="Gentle, non-invasive treatment suitable for all hair types"
-              colors={redGradients.light}
-              delay={0.8}
-            />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {benefitsData.map((benefit, index) => (
+            <div 
+              key={benefit.id} 
+              className={cn(
+                "flex flex-col items-start rounded-3xl border border-neutral-200/60 p-8 shadow-sm",
+                index === 0 
+                  ? "bg-neutral-800 text-white"
+                  : "bg-neutral-50 text-neutral-800"
+              )}
+            >
+              <benefit.icon className={cn(
+                "h-10 w-10 mb-4",
+                index === 0 ? "text-red-400" : "text-red-500"
+              )} />
+              <h3 className={cn(
+                "font-sans text-2xl mb-2",
+                index === 0 ? "font-semibold text-white" : "font-medium text-neutral-800"
+              )}>
+                {benefit.title}
+              </h3>
+              <p className={cn(
+                "font-sans text-base leading-relaxed",
+                index === 0 ? "text-neutral-300" : "text-neutral-600"
+              )}>
+                {benefit.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </Section>

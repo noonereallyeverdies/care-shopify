@@ -116,7 +116,7 @@ care/
         ```
     *   Get these from your Shopify Admin under **Apps and sales channels** -> **Develop apps** -> **Create an app**. Ensure necessary Storefront API scopes (e.g., `unauthenticated_read_product_listings`, `unauthenticated_write_checkouts`) are granted.
 5.  **Run Development Server:**
-    ```bash
+```bash
     pnpm dev
     # or npm run dev / yarn dev
     ```

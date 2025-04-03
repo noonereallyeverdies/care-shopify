@@ -16,11 +16,11 @@ import { HeartPulse, Instagram, Linkedin, Video } from 'lucide-react';
 import { WavyBackground } from '~/components/WavyBackground';
 
 type LayoutProps = {
-    children: React.ReactNode;
+  children: React.ReactNode;
     layout?: {
-        headerMenu?: EnhancedMenu | null;
-        footerMenu?: EnhancedMenu | null;
-    };
+    headerMenu?: EnhancedMenu | null;
+    footerMenu?: EnhancedMenu | null;
+  };
 };
 
 // Simple SVG Placeholders for Icons (replace with actual icons)
@@ -56,66 +56,66 @@ export function PageLayout({ children, layout }: LayoutProps) {
         );
     }
 
-    return (
+  return (
         <div className="flex flex-col min-h-screen bg-contrast text-primary font-sans">
-            <div className="">
-                <a href="#mainContent" className="sr-only">
-                    Skip to content
-                </a>
-            </div>
+        <div className="">
+          <a href="#mainContent" className="sr-only">
+            Skip to content
+          </a>
+        </div>
             <Header title="care•atin" menu={headerMenu} />
-            <main role="main" id="mainContent" className="flex-grow">
+        <main role="main" id="mainContent" className="flex-grow">
                 <Suspense fallback={
                     <div className="flex items-center justify-center w-full h-64">
                         <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
                     </div>
                 }>
-                    {children}
+          {children}
                 </Suspense>
-            </main>
+        </main>
             <Footer menu={footerMenu} /> 
-        </div>
-    );
+      </div>
+  );
 }
 
 // Pass menu back for potential drawer usage
 function Header({ title, menu }: { title: string; menu?: EnhancedMenu | null }) { 
-    const {
-        isOpen: isCartOpen,
-        openDrawer: openCart,
-        closeDrawer: closeCart,
-    } = useDrawer();
+  const {
+    isOpen: isCartOpen,
+    openDrawer: openCart,
+    closeDrawer: closeCart,
+  } = useDrawer();
 
-    const {
-        isOpen: isMenuOpen,
-        openDrawer: openMenu,
-        closeDrawer: closeMenu,
-    } = useDrawer();
+  const {
+    isOpen: isMenuOpen,
+    openDrawer: openMenu,
+    closeDrawer: closeMenu,
+  } = useDrawer();
 
-    const addToCartFetchers = useCartFetchers(CartForm.ACTIONS.LinesAdd);
+  const addToCartFetchers = useCartFetchers(CartForm.ACTIONS.LinesAdd);
 
-    useEffect(() => {
-        if (isCartOpen || !addToCartFetchers.length) return;
-        openCart();
-    }, [addToCartFetchers, isCartOpen, openCart]);
+  useEffect(() => {
+    if (isCartOpen || !addToCartFetchers.length) return;
+    openCart();
+  }, [addToCartFetchers, isCartOpen, openCart]);
 
-    return (
-        <>
-            <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
-            {menu && (
-                <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
-            )}
+  return (
+    <>
+      <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
+      {menu && (
+        <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
+      )}
             <DesktopHeader title={title} openCart={openCart} openMenu={openMenu} />
             <MobileHeader title={title} openCart={openCart} openMenu={openMenu} />
-        </>
-    );
+    </>
+  );
 }
 
 // Keep CartDrawer as it was, might be needed
 function CartDrawer({isOpen, onClose}: {isOpen: boolean; onClose: () => void}) {
   const rootData = useRouteLoaderData<RootLoader>('root');
   if (!rootData) return null;
-  
+
   return (
     <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right">
       <div className="grid">
@@ -155,7 +155,7 @@ export function MenuDrawer({
             <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
           </div>
         }>
-          <MenuMobileNav menu={menu} onClose={onClose} />
+        <MenuMobileNav menu={menu} onClose={onClose} />
         </Suspense>
       </div>
     </Drawer>
@@ -173,15 +173,15 @@ function MenuMobileNav({
   return (
     <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
       {(menu?.items || []).map((item: ChildEnhancedMenuItem) => (
-        <Link
+          <Link
           key={item.id}
-          to={item.to}
-          target={item.target}
-          onClick={onClose}
+            to={item.to}
+            target={item.target}
+            onClick={onClose}
           className="text-lg" 
-        >
-          {item.title}
-        </Link>
+          >
+              {item.title}
+          </Link>
       ))}
     </nav>
   );
@@ -189,33 +189,33 @@ function MenuMobileNav({
 
 
 function MobileHeader({
-    title,
-    openCart,
-    openMenu,
+  title,
+  openCart,
+  openMenu,
 }: {
-    title: string;
-    openCart: () => void;
-    openMenu: () => void;
+  title: string;
+  openCart: () => void;
+  openMenu: () => void;
 }) {
-    return (
-        <header
-            role="banner"
+  return (
+    <header
+      role="banner"
             className={`flex lg:hidden items-center h-nav sticky z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-6 bg-contrast text-primary border-b border-primary/10`}
         >
             <div className="flex items-center justify-start w-1/3">
                 {/* Actual Menu Button */}
-                <button
+          <button
                     onClick={openMenu}
                     className="relative flex items-center justify-center w-8 h-8 text-primary/80 hover:text-primary transition-colors"
-                >
+          >
                     <span className="sr-only">open menu</span>
                     <MenuIcon />
-                </button>
-            </div>
-            <Link
+          </button>
+      </div>
+      <Link
                 className="flex items-center justify-center flex-grow w-1/3 h-full"
-                to="/"
-            >
+        to="/"
+      >
                 <h1 className="font-light text-center text-lg tracking-widest leading-none lowercase">
                     care<span className="text-red-400">•</span>atin
                 </h1>
@@ -230,23 +230,23 @@ function MobileHeader({
                     <CartIcon />
                     {/* Add Cart Count later if needed */}
                 </button>
-            </div>
-        </header>
-    );
+      </div>
+    </header>
+  );
 }
 
 function DesktopHeader({
     title,
-    openCart,
+  openCart,
     openMenu, // Keep openMenu if desktop might have a different menu trigger
 }: {
     title: string;
-    openCart: () => void;
+  openCart: () => void;
     openMenu: () => void;
 }) {
-    return (
-        <header
-            role="banner"
+  return (
+    <header
+      role="banner"
             className={`hidden h-nav lg:flex items-center sticky z-40 top-0 justify-between w-full leading-none gap-8 px-6 xl:px-10 py-4 bg-contrast text-primary border-b border-primary/10`}
         >
              {/* Left Navigation */}
@@ -273,17 +273,17 @@ function DesktopHeader({
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21V19C20 16.7909 18.2091 15 16 15H8C5.79086 15 4 16.7909 4 19V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                  </Link>
                  {/* Actual Cart Button */}
-                 <button
+          <button
                     onClick={openCart}
                     className="relative flex items-center justify-center w-8 h-8 text-primary/80 hover:text-primary transition-colors"
-                >
+          >
                      <span className="sr-only">open cart</span>
                     <CartIcon />
                     {/* Add Cart Count later if needed */}
-                </button>
-            </div>
-        </header>
-    );
+          </button>
+      </div>
+    </header>
+  );
 }
 
 // Pass menu for potential future use in links
@@ -291,12 +291,12 @@ function Footer({ menu }: { menu?: EnhancedMenu | null }) {
     const [error, setError] = useState<Error | null>(null);
 
     if (error) {
-        return (
+  return (
             <div className="p-4 text-red-500">
                 An error occurred in the footer: {error.message}
-            </div>
-        );
-    }
+      </div>
+  );
+}
 
     return (
         <footer className="relative bg-contrast">

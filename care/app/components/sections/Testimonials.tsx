@@ -1,71 +1,53 @@
 import React from 'react';
 
-interface TestimonialItemProps {
-  quote: string;
-  author: string;
-  location?: string; // Optional location/title
-  // Add avatar/image prop later if needed
-}
+const testimonialsData = [
+  {
+    name: "Emily R.",
+    location: "New York, NY",
+    quote: "I was skeptical, but the difference is undeniable. My hair feels thicker and looks so much healthier after just a few months.",
+    image: "/images/testimonial-1.jpg" // Example path - replace with actual
+  },
+  {
+    name: "Marcus T.",
+    location: "Los Angeles, CA",
+    quote: "Finally, something that actually works for my thinning hair. Easy to use and I'm seeing real results.",
+    image: "/images/testimonial-2.jpg" // Example path - replace with actual
+  },
+  {
+    name: "Sarah L.",
+    location: "Chicago, IL",
+    quote: "My hairdresser noticed the improvement! Less shedding and my hair just feels stronger.",
+    image: "/images/testimonial-3.jpg" // Example path - replace with actual
+  }
+];
 
-const TestimonialItem = ({ quote, author, location }: TestimonialItemProps) => (
-  <div className="animated-blob-card relative flex flex-col text-center border border-primary/10 flex-1 min-w-[280px] max-w-[380px] rounded-lg shadow-sm overflow-hidden group">
-    
-    <div className="blob-layer bg-red-light-accent blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-    
-    <div className="bg-layer bg-contrast/80 backdrop-blur-sm rounded-lg h-full flex flex-col p-8 border border-white/20">
-      
-      <blockquote className="text-primary/90 italic mb-6 grow text-lg leading-relaxed z-10">
-        " {quote} "
-      </blockquote>
-      <footer className="mt-auto z-10">
-        <p className="font-semibold text-primary">- {author}</p>
-        {location && (
-          <p className="text-sm text-primary/70 mt-1">{location}</p>
-        )}
-      </footer>
-
-    </div>
-  </div>
-);
-
-export function Testimonials() {
-  // Sample testimonials data - using only double quotes
-  const testimonials: TestimonialItemProps[] = [
-    {
-      quote:
-        "I was skeptical, but the difference in my hair's thickness is undeniable after just a few months!",
-      author: "Sarah J.",
-      location: "New York, NY",
-    },
-    {
-      quote:
-        "My hair feels so much stronger and healthier. It finally has the shine I've been missing.",
-      author: "Michael P.",
-      location: "Los Angeles, CA",
-    },
-    {
-      quote:
-        "Easy to use and fits right into my routine. Seeing less shedding and more volume.",
-      author: "Chloe T.",
-      location: "Chicago, IL",
-    },
-  ];
-
+export const Testimonials = () => {
   return (
-    <section className="w-full max-w-7xl py-16 md:py-24 px-6 bg-contrast">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-primary">
-        Real Results, Real People
-      </h2>
-      <div className="flex flex-wrap justify-center gap-8 md:gap-10">
-        {testimonials.map((testimonial) => (
-          <TestimonialItem
-            key={testimonial.author} // Use author as key for sample data
-            quote={testimonial.quote}
-            author={testimonial.author}
-            location={testimonial.location}
-          />
-        ))}
+    // Consistent spacing, background, container
+    <section className="py-24 bg-neutral-50">
+      <div className="container mx-auto max-w-7xl px-4">
+        {/* Consistent heading */}
+        <h2 className="text-center font-sans text-4xl md:text-5xl font-medium text-neutral-800 mb-16">
+          Real People, Real Results
+        </h2>
+        {/* Consistent grid layout and card styling */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {testimonialsData.map((testimonial, index) => (
+            // Consistent card styling (similar to LampDemo)
+            <div 
+              key={index} 
+              className="flex flex-col bg-white rounded-3xl border border-neutral-200/60 p-8 shadow-lg"
+            >
+              {/* Optional: Add image if available */}
+              {/* <img src={testimonial.image} alt={testimonial.name} className="w-16 h-16 rounded-full mx-auto mb-4" /> */}
+              {/* Consistent text styles */}
+              <p className="font-sans text-lg leading-relaxed text-neutral-600 mb-4 flex-grow">"{testimonial.quote}"</p>
+              <p className="font-sans text-base font-medium text-neutral-800">- {testimonial.name}</p>
+              <p className="font-sans text-sm text-neutral-500">{testimonial.location}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-} 
+}; 

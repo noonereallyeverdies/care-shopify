@@ -33,7 +33,6 @@ function root({
     title: shop?.name,
     titleTemplate: '%s | Hydrogen Demo Store',
     description: truncate(shop?.description ?? ''),
-    handle: '@shopify',
     url,
     robots: {
       noIndex: false,
