@@ -1,14 +1,8 @@
-import clsx from 'clsx';
-import {flattenConnection, Image, Money, useMoney} from '@shopify/hydrogen';
+import {Image, Money, ShopifyAnalyticsProduct} from '@shopify/hydrogen';
+import {Link} from '@remix-run/react';
+import {motion} from 'framer-motion';
+import React, {useState} from 'react';
 import type {MoneyV2, Product} from '@shopify/hydrogen/storefront-api-types';
-
-import type {ProductCardFragment} from 'storefrontapi.generated';
-import {Text} from '~/components/Text';
-import {Link} from '~/components/Link';
-import {Button} from '~/components/Button';
-import {AddToCartButton} from '~/components/AddToCartButton';
-import {isDiscounted, isNewArrival} from '~/lib/utils';
-import {getProductPlaceholder} from '~/lib/placeholders';
 
 export function ProductCard({
   product,
@@ -16,126 +10,140 @@ export function ProductCard({
   className,
   loading,
   onClick,
-  quickAdd,
 }: {
-  product: ProductCardFragment;
+  product: Product;
   label?: string;
   className?: string;
   loading?: HTMLImageElement['loading'];
   onClick?: () => void;
-  quickAdd?: boolean;
 }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = React.useRef<HTMLDivElement>(null);
+
   let cardLabel;
 
-  const cardProduct: Product = product?.variants
-    ? (product as Product)
-    : getProductPlaceholder();
-  if (!cardProduct?.variants?.nodes?.length) return null;
-
-  const firstVariant = flattenConnection(cardProduct.variants)[0];
-
+  const firstVariant = product.variants.nodes[0];
   if (!firstVariant) return null;
-  const {image, price, compareAtPrice} = firstVariant;
 
+  const {price, compareAtPrice} = firstVariant;
   if (label) {
     cardLabel = label;
-  } else if (isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2)) {
+  } else if (compareAtPrice) {
     cardLabel = 'Sale';
-  } else if (isNewArrival(product.publishedAt)) {
+  } else if (product.isNew) {
     cardLabel = 'New';
   }
 
+  const productAnalytics: ShopifyAnalyticsProduct = {
+    productGid: product.id,
+    variantGid: firstVariant.id,
+    name: product.title,
+    variantName: firstVariant.title,
+    brand: product.vendor,
+    price: firstVariant.price.amount,
+    quantity: 1,
+  };
+
   return (
-    <div className="flex flex-col gap-2">
+    <motion.div
+      ref={cardRef}
+      className={`group relative flex flex-col rounded-2xl overflow-hidden ${className}`}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      initial={{opacity: 0, y: 20}}
+      whileInView={{opacity: 1, y: 0}}
+      viewport={{once: true, margin: "-50px"}}
+      transition={{duration: 0.6, ease: [0.165, 0.84, 0.44, 1]}}
+    >
+      {/* Add subtle glass background with soft shadow */}
+      <div className="absolute inset-0 bg-stone-50/40 backdrop-blur-sm -z-10"></div>
+      
       <Link
         onClick={onClick}
         to={`/products/${product.handle}`}
-        prefetch="viewport"
+        prefetch="intent"
       >
-        <div className={clsx('grid gap-4', className)}>
-          <div className="card-image aspect-[4/5] bg-primary/5">
-            {image && (
+        {/* Image container with smooth animation */}
+        <div className="relative rounded-xl overflow-hidden mb-4 bg-white">
+          {cardLabel && (
+            <motion.div 
+              className="absolute top-2 left-2 z-10 px-3 py-1.5 text-xs font-medium rounded-full bg-rose-50 text-rose-600"
+              initial={{opacity: 0, y: -10}}
+              animate={{opacity: 1, y: 0}}
+              transition={{delay: 0.2}}
+            >
+              {cardLabel}
+            </motion.div>
+          )}
+          
+          <motion.div 
+            className="aspect-[4/5] bg-white relative"
+            whileHover={{scale: 1.03}}
+            transition={{duration: 0.4, ease: [0.165, 0.84, 0.44, 1]}}
+          >
+            {product.featuredImage && (
               <Image
-                className="object-cover w-full fadeIn"
+                className="object-cover w-full h-full"
                 sizes="(min-width: 64em) 25vw, (min-width: 48em) 30vw, 45vw"
                 aspectRatio="4/5"
-                data={image}
-                alt={image.altText || `Picture of ${product.title}`}
+                data={product.featuredImage}
+                alt={product.featuredImage.altText || product.title}
                 loading={loading}
               />
             )}
-            <Text
-              as="label"
-              size="fine"
-              className="absolute top-0 right-0 m-4 text-right text-notice"
-            >
-              {cardLabel}
-            </Text>
+          </motion.div>
+        </div>
+
+        <div className="px-4 pb-6">
+          {/* Vendor with subtle styling */}
+          <div className="text-primary/60 text-xs tracking-wide uppercase mb-1">
+            {product.vendor}
           </div>
-          <div className="grid gap-1">
-            <Text
-              className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
-              as="h3"
-            >
-              {product.title}
-            </Text>
-            <div className="flex gap-4">
-              <Text className="flex gap-4">
-                <Money withoutTrailingZeros data={price!} />
-                {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
-                  <CompareAtPrice
-                    className={'opacity-50'}
-                    data={compareAtPrice as MoneyV2}
-                  />
-                )}
-              </Text>
-            </div>
+          
+          {/* Title with improved typography */}
+          <h3 className="text-primary text-base font-medium mb-1 leading-tight">
+            {product.title}
+          </h3>
+          
+          {/* Price with sale indicator */}
+          <div className="flex gap-3 items-center">
+            <span className="text-lg font-medium text-primary">
+              <Money 
+                withoutTrailingZeros 
+                data={price as MoneyV2} 
+              />
+            </span>
+            
+            {compareAtPrice && (
+              <span className="text-sm text-primary/60 line-through">
+                <Money 
+                  withoutTrailingZeros 
+                  data={compareAtPrice as MoneyV2} 
+                />
+              </span>
+            )}
           </div>
         </div>
       </Link>
-      {quickAdd && firstVariant.availableForSale && (
-        <AddToCartButton
-          lines={[
-            {
-              quantity: 1,
-              merchandiseId: firstVariant.id,
-            },
-          ]}
-          variant="secondary"
-          className="mt-2"
+      
+      {/* Add-to-cart action button with hover effect */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 flex justify-center transform translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out pb-4"
+        initial={{y: 20, opacity: 0}}
+        animate={isHovered ? {y: 0, opacity: 1} : {y: 20, opacity: 0}}
+        transition={{duration: 0.3}}
+      >
+        <button 
+          className="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-primary/90 transition-colors shadow-apple-sm"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = `/cart?lines=${firstVariant.id}:1`;
+          }}
         >
-          <Text as="span" className="flex items-center justify-center gap-2">
-            Add to Cart
-          </Text>
-        </AddToCartButton>
-      )}
-      {quickAdd && !firstVariant.availableForSale && (
-        <Button variant="secondary" className="mt-2" disabled>
-          <Text as="span" className="flex items-center justify-center gap-2">
-            Sold out
-          </Text>
-        </Button>
-      )}
-    </div>
-  );
-}
-
-function CompareAtPrice({
-  data,
-  className,
-}: {
-  data: MoneyV2;
-  className?: string;
-}) {
-  const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} =
-    useMoney(data);
-
-  const styles = clsx('strike', className);
-
-  return (
-    <span className={styles}>
-      {currencyNarrowSymbol}
-      {withoutTrailingZerosAndCurrency}
-    </span>
+          Add to Cart
+        </button>
+      </motion.div>
+    </motion.div>
   );
 }

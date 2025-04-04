@@ -187,7 +187,7 @@ function MenuMobileNav({
   );
 }
 
-// Desktop Header - Completely redesigned for premium Glossier+Apple aesthetic
+// Desktop Header - Enhanced styling
 function DesktopHeader({
   title,
   openCart,
@@ -206,37 +206,37 @@ function DesktopHeader({
   };
 
   return (
-    <header className="hidden md:flex h-20 items-center justify-between w-full px-8 backdrop-blur-md bg-white/80 border-b border-stone-200/30 fixed top-0 z-40 transition-all duration-300">
-      <div className="flex items-center gap-8">
+    <header className="hidden md:flex h-24 items-center justify-between w-full px-10 backdrop-blur-lg bg-white/75 border-b border-stone-200/20 fixed top-0 z-40 transition-all duration-300 shadow-apple-sm">
+      <div className="flex items-center gap-12">
         {/* Logo */}
         <div className="flex items-center">
           <button
             onClick={scrollToTop}
             className="text-2xl font-light tracking-tight"
           >
-            <span className="text-primary hover:text-rose-600 transition-colors duration-300">{title}</span>
+            <span className="text-primary hover:text-rose-600 transition-colors duration-300">care<span className="text-rose-500">•</span>atin</span>
           </button>
         </div>
 
         {/* Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-8">
           <Link
             to="/collections"
-            className="text-primary/70 hover:text-primary text-sm font-medium relative group px-1 py-2"
+            className="text-primary/80 hover:text-primary text-sm font-medium relative group px-1 py-2"
           >
             Products
             <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-rose-400 group-hover:w-full transition-all duration-300"></span>
           </Link>
           <Link
             to="/collections/featured"
-            className="text-primary/70 hover:text-primary text-sm font-medium relative group px-1 py-2"
+            className="text-primary/80 hover:text-primary text-sm font-medium relative group px-1 py-2"
           >
             Featured
             <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-rose-400 group-hover:w-full transition-all duration-300"></span>
           </Link>
           <Link
             to="/about"
-            className="text-primary/70 hover:text-primary text-sm font-medium relative group px-1 py-2"
+            className="text-primary/80 hover:text-primary text-sm font-medium relative group px-1 py-2"
           >
             About
             <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-rose-400 group-hover:w-full transition-all duration-300"></span>
@@ -245,10 +245,10 @@ function DesktopHeader({
       </div>
 
       {/* Actions */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-5">
         {/* Search button with hover effect */}
         <button 
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/70 hover:text-primary"
+          className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/80 hover:text-primary"
           aria-label="Search"
         >
           <IconSearch className="w-5 h-5" />
@@ -257,7 +257,7 @@ function DesktopHeader({
         {/* Account button with hover effect */}
         <Link
           to="/account"
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/70 hover:text-primary"
+          className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/80 hover:text-primary"
           aria-label="Account"
         >
           <IconAccount className="w-5 h-5" />
@@ -266,7 +266,7 @@ function DesktopHeader({
         {/* Cart button with hover effect */}
         <button
           onClick={openCart}
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/70 hover:text-primary relative"
+          className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/80 hover:text-primary relative"
           aria-label="Cart"
         >
           <IconBag className="w-5 h-5" />
@@ -277,7 +277,7 @@ function DesktopHeader({
   );
 }
 
-// Mobile Header - Enhanced for Glossier+Apple aesthetic
+// Mobile Header - Enhanced styling
 function MobileHeader({
   title,
   openCart,
@@ -288,11 +288,11 @@ function MobileHeader({
   openMenu: () => void;
 }) {
   return (
-    <header className="md:hidden flex h-16 items-center justify-between w-full px-4 backdrop-blur-md bg-white/80 border-b border-stone-200/30 fixed top-0 z-40 transition-all duration-300">
+    <header className="md:hidden flex h-20 items-center justify-between w-full px-5 backdrop-blur-lg bg-white/75 border-b border-stone-200/20 fixed top-0 z-40 transition-all duration-300 shadow-apple-sm">
       {/* Menu Button */}
       <button 
         onClick={openMenu}
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/70 hover:text-primary"
+        className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/80 hover:text-primary"
         aria-label="Menu"
       >
         <IconMenu className="w-5 h-5" />
@@ -303,13 +303,13 @@ function MobileHeader({
         to="/"
         className="text-xl font-light tracking-tight text-primary hover:text-rose-600 transition-colors duration-300"
       >
-        {title}
+        care<span className="text-rose-500">•</span>atin
       </Link>
 
       {/* Cart Button */}
       <button
         onClick={openCart}
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/70 hover:text-primary relative"
+        className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/80 hover:text-primary relative"
         aria-label="Cart"
       >
         <IconBag className="w-5 h-5" />
