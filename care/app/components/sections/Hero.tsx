@@ -19,8 +19,21 @@ const heroImagesData = [
 ];
 
 // Your specified image URLs
-const IMAGE_URL_1 = '/images/IMG_0161.jpg';
+const IMAGE_URL_1 = '/images/prettyhair.jpg';
 const IMAGE_URL_2 = '/images/Subject 4.png';
+// Add constants for the other unique images
+const IMAGE_URL_3 = '/images/PRODUCTPHOTOT.png';
+const IMAGE_URL_4 = '/images/hair.jpg';
+const IMAGE_URL_5 = '/images/model-shot.jpeg';
+
+// Create an array of the unique image URLs
+const uniqueHeroImageUrls = [
+  IMAGE_URL_1,
+  IMAGE_URL_2,
+  IMAGE_URL_3,
+  IMAGE_URL_4,
+  IMAGE_URL_5,
+];
 
 interface HeroProps {
   product: HomepageProduct | null; // Allow null
@@ -145,9 +158,10 @@ export function Hero({ product }: HeroProps) {
         <div className="absolute inset-0 pointer-events-none z-5">
           <Floating sensitivity={0.5} className="overflow-hidden">
             {heroImagesData.map((imageData, index) => {
-              const imageUrl = index % 2 === 0 ? IMAGE_URL_1 : IMAGE_URL_2;
-              const imageAlt = index % 2 === 0 ? "Hero background image 1" : "Hero background image 2";
-
+              // Use the array and modulo 5 to cycle through the 5 unique images
+              const imageUrl = uniqueHeroImageUrls[index % 5]; // <-- Use the array
+              // Update alt text for better description
+              const imageAlt = `Hero background image ${index + 1}`; // <-- Use new alt text
               return (
                 <FloatingElement
                   key={index}
@@ -157,9 +171,9 @@ export function Hero({ product }: HeroProps) {
                   {/* Ensure overflow-hidden is applied to the direct image container */}
                   <motion.div
                     className="relative rounded-lg overflow-hidden shadow-lg"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.15 }}
+                    initial={{opacity: 0, scale: 0.8}}
+                    animate={{opacity: 1, scale: 1}}
+                    transition={{duration: 0.5, delay: index * 0.15}}
                   >
                     <motion.img
                       src={imageUrl}
