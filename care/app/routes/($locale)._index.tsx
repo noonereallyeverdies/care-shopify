@@ -343,7 +343,11 @@ export default function Homepage() {
                  animate={{ borderColor: ["rgba(252, 165, 165, 0)", "rgba(252, 165, 165, 0.4)", "rgba(252, 165, 165, 0)"] }} // red-300 at 40% opacity
                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />
-              <span className="text-red-900/40 italic p-4 text-center font-medium relative z-10">Sticky Product Image Placeholder</span>
+              <img 
+                src="/images/PRODUCTPHOTOT.png" 
+                alt="Photonique Touch Device"
+                className="h-full w-full object-contain p-4 relative z-10"
+              />
             </motion.div>
           </div>
 
@@ -417,7 +421,11 @@ export default function Homepage() {
             variants={imageFade} initial="initial" whileInView="whileInView" viewport={imageFade.viewport}
             whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 300 } }}
           >
-             <span className="text-primary/50 italic">Product Image Area</span>
+             <img 
+                src="/images/Subject 4.png" 
+                alt="Photonique Touch Features"
+                className="h-full w-full object-contain p-4"
+              />
           </motion.div>
           
           <motion.div 
@@ -458,7 +466,11 @@ export default function Homepage() {
             variants={imageFade} initial="initial" whileInView="whileInView" viewport={imageFade.viewport}
             whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 300 } }}
            >
-             <span className="text-primary/50 italic">Lifestyle Image Area</span>
+             <img 
+                src="/images/model-shot.jpeg" 
+                alt="Woman using Photonique Touch comfortably"
+                className="h-full w-full object-cover"
+              />
           </motion.div>
          </div>
       </SectionWrapper>
