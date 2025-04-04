@@ -433,8 +433,14 @@ function Footer({ menu }: { menu?: EnhancedMenu | null }) {
         
         {/* Bottom section */}
         <div className="mt-12 pt-8 border-t border-stone-200/30 text-center">
-          <p className="text-xs text-primary/50">
-            © {new Date().getFullYear()} care•atin. All rights reserved.
+          <p className="text-xs text-primary/50 mb-1">
+            © 2025 care•atin. All rights reserved.
+          </p>
+          <p className="text-xs text-primary/50 mb-4">
+            Designed in California, where beauty meets care.
+          </p>
+          <p className="text-xs text-primary/40 max-w-2xl mx-auto leading-relaxed">
+            The statements on this website have not been evaluated by the FDA. The information provided on this site is not intended to diagnose, treat, cure, or prevent any disease and should not be construed as medical advice. Results may not be typical.
           </p>
         </div>
       </div>

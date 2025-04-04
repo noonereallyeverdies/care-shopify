@@ -88,7 +88,7 @@ export function Hero({ product }: HeroProps) {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            glow <span className="text-rose-400">•</span>up.
+            the <span className="text-rose-400">•</span> science <span className="text-rose-400">•</span> of <span className="text-rose-400">•</span> shine
           </motion.h1>
           <motion.p 
             className="text-lg md:text-xl text-primary/70 font-light max-w-xl text-center px-4"
@@ -217,6 +217,10 @@ export function Hero({ product }: HeroProps) {
                     initial={{opacity: 0, scale: 0.8}}
                     animate={{opacity: 1, scale: 1}}
                     transition={{duration: 0.5, delay: index * 0.15 + 0.5, ease: [0.165, 0.84, 0.44, 1]}}
+                    whileHover={{
+                      boxShadow: "0 0 25px rgba(225, 29, 72, 0.4)",
+                      borderColor: "rgba(225, 29, 72, 0.3)"
+                    }}
                   >
                     <motion.div className="relative overflow-hidden rounded-2xl">
                       <motion.img
@@ -227,7 +231,10 @@ export function Hero({ product }: HeroProps) {
                           object-cover transition-transform duration-700 hover:scale-110 w-full h-full
                         `}
                         loading="eager"
-                        whileHover={{ scale: 1.1 }}
+                        whileHover={{ 
+                          scale: 1.1,
+                          filter: "brightness(1.1) saturate(1.2)" 
+                        }}
                         transition={{ duration: 0.7, ease: [0.165, 0.84, 0.44, 1] }}
                       />
                     </motion.div>
