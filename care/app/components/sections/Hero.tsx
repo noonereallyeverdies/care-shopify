@@ -3,10 +3,10 @@ import { animate, stagger } from "@motionone/dom"
 import { motion } from "framer-motion"
 import Floating, { FloatingElement } from "~/components/ui/parallax-floating"
 import { Link } from "@remix-run/react"
-// import { Button } from "~/components/ui/button" // Temporarily commented out
-// import { ShimmerButton } from "~/components/ui/ShimmerButton" // Temporarily commented out
+import { Button } from "~/components/Button"
 import { Money } from "@shopify/hydrogen"
 import type {HomepageProduct} from '~/routes/($locale)._index';
+import { ShimmerButton } from "~/components/ui/ShimmerButton"
 
 // Original hardcoded images - We'll keep the structure but replace URLs later
 const heroImagesData = [
@@ -44,8 +44,7 @@ export function Hero({ product }: HeroProps) {
   console.log('Hero Component received product:', JSON.stringify(product, null, 2)); 
 
   const scope = useRef<HTMLDivElement>(null)
-  // Removed isImageLoaded state if not used in original logic being restored
-  // const [isImageLoaded, setIsImageLoaded] = useState(false)
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
 
   const firstVariant = product?.variants?.nodes[0]
   const featuredImage = product?.featuredImage
@@ -53,58 +52,94 @@ export function Hero({ product }: HeroProps) {
   useEffect(() => {
     if (!scope.current) return
     const images = scope.current.querySelectorAll('img')
-    // Ensure animate and stagger are correctly imported and used if needed
-    // animate(images, { opacity: [0, 1] }, { duration: 0.5, delay: stagger(0.15) })
-  }, [])
+    animate(images, { opacity: [0, 1] }, { duration: 0.5, delay: stagger(0.15) })
+  }, [isImageLoaded])
 
   // Added check for null product
   if (!product) {
     return (
       <section className="relative w-full min-h-screen bg-contrast flex items-center justify-center">
-        <p className="text-primary/50">Loading product...</p>
+        <div className="loader"></div>
       </section>
     );
   }
 
   return (
-    // Restoring original section structure
-    <section className="relative w-full min-h-screen bg-contrast overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
+    <section className="relative w-full min-h-screen overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-rose-50/30 via-contrast to-contrast"></div>
+      
+      <div className="absolute inset-0 opacity-5 bg-[url('/images/texture.png')] bg-repeat"></div>
       
       <div
         className="relative container mx-auto px-4 pt-32 pb-16 flex flex-col items-center justify-between min-h-screen"
-        ref={scope} // Keep ref if used by original useEffect
+        ref={scope}
       >
-        {/* Hero Header */}
         <motion.div
-          className="relative z-10 text-center space-y-6 items-center flex flex-col w-full"
+          className="relative z-10 text-center space-y-8 items-center flex flex-col w-full"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.88, delay: 0.5 }}
+          transition={{ duration: 0.88, delay: 0.5, ease: [0.165, 0.84, 0.44, 1] }}
         >
-          <h1 className="text-[8rem] md:text-[12rem] lg:text-[16rem] text-primary font-light tracking-tight lowercase w-full leading-none">
-            glow <span className="text-red-400">•</span>up.
-          </h1>
-          <p className="text-lg md:text-xl text-primary/80 font-light max-w-xl text-center px-4">
+          <motion.h1 
+            className="text-[8rem] md:text-[12rem] lg:text-[16rem] font-light tracking-tight lowercase w-full leading-none"
+            style={{ 
+              background: 'linear-gradient(135deg, #343331 0%, #504f4c 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            glow <span className="text-rose-400">•</span>up.
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl text-primary/70 font-light max-w-xl text-center px-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
             cellular renewal, powered by precision light.
-          </p>
+          </motion.p>
         </motion.div>
 
-        {/* Featured Product */}
         <motion.div 
           className="relative z-20 w-full max-w-6xl mx-auto mt-12 mb-24"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.8, delay: 1, ease: [0.165, 0.84, 0.44, 1] }}
         >
-          <div className="grid md:grid-cols-2 gap-8 items-center bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+          <div className="grid md:grid-cols-2 gap-8 items-center glass rounded-3xl p-8 shadow-glossier">
             <div className="space-y-6">
               <div className="space-y-2">
-                <h2 className="text-3xl font-light text-primary">{product?.title}</h2>
-                <p className="text-xl text-primary/60">Advanced Red Light Therapy Device</p>
+                <motion.h2 
+                  className="text-3xl font-light text-primary"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 1.2 }}
+                >
+                  {product?.title}
+                </motion.h2>
+                <motion.p 
+                  className="text-xl text-primary/60"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 1.3 }}
+                >
+                  Advanced Red Light Therapy Device
+                </motion.p>
               </div>
-              <p className="text-primary/80">Transform your hair care routine with cutting-edge red light therapy technology.</p>
-              <div className="flex items-center gap-3">
+              <motion.p 
+                className="text-primary/80"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.4 }}
+              >
+                Transform your hair care routine with cutting-edge red light therapy technology.
+              </motion.p>
+              <motion.div 
+                className="flex items-center gap-3"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.5 }}
+              >
                 {firstVariant?.price && (
                   <span className="text-2xl font-medium text-primary">
                     <Money data={firstVariant.price} />
@@ -115,83 +150,93 @@ export function Hero({ product }: HeroProps) {
                     <Money data={firstVariant.compareAtPrice} />
                   </span>
                 )}
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                {/* Temporarily comment out button usage */}
-                {/* {firstVariant?.availableForSale && (
-                  <ShimmerButton
+              </motion.div>
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.6 }}
+              >
+                {firstVariant?.availableForSale && (
+                  <Button
                     as={Link}
                     to={`/cart?lines=${firstVariant.id}:1`}
-                    className="w-full sm:w-auto"
+                    variant="glossier"
+                    width="full"
+                    size="large"
                   >
                     Add to Cart
-                  </ShimmerButton>
-                )} */}
-                {/* <Button
+                  </Button>
+                )}
+                <Button
                   as={Link}
                   to={`/products/${product?.handle}`}
-                  variant="secondary"
-                  className="w-full sm-w-auto"
+                  variant="ghost"
+                  width="full"
+                  size="large"
                 >
                   Learn More
-                </Button> */}
-              </div>
+                </Button>
+              </motion.div>
             </div>
-            <div className="relative aspect-square rounded-xl overflow-hidden">
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-apple-md">
               {featuredImage && (
-                <img 
-                  src={featuredImage.url}
-                  alt={featuredImage.altText || product?.title || "Product Image"}
-                  className="w-full h-full object-cover"
-                  width={featuredImage.width || 800}
-                  height={featuredImage.height || 800}
-                  // Removed onLoad if not needed
-                  // onLoad={() => setIsImageLoaded(true)}
-                />
+                <motion.div
+                  initial={{ scale: 1.05, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.7, delay: 1.2 }}
+                  className="w-full h-full"
+                >
+                  <img 
+                    src={featuredImage.url}
+                    alt={featuredImage.altText || product?.title || "Product Image"}
+                    className="w-full h-full object-cover"
+                    width={featuredImage.width || 800}
+                    height={featuredImage.height || 800}
+                    onLoad={() => setIsImageLoaded(true)}
+                  />
+                </motion.div>
               )}
             </div>
           </div>
         </motion.div>
 
-        {/* Floating Background Images - Applying z-index and overflow fixes */}
-        {/* Added z-5 to ensure it's above other default absolute background layers */}
         <div className="absolute inset-0 pointer-events-none z-5">
           <Floating sensitivity={0.5} className="overflow-hidden">
             {heroImagesData.map((imageData, index) => {
-              // Use the array and modulo 5 to cycle through the 5 unique images
-              const imageUrl = uniqueHeroImageUrls[index % 5]; // <-- Use the array
-              // Update alt text for better description
-              const imageAlt = `Hero background image ${index + 1}`; // <-- Use new alt text
+              const imageUrl = uniqueHeroImageUrls[index % 5];
+              const imageAlt = `Hero background image ${index + 1}`;
               return (
                 <FloatingElement
                   key={index}
                   depth={imageData.depth}
                   className={imageData.position}
                 >
-                  {/* Ensure overflow-hidden is applied to the direct image container */}
                   <motion.div
-                    className="relative rounded-lg overflow-hidden shadow-lg"
+                    className="relative rounded-2xl overflow-hidden shadow-glossier bg-white/20 backdrop-blur-sm p-[2px]"
                     initial={{opacity: 0, scale: 0.8}}
                     animate={{opacity: 1, scale: 1}}
-                    transition={{duration: 0.5, delay: index * 0.15}}
+                    transition={{duration: 0.5, delay: index * 0.15 + 0.5, ease: [0.165, 0.84, 0.44, 1]}}
                   >
-                    <motion.img
-                      src={imageUrl}
-                      alt={imageAlt}
-                      className={`
-                        ${imageData.size}
-                        object-cover transition-transform duration-300 hover:scale-110 w-full h-full // Added w-full h-full for certainty
-                      `}
-                      loading="eager"
-                    />
+                    <motion.div className="relative overflow-hidden rounded-2xl">
+                      <motion.img
+                        src={imageUrl}
+                        alt={imageAlt}
+                        className={`
+                          ${imageData.size}
+                          object-cover transition-transform duration-700 hover:scale-110 w-full h-full
+                        `}
+                        loading="eager"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.7, ease: [0.165, 0.84, 0.44, 1] }}
+                      />
+                    </motion.div>
                   </motion.div>
                 </FloatingElement>
               );
             })}
           </Floating>
         </div>
-        
-
       </div>
     </section>
   )

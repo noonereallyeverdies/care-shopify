@@ -8,13 +8,36 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: colors.stone[800],
-        contrast: colors.stone[50],
-        accent: colors.stone[900],
-        brand: colors.rose[100],
-        'red-light-accent': colors.red[600],
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        contrast: 'rgb(var(--color-contrast) / <alpha-value>)',
+        accent: 'rgb(var(--color-accent) / <alpha-value>)',
+        brand: 'rgb(var(--color-brand) / <alpha-value>)',
         notice: 'rgb(var(--color-accent) / <alpha-value>)',
         shopPay: 'rgb(var(--color-shop-pay) / <alpha-value>)',
+        stone: {
+          50: '#faf9f7',
+          100: '#f5f4f1',
+          200: '#ebeae6',
+          300: '#dbd9d3',
+          400: '#adaba7',
+          500: '#8e8c88',
+          600: '#6e6c68',
+          700: '#504f4c',
+          800: '#343331',
+          900: '#1a1918',
+        },
+        rose: {
+          50: '#fff6f9',
+          100: '#ffedf2',
+          200: '#ffd6e2',
+          300: '#ffb0ca',
+          400: '#ff89b1',
+          500: '#f95d94',
+          600: '#e93a79',
+          700: '#cf1f5d',
+          800: '#9f1a4c',
+          900: '#7d193e',
+        },
       },
       keyframes: {
         shimmer: {
@@ -31,9 +54,24 @@ export default {
             opacity: '0.25',
           },
         },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        pulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        }
       },
       animation: {
         shimmer: 'shimmer var(--shimmer-duration) cubic-bezier(0, 0, 0.12, 1) infinite',
+        fadeIn: 'fadeIn 0.5s ease-out',
+        slideUp: 'slideUp 0.5s ease-out',
+        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       typography: ({ theme }) => ({
         DEFAULT: {
@@ -95,8 +133,8 @@ export default {
         mobileGallery: 'calc(100vw - 3rem)',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['"IBMPlexSerif"', 'Palatino', 'ui-serif'],
+        sans: ['"SF Pro Display"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['"New York"', '"IBMPlexSerif"', 'Palatino', 'ui-serif'],
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],
@@ -109,10 +147,24 @@ export default {
         'prose-narrow': '45ch',
         'prose-wide': '80ch',
       },
+      borderRadius: {
+        '4xl': '2rem',
+        '5xl': '2.5rem',
+      },
       boxShadow: {
+        'apple-sm': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)',
+        'apple-md': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+        'apple-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+        'apple-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)',
+        'apple-2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+        'glossier': '0 4px 20px rgba(0, 0, 0, 0.08)',
         border: 'inset 0px 0px 0px 1px rgb(var(--color-primary) / 0.08)',
-        darkHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.4)',
-        lightHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.05)',
+        darkHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.08)',
+        lightHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.03)',
+      },
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(20px)',
       },
     },
   },

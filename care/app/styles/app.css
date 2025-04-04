@@ -2,14 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add other base styles or component layer styles here */
+/* Apple+Glossier Inspired Styles */
+@layer base {
+  /* Smooth scroll for entire site */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom selection color */
+  ::selection {
+    @apply bg-rose-200 text-stone-900;
+  }
+}
 
-/* Basic CSS Loader for Spline Fallback */
+/* Apple-inspired loader */
 @layer components {
   .loader {
     width: 48px;
     height: 48px;
-    border: 5px solid #FFF; /* White border */
+    border: 5px solid theme('colors.rose.300'); /* Rose border */
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
@@ -25,21 +36,74 @@
       transform: rotate(360deg);
     }
   }
+  
+  /* Apple-like glass effect */
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-apple-sm;
+  }
+  
+  /* Glossier-like button */
+  .btn-glossier {
+    @apply px-6 py-3 rounded-full bg-rose-100 text-rose-800 font-medium 
+           hover:bg-rose-200 hover:text-rose-900 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-rose-300 focus:ring-offset-2;
+  }
+  
+  /* Apple-like button */
+  .btn-apple {
+    @apply px-6 py-3 rounded-full bg-stone-900 text-white font-medium 
+           hover:bg-stone-800 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-offset-2;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
 }
 
 :root {
-  --color-primary: theme(colors.primary);
-  --color-contrast: theme(colors.contrast);
-  --color-accent: theme(colors.accent);
-  --color-brand: theme(colors.brand);
-  --color-red-light-accent: theme(colors.red-light-accent);
+  /* Refined color palette */
+  --color-primary: 34, 33, 31; /* stone-800 */
+  --color-contrast: 250, 249, 247; /* stone-50 */
+  --color-accent: 26, 25, 24; /* stone-900 */
+  --color-brand: 255, 237, 242; /* rose-100 */
+  --color-red-light-accent: 233, 58, 121; /* rose-600 */
   --color-shop-pay: 27, 29, 29;
-  --black: var(--color-primary); /* Define --black for GlowingEffect */
+  --black: var(--color-primary);
+  
+  /* Soft shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.04);
 }
 
 /* Ensure body uses theme colors by default */
 body {
-  @apply bg-contrast text-primary/80 font-sans;
+  @apply bg-contrast text-primary/80 font-sans antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add smooth transitions to all interactive elements */
+a, button, input, select, textarea {
+  @apply transition-all duration-200;
+}
+
+/* Improve focus states for accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-rose-400 ring-offset-2;
+}
+
+/* Apple-like input styles */
+input, textarea, select {
+  @apply rounded-xl border-stone-200 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50;
 }
 
 /* ... rest of your app.css */ 
