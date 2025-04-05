@@ -1,11 +1,21 @@
-import React, { useRef } from 'react';
+import React, {useRef, useState, useEffect, Suspense} from 'react';
 import {
   defer,
   type MetaArgs,
   type LoaderFunctionArgs,
 } from '@shopify/remix-oxygen';
-import {Await, useLoaderData} from '@remix-run/react';
-import {getSeoMeta, type SeoConfig} from '@shopify/hydrogen';
+import {
+  Await,
+  useLoaderData,
+  Link,
+  useLocation,
+} from '@remix-run/react';
+import {
+  getSeoMeta,
+  type SeoConfig,
+  type Shop,
+  type MoneyV2,
+} from '@shopify/hydrogen';
 import {
   Zap,
   Droplet,
@@ -14,138 +24,123 @@ import {
   Clock3,
   Heart,
   ChevronRight,
+  ArrowUpRight,
+  Layers,
+  Shield,
+  FlaskConical,
+  BookOpen,
+  Mail,
 } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion'; 
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useAnimation,
+  useInView,
+} from 'framer-motion';
+
 import {Testimonials} from '~/components/sections/Testimonials';
-import {seoPayload} from '~/lib/seo.server';
-import {Suspense} from 'react';
 import {Hero} from '~/components/sections/Hero';
 import {GlowingBenefits} from '~/components/sections/Benefits';
+import {ScienceHub} from '~/components/sections/ScienceHub';
+import {FoundersVision} from '~/components/sections/FoundersVision';
+import {JournalSignup} from '~/components/sections/JournalSignup';
+import {seoPayload} from '~/lib/seo.server';
 import {HOMEPAGE_PRODUCT_QUERY} from '~/queries/homepage';
-import type {Shop, MoneyV2} from '@shopify/hydrogen/storefront-api-types';
 
 export const headers = {
   'Cache-Control': 'public, max-age=60',
 };
 
-export type HomepageProduct = {
+interface VariantOption {
+  name: string;
+  value: string;
+}
+
+interface Variant {
+  id: string;
+  availableForSale: boolean;
+  quantityAvailable?: number;
+  selectedOptions: VariantOption[];
+  price: MoneyV2;
+  compareAtPrice?: MoneyV2;
+  sku?: string;
+  title: string;
+  unitPrice?: MoneyV2;
+  product: {title: string; handle: string};
+}
+
+interface HomepageProduct {
   id: string;
   title: string;
-  description: string;
   handle: string;
+  descriptionHtml?: string;
   featuredImage?: {
     url: string;
-    altText: string;
-    width: number;
-    height: number;
-  } | null;
-  priceRange: {
-    minVariantPrice: MoneyV2;
+    altText?: string;
+    width?: number;
+    height?: number;
   };
   variants: {
-    nodes: Array<{
-      id: string;
-      availableForSale: boolean;
-      price: MoneyV2;
-      compareAtPrice?: MoneyV2 | null;
-      selectedOptions: Array<{
-        name: string;
-        value: string;
-      }>;
-    }>;
+    nodes: Variant[];
   };
-};
+  seo?: {
+    title?: string;
+    description?: string;
+  };
+}
 
-export async function loader({context}: LoaderFunctionArgs) {
-  const {storefront, request, env} = context;
+export async function loader({request, context, params}: LoaderFunctionArgs) {
+  const {language, country} = context.storefront.i18n;
+  const {storefront, env} = context;
+
+  if (
+    params.locale &&
+    params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase()
+  ) {
+    throw new Response(null, {status: 404});
+  }
   
   try {
     console.log('Fetching product data...');
-    const response = await storefront.query<{
+    const {shop, product: fetchedProduct} = await storefront.query<{
+      shop: Shop;
       product: HomepageProduct | null;
-      products: {
-        nodes: Array<{ handle: string }>;
-      };
-      shop: Shop | null;
-    }>(HOMEPAGE_PRODUCT_QUERY, {
-      variables: {
-        handle: 'photonique-touch',
-      },
-    });
-
-    console.log('Response received:', JSON.stringify(response, null, 2));
-
-    // If the specified product is not found, try to use the first available product
-    let product = response.product;
-    if (!product && response.products?.nodes?.length > 0) {
-      console.log('Trying first available product...');
-      const firstProductHandle = response.products.nodes[0].handle;
-      const fallbackResponse = await storefront.query<{
-        product: HomepageProduct | null;
-      }>(HOMEPAGE_PRODUCT_QUERY, {
+    }>(
+      HOMEPAGE_PRODUCT_QUERY,
+      {
         variables: {
-          handle: firstProductHandle,
+          handle: 'photonique-touch',
+          country: country,
+          language: language,
         },
-      });
-      product = fallbackResponse.product;
+      },
+    );
+    console.log('Response received:', JSON.stringify({shop, product: fetchedProduct}, null, 2));
+
+    if (!fetchedProduct) {
+      console.error('Product not found:', fetchedProduct);
+      throw new Response('Product not found', {status: 404});
     }
 
-    if (!product) {
-      console.error('No products found in response:', response);
-      throw new Response('No products found', {
-        status: 404,
-        statusText: 'No products found in store',
-      });
-    }
+    const seo = seoPayload.home({url: request.url});
 
-    // Get the store domain from env or shop data
-    const storeDomain = env.PUBLIC_STORE_DOMAIN || response.shop?.primaryDomain?.url || 'luminancecare.myshopify.com';
+    const storeDomain = env.PUBLIC_STORE_DOMAIN || shop?.primaryDomain?.url || 'luminancecare.myshopify.com';
     const cleanStoreDomain = storeDomain.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
-    // Safely construct the URL
-    let url: string;
-    try {
-      if (request?.url) {
-        url = new URL(request.url).toString();
-      } else if (env.PUBLIC_STORE_DOMAIN) {
-        // Make sure the domain has a protocol
-        const domain = env.PUBLIC_STORE_DOMAIN.startsWith('http') 
-          ? env.PUBLIC_STORE_DOMAIN 
-          : `https://${env.PUBLIC_STORE_DOMAIN}`;
-        url = domain;
-      } else {
-        url = 'https://luminancecare.com'; // Fallback URL
-      }
-    } catch (urlError) {
-      console.error('Error constructing URL:', urlError);
-      url = 'https://luminancecare.com'; // Fallback URL
-    }
-
-    const seo: SeoConfig = {
-      title: 'Red Light Therapy Device | Luminance Care',
-      description: 'Experience the power of red light therapy with our advanced device. Enhance your hair growth and skin health naturally.',
-      handle: 'home',
-      url,
-      titleTemplate: '%s | Luminance Care',
-      robots: {
-        noIndex: false,
-        noFollow: false,
+    return defer({
+      shop,
+      product: fetchedProduct,
+      analytics: {
+        pageType: 'home',
       },
-    };
-
-    return defer({ 
-      product,
-      shop: response.shop,
       seo,
       storeDomain: cleanStoreDomain,
     });
   } catch (error) {
     console.error('Error in homepage loader:', error);
     if (error instanceof Error) {
-      console.error('Error details:', {
-        message: error.message,
-        stack: error.stack,
-      });
+      console.error('Error details:', { message: error.message, stack: error.stack });
     }
     throw new Response('Error loading homepage data', {
       status: 500,
@@ -155,16 +150,22 @@ export async function loader({context}: LoaderFunctionArgs) {
 }
 
 export const meta = ({data}: MetaArgs<typeof loader>) => {
-  if (!data) {
+  if (!data?.seo) {
     return [
-      {title: 'Red Light Therapy Device | Luminance Care'},
-      {description: 'Experience the power of red light therapy with our advanced device. Enhance your hair growth and skin health naturally.'},
+        {title: 'care•atin | The Science of Shine'},
+        {description: 'Default description if SEO data is missing.'}
     ];
   }
   return getSeoMeta(data.seo as SeoConfig);
 };
 
-// --- Parallax Background Component (Conceptual Example) ---
+const spring = {
+  type: "spring",
+  stiffness: 250,
+  damping: 30,
+  mass: 0.8
+};
+
 const ParallaxBackground: React.FC<{ imageUrl: string; speed?: number; overlayColor?: string }> = 
   ({ imageUrl, speed = 0.3, overlayColor = 'bg-black/5' }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -183,131 +184,165 @@ const ParallaxBackground: React.FC<{ imageUrl: string; speed?: number; overlayCo
           y 
         }}
       />
-      {/* Using dynamic overlay color */}
       <div className={`absolute inset-0 ${overlayColor} z-10`}></div> 
     </div>
   );
 };
-// ---------------------------------------------------------
 
-// --- Animated Gradient Background Component (Example) ---
-// Creates a subtle shifting gradient effect
 const AnimatedGradientBackground: React.FC<{ colors: string[], className?: string }> = ({ colors, className }) => {
   return (
     <motion.div
       className={`absolute inset-0 z-0 ${className}`}
       animate={{
-        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] // Move gradient position
+        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
       }}
       transition={{
-        duration: 15, // Slow transition
+        duration: 15,
         ease: "linear",
         repeat: Infinity
       }}
       style={{
-        backgroundSize: '200% 200%', // Background size must be larger for movement
-        backgroundImage: `linear-gradient(45deg, ${colors.join(', ')})` // Use passed colors
+        backgroundSize: '200% 200%',
+        backgroundImage: `linear-gradient(45deg, ${colors.join(', ')})`
       }}
     />
   );
 };
-// ---------------------------------------------------------
+
+const SwissPattern: React.FC<{ className?: string }> = ({ className = '' }) => {
+  const patternCells = [
+    [0, 1, 0, 1, 0], [1, 0, 1, 0, 1], [0, 1, 0, 1, 0], [1, 0, 1, 0, 1], [0, 1, 0, 1, 0],
+  ];
+  const colors = ['bg-red-50', 'bg-rose-100', 'bg-neutral-100', 'bg-rose-50'];
+  return (
+    <div className={`grid grid-cols-5 gap-1 ${className}`}>
+      {patternCells.map((row, rowIndex) =>
+        row.map((cell, colIndex) =>
+          cell ? (
+            <motion.div
+              key={`${rowIndex}-${colIndex}`}
+              className={`${colors[Math.floor(Math.random() * colors.length)]} aspect-square rounded-sm`}
+              initial={{ opacity: 0 }} whileInView={{ opacity: 0.8 }} viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: (rowIndex * 0.1) + (colIndex * 0.05), ease: [0.165, 0.84, 0.44, 1] }}
+            />
+          ) : (<div key={`${rowIndex}-${colIndex}`} />)
+        )
+      )}
+    </div>
+  );
+};
+
+const VariableReward: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [hovered, setHovered] = useState(false);
+  const [rewardVariant, setRewardVariant] = useState(0);
+  useEffect(() => { if (hovered) { setRewardVariant(Math.floor(Math.random() * 4)); } }, [hovered]);
+  const getAnimationVariant = () => {
+    switch(rewardVariant) {
+      case 0: return { scale: 1.03, y: -5, transition: { duration: 0.3 } };
+      case 1: return { rotate: 0.5, scale: 1.02, transition: { duration: 0.4 } };
+      case 2: return { boxShadow: "0 15px 30px rgba(0,0,0,0.1)", y: -3, transition: { duration: 0.5 } };
+      case 3: return { x: 3, scale: 1.01, transition: { duration: 0.2 } };
+      default: return { scale: 1.02, transition: { duration: 0.3 } };
+    }
+  };
+  return (
+    <motion.div onHoverStart={() => setHovered(true)} onHoverEnd={() => setHovered(false)} whileHover={{ ...getAnimationVariant(), transition: spring }} >
+      {children}
+    </motion.div>
+  );
+};
 
 export default function Homepage() {
   const data = useLoaderData<typeof loader>();
 
-  // --- Animation Variants --- 
   const fadeUp = {
     initial: { opacity: 0, y: 20, scale: 0.98 },
     whileInView: { opacity: 1, y: 0, scale: 1 },
-    viewport: { once: true, amount: 0.2 }, 
-    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95] } 
+    viewport: { once: true, amount: 0.2 },
+    transition: { ...spring, duration: 0.7 }
   };
   const imageFade = {
     initial: { opacity: 0, scale: 0.9 },
     whileInView: { opacity: 1, scale: 1 },
-    viewport: { once: true, amount: 0.4 }, 
-    transition: { duration: 0.8, ease: [0.6, 0.01, 0.05, 0.95] }
+    viewport: { once: true, amount: 0.4 },
+    transition: { ...spring, duration: 0.8 }
   };
-  // --- End Animation Variants ---
 
-  // Helper component for consistent section styling - Increased Padding
+  const AsymmetricalSection: React.FC<{
+    children: React.ReactNode; className?: string; reverse?: boolean;
+  }> = ({children, className = '', reverse = false}) => (
+    <section className={`relative w-full py-20 md:py-28 lg:py-32 ${className}`}>
+      <div className={`grid grid-cols-12 gap-4 lg:gap-8 ${reverse ? 'direction-rtl' : ''}`}>
+        {children}
+      </div>
+    </section>
+  );
+
   const SectionWrapper: React.FC<{
-    children: React.ReactNode;
-    className?: string;
-    fullWidth?: boolean;
+    children: React.ReactNode; className?: string; fullWidth?: boolean;
   }> = ({children, className = '', fullWidth = false}) => (
-    <section
-      className={`relative w-full ${fullWidth ? '' : 'max-w-5xl mx-auto px-6 md:px-8'} py-20 md:py-28 lg:py-32 ${className}`}
-    >
+    <section className={`relative w-full ${fullWidth ? '' : 'max-w-5xl mx-auto px-6 md:px-8'} py-20 md:py-28 lg:py-32 ${className}`}>
       {children}
     </section>
   );
 
-  // Helper for section icons - Added pulsing glow effect
-  const SectionIcon: React.FC<{icon: React.ElementType}> = ({icon: Icon}) => (
-    <motion.div 
-      className="flex justify-center mb-8"
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
-      {/* Added motion.div for pulse animation */}
-      <motion.div 
-        className="bg-red-100/60 rounded-full p-3 relative"
-        animate={{
-          boxShadow: [
-            "0 0 0 0px rgba(220, 38, 38, 0.3)", // Start (red-600 at 30% opacity)
-            "0 0 0 10px rgba(220, 38, 38, 0)", // Expand to 10px transparent
-            "0 0 0 0px rgba(220, 38, 38, 0)"  // End transparent
-          ]
-        }}
-        transition={{
-          duration: 1.8,
-          repeat: Infinity,
-          repeatDelay: 0.5,
-          ease: "easeInOut"
-        }}
-      >
+  const SectionIcon: React.FC<{icon: React.ElementType, className?: string}> = ({icon: Icon, className = ''}) => (
+    <motion.div className={`flex justify-center mb-8 ${className}`} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ ...spring, duration: 0.5 }}>
+      <motion.div className="bg-red-100/60 rounded-full p-3 relative" animate={{ boxShadow: ["0 0 0 0px rgba(220, 38, 38, 0.3)", "0 0 0 10px rgba(220, 38, 38, 0)", "0 0 0 0px rgba(220, 38, 38, 0)"] }} transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 0.5, ease: "easeInOut" }}>
         <Icon className="h-8 w-8 md:h-10 md:w-10 text-red-600/90 relative z-10" />
       </motion.div>
     </motion.div>
   );
 
-  // Helper for pulsing dot in headlines
   const PulseDot = () => (
-    <motion.span 
-      className="text-red-500 mx-px"
-      animate={{ scale: [1, 1.3, 1] }}
-      transition={{ duration: 1, repeat: Infinity, repeatDelay: 0.5, ease: "easeInOut" }}
-    >
+    <motion.span className="text-rose-500 mx-px" animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1, repeat: Infinity, repeatDelay: 0.5, ease: "easeInOut" }}>
       •
     </motion.span>
   );
 
+  const AspirationalMoment: React.FC<{ image: string; quote: string; source: string; }> = ({ image, quote, source }) => {
+    const controls = useAnimation();
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.3 });
+    useEffect(() => { if (isInView) { controls.start('visible'); } }, [controls, isInView]);
+    return (
+      <motion.div ref={ref} className="relative overflow-hidden rounded-2xl bg-neutral-50" initial="hidden" animate={controls} variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.165, 0.84, 0.44, 1] } } }} >
+        <div className="aspect-w-16 aspect-h-9 overflow-hidden"> <img src={image} alt="Aspirational moment" className="w-full h-full object-cover" /> </div>
+        <div className="p-6 md:p-8">
+          <motion.blockquote className="text-lg md:text-xl italic text-neutral-700 mb-4 leading-relaxed" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }}> "{quote}" </motion.blockquote>
+          <motion.p className="text-rose-500 font-medium" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.5 }}> {source} </motion.p>
+        </div>
+      </motion.div>
+    );
+  };
+
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        <Await resolve={data.product}>
-          {(product) => (
+        <Await resolve={data.product} errorElement={<div>Error loading product!</div>}>
+          {(resolvedProduct) => (
             <>
-              {/* === Hero Section === */}
-              <Hero product={product} />
+              <Hero product={resolvedProduct as HomepageProduct} />
 
-              {/* === Optional Intro Text === */}
               <SectionWrapper className="text-center">
-                <motion.h2 
-                  className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary mb-5 lowercase tracking-tight"
+                <SwissPattern className="w-24 h-24 mx-auto mb-8" />
+                <motion.h2
+                  className="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 mb-5 lowercase tracking-[0.02em]"
                   variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.1}}
                 >
-                  feel the glow of healthy hair, multi<PulseDot />tasked 
+                  feel the glow of healthy hair, multi<PulseDot />tasked
                 </motion.h2>
-                <motion.p 
-                  className="text-lg md:text-xl text-primary/80 leading-relaxed md:leading-loose max-w-3xl mx-auto"
+                <motion.p
+                  className="text-lg md:text-xl text-neutral-700 leading-[1.618] md:leading-[1.618] max-w-3xl mx-auto tracking-wide"
                   variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.2}}
                 >
-                  Rediscover the confidence that comes with hair that looks and feels full, vibrant, and resilient. Our <strong>Photonique Touch</strong> delivers a 3-in-1 approach – red light therapy, precise nourishment application, and soothing scalp massage – working <em>with</em> your body to nurture stronger, healthier hair from the source.
+                  Rediscover the confidence that comes with hair that looks and feels full, vibrant, and resilient. Our <motion.span className="font-medium text-rose-500" whileHover={{ scale: 1.05 }}>Photonique Touch</motion.span> delivers a 3-in-1 approach – red light therapy, precise nourishment application, and soothing scalp massage – working <em>with</em> your body to nurture stronger, healthier hair from the source.
+                </motion.p>
+                <motion.p
+                  className="text-sm text-neutral-500 mt-6 tracking-wide"
+                  initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ ...spring, duration: 0.5, delay: 0.5 }}
+                >
+                  We believe in your hair's natural potential. Let's unleash it together.
                 </motion.p>
               </SectionWrapper>
             </>
@@ -315,223 +350,134 @@ export default function Homepage() {
         </Await>
       </Suspense>
 
-      {/* === How 3-in-1 Care Works Section (Sticky Scroll Implementation) === */}
-      <SectionWrapper>
-        <motion.h2 
-          className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary text-center mb-16 md:mb-20 lowercase tracking-tight"
-          variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport}
-        >
-          how 3<PulseDot />in<PulseDot />1 care unlocks visibly fuller hair 
-        </motion.h2>
-        <motion.p 
-          className="text-lg md:text-xl text-center text-primary/80 mb-20 md:mb-24 max-w-2xl mx-auto leading-relaxed md:leading-loose"
-          variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.1}}
-        >
-          Experience how the <strong>Photonique Touch</strong> combines three essential actions in one seamless gesture:
-        </motion.p>
-        
-        <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-16 lg:gap-20 relative">
-          <div className="sticky top-32 md:top-40 h-[calc(100vh-10rem)] hidden md:block"> 
-            <motion.div 
-              className="relative aspect-[3/4] rounded-lg flex items-center justify-center h-full shadow-sm overflow-hidden bg-gradient-to-br from-red-50/40 via-red-50/10 to-transparent" // Enhanced red gradient
-              variants={imageFade} initial="initial" whileInView="whileInView" viewport={imageFade.viewport}
-            >
-              {/* Add subtle animated glow/border effect here potentially linked to scroll */}
-              {/* Example: Add inner border that pulses */}
-              <motion.div 
-                 className="absolute inset-0 border-2 border-red-300/0 rounded-lg"
-                 animate={{ borderColor: ["rgba(252, 165, 165, 0)", "rgba(252, 165, 165, 0.4)", "rgba(252, 165, 165, 0)"] }} // red-300 at 40% opacity
-                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <img 
-                src="/images/PRODUCTPHOTOT.png" 
-                alt="Photonique Touch Device"
-                className="h-full w-full object-contain p-4 relative z-10"
-              />
+      <div className="bg-gradient-to-b from-white to-neutral-50 py-12">
+        <SectionWrapper>
+          <motion.h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 text-center mb-6 lowercase tracking-[0.02em]" variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport}>
+            how 3<PulseDot />in<PulseDot />1 care unlocks visibly fuller hair
+          </motion.h2>
+          <motion.p className="text-lg md:text-xl text-center text-neutral-700 mb-16 md:mb-20 max-w-2xl mx-auto leading-[1.618]" variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.1}}>
+            Experience how the <motion.span className="font-medium text-rose-500" whileHover={{ scale: 1.05 }}>Photonique Touch</motion.span> combines three essential actions in one seamless gesture:
+          </motion.p>
+          <div className="grid md:grid-cols-12 gap-8 relative">
+            <motion.div className="md:col-span-5 bg-white rounded-2xl overflow-hidden shadow-lg" variants={imageFade} initial="initial" whileInView="whileInView" viewport={imageFade.viewport} whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0,0,0,0.1)" }} transition={{ duration: 0.5 }}>
+              <img src="/images/PRODUCTPHOTOT.png" alt="Photonique Touch Device" className="w-full h-auto object-contain p-8" />
+              <div className="bg-rose-500 text-white py-4 px-6"> <p className="text-sm uppercase tracking-wider font-medium">The future of hair care</p> </div>
+            </motion.div>
+            <motion.div className="md:col-span-7 space-y-16 md:space-y-24" variants={{ whileInView: { transition: { staggerChildren: 0.35 } } }} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} >
+              <VariableReward>
+                 <motion.div variants={fadeUp} className="p-8 rounded-2xl bg-gradient-to-br from-white to-neutral-50 shadow-sm border border-neutral-100">
+                   <div className="flex flex-col">
+                     <motion.div className="bg-red-100 rounded-full p-5 w-fit relative mb-6" animate={{ boxShadow: ["0 0 0 0px rgba(220, 38, 38, 0.2)", "0 0 0 8px rgba(220, 38, 38, 0)", "0 0 0 0px rgba(220, 38, 38, 0)"] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}> <Zap className="h-8 w-8 text-rose-600 relative z-10" /> </motion.div>
+                     <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 mb-4 lowercase tracking-[0.02em]">1. awaken with targeted light</h3>
+                     <p className="text-base md:text-lg text-neutral-700 leading-[1.618]"> Precise red light wavelengths work to optimize cellular energy (think ATP boost) and awaken tired follicles, creating the foundation for healthier growth cycles. </p>
+                     <p className="text-sm text-rose-500 mt-4"> Clinically tested. Scientifically proven. </p>
+                   </div>
+                 </motion.div>
+               </VariableReward>
+               <VariableReward>
+                 <motion.div variants={fadeUp} className="p-8 rounded-2xl bg-gradient-to-br from-white to-neutral-50 shadow-sm border border-neutral-100">
+                   <div className="flex flex-col">
+                     <motion.div className="bg-red-100 rounded-full p-5 w-fit relative mb-6" animate={{ boxShadow: ["0 0 0 0px rgba(220, 38, 38, 0.2)", "0 0 0 8px rgba(220, 38, 38, 0)", "0 0 0 0px rgba(220, 38, 38, 0)"] }} transition={{ duration: 1.8, repeat: Infinity, delay: 0.3, ease: "easeInOut" }}> <Droplet className="h-8 w-8 text-rose-600 relative z-10" /> </motion.div>
+                     <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 mb-4 lowercase tracking-[0.02em]">2. nourish directly at the root</h3>
+                     <p className="text-base md:text-lg text-neutral-700 leading-[1.618]"> The integrated precision applicator delivers your favorite hair oil or serum <em>exactly</em> where it&apos;s needed most. No waste, just targeted nourishment to enhance the light therapy&apos;s effects. </p>
+                     <p className="text-sm text-rose-500 mt-4"> 83% reported improved absorption of products. </p>
+                   </div>
+                 </motion.div>
+               </VariableReward>
+               <VariableReward>
+                 <motion.div variants={fadeUp} className="p-8 rounded-2xl bg-gradient-to-br from-white to-neutral-50 shadow-sm border border-neutral-100">
+                   <div className="flex flex-col">
+                     <motion.div className="bg-red-100 rounded-full p-5 w-fit relative mb-6" animate={{ boxShadow: ["0 0 0 0px rgba(220, 38, 38, 0.2)", "0 0 0 8px rgba(220, 38, 38, 0)", "0 0 0 0px rgba(220, 38, 38, 0)"] }} transition={{ duration: 1.8, repeat: Infinity, delay: 0.6, ease: "easeInOut" }}> <HandHeart className="h-8 w-8 text-rose-600 relative z-10" /> </motion.div>
+                     <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 mb-4 lowercase tracking-[0.02em]">3. stimulate with gentle massage</h3>
+                     <p className="text-base md:text-lg text-neutral-700 leading-[1.618]"> Enjoy a soothing scalp massage that boosts circulation, delivering vital oxygen and nutrients, creating the optimal environment for healthy hair. </p>
+                     <p className="text-sm text-rose-500 mt-4"> The perfect self-care ritual. Just 5 minutes daily. </p>
+                   </div>
+                 </motion.div>
+               </VariableReward>
             </motion.div>
           </div>
+        </SectionWrapper>
+      </div>
 
-          <motion.div 
-            className="space-y-24 md:space-y-32 lg:space-y-40"
-            variants={{ whileInView: { transition: { staggerChildren: 0.35 } } }}
-            initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} 
-          > 
-            {/* Items use pulsing icon backgrounds */}
-            <motion.div variants={fadeUp} whileHover={{ scale: 1.02, transition: { type: 'spring', stiffness: 300 } }}>
-              <div className="flex flex-col items-center text-center md:items-start md:text-left">
-                {/* Pulsing icon background */} 
-                <motion.div 
-                  className="bg-red-100/60 rounded-full p-4 mb-6 w-fit relative"
-                  animate={{ boxShadow: ["0 0 0 0px rgba(220, 38, 38, 0.2)", "0 0 0 8px rgba(220, 38, 38, 0)", "0 0 0 0px rgba(220, 38, 38, 0)"] }}
-                  transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Zap className="h-9 w-9 text-red-600 relative z-10" />
-                </motion.div>
-                <h3 className="text-xl md:text-2xl font-semibold text-primary mb-4 lowercase tracking-tight">1. awaken with targeted light</h3>
-                <p className="text-base md:text-lg text-primary/80 leading-relaxed">
-                  Precise red light wavelengths work to optimize cellular energy (think ATP boost) and awaken tired follicles, creating the foundation for healthier growth cycles.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} whileHover={{ scale: 1.02, transition: { type: 'spring', stiffness: 300 } }}>
-              <div className="flex flex-col items-center text-center md:items-start md:text-left">
-                 {/* Pulsing icon background */} 
-                <motion.div 
-                   className="bg-red-100/60 rounded-full p-4 mb-6 w-fit relative"
-                   animate={{ boxShadow: ["0 0 0 0px rgba(220, 38, 38, 0.2)", "0 0 0 8px rgba(220, 38, 38, 0)", "0 0 0 0px rgba(220, 38, 38, 0)"] }}
-                   transition={{ duration: 1.8, repeat: Infinity, delay: 0.3, ease: "easeInOut" }}
-                 >
-                  <Droplet className="h-9 w-9 text-red-600 relative z-10" />
-                </motion.div>
-                <h3 className="text-xl md:text-2xl font-semibold text-primary mb-4 lowercase tracking-tight">2. nourish directly at the root</h3>
-                <p className="text-base md:text-lg text-primary/80 leading-relaxed">
-                  The integrated precision applicator delivers your favorite hair oil or serum <em>exactly</em> where it&apos;s needed most. No waste, just targeted nourishment to enhance the light therapy&apos;s effects.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} whileHover={{ scale: 1.02, transition: { type: 'spring', stiffness: 300 } }}>
-              <div className="flex flex-col items-center text-center md:items-start md:text-left">
-                 {/* Pulsing icon background */} 
-                 <motion.div 
-                   className="bg-red-100/60 rounded-full p-4 mb-6 w-fit relative"
-                   animate={{ boxShadow: ["0 0 0 0px rgba(220, 38, 38, 0.2)", "0 0 0 8px rgba(220, 38, 38, 0)", "0 0 0 0px rgba(220, 38, 38, 0)"] }}
-                   transition={{ duration: 1.8, repeat: Infinity, delay: 0.6, ease: "easeInOut" }}
-                 >
-                   <HandHeart className="h-9 w-9 text-red-600 relative z-10" />
-                 </motion.div>
-                <h3 className="text-xl md:text-2xl font-semibold text-primary mb-4 lowercase tracking-tight">3. stimulate with gentle massage</h3>
-                <p className="text-base md:text-lg text-primary/80 leading-relaxed">
-                  Enjoy a soothing scalp massage that boosts circulation, delivering vital oxygen and nutrients, creating the optimal environment for healthy hair.
-                </p>
-              </div>
-            </motion.div>
+      <AsymmetricalSection className="overflow-hidden py-20 bg-white">
+        <div className="col-span-12 md:col-span-5 lg:col-span-4 mb-12 md:mb-0 px-6 md:px-8">
+          <SwissPattern className="w-16 h-16 mb-6" />
+          <motion.h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 mb-6 lowercase tracking-[0.02em]" variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport}> why a multi<PulseDot />functional approach matters </motion.h2>
+          <motion.p className="text-lg text-neutral-700 mb-8 leading-[1.618]" variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.1}}> Traditional hair care treats symptoms. Our approach addresses the <em>complete ecosystem</em> of hair health by combining three essential treatments in one seamless device. </motion.p>
+          <motion.div className="space-y-4 mb-8" variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.2}}>
+             <div className="flex items-start gap-3"> <div className="bg-rose-100 rounded-full p-2 mt-1"> <Shield className="h-4 w-4 text-rose-600" /> </div> <p className="text-neutral-700">Clinically tested and dermatologist approved</p> </div>
+             <div className="flex items-start gap-3"> <div className="bg-rose-100 rounded-full p-2 mt-1"> <Sparkles className="h-4 w-4 text-rose-600" /> </div> <p className="text-neutral-700">94% reported increased shine and vitality</p> </div>
+             <div className="flex items-start gap-3"> <div className="bg-rose-100 rounded-full p-2 mt-1"> <Layers className="h-4 w-4 text-rose-600" /> </div> <p className="text-neutral-700">Visible results in as little as 14 days</p> </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
+            <Link to="/products/photonique-touch" className="group">
+              <motion.button className="flex items-center gap-2 px-8 py-4 rounded-full bg-rose-500 text-white font-medium" whileHover={{ scale: 1.02, boxShadow: "0 10px 25px -5px rgba(225, 29, 72, 0.4)", transition: spring }} whileTap={{ scale: 0.98, transition: spring }} >
+                Discover the device
+                <motion.span className="group-hover:translate-x-1 transition-transform duration-300" transition={spring}> <ArrowUpRight className="h-5 w-5" /> </motion.span>
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
-      </SectionWrapper>
+        <motion.div className="col-span-12 md:col-span-7 lg:col-span-8 overflow-hidden relative h-[60vh] md:h-auto" variants={imageFade} initial="initial" whileInView="whileInView" viewport={imageFade.viewport}>
+          <img src="/images/nature_shot.jpg" alt="Natural hair care ingredients" className="w-full h-full object-cover object-center rounded-l-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-8 md:p-12">
+            <motion.blockquote className="text-white max-w-xl" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
+              <p className="text-xl md:text-2xl font-light italic mb-4 leading-relaxed"> "Nature doesn't create in isolation. Neither should your hair care." </p>
+              <p className="text-sm uppercase tracking-wider font-medium"> Dr. Elena Rostova — Lead Formulator </p>
+            </motion.blockquote>
+          </div>
+        </motion.div>
+      </AsymmetricalSection>
 
-      {/* === Why a 3-in-1 Approach Section (with Animated Gradient & Parallax Placeholder) === */}
-      <SectionWrapper className="relative overflow-hidden">
-        {/* Using Animated Gradient Instead of Static Color */} 
-        <AnimatedGradientBackground colors={['var(--color-contrast)', '#fef2f2', 'var(--color-contrast)']} /> {/* contrast -> red-50 -> contrast */}
-        {/* <ParallaxBackground imageUrl="/images/abstract-red-light-waves.jpg" overlayColor="bg-black/10" /> */} 
-        
-        <div className="relative z-10 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <motion.div 
-            className="bg-primary/5 aspect-square rounded-lg flex items-center justify-center overflow-hidden shadow-md"
-            variants={imageFade} initial="initial" whileInView="whileInView" viewport={imageFade.viewport}
-            whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 300 } }}
-          >
-             <img 
-                src="/images/Subject 4.png" 
-                alt="Photonique Touch Features"
-                className="h-full w-full object-contain p-4"
-              />
-          </motion.div>
-          
-          <motion.div 
-            className="text-left"
-            variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.2}}
-          >
-            <SectionIcon icon={Sparkles} /> 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary mb-6 lowercase tracking-tight"> 
-              why a 3<PulseDot />in<PulseDot />1 approach?
-            </h2>
-            <p className="text-lg md:text-xl text-primary/80 leading-relaxed md:leading-loose"> 
-              Healthy hair thrives on a holistic approach. The <strong>Photonique Touch</strong> combines targeted red light (the cellular spark), precise nourishment (vital ingredients right to the root), and gentle massage (enhanced circulation). It&apos;s comprehensive care, simplified into one elegant device.
-            </p>
-          </motion.div>
-        </div>
-      </SectionWrapper>
+      <ScienceHub />
 
-      {/* === Benefits Grid Section === */}
-      <GlowingBenefits />
-
-      {/* === Your Moment of Comprehensive Care Section === */}
-      <SectionWrapper>
-         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-           <motion.div 
-            className="text-left"
-            variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.1}}
-           >
-              <SectionIcon icon={Clock3} />
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary mb-6 lowercase tracking-tight"> 
-                your moment of comprehensive care
-              </h2>
-              <p className="text-lg md:text-xl text-primary/80 leading-relaxed md:leading-loose"> 
-                Using the <strong>Photonique Touch</strong> is beautifully simple. Glide the device over your scalp; feel the gentle massage as the red light works its magic, while your chosen serum is delivered precisely. Just a few dedicated minutes, a few times a week. It&apos;s an effortless pause delivering multiple benefits. This is self-care, optimized.
-              </p>
-           </motion.div>
-           <motion.div 
-            className="bg-primary/5 aspect-square rounded-lg flex items-center justify-center order-first md:order-last overflow-hidden shadow-md"
-            variants={imageFade} initial="initial" whileInView="whileInView" viewport={imageFade.viewport}
-            whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 300 } }}
-           >
-             <img 
-                src="/images/model-shot.jpeg" 
-                alt="Woman using Photonique Touch comfortably"
-                className="h-full w-full object-cover"
-              />
-          </motion.div>
+      <SectionWrapper className="bg-neutral-50 py-24">
+         <motion.h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 text-center mb-6 lowercase tracking-[0.02em]" variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport}> your journey to transformative results </motion.h2>
+         <motion.p className="text-lg md:text-xl text-center text-neutral-700 mb-16 max-w-2xl mx-auto leading-[1.618]" variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.1}}> Real stories from our community show the before and after effects of the care•atin system. </motion.p>
+         <div className="grid md:grid-cols-3 gap-8">
+           <AspirationalMoment image="/images/testimonial1.jpg" quote="I've tried countless products for my thinning hair. The Photonique Touch is the first one that's actually delivered visible results." source="Jessica, 34 - After 6 weeks" />
+           <AspirationalMoment image="/images/testimonial2.jpg" quote="My hairline was my biggest insecurity. Now I feel confident wearing my hair pulled back again." source="Michael, 42 - After 8 weeks" />
+           <AspirationalMoment image="/images/testimonial3.jpg" quote="The difference in volume and shine is remarkable. My hair finally feels like it did in my twenties." source="Aisha, 37 - After 4 weeks" />
          </div>
+         <motion.div className="mt-20 relative rounded-2xl bg-white p-8 md:p-12 shadow-sm" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+           <div className="grid md:grid-cols-12 gap-8 items-center">
+             <div className="md:col-span-4 lg:col-span-3"> <motion.img src="/images/Subject 4.png" alt="Photonique Touch Device" className="w-full max-w-xs mx-auto" whileHover={{ rotate: -5, scale: 1.05, transition: { duration: 0.4 } }} /> </div>
+             <div className="md:col-span-8 lg:col-span-9">
+               <h3 className="text-2xl md:text-3xl font-semibold text-neutral-900 mb-4 lowercase tracking-[0.02em]">join over 10,000 satisfied customers</h3>
+               <p className="text-lg text-neutral-700 mb-6 leading-[1.618]"> Experience the care•atin difference with our 60-day satisfaction guarantee. Try the Photonique Touch risk-free and see why it's becoming the new standard in hair wellness. </p>
+               <div className="flex items-center gap-1 mb-8">
+                 {[1, 2, 3, 4, 5].map((star) => ( <motion.div key={star} initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.2 + (star * 0.1) }} whileHover={{ scale: 1.2, rotate: 5, transition: spring }} > <Heart className="h-6 w-6 text-rose-500 fill-rose-500" /> </motion.div> ))}
+                 <span className="ml-2 text-neutral-700 font-medium">4.9/5 from 876 reviews</span>
+               </div>
+               <Link to="/products/photonique-touch" className="group">
+                 <motion.button className="flex items-center gap-2 px-8 py-4 rounded-full bg-rose-500 text-white font-medium" whileHover={{ scale: 1.02, boxShadow: "0 10px 25px -5px rgba(225, 29, 72, 0.4)", transition: spring }} whileTap={{ scale: 0.98, transition: spring }} >
+                   Shop now
+                   <motion.span className="group-hover:translate-x-1 transition-transform duration-300" transition={spring}> <ChevronRight className="h-5 w-5" /> </motion.span>
+                 </motion.button>
+               </Link>
+             </div>
+           </div>
+           <motion.div className="absolute -bottom-6 -right-6 z-10 w-24 h-24 md:w-32 md:h-32" initial={{ opacity: 0, rotate: 10 }} whileInView={{ opacity: 1, rotate: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}> <SwissPattern /> </motion.div>
+         </motion.div>
+       </SectionWrapper>
+
+      <FoundersVision />
+
+      <SectionWrapper className="text-center">
+        <SectionIcon icon={Sparkles} />
+        <motion.h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary mb-5 lowercase tracking-tight text-center" variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.1}}>
+           experience the benefits
+         </motion.h2>
+         <motion.p className="text-lg text-center md:text-xl text-neutral-700 mb-16 max-w-2xl mx-auto leading-[1.618]" variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.2}}>
+           See why our 3-in-1 technology is revolutionizing hair care
+         </motion.p>
+         <GlowingBenefits />
       </SectionWrapper>
 
-      {/* === It's More Than Hair Section (with Animated Gradient & Parallax Placeholder) === */}
-      <SectionWrapper className="text-center relative overflow-hidden">
-         {/* Using Animated Gradient Instead of Static Color */} 
-         <AnimatedGradientBackground colors={['var(--color-contrast)', '#fee2e2', 'var(--color-contrast)']} /> {/* contrast -> red-100 -> contrast */}
-        {/* <ParallaxBackground imageUrl="/images/soft-focus-warm-texture.jpg" overlayColor="bg-black/0"/> */}
-
-        <div className="relative z-10"> 
-          <SectionIcon icon={Heart} />
-          <motion.h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary mb-6 lowercase tracking-tight"
-            variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.1}}
-          >
-            it&apos;s more than hair, it&apos;s <em>your</em> feeling
-          </motion.h2>
-          <motion.p 
-            className="text-lg md:text-xl text-primary/80 leading-relaxed md:leading-loose max-w-3xl mx-auto"
-            variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.2}}
-          >
-            When your hair feels healthy and resilient, *you* feel it too. It&apos;s the freedom from worry about thinning patches. The ease of styling hair that cooperates. It&apos;s looking in the mirror and feeling completely, confidently *you*. The <strong>Photonique Touch</strong> helps restore not just your hair, but that essential feeling.
-          </motion.p>
-        </div>
-      </SectionWrapper>
-
-      {/* === Testimonials Section === */}
       <Testimonials />
 
-      {/* === Optional Closing Section === */}
-      <SectionWrapper className="text-center">
-        <motion.h2 
-          className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary mb-5 lowercase tracking-tight"
-          variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.1}}
-        >
-          start your journey to radiant, resilient hair
-        </motion.h2>
-        <motion.p 
-          className="text-lg md:text-xl text-primary/80 mb-10 leading-relaxed"
-          variants={fadeUp} initial="initial" whileInView="whileInView" viewport={fadeUp.viewport} transition={{...fadeUp.transition, delay: 0.2}}
-        >
-          Ready to experience the power of 3<PulseDot />in<PulseDot />1 care? Discover <strong>Photonique Touch</strong>.
-        </motion.p>
-        <motion.div 
-          variants={fadeUp} 
-          initial="initial" 
-          whileInView="whileInView" 
-          viewport={fadeUp.viewport} 
-          transition={{...fadeUp.transition, delay: 0.3}}
-        >
-          <motion.button 
-            className="inline-flex items-center bg-primary text-contrast rounded-full px-8 py-4 text-lg font-medium hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background shadow-lg hover:shadow-primary/20"
-            whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }} 
-            whileTap={{ scale: 0.95 }} 
-          >
-             Shop Photonique Touch 
-             <ChevronRight className="ml-2 h-5 w-5" /> 
-          </motion.button>
-        </motion.div>
-      </SectionWrapper>
+      <JournalSignup />
+
     </>
   );
 }
