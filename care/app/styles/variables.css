@@ -1,0 +1,65 @@
+:root {
+  /* === Colors === */
+  /* Primary Neutrals */
+  --c-primary-white: #FFFFFF;
+  --c-primary-bg: #FFFBF7; /* Placeholder: Warm Off-white */
+  --c-primary-text-dark: #1F1F1F; /* Placeholder: Deep Charcoal */
+  --c-primary-text-medium: #555555; /* Placeholder: Medium Grey */
+  --c-primary-border: #EAEAEA; /* Placeholder: Light Grey */
+
+  /* Secondary Nature Accents (Use Sparingly) */
+  --c-secondary-nature-green: #A0BBA2; /* Placeholder: Muted Green */
+  --c-secondary-nature-beige: #F5EDE6; /* Placeholder: Warm Beige */
+
+  /* Accent (RLT Tech & Radiance) */
+  --c-accent-rlt: #FF5A36; /* Placeholder: Vibrant Coral/Red-Orange */
+
+  /* === Typography === */
+  /* Font Families */
+  --font-family-body: 'Manrope', sans-serif; /* Confirmed */
+  --font-family-heading: 'Inter', sans-serif; /* Confirmed */
+
+  /* Base */
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+  --font-weight-body-regular: 400;
+  --font-weight-body-bold: 700;
+  --font-weight-heading: 700;
+
+  /* Scale (Placeholders - Needs Final Specs) */
+  --font-size-h1: 3rem;    /* 48px */
+  --line-height-h1: 1.2;
+  --font-size-h2: 2.25rem; /* 36px */
+  --line-height-h2: 1.3;
+  --font-size-h3: 1.5rem;  /* 24px */
+  --line-height-h3: 1.4;
+  --font-size-h4: 1.125rem;/* 18px */
+  --line-height-h4: 1.5;
+  --font-size-small: 0.875rem; /* 14px */
+  --line-height-small: 1.5;
+
+  /* === Spacing === */
+  /* Scale (Placeholders - Needs Final Specs) */
+  --space-xxs: 0.25rem; /* 4px */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 0.75rem;  /* 12px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 2rem;     /* 32px */
+  --space-xxl: 3rem;    /* 48px */
+  --space-xxxl: 4rem;   /* 64px */
+
+  /* Layout */
+  --container-padding-x: var(--space-lg); /* 24px */
+  --section-padding-y: var(--space-xxxl); /* 64px */
+  --header-height: 80px; /* Placeholder */
+
+  /* === Borders === */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-width: 1px;
+
+  /* === Transitions === */
+  --transition-duration: 0.2s;
+  --transition-timing: ease-in-out;
+} 

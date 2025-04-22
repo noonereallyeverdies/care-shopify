@@ -25,18 +25,75 @@ import {
 } from '@shopify/hydrogen';
 import {Suspense} from 'react';
 import invariant from 'tiny-invariant';
+import type { SerializeFrom } from '@remix-run/server-runtime';
 
-import {PageLayout} from '~/components/PageLayout';
-import {GenericError} from '~/components/GenericError';
-import {NotFound} from '~/components/NotFound';
+// Import from the correct shared path
+import {HeaderFallback, Header} from '~/components/Shared/Header';
+import {FooterFallback, Footer} from '~/components/Shared/Footer';
+
+// Remove unused components if not needed for basic layout
+// import {PageLayout} from '~/components/PageLayout';
+import {GenericError} from './components/GenericError';
+import {NotFound} from './components/NotFound';
+
 import favicon from '~/assets/favicon.svg';
 import {seoPayload} from '~/lib/seo.server';
-import styles from '~/styles/app.css?url';
+
+// Import the new global styles
+import globalStyles from '~/styles/global.css?url';
+// Keep app.css if it contains utility classes or specific styles you want to preserve
+import appStyles from '~/styles/app.css?url';
 
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import type {EnhancedMenu} from './lib/utils';
 
 export type RootLoader = typeof loader;
+
+// Define fragments and the layout query
+const MENU_FRAGMENT = `#graphql
+  fragment MenuItem on MenuItem {
+    id
+    resourceId
+    tags
+    title
+    type
+    url
+  }
+  fragment ChildMenuItem on MenuItem {
+    ...MenuItem
+  }
+  fragment ParentMenuItem on MenuItem {
+    ...MenuItem
+    items {
+      ...ChildMenuItem
+    }
+  }
+`;
+
+const LAYOUT_QUERY = `#graphql
+  ${MENU_FRAGMENT}
+  query Layout(
+    $language: LanguageCode
+    $headerMenuHandle: String!
+    $footerMenuHandle: String!
+  ) @inContext(language: $language) {
+    shop {
+      name
+    }
+    headerMenu: menu(handle: $headerMenuHandle) {
+      id
+      items {
+        ...ParentMenuItem
+      }
+    }
+    footerMenu: menu(handle: $footerMenuHandle) {
+      id
+      items {
+        ...ParentMenuItem
+      }
+    }
+  }
+`;
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
@@ -57,15 +114,6 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
   return false;
 };
 
-/**
- * The link to the main stylesheet is purposely not in this list. Instead, it is added
- * in the Layout function.
- *
- * This is to avoid a development bug where after an edit/save, navigating to another
- * link will cause page rendering error "failed to execute 'insertBefore' on 'Node'".
- *
- * This is a workaround until this is fixed in the foundational library.
- */
 export const links: LinksFunction = () => {
   return [
     {
@@ -77,7 +125,26 @@ export const links: LinksFunction = () => {
       href: 'https://shop.app',
     },
     {rel: 'icon', type: 'image/svg+xml', href: favicon},
-    {rel: 'stylesheet', href: styles},
+    // Add the global styles link
+    {rel: 'stylesheet', href: globalStyles},
+    // Keep app styles if needed
+    {rel: 'stylesheet', href: appStyles},
+    // Consider adding font preloads here once fonts are finalized
+    // Example:
+    // {
+    //   rel: 'preconnect',
+    //   href: 'https://fonts.gstatic.com',
+    //   crossOrigin: 'anonymous',
+    // },
+    // {
+    //   rel: 'preconnect',
+    //   href: 'https://fonts.googleapis.com',
+    //   crossOrigin: 'anonymous',
+    // },
+    // {
+    //   rel: 'stylesheet',
+    //   href: 'https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Manrope:wght@400;700&display=swap',
+    // },
   ];
 };
 
@@ -100,24 +167,48 @@ export async function loader(args: LoaderFunctionArgs) {
  */
 async function loadCriticalData({request, context}: LoaderFunctionArgs) {
   try {
-    const [layout] = await Promise.all([
-      getLayoutData(context),
-      // Add other queries here, so that they are loaded in parallel
-    ]);
+    // --- Temporary Simplification: Fetch only shop name --- 
+    // const [layoutData] = await Promise.all([
+    //   getLayoutData(context), // Fetches shop, headerMenu, footerMenu
+    //   // Add other queries here, so that they are loaded in parallel
+    // ]);
+    //
+    // if (!layoutData || !layoutData.shop /* || !layoutData.headerMenu || !layoutData.footerMenu */) {
+    //   // Temporarily removed menu check
+    //   throw new Error('Failed to load essential layout data (shop or menus).');
+    // }
+    const shop = { name: 'Care-atin (Temp)' }; // Static shop data
+    // --- End Temporary Simplification ---
 
-    if (!layout || !layout.shop) {
-      throw new Error('Failed to load layout data');
-    }
+    // Use placeholder SEO for now, real SEO handled by specific routes
+    const seo = {
+      title: 'Care-atin | Red Light Therapy for Hair', // Placeholder Title
+      description:
+        'Discover clinically inspired Red Light Therapy for healthier, fuller hair. Science-backed care for radiant growth.', // Placeholder Description
+    } as SeoConfig;
 
-    const seo = seoPayload.root({
-      shop: layout.shop,
-      url: request.url,
-    });
+    // If seoPayload.root exists and works, prefer that, but use placeholders if needed
+    // const seo = seoPayload.root({
+    //   shop: layoutData.shop,
+    //   url: request.url,
+    // });
 
     const {storefront, env} = context;
+    
+    // Parse the menus
+    // --- Temporary Simplification: Use static menus --- 
+    // const headerMenu = layoutData.headerMenu ? parseMenu(layoutData.headerMenu, env.PUBLIC_STORE_DOMAIN, env) : undefined;
+    // const footerMenu = layoutData.footerMenu ? parseMenu(layoutData.footerMenu, env.PUBLIC_STORE_DOMAIN, env) : undefined;
+    const headerMenu = null; // Static null menu
+    const footerMenu = null; // Static null menu
+    // --- End Temporary Simplification ---
 
     return {
-      layout,
+      layout: {
+        shop: shop, // Use static shop data
+        headerMenu,
+        footerMenu,
+      },
       seo,
       shop: getShopAnalytics({
         storefront,
@@ -126,7 +217,7 @@ async function loadCriticalData({request, context}: LoaderFunctionArgs) {
       consent: {
         checkoutDomain: env.PUBLIC_CHECKOUT_DOMAIN,
         storefrontAccessToken: env.PUBLIC_STOREFRONT_API_TOKEN,
-        withPrivacyBanner: true,
+        withPrivacyBanner: true, // Or false, depending on requirements
       },
       selectedLocale: storefront.i18n,
     };
@@ -136,10 +227,11 @@ async function loadCriticalData({request, context}: LoaderFunctionArgs) {
     return {
       layout: null,
       seo: {
-        title: 'Red Light Therapy Device | Luminance Care',
-        description: 'Experience the power of red light therapy with our advanced device. Enhance your hair growth and skin health naturally.',
+        title: 'Care-atin | Red Light Therapy for Hair', // Placeholder Title
+        description:
+          'Discover clinically inspired Red Light Therapy for healthier, fuller hair. Science-backed care for radiant growth.', // Placeholder Description
         url: request.url,
-      },
+      } as SeoConfig,
       shop: null,
       consent: {
         checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
@@ -166,62 +258,87 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 }
 
 export const meta = ({data}: MetaArgs<typeof loader>) => {
-  if (!data) {
-    return [
-      {title: 'Red Light Therapy Device | Luminance Care'},
-      {description: 'Experience the power of red light therapy with our advanced device. Enhance your hair growth and skin health naturally.'},
-    ];
-  }
-  return getSeoMeta(data.seo as SeoConfig);
+  return [
+    {title: data?.seo?.title ?? 'Care-atin'},
+    {description: data?.seo?.description ?? 'Red Light Therapy for Hair Growth'},
+  ];
 };
 
 function Layout({children}: {children?: React.ReactNode}) {
   const nonce = useNonce();
   const data = useRouteLoaderData<typeof loader>('root');
-  const locale = data?.selectedLocale ?? DEFAULT_LOCALE;
+  invariant(data, "Root loader data is missing"); // Add invariant check
+  // Now locale should always be present if data exists
+  const locale = data.selectedLocale ?? DEFAULT_LOCALE;
+  const shopData = data?.shop;
+  const cartData = data?.cart ?? null;
+  const consentData = data?.consent;
 
   return (
+    // Use locale directly
     <html lang={locale.language}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="msvalidate.01" content="A352E6A0AF9A652267361BBB572B8468" />
-        <link rel="stylesheet" href={styles} />
         <Meta />
         <Links />
       </head>
       <body>
-        <Suspense fallback={
-          <div className="flex items-center justify-center w-full h-screen">
-            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
-          </div>
-        }>
-          {data ? (
-            <Analytics.Provider
-              cart={data.cart}
-              shop={data.shop}
-              consent={data.consent}
-            >
-              <PageLayout
-                key={`${locale.language}-${locale.country}`}
-                layout={{
-                  headerMenu: data.layout?.headerMenu as EnhancedMenu | undefined | null,
-                  footerMenu: data.layout?.footerMenu as EnhancedMenu | undefined | null,
-                }}
-              >
-                {children}
-              </PageLayout>
-            </Analytics.Provider>
-          ) : children}
-        </Suspense>
+        {/* --- Temporarily Removed Header --- */}
+        {/* {data.layout?.headerMenu && (
+          <Suspense fallback={<HeaderFallback />}>
+            <Header header={data.layout.headerMenu} />
+          </Suspense>
+        )} */}
+        <main role="main" id="mainContent" className="flex-grow">
+          {children}
+        </main>
+        {/* --- Temporarily Removed Footer --- */}
+        {/* {data.layout?.footerMenu && (
+          <Suspense fallback={<FooterFallback />}>
+            <Footer footer={data.layout.footerMenu} />
+          </Suspense>
+        )} */}
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
+        {/* --- Analytics Provider Temporarily Removed --- 
+          {shopData && consentData ? (
+            <Analytics.Provider
+              cart={cartData} 
+              shop={shopData}
+              consent={consentData}
+            >
+             {/* Analytics helpers go here */}
+            </Analytics.Provider>
+          ) : null}
+        */}
       </body>
     </html>
   );
 }
 
 export default function App() {
+  const data = useRouteLoaderData<typeof loader>('root');
+
+  if (!data) {
+    // Handle the case where data is null, perhaps render a minimal layout or error message
+    // This might happen if loadCriticalData fails severely
+    return (
+      <Layout>
+        <GenericError error={{ message: 'Failed to load essential data' }} />
+      </Layout>
+    );
+  }
+
+  // Keep existing layout logic if PageLayout was used, otherwise use Outlet directly
+  // If PageLayout was used:
+  // return (
+  //   <PageLayout {...data.layout}>
+  //     <Outlet />
+  //   </PageLayout>
+  // );
+
+  // If using direct Outlet within Layout:
   return (
     <Layout>
       <Outlet />
@@ -231,20 +348,35 @@ export default function App() {
 
 export function ErrorBoundary() {
   const error = useRouteError();
-  const rootData = useRouteLoaderData('root');
-  const locale = rootData?.selectedLocale ?? DEFAULT_LOCALE;
+  const rootData = useRouteLoaderData<RootLoader>('root');
+  const errorBoundaryLocale = rootData?.selectedLocale ?? DEFAULT_LOCALE;
   
   let title = 'Error';
   let pageType = 'page';
+  let status = 500; // Default status
 
-  // Handle specific error types
   if (isRouteErrorResponse(error)) {
     title = 'Not found';
+    status = error.status;
     if (error.status === 404) pageType = error.data || pageType;
   }
 
+  // Safely construct the message
+  let errorMessage = `We found an error while loading this page.`;
+  if (isRouteErrorResponse(error)) {
+    errorMessage = `${status}: ${ typeof error.data === 'string' ? error.data : 'An unexpected error occurred.' }`;
+  }
+  else if (error instanceof Error) {
+    errorMessage = error.message;
+  }
+
+  // Pass the constructed message and potential stack trace
+  const errorForGeneric = error instanceof Error 
+    ? { message: errorMessage, stack: error.stack } 
+    : { message: errorMessage };
+
   return (
-    <html lang={locale?.language ?? 'en'}>
+    <html lang={errorBoundaryLocale?.language ?? 'en'}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -257,20 +389,11 @@ export function ErrorBoundary() {
             <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
           </div>
         }>
-          {isRouteErrorResponse(error) ? (
-            <>
-              {error.status === 404 ? (
-                <NotFound type={pageType} />
-              ) : (
-                <GenericError
-                  error={{ message: `${error.status} ${error.data}` }}
-                />
-              )}
-            </>
+          {status === 404 ? (
+            <NotFound type={pageType} />
           ) : (
-            <GenericError 
-              error={error instanceof Error ? error : new Error('Unknown error')} 
-            />
+            // Pass the safely constructed error object
+            <GenericError error={errorForGeneric} />
           )}
         </Suspense>
         <ScrollRestoration />
@@ -280,100 +403,23 @@ export function ErrorBoundary() {
   );
 }
 
-const LAYOUT_QUERY = `#graphql
-  query layout(
-    $language: LanguageCode
-    $headerMenuHandle: String!
-    $footerMenuHandle: String!
-  ) @inContext(language: $language) {
-    shop {
-      ...Shop
-    }
-    headerMenu: menu(handle: $headerMenuHandle) {
-      ...Menu
-    }
-    footerMenu: menu(handle: $footerMenuHandle) {
-      ...Menu
-    }
-  }
-  fragment Shop on Shop {
-    id
-    name
-    description
-    primaryDomain {
-      url
-    }
-    brand {
-      logo {
-        image {
-          url
-        }
-      }
-    }
-  }
-  fragment MenuItem on MenuItem {
-    id
-    resourceId
-    tags
-    title
-    type
-    url
-  }
-  fragment ChildMenuItem on MenuItem {
-    ...MenuItem
-  }
-  fragment ParentMenuItem on MenuItem {
-    ...MenuItem
-    items {
-      ...ChildMenuItem
-    }
-  }
-  fragment Menu on Menu {
-    id
-    items {
-      ...ParentMenuItem
-    }
-  }
-` as const;
-
+// Simplified getLayoutData - now fetches menus too
 async function getLayoutData({storefront, env}: AppLoadContext) {
   const data = await storefront.query(LAYOUT_QUERY, {
     variables: {
-      headerMenuHandle: 'main-menu',
-      footerMenuHandle: 'footer',
+      headerMenuHandle: 'main-menu', // This handle is correct
+      footerMenuHandle: 'support', // Use the 'support' handle for the footer menu
       language: storefront.i18n.language,
     },
+    // TODO: Add caching strategy
+    // cache: storefront.CacheLong(),
   });
 
-  invariant(data, 'No data returned from Shopify API');
+  invariant(data, 'No data returned from layout query');
 
-  /*
-    Modify specific links/routes (optional)
-    @see: https://shopify.dev/api/storefront/unstable/enums/MenuItemType
-    e.g here we map:
-      - /blogs/news -> /news
-      - /blog/news/blog-post -> /news/blog-post
-      - /collections/all -> /products
-  */
-  const customPrefixes = {BLOG: '', CATALOG: 'products'};
+  // Process data, potentially add fallbacks if menus don't exist
+  const { shop, headerMenu, footerMenu } = data;
 
-  const headerMenu = data?.headerMenu
-    ? parseMenu(
-        data.headerMenu,
-        data.shop.primaryDomain.url,
-        env,
-        customPrefixes,
-      )
-    : undefined;
-
-  const footerMenu = data?.footerMenu
-    ? parseMenu(
-        data.footerMenu,
-        data.shop.primaryDomain.url,
-        env,
-        customPrefixes,
-      )
-    : undefined;
-
-  return {shop: data.shop, headerMenu, footerMenu};
+  // Return shop and raw menu data
+  return { shop, headerMenu, footerMenu };
 }

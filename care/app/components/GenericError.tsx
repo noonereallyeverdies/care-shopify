@@ -1,5 +1,4 @@
 import {Button} from './Button';
-import {FeaturedSection} from './FeaturedSection';
 import {PageHeader, Text} from './Text';
 
 export function GenericError({
@@ -7,7 +6,7 @@ export function GenericError({
 }: {
   error?: {message: string; stack?: string};
 }) {
-  const heading = `Something’s wrong here.`;
+  const heading = `Something's wrong here.`;
   let description = `We found an error while loading this page.`;
 
   // TODO hide error in prod?
@@ -41,7 +40,6 @@ export function GenericError({
           Take me to the home page
         </Button>
       </PageHeader>
-      <FeaturedSection />
     </>
   );
 }

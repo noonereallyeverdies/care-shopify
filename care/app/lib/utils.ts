@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge';
 
 import type {
   ChildMenuItemFragment,
-  MenuFragment,
+  MenuItemFragment,
   ParentMenuItemFragment,
 } from 'storefrontapi.generated';
 import type {RootLoader} from '~/root';
@@ -29,7 +29,7 @@ export type ParentEnhancedMenuItem = (ParentMenuItemFragment &
   items: ChildEnhancedMenuItem[];
 };
 
-export type EnhancedMenu = Pick<MenuFragment, 'id'> & {
+export type EnhancedMenu = Pick<MenuItemFragment, 'id'> & {
   items: ParentEnhancedMenuItem[];
 };
 
@@ -149,10 +149,19 @@ function resolveToFromType(
   Parse each menu link and adding, isExternal, to and target
 */
 function parseItem(primaryDomain: string, env: Env, customPrefixes = {}) {
+  let primaryHost = '';
+  try {
+    primaryHost = new URL(primaryDomain.startsWith('http') ? primaryDomain : `https://${primaryDomain}`).host;
+  } catch (e) {
+    console.error(`[parseItem] ERROR: Invalid primaryDomain provided: "${primaryDomain}"`, e);
+    // Depending on requirements, you might want to return a function that always returns null
+    // or handle this differently. For now, we'll proceed but internal link checks might fail.
+  }
+
   return function (
     item:
-      | MenuFragment['items'][number]
-      | MenuFragment['items'][number]['items'][number],
+      | ParentMenuItemFragment
+      | ChildMenuItemFragment,
   ):
     | EnhancedMenu['items'][0]
     | EnhancedMenu['items'][number]['items'][0]
@@ -166,8 +175,8 @@ function parseItem(primaryDomain: string, env: Env, customPrefixes = {}) {
     // extract path from url because we don't need the origin on internal to attributes
     const {host, pathname} = new URL(item.url);
 
-    const isInternalLink =
-      host === new URL(primaryDomain).host || host === env.PUBLIC_STORE_DOMAIN;
+    // Compare item host against the parsed primaryHost and the raw PUBLIC_STORE_DOMAIN
+    const isInternalLink = host === primaryHost || host === env.PUBLIC_STORE_DOMAIN;
 
     const parsedItem = isInternalLink
       ? // internal links
@@ -185,7 +194,7 @@ function parseItem(primaryDomain: string, env: Env, customPrefixes = {}) {
           to: item.url,
         };
 
-    if ('items' in item) {
+    if ('items' in item && item.items && Array.isArray(item.items) && item.items.length > 0) {
       return {
         ...parsedItem,
         items: item.items
@@ -204,7 +213,7 @@ function parseItem(primaryDomain: string, env: Env, customPrefixes = {}) {
   It optionally overwrites url paths based on item.type
 */
 export function parseMenu(
-  menu: MenuFragment,
+  menu: MenuItemFragment,
   primaryDomain: string,
   env: Env,
   customPrefixes = {},
@@ -318,5 +327,3 @@ export function isLocalPath(url: string) {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
-export * from './utils';
