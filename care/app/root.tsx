@@ -285,30 +285,31 @@ function Layout({children}: {children?: React.ReactNode}) {
       </head>
       <body>
         {/* --- Temporarily Removed Header --- */}
-        {/* {data.layout?.headerMenu && (
+        {data.layout?.headerMenu && (
           <Suspense fallback={<HeaderFallback />}>
             <Header header={data.layout.headerMenu} />
           </Suspense>
-        )} */}
+        )}
         <main role="main" id="mainContent" className="flex-grow">
           {children}
         </main>
         {/* --- Temporarily Removed Footer --- */}
-        {/* {data.layout?.footerMenu && (
+        {data.layout?.footerMenu && (
           <Suspense fallback={<FooterFallback />}>
             <Footer footer={data.layout.footerMenu} />
           </Suspense>
-        )} */}
+        )}
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
-        {/* --- Analytics Provider Temporarily Removed --- 
+        {/* 
+          --- Analytics Provider Temporarily Removed --- 
           {shopData && consentData ? (
             <Analytics.Provider
               cart={cartData} 
               shop={shopData}
               consent={consentData}
             >
-             {/* Analytics helpers go here */}
+              Analytics helpers go here
             </Analytics.Provider>
           ) : null}
         */}

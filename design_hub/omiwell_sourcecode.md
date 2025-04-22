@@ -1,0 +1,3032 @@
+<html class="js template-index lenis" lang="en"><head>
+    <!-- Google Tag Manager -->
+<script type="text/javascript" async="" src="https://amaicdn.com/storelocator-prod/wtb/the-one-nutrition-just-for-you-1744901108.js?shop=the-one-nutrition-just-for-you.myshopify.com"></script><script type="text/javascript" async="" src="https://amaicdn.com/storelocator-prod/setting/the-one-nutrition-just-for-you-1744901107.js?shop=the-one-nutrition-just-for-you.myshopify.com"></script><script type="text/javascript" async="" src="//cdn.shopify.com/proxy/35cb3feec7037e47b36f532f108b718a0077650c14a24f380cb5a8bc587fd5ff/api.kount.com/shopify/js?m_id=287305628508401&amp;shop=the-one-nutrition-just-for-you.myshopify.com&amp;sp-cache-control=cHVibGljLCBtYXgtYWdlPTkwMA"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Tg6Mtt&amp;shop=the-one-nutrition-just-for-you.myshopify.com"></script><script type="text/javascript" async="" src="https://cdn.nfcube.com/instafeed-057812494d7785995138d854b3f6d25c.js?shop=the-one-nutrition-just-for-you.myshopify.com"></script><script type="text/javascript" async="" src="https://static.rechargecdn.com/assets/js/widget.min.js?shop=the-one-nutrition-just-for-you.myshopify.com"></script><script type="text/javascript" async="" src="https://pc-quiz.s3.us-east-2.amazonaws.com/current/quiz-loader.min.js?shop=the-one-nutrition-just-for-you.myshopify.com"></script><script type="text/javascript" async="" src="https://amaicdn.com/storelocator-prod/stockist-form/the-one-nutrition-just-for-you-1709689341.js?shop=the-one-nutrition-just-for-you.myshopify.com"></script><script type="text/javascript" async="" src="//omiwellbeauty.com/cdn/s/trekkie.storefront.423a314223fb7e8d7c94337fcd62d7ad8c06d7a5.min.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-592XXLNQ"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-592XXLNQ');</script>
+<!-- End Google Tag Manager -->
+    
+
+    
+    
+    
+    
+    
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="https://omiwellbeauty.com/">
+      <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/favicon-96x96.png?v=1740407406" sizes="96x96">
+      <link rel="icon" type="image/svg+xml" href="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/favicon.svg?v=1740407406">
+      <link rel="shortcut icon" href="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/favicon.ico?v=1740407405">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/apple-touch-icon.png?v=1740407406">
+      <link rel="manifest" href="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/site.webmanifest?v=1740407664"><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+    <link rel="preload" href="//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Regular.woff2?v=149025089244544511361744900722" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Italic.woff2?v=105178010699737550321744900722" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Light.woff2?v=76641399913401871491744900723" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-LightItalic.woff2?v=109438182878803835811744900724" as="font" type="font/woff2" crossorigin="anonymous">
+
+    <style> 
+      @font-face { 
+        font-family: 'Feature Display Web';
+        src: url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Regular.woff2?v=149025089244544511361744900722') format('woff2'),
+          url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Regular.woff?v=141451361562859386121744900722') format('woff'),
+          url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Regular.ttf?v=131217735270417635111744900725') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Feature Display Web';
+        src: url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Italic.woff2?v=105178010699737550321744900722') format('woff2'),
+          url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Italic.woff?v=56645351461818517831744900722') format('woff'),
+          url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Italic.ttf?v=171234270021115655971744900722') format('truetype');
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Feature Display Web';
+        src: url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Light.woff2?v=76641399913401871491744900723') format('woff2'),
+          url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Light.woff?v=28637832866861427161744900723') format('woff'),
+          url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-Light.ttf?v=92030648867737638041744900723') format('truetype');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Feature Display Web';
+        src: url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-LightItalic.woff2?v=109438182878803835811744900724') format('woff2'),
+          url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-LightItalic.woff?v=28127653970220395891744900724') format('woff'),
+          url('//omiwellbeauty.com/cdn/shop/t/167/assets/FeatureDisplayWeb-LightItalic.ttf?v=122020515090585796621744900724') format('truetype');
+        font-weight: 300;
+        font-style: italic;
+        font-display: swap;
+      }
+
+      /* Phil - 01-02 move */
+      .product .gallery-wpr .thumbnails {
+        bottom: 0px !important;
+      }
+    </style>
+
+    <title>
+      OMI Wellbeauty | Hair Growth Peptides | Naomi Whittel
+</title>
+
+    
+      <meta name="description" content="OMI’s IFP Hair Growth Peptide™ uses Follicle Fortifying Bio-Technology™ to activate hair growth receptors at the cellular level. Our premium peptides and natural ingredients work synergistically with your body to support hair, skin, and wellness from the inside out.">
+    
+
+    
+    
+
+    <link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <!-- Fallback for users with JavaScript disabled -->
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+      />
+    </noscript>
+
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js" as="script">
+    <link rel="preload" href="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" as="script">
+
+    <script defer="" src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+    <script defer="" src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+
+    
+
+<meta property="og:site_name" content="OMI Wellbeauty">
+<meta property="og:url" content="https://omiwellbeauty.com/">
+<meta property="og:title" content="OMI Wellbeauty | Hair Growth Peptides | Naomi Whittel">
+<meta property="og:type" content="website">
+<meta property="og:description" content="OMI’s IFP Hair Growth Peptide™ uses Follicle Fortifying Bio-Technology™ to activate hair growth receptors at the cellular level. Our premium peptides and natural ingredients work synergistically with your body to support hair, skin, and wellness from the inside out."><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OMI Wellbeauty | Hair Growth Peptides | Naomi Whittel">
+<meta name="twitter:description" content="OMI’s IFP Hair Growth Peptide™ uses Follicle Fortifying Bio-Technology™ to activate hair growth receptors at the cellular level. Our premium peptides and natural ingredients work synergistically with your body to support hair, skin, and wellness from the inside out.">
+
+
+    <script>
+      const storefrontAccessToken = "2f129aa02443a29b7ea4520aa0f148f5";
+    </script>
+
+    <script src="//omiwellbeauty.com/cdn/shop/t/167/assets/primary-min.js?v=67624205076495793231744900722" defer="defer"></script>
+    <script src="//omiwellbeauty.com/cdn/shop/t/167/assets/cart-min.js?v=64524022692777195161744900723" defer="defer"></script>
+     
+
+    
+    
+    <script>window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.start');</script><meta name="google-site-verification" content="605Pox7sxhISl8HF3OhWyNkvLCwSN9ZDH5rVcPnrLmE">
+<meta name="facebook-domain-verification" content="8oovb0gm863c1ty4xjf7fb10z43wzd">
+<meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/26735378613/digital_wallets/dialog">
+<meta name="shopify-checkout-api-token" content="08e0bd7e507e5c8549b1fd7a7ef31327">
+<script async="async" src="/checkouts/internal/preloads.js?locale=en-US"></script>
+<link rel="preconnect" href="https://shop.app" crossorigin="anonymous">
+<script async="async" src="https://shop.app/checkouts/internal/preloads.js?locale=en-US&amp;shop_id=26735378613" crossorigin="anonymous"></script>
+<script id="apple-pay-shop-capabilities" type="application/json">{"shopId":26735378613,"countryCode":"US","currencyCode":"USD","merchantCapabilities":["supports3DS"],"merchantId":"gid:\/\/shopify\/Shop\/26735378613","merchantName":"OMI Wellbeauty","requiredBillingContactFields":["postalAddress","email","phone"],"requiredShippingContactFields":["postalAddress","email","phone"],"shippingType":"shipping","supportedNetworks":["visa","masterCard","amex","discover","elo","jcb"],"total":{"type":"pending","label":"OMI Wellbeauty","amount":"1.00"},"shopifyPaymentsEnabled":true,"supportsSubscriptions":true}</script>
+<script id="shopify-features" type="application/json">{"accessToken":"08e0bd7e507e5c8549b1fd7a7ef31327","betas":["rich-media-storefront-analytics"],"domain":"omiwellbeauty.com","predictiveSearch":true,"shopId":26735378613,"smart_payment_buttons_url":"https:\/\/omiwellbeauty.com\/cdn\/shopifycloud\/payment-sheet\/assets\/latest\/spb.en.js","dynamic_checkout_cart_url":"https:\/\/omiwellbeauty.com\/cdn\/shopifycloud\/payment-sheet\/assets\/latest\/dynamic-checkout-cart.en.js","locale":"en"}</script>
+<script>var Shopify = Shopify || {};
+Shopify.shop = "the-one-nutrition-just-for-you.myshopify.com";
+Shopify.locale = "en";
+Shopify.currency = {"active":"USD","rate":"1.0"};
+Shopify.country = "US";
+Shopify.theme = {"name":"omiwellbeauty\/Clinical-Trials-content-Merge","id":144100753589,"schema_name":"OMI Wellbeauty","schema_version":"1.0.0","theme_store_id":null,"role":"main"};
+Shopify.theme.handle = "null";
+Shopify.theme.style = {"id":null,"handle":null};
+Shopify.cdnHost = "omiwellbeauty.com/cdn";
+Shopify.routes = Shopify.routes || {};
+Shopify.routes.root = "/";</script>
+<script type="module">!function(o){(o.Shopify=o.Shopify||{}).modules=!0}(window);</script>
+<script>!function(o){function n(){var o=[];function n(){o.push(Array.prototype.slice.apply(arguments))}return n.q=o,n}var t=o.Shopify=o.Shopify||{};t.loadFeatures=n(),t.autoloadFeatures=n()}(window);</script>
+<script>window.ShopifyPay = window.ShopifyPay || {};
+window.ShopifyPay.apiHost = "shop.app\/pay";</script>
+<script id="shop-js-analytics" type="application/json">{"pageType":"index"}</script>
+<script>
+  window.Shopify = window.Shopify || {};
+  if (!window.Shopify.featureAssets) window.Shopify.featureAssets = {};
+  window.Shopify.featureAssets['shop-js'] = {"init-fed-cm":["modules/v2/client.init-fed-cm_DFLkibO_.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js"],"init-windoid":["modules/v2/client.init-windoid_jAHcKV2G.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js"],"init-shop-email-lookup-coordinator":["modules/v2/client.init-shop-email-lookup-coordinator_hFelmorB.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js"],"shop-toast-manager":["modules/v2/client.shop-toast-manager_DLER1o-T.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js"],"shop-cash-offers":["modules/v2/client.shop-cash-offers_fUgcIagc.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js","modules/v2/chunk.modal_CSDrTnGs.esm.js"],"avatar":["modules/v2/client.avatar_BTnouDA3.en.esm.js"],"init-customer-accounts-sign-up":["modules/v2/client.init-customer-accounts-sign-up_BSh7EmpZ.en.esm.js","modules/v2/client.shop-login-button_B8n1rawc.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js","modules/v2/chunk.modal_CSDrTnGs.esm.js"],"init-customer-accounts":["modules/v2/client.init-customer-accounts_D-zF7mAc.en.esm.js","modules/v2/client.shop-login-button_B8n1rawc.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js","modules/v2/chunk.modal_CSDrTnGs.esm.js"],"pay-button":["modules/v2/client.pay-button_BFizeGKk.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js"],"shop-login-button":["modules/v2/client.shop-login-button_B8n1rawc.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js","modules/v2/chunk.modal_CSDrTnGs.esm.js"],"checkout-modal":["modules/v2/client.checkout-modal_CdDS--d-.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js","modules/v2/chunk.modal_CSDrTnGs.esm.js"],"init-shop-for-new-customer-accounts":["modules/v2/client.init-shop-for-new-customer-accounts_9N77KKE7.en.esm.js","modules/v2/client.shop-login-button_B8n1rawc.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js","modules/v2/chunk.modal_CSDrTnGs.esm.js"],"shop-follow-button":["modules/v2/client.shop-follow-button_DsgDVtup.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js","modules/v2/chunk.modal_CSDrTnGs.esm.js"],"lead-capture":["modules/v2/client.lead-capture_DtPCLU2m.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js","modules/v2/chunk.modal_CSDrTnGs.esm.js"],"payment-terms":["modules/v2/client.payment-terms_BhWs7j4b.en.esm.js","modules/v2/chunk.common_Dy4FpwmR.esm.js","modules/v2/chunk.modal_CSDrTnGs.esm.js"]};
+</script>
+<script>(function() {
+  function asyncLoad() {
+    var urls = ["https:\/\/amaicdn.com\/storelocator-prod\/stockist-form\/the-one-nutrition-just-for-you-1709689341.js?shop=the-one-nutrition-just-for-you.myshopify.com","https:\/\/pc-quiz.s3.us-east-2.amazonaws.com\/current\/quiz-loader.min.js?shop=the-one-nutrition-just-for-you.myshopify.com","https:\/\/static.rechargecdn.com\/assets\/js\/widget.min.js?shop=the-one-nutrition-just-for-you.myshopify.com","https:\/\/cdn.nfcube.com\/instafeed-057812494d7785995138d854b3f6d25c.js?shop=the-one-nutrition-just-for-you.myshopify.com","https:\/\/static.klaviyo.com\/onsite\/js\/klaviyo.js?company_id=Tg6Mtt\u0026shop=the-one-nutrition-just-for-you.myshopify.com","\/\/cdn.shopify.com\/proxy\/35cb3feec7037e47b36f532f108b718a0077650c14a24f380cb5a8bc587fd5ff\/api.kount.com\/shopify\/js?m_id=287305628508401\u0026shop=the-one-nutrition-just-for-you.myshopify.com\u0026sp-cache-control=cHVibGljLCBtYXgtYWdlPTkwMA","https:\/\/amaicdn.com\/storelocator-prod\/setting\/the-one-nutrition-just-for-you-1744901107.js?shop=the-one-nutrition-just-for-you.myshopify.com","https:\/\/amaicdn.com\/storelocator-prod\/wtb\/the-one-nutrition-just-for-you-1744901108.js?shop=the-one-nutrition-just-for-you.myshopify.com"];
+    for (var i = 0; i < urls.length; i++) {
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = urls[i];
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+  };
+  if(window.attachEvent) {
+    window.attachEvent('onload', asyncLoad);
+  } else {
+    window.addEventListener('load', asyncLoad, false);
+  }
+})();</script>
+<script id="__st">var __st={"a":26735378613,"offset":-14400,"reqid":"45fc7537-8727-46e8-a5bd-5f2c078738b6-1745038433","pageurl":"omiwellbeauty.com\/","u":"a9da067cdf37","p":"home"};</script>
+<script>window.ShopifyPaypalV4VisibilityTracking = true;</script>
+<script id="captcha-bootstrap">!function(){'use strict';const t='contact',e='account',n='new_comment',o=[[t,t],['blogs',n],['comments',n],[t,'customer']],c=[[e,'customer_login'],[e,'guest_login'],[e,'recover_customer_password'],[e,'create_customer']],r=t=>t.map((([t,e])=>`form[action*='/${t}']:not([data-nocaptcha='true']) input[name='form_type'][value='${e}']`)).join(','),a=t=>()=>t?[...document.querySelectorAll(t)].map((t=>t.form)):[];function s(){const t=[...o],e=r(t);return a(e)}const i='password',u='form_key',d=['recaptcha-v3-token','g-recaptcha-response','h-captcha-response',i],f=()=>{try{return window.sessionStorage}catch{return}},m='__shopify_v',_=t=>t.elements[u];function p(t,e,n=!1){try{const o=window.sessionStorage,c=JSON.parse(o.getItem(e)),{data:r}=function(t){const{data:e,action:n}=t;return t[m]||n?{data:e,action:n}:{data:t,action:n}}(c);for(const[e,n]of Object.entries(r))t.elements[e]&&(t.elements[e].value=n);n&&o.removeItem(e)}catch(o){console.error('form repopulation failed',{error:o})}}const l='form_type',E='cptcha';function T(t){t.dataset[E]=!0}const w=window,h=w.document,L='Shopify',v='ce_forms',y='captcha';let A=!1;((t,e)=>{const n=(g='f06e6c50-85a8-45c8-87d0-21a2b65856fe',I='https://cdn.shopify.com/shopifycloud/storefront-forms-hcaptcha/ce_storefront_forms_captcha_hcaptcha.v1.5.2.iife.js',D={infoText:'Protected by hCaptcha',privacyText:'Privacy',termsText:'Terms'},(t,e,n)=>{const o=w[L][v],c=o.bindForm;if(c)return c(t,g,e,D).then(n);var r;o.q.push([[t,g,e,D],n]),r=I,A||(h.body.append(Object.assign(h.createElement('script'),{id:'captcha-provider',async:!0,src:r})),A=!0)});var g,I,D;w[L]=w[L]||{},w[L][v]=w[L][v]||{},w[L][v].q=[],w[L][y]=w[L][y]||{},w[L][y].protect=function(t,e){n(t,void 0,e),T(t)},Object.freeze(w[L][y]),function(t,e,n,w,h,L){const[v,y,A,g]=function(t,e,n){const i=e?o:[],u=t?c:[],d=[...i,...u],f=r(d),m=r(i),_=r(d.filter((([t,e])=>n.includes(e))));return[a(f),a(m),a(_),s()]}(w,h,L),I=t=>{const e=t.target;return e instanceof HTMLFormElement?e:e&&e.form},D=t=>v().includes(t);t.addEventListener('submit',(t=>{const e=I(t);if(!e)return;const n=D(e)&&!e.dataset.hcaptchaBound&&!e.dataset.recaptchaBound,o=_(e),c=g().includes(e)&&(!o||!o.value);(n||c)&&t.preventDefault(),c&&!n&&(function(t){try{if(!f())return;!function(t){const e=f();if(!e)return;const n=_(t);if(!n)return;const o=n.value;o&&e.removeItem(o)}(t);const e=Array.from(Array(32),(()=>Math.random().toString(36)[2])).join('');!function(t,e){_(t)||t.append(Object.assign(document.createElement('input'),{type:'hidden',name:u})),t.elements[u].value=e}(t,e),function(t,e){const n=f();if(!n)return;const o=[...t.querySelectorAll(`input[type='${i}']`)].map((({name:t})=>t)),c=[...d,...o],r={};for(const[a,s]of new FormData(t).entries())c.includes(a)||(r[a]=s);n.setItem(e,JSON.stringify({[m]:1,action:t.action,data:r}))}(t,e)}catch(e){console.error('failed to persist form',e)}}(e),e.submit())}));const S=(t,e)=>{t&&!t.dataset[E]&&(n(t,e.some((e=>e===t))),T(t))};for(const o of['focusin','change'])t.addEventListener(o,(t=>{const e=I(t);D(e)&&S(e,y())}));const B=e.get('form_key'),M=e.get(l),P=B&&M;t.addEventListener('DOMContentLoaded',(()=>{const t=y();if(P)for(const e of t)e.elements[l].value===M&&p(e,B);[...new Set([...A(),...v().filter((t=>'true'===t.dataset.shopifyCaptcha))])].forEach((e=>S(e,t)))}))}(h,new URLSearchParams(w.location.search),n,t,e,['guest_login'])})(!0,!0)}();</script>
+<script integrity="sha256-w1TMG8bx+vw+BuOfT7Dh2avfdjByyjlNYGyp9vJB5oo=" data-source-attribution="shopify.loadfeatures" defer="defer" src="//omiwellbeauty.com/cdn/shopifycloud/shopify/assets/storefront/load_feature-c354cc1bc6f1fafc3e06e39f4fb0e1d9abdf763072ca394d606ca9f6f241e68a.js" crossorigin="anonymous"></script>
+<script crossorigin="anonymous" defer="defer" src="//omiwellbeauty.com/cdn/shopifycloud/shopify/assets/shopify_pay/storefront-80e528be853eac23af2454534897ca9536b1d3d04aa043b042f34879a3c111c8.js?v=20220906"></script>
+<script data-source-attribution="shopify.dynamic_checkout.dynamic.init">var Shopify=Shopify||{};Shopify.PaymentButton=Shopify.PaymentButton||{isStorefrontPortableWallets:!0,init:function(){window.Shopify.PaymentButton.init=function(){};var t=document.createElement("script");t.src="https://omiwellbeauty.com/cdn/shopifycloud/portable-wallets/latest/portable-wallets.en.js",t.type="module",document.head.appendChild(t)}};
+</script>
+<script data-source-attribution="shopify.dynamic_checkout.buyer_consent">
+  function portableWalletsHideBuyerConsent(e){var t=document.getElementById("shopify-buyer-consent"),n=document.getElementById("shopify-subscription-policy-button");t&&n&&(t.classList.add("hidden"),t.setAttribute("aria-hidden","true"),n.removeEventListener("click",e))}function portableWalletsShowBuyerConsent(e){var t=document.getElementById("shopify-buyer-consent"),n=document.getElementById("shopify-subscription-policy-button");t&&n&&(t.classList.remove("hidden"),t.removeAttribute("aria-hidden"),n.addEventListener("click",e))}window.Shopify?.PaymentButton&&(window.Shopify.PaymentButton.hideBuyerConsent=portableWalletsHideBuyerConsent,window.Shopify.PaymentButton.showBuyerConsent=portableWalletsShowBuyerConsent);
+</script>
+<script data-source-attribution="shopify.dynamic_checkout.cart.bootstrap">document.addEventListener("DOMContentLoaded",(function(){function t(){return document.querySelector("shopify-accelerated-checkout-cart, shopify-accelerated-checkout")}if(t())Shopify.PaymentButton.init();else{new MutationObserver((function(e,n){t()&&(Shopify.PaymentButton.init(),n.disconnect())})).observe(document.body,{childList:!0,subtree:!0})}}));
+</script>
+<link rel="stylesheet" media="screen" href="//omiwellbeauty.com/cdn/shop/t/167/compiled_assets/styles.css?40593">
+<link rel="stylesheet" media="screen" href="https://omiwellbeauty.com/cdn/shopifycloud/portable-wallets/latest/accelerated-checkout-backwards-compat.css" crossorigin="anonymous">
+
+<style id="shopify-accelerated-checkout-cart">
+        #shopify-buyer-consent {
+  margin-top: 1em;
+  display: inline-block;
+  width: 100%;
+}
+
+#shopify-buyer-consent.hidden {
+  display: none;
+}
+
+#shopify-subscription-policy-button {
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+#shopify-subscription-policy-button::before {
+  box-shadow: none;
+}
+
+      </style>
+<script>window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');</script> 
+
+    <style data-shopify="">
+  :root {
+    --section-spacing: 120px;
+    --font-body-family: "Manrope", sans-serif;
+    --font-body-style: normal;
+    --font-body-weight: 300;
+    --font-body-weight-bold: 700;
+
+    --font-heading-family: "Feature Display Web";
+    --font-heading-style: normal;
+    --font-heading-weight: 300;
+
+    --primary-color: #1a1a1a;
+    --primary-color-light: #9A92B6;
+    --primary-color-light2: #7E7796;
+
+    --secondary-color: #f4b4a4;
+    --secondary-color-dark: #D58774;
+
+    --background: #fffcf8;
+    --background-dark: #F2EAE1;
+  }
+</style>
+
+    
+    <link href="//omiwellbeauty.com/cdn/shop/t/167/assets/primary-min.css?v=68283832967338175221744900720" rel="stylesheet" type="text/css" media="all"> 
+    <link href="//omiwellbeauty.com/cdn/shop/t/167/assets/cart-min.css?v=99182234549766970701744900722" rel="stylesheet" type="text/css" media="all">
+    
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet">
+
+    <script> (function(){ var s = document.createElement('script'); var h = document.querySelector('head') || document.body; s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; s.async = true; s.onload = function(){ acsbJS.init({ statementLink : '', footerHtml : 'OMI WellBeauty', hideMobile : false, hideTrigger : false, disableBgProcess : false, language : 'en', position : 'left', leadColor : '#2e1a4a', triggerColor : '#2e1a4a', triggerRadius : '50%', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerIcon : 'people', triggerSize : 'medium', triggerOffsetX : 20, triggerOffsetY : 20, mobile : { triggerSize : 'small', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerOffsetX : 10, triggerOffsetY : 10, triggerRadius : '50%' } }); }; h.appendChild(s); })(); </script><script src="https://acsbapp.com/apps/app/dist/js/app.js" async=""></script>
+    <style>
+      ::part(acsb-trigger) {
+        display: none!important;
+        visibility: hidden!important;
+      }
+      button[part="acsb-trigger"] {
+        display: none !important;
+        visibility: hidden !important;
+      }
+    </style>
+<meta name="google-site-verification" content="fgSgGIDi1w-6vYqV8ui9NilHsdIDuXCmtO8GWN_F8lM">
+    
+    <!-- OneTrust Cookies Consent Notice start for omiwellbeauty.com -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="01954378-36ee-7efb-82de-653bb14d0c17"></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for omiwellbeauty.com -->
+
+<script>
+  function isOldiOS() {
+  const ua = navigator.userAgent;
+  const iOSMatch = ua.match(/OS (\d+)_/);
+
+  let iosVersion = '';
+  if (/iPad|iPhone|iPod/.test(ua) && iOSMatch) {
+    iosVersion = parseInt(iOSMatch[1], 10);
+
+    return iosVersion <= 14;
+  }
+  return false;
+}
+
+  function isOlderiOS() {
+  const ua = navigator.userAgent;
+  const iOSMatch = ua.match(/OS (\d+)_(\d+)/);
+
+  if (/iPad|iPhone|iPod/.test(ua) && iOSMatch) {
+    const major = parseInt(iOSMatch[1], 10);
+    const minor = parseInt(iOSMatch[2], 10);
+    const iosVersion = parseFloat(`${major}.${minor}`);
+
+    console.log(iosVersion);
+    
+
+    return iosVersion <= 13.4;
+  }
+  return false;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  if (isOldiOS()) {
+    const page_container = document.querySelector(".page-container");
+    page_container.classList.add("no-lenis"); 
+  }
+
+  if (isOlderiOS()) {
+    const notificationDiv = document.createElement("div");
+    notificationDiv.style.position = "fixed";
+    notificationDiv.style.top = "0";
+    notificationDiv.style.left = "0";
+    notificationDiv.style.width = "100%";
+    notificationDiv.style.backgroundColor = "#ffcc00";
+    notificationDiv.style.color = "#000";
+    notificationDiv.style.padding = "10px 20px";
+    notificationDiv.style.zIndex = "1000";
+    notificationDiv.style.textAlign = "center";
+    const message = document.createElement("p");
+    message.classList.add("mb-0", "sm");
+    message.textContent = "Your device is too out of date to view this site properly. Please update your device.";
+    notificationDiv.appendChild(message);
+    document.body.prepend(notificationDiv);
+
+    const headerWpr = document.querySelector(".header-wpr");
+    const hero_container = document.querySelector(".shopify-section:first-of-type .hero .container-fluid");
+    const product_padding = document.querySelector(".product .gallery-wpr");
+    headerWpr.style.top = '58px';
+    hero_container.style.paddingTop = '100px';
+    product_padding.style.paddingTop = '80px'; 
+  } 
+});
+</script>
+
+  <!-- BEGIN app block: shopify://apps/okendo/blocks/theme-settings/bb689e69-ea70-4661-8fb7-ad24a2e23c29 --><!-- BEGIN app snippet: header-metafields -->
+
+
+
+
+    <script id="okeReferralSettings" type="application/json">{"subscriberId":"ba747055-2c57-4e2b-a214-03ea7efe2aec","localeAndVariant":{"code":"en"},"referralSettings":{"referralsDisabled":false,"rewardSet":{"sender":{"type":"coupon","description":"30% off your next order","value":30,"valueType":"percentage"},"recipient":{"type":"coupon","description":"30% off your next order","value":30,"valueType":"percentage"}},"terms":{"enabled":false},"textContentSet":{"recipient":{"titleText":"Enter your email to receive your coupon"},"sender":{"titleText":"Refer a friend to get a coupon"}},"showMarketingOptIn":false,"socialShare":{"options":{"sms":true,"twitter":true,"whatsApp":true,"facebookMessenger":true,"facebook":true},"defaultText":"I love OMI Wellbeauty! Use this link to get a discount!","displayType":"brand"},"style":{"button":{"hoverBackgroundColor":"#281741","backgroundColor":"#2E1A4A","hoverTextColor":"#FFFFFF","textColor":"#FFFFFF"},"text":{"primaryColor":"#2E1A4A","secondaryColor":"#2E1A4A"},"hideOkendoBranding":false,"bubble":{"textColor":"#FFFFFF","backgroundColor":"#2E1A4A"},"removeBorderRadius":false,"textField":{"border":{"color":"#E5E5EB","focusColor":"#2E1A4A","focusShadowColor":"#978da5"}}}}}</script><script type="text/javascript" defer="" src="https://d3hw6dc1ow8pp2.cloudfront.net/referrals/js/referrals-api.js"></script>
+
+
+
+
+
+
+
+    <style data-oke-reviews-version="0.75.2" type="text/css" data-href="https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/css/okendo-reviews-styles.04184258.css"></style><style data-oke-reviews-version="0.75.2" type="text/css" data-href="https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/css/modules/okendo-star-rating.4cb378a8.css"></style><style data-oke-reviews-version="0.75.2" type="text/css" data-href="https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/css/modules/okendo-reviews-summary.5e6d21d7.css"></style><style type="text/css">.okeReviews[data-oke-container],div.okeReviews{font-size:14px;font-size:var(--oke-text-regular);font-weight:400;font-family:var(--oke-text-fontFamily);line-height:1.6}.okeReviews[data-oke-container] *,.okeReviews[data-oke-container] :after,.okeReviews[data-oke-container] :before,div.okeReviews *,div.okeReviews :after,div.okeReviews :before{box-sizing:border-box}.okeReviews[data-oke-container] h1,.okeReviews[data-oke-container] h2,.okeReviews[data-oke-container] h3,.okeReviews[data-oke-container] h4,.okeReviews[data-oke-container] h5,.okeReviews[data-oke-container] h6,div.okeReviews h1,div.okeReviews h2,div.okeReviews h3,div.okeReviews h4,div.okeReviews h5,div.okeReviews h6{font-size:1em;font-weight:400;line-height:1.4;margin:0}.okeReviews[data-oke-container] ul,div.okeReviews ul{padding:0;margin:0}.okeReviews[data-oke-container] li,div.okeReviews li{list-style-type:none;padding:0}.okeReviews[data-oke-container] p,div.okeReviews p{line-height:1.8;margin:0 0 4px}.okeReviews[data-oke-container] p:last-child,div.okeReviews p:last-child{margin-bottom:0}.okeReviews[data-oke-container] a,div.okeReviews a{text-decoration:none;color:inherit}.okeReviews[data-oke-container] button,div.okeReviews button{border-radius:0;border:0;box-shadow:none;margin:0;width:auto;min-width:auto;padding:0;background-color:transparent;min-height:auto}.okeReviews[data-oke-container] button,.okeReviews[data-oke-container] input,.okeReviews[data-oke-container] select,.okeReviews[data-oke-container] textarea,div.okeReviews button,div.okeReviews input,div.okeReviews select,div.okeReviews textarea{font-family:inherit;font-size:1em}.okeReviews[data-oke-container] label,.okeReviews[data-oke-container] select,div.okeReviews label,div.okeReviews select{display:inline}.okeReviews[data-oke-container] select,div.okeReviews select{width:auto}.okeReviews[data-oke-container] article,.okeReviews[data-oke-container] aside,div.okeReviews article,div.okeReviews aside{margin:0}.okeReviews[data-oke-container] table,div.okeReviews table{background:transparent;border:0;border-collapse:collapse;border-spacing:0;font-family:inherit;font-size:1em;table-layout:auto}.okeReviews[data-oke-container] table td,.okeReviews[data-oke-container] table th,.okeReviews[data-oke-container] table tr,div.okeReviews table td,div.okeReviews table th,div.okeReviews table tr{border:0;font-family:inherit;font-size:1em}.okeReviews[data-oke-container] table td,.okeReviews[data-oke-container] table th,div.okeReviews table td,div.okeReviews table th{background:transparent;font-weight:400;letter-spacing:normal;padding:0;text-align:left;text-transform:none;vertical-align:middle}.okeReviews[data-oke-container] table tr:hover td,.okeReviews[data-oke-container] table tr:hover th,div.okeReviews table tr:hover td,div.okeReviews table tr:hover th{background:transparent}.okeReviews[data-oke-container] fieldset,div.okeReviews fieldset{border:0;padding:0;margin:0;min-width:0}.okeReviews[data-oke-container] img,div.okeReviews img{max-width:none}.okeReviews[data-oke-container] div:empty,div.okeReviews div:empty{display:block}.okeReviews[data-oke-container] .oke-icon:before,div.okeReviews .oke-icon:before{font-family:oke-widget-icons!important;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:inherit}.okeReviews[data-oke-container] .oke-icon--select-arrow:before,div.okeReviews .oke-icon--select-arrow:before{content:""}.okeReviews[data-oke-container] .oke-icon--loading:before,div.okeReviews .oke-icon--loading:before{content:""}.okeReviews[data-oke-container] .oke-icon--pencil:before,div.okeReviews .oke-icon--pencil:before{content:""}.okeReviews[data-oke-container] .oke-icon--filter:before,div.okeReviews .oke-icon--filter:before{content:""}.okeReviews[data-oke-container] .oke-icon--play:before,div.okeReviews .oke-icon--play:before{content:""}.okeReviews[data-oke-container] .oke-icon--tick-circle:before,div.okeReviews .oke-icon--tick-circle:before{content:""}.okeReviews[data-oke-container] .oke-icon--chevron-left:before,div.okeReviews .oke-icon--chevron-left:before{content:""}.okeReviews[data-oke-container] .oke-icon--chevron-right:before,div.okeReviews .oke-icon--chevron-right:before{content:""}.okeReviews[data-oke-container] .oke-icon--thumbs-down:before,div.okeReviews .oke-icon--thumbs-down:before{content:""}.okeReviews[data-oke-container] .oke-icon--thumbs-up:before,div.okeReviews .oke-icon--thumbs-up:before{content:""}.okeReviews[data-oke-container] .oke-icon--close:before,div.okeReviews .oke-icon--close:before{content:""}.okeReviews[data-oke-container] .oke-icon--chevron-up:before,div.okeReviews .oke-icon--chevron-up:before{content:""}.okeReviews[data-oke-container] .oke-icon--chevron-down:before,div.okeReviews .oke-icon--chevron-down:before{content:""}.okeReviews[data-oke-container] .oke-icon--star:before,div.okeReviews .oke-icon--star:before{content:""}.okeReviews[data-oke-container] .oke-icon--magnifying-glass:before,div.okeReviews .oke-icon--magnifying-glass:before{content:""}@font-face{font-family:oke-widget-icons;src:url(https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/fonts/oke-widget-icons.ttf) format("truetype"),url(https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/fonts/oke-widget-icons.woff) format("woff"),url(https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/img/oke-widget-icons.bc0d6b0a.svg) format("svg");font-weight:400;font-style:normal;font-display:block}.okeReviews[data-oke-container] .oke-button,div.okeReviews .oke-button{display:inline-block;border-style:solid;border-color:var(--oke-button-borderColor);border-width:var(--oke-button-borderWidth);background-color:var(--oke-button-backgroundColor);line-height:1;padding:12px 24px;margin:0;border-radius:var(--oke-button-borderRadius);color:var(--oke-button-textColor);text-align:center;position:relative;font-weight:var(--oke-button-fontWeight);font-size:var(--oke-button-fontSize);font-family:var(--oke-button-fontFamily);outline:0}.okeReviews[data-oke-container] .oke-button-text,.okeReviews[data-oke-container] .oke-button .oke-icon,div.okeReviews .oke-button-text,div.okeReviews .oke-button .oke-icon{line-height:1}.okeReviews[data-oke-container] .oke-button.oke-is-loading,div.okeReviews .oke-button.oke-is-loading{position:relative}.okeReviews[data-oke-container] .oke-button.oke-is-loading:before,div.okeReviews .oke-button.oke-is-loading:before{font-family:oke-widget-icons!important;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;content:"";color:undefined;font-size:12px;display:inline-block;animation:oke-spin 1s linear infinite;position:absolute;width:12px;height:12px;top:0;left:0;bottom:0;right:0;margin:auto}.okeReviews[data-oke-container] .oke-button.oke-is-loading>*,div.okeReviews .oke-button.oke-is-loading>*{opacity:0}.okeReviews[data-oke-container] .oke-button.oke-is-active,div.okeReviews .oke-button.oke-is-active{background-color:var(--oke-button-backgroundColorActive);color:var(--oke-button-textColorActive);border-color:var(--oke-button-borderColorActive)}.okeReviews[data-oke-container] .oke-button:not(.oke-is-loading),div.okeReviews .oke-button:not(.oke-is-loading){cursor:pointer}.okeReviews[data-oke-container] .oke-button:not(.oke-is-loading):not(.oke-is-active):hover,div.okeReviews .oke-button:not(.oke-is-loading):not(.oke-is-active):hover{background-color:var(--oke-button-backgroundColorHover);color:var(--oke-button-textColorHover);border-color:var(--oke-button-borderColorHover);box-shadow:0 0 0 2px var(--oke-button-backgroundColorHover)}.okeReviews[data-oke-container] .oke-button:not(.oke-is-loading):not(.oke-is-active):active,.okeReviews[data-oke-container] .oke-button:not(.oke-is-loading):not(.oke-is-active):hover:active,div.okeReviews .oke-button:not(.oke-is-loading):not(.oke-is-active):active,div.okeReviews .oke-button:not(.oke-is-loading):not(.oke-is-active):hover:active{background-color:var(--oke-button-backgroundColorActive);color:var(--oke-button-textColorActive);border-color:var(--oke-button-borderColorActive)}.okeReviews[data-oke-container] .oke-title,div.okeReviews .oke-title{font-weight:var(--oke-title-fontWeight);font-size:var(--oke-title-fontSize);font-family:var(--oke-title-fontFamily)}.okeReviews[data-oke-container] .oke-bodyText,div.okeReviews .oke-bodyText{font-weight:var(--oke-bodyText-fontWeight);font-size:var(--oke-bodyText-fontSize);font-family:var(--oke-bodyText-fontFamily)}.okeReviews[data-oke-container] .oke-linkButton,div.okeReviews .oke-linkButton{cursor:pointer;font-weight:700;pointer-events:auto;text-decoration:underline}.okeReviews[data-oke-container] .oke-linkButton:hover,div.okeReviews .oke-linkButton:hover{text-decoration:none}.okeReviews[data-oke-container] .oke-readMore,div.okeReviews .oke-readMore{cursor:pointer;color:inherit;text-decoration:underline}.okeReviews[data-oke-container] .oke-select,div.okeReviews .oke-select{cursor:pointer;background-repeat:no-repeat;background-position-x:100%;background-position-y:50%;border:none;padding:0 24px 0 12px;-moz-appearance:none;appearance:none;color:inherit;-webkit-appearance:none;background-color:transparent;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg fill='currentColor' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");outline-offset:4px}.okeReviews[data-oke-container] .oke-select:disabled,div.okeReviews .oke-select:disabled{background-color:transparent;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg fill='%239a9db1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E")}.okeReviews[data-oke-container] .oke-loader,div.okeReviews .oke-loader{position:relative}.okeReviews[data-oke-container] .oke-loader:before,div.okeReviews .oke-loader:before{font-family:oke-widget-icons!important;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;content:"";color:var(--oke-text-secondaryColor);font-size:12px;display:inline-block;animation:oke-spin 1s linear infinite;position:absolute;width:12px;height:12px;top:0;left:0;bottom:0;right:0;margin:auto}.okeReviews[data-oke-container] .oke-a11yText,div.okeReviews .oke-a11yText{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.okeReviews[data-oke-container] .oke-hidden,div.okeReviews .oke-hidden{display:none}.okeReviews[data-oke-container] .oke-modal,div.okeReviews .oke-modal{bottom:0;left:0;overflow:auto;position:fixed;right:0;top:0;z-index:2147483647;max-height:100%;background-color:rgba(0,0,0,.5);padding:40px 0 32px}@media only screen and (min-width:1024px){.okeReviews[data-oke-container] .oke-modal,div.okeReviews .oke-modal{display:flex;align-items:center;padding:48px 0}}.okeReviews[data-oke-container] .oke-modal ::-moz-selection,div.okeReviews .oke-modal ::-moz-selection{background-color:rgba(39,45,69,.2)}.okeReviews[data-oke-container] .oke-modal ::selection,div.okeReviews .oke-modal ::selection{background-color:rgba(39,45,69,.2)}.okeReviews[data-oke-container] .oke-modal,.okeReviews[data-oke-container] .oke-modal p,div.okeReviews .oke-modal,div.okeReviews .oke-modal p{color:#272d45}.okeReviews[data-oke-container] .oke-modal-content,div.okeReviews .oke-modal-content{background-color:#fff;margin:auto;position:relative;will-change:transform,opacity;width:calc(100% - 64px)}@media only screen and (min-width:1024px){.okeReviews[data-oke-container] .oke-modal-content,div.okeReviews .oke-modal-content{max-width:1000px}}.okeReviews[data-oke-container] .oke-modal-close,div.okeReviews .oke-modal-close{cursor:pointer;position:absolute;width:32px;height:32px;top:-32px;padding:4px;right:-4px;line-height:1}.okeReviews[data-oke-container] .oke-modal-close:before,div.okeReviews .oke-modal-close:before{font-family:oke-widget-icons!important;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;content:"";color:#fff;font-size:24px;display:inline-block;width:24px;height:24px}.okeReviews[data-oke-container] .oke-modal-overlay,div.okeReviews .oke-modal-overlay{background-color:rgba(43,46,56,.9)}@media only screen and (min-width:1024px){.okeReviews[data-oke-container] .oke-modal--large .oke-modal-content,div.okeReviews .oke-modal--large .oke-modal-content{max-width:1200px}}.okeReviews[data-oke-container] .oke-modal .oke-helpful,.okeReviews[data-oke-container] .oke-modal .oke-helpful-vote-button,.okeReviews[data-oke-container] .oke-modal .oke-reviewContent-date,div.okeReviews .oke-modal .oke-helpful,div.okeReviews .oke-modal .oke-helpful-vote-button,div.okeReviews .oke-modal .oke-reviewContent-date{color:#676986}.oke-modal .okeReviews[data-oke-container].oke-w,.oke-modal div.okeReviews.oke-w{color:#272d45}.okeReviews[data-oke-container] .oke-tag,div.okeReviews .oke-tag{align-items:center;color:#272d45;display:flex;font-size:var(--oke-text-small);font-weight:600;text-align:left;position:relative;z-index:2;background-color:#f4f4f6;padding:4px 6px;border:none;border-radius:4px;gap:6px;line-height:1}.okeReviews[data-oke-container] .oke-tag svg,div.okeReviews .oke-tag svg{fill:currentColor;height:1rem}.okeReviews[data-oke-container] .hooper,div.okeReviews .hooper{height:auto}.okeReviews--left{text-align:left}.okeReviews--right{text-align:right}.okeReviews--center{text-align:center}.okeReviews :not([tabindex="-1"]):focus-visible{outline:5px auto highlight;outline:5px auto -webkit-focus-ring-color}.is-oke-modalOpen{overflow:hidden!important}img.oke-is-error{background-color:var(--oke-shadingColor);background-size:cover;background-position:50% 50%;box-shadow:inset 0 0 0 1px var(--oke-border-color)}@keyframes oke-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes oke-fade-in{0%{opacity:0}to{opacity:1}}
+.oke-stars{line-height:1;position:relative;display:inline-block}.oke-stars-background svg{overflow:visible}.oke-stars-foreground{overflow:hidden;position:absolute;top:0;left:0}.oke-sr{display:inline-block;padding-top:var(--oke-starRating-spaceAbove);padding-bottom:var(--oke-starRating-spaceBelow)}.oke-sr .oke-is-clickable{cursor:pointer}.oke-sr--hidden{display:none}.oke-sr-count,.oke-sr-rating,.oke-sr-stars{display:inline-block;vertical-align:middle}.oke-sr-stars{line-height:1;margin-right:8px}.oke-sr-rating{display:none}.oke-sr-count--brackets:before{content:"("}.oke-sr-count--brackets:after{content:")"}
+.oke-rs{display:block}.oke-rs .oke-reviewsSummary-heading{position:relative}.oke-rs .oke-reviewsSummary-heading-skeleton{background:#e5e5eb;border-radius:4px;height:85%;left:0;max-width:150px;overflow:hidden;position:absolute;top:50%;transform:translateY(-50%);width:100%}.oke-rs .oke-reviewsSummary-heading-skeleton:after{animation:shimmer .8s linear infinite;background:linear-gradient(90deg,#e5e5eb,#f7f7f8 50%,#e5e5eb);background-repeat:no-repeat;background-size:250px 100%;content:"";display:block;height:100%;position:absolute;width:100%;top:0;left:0}@keyframes shimmer{0%{background-position:200%}to{background-position:-200%}}.oke-rs .oke-reviewsSummary.oke-is-preRender .oke-reviewsSummary-heading-text{opacity:0}.oke-rs .oke-reviewsSummary.oke-is-preRender .oke-reviewsSummary-summary{-webkit-mask:linear-gradient(180deg,#000 0,#000 40%,transparent 95%,transparent 0) 100% 50%/100% 100% repeat-x;mask:linear-gradient(180deg,#000 0,#000 40%,transparent 95%,transparent 0) 100% 50%/100% 100% repeat-x;max-height:150px}.okeReviews[data-oke-container] .oke-reviewsSummary .oke-tooltip,div.okeReviews .oke-reviewsSummary .oke-tooltip{display:inline-block;font-weight:400}.okeReviews[data-oke-container] .oke-reviewsSummary .oke-tooltip-trigger,div.okeReviews .oke-reviewsSummary .oke-tooltip-trigger{height:15px;width:15px;overflow:hidden;transform:translateY(-10%)}.okeReviews[data-oke-container] .oke-reviewsSummary-heading,div.okeReviews .oke-reviewsSummary-heading{align-items:center;-moz-column-gap:4px;column-gap:4px;display:inline-flex;font-weight:700;margin-bottom:8px}.okeReviews[data-oke-container] .oke-reviewsSummary-icon,div.okeReviews .oke-reviewsSummary-icon{fill:currentColor;font-size:14px}.okeReviews[data-oke-container] .oke-reviewsSummary-icon svg,div.okeReviews .oke-reviewsSummary-icon svg{vertical-align:baseline}.okeReviews[data-oke-container] .oke-reviewsSummary-summary.oke-is-truncated,div.okeReviews .oke-reviewsSummary-summary.oke-is-truncated{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}</style>
+
+    <script type="application/json" id="oke-reviews-settings">{"subscriberId":"ba747055-2c57-4e2b-a214-03ea7efe2aec","analyticsSettings":{"isWidgetOnScreenTrackingEnabled":false,"provider":"none"},"localeAndVariant":{"code":"en"},"widgetSettings":{"global":{"dateSettings":{"format":{"type":"relative"}},"stars":{"backgroundColor":"#E5E5E5","foregroundColor":"#FFC942","interspace":2,"shape":{"type":"default"},"showBorder":false},"reviewTranslationsMode":"off","showIncentiveIndicator":false,"searchEnginePaginationEnabled":true,"font":{"fontType":"inherit-from-page"}},"homepageCarousel":{"slidesPerPage":{"large":3,"medium":2},"totalSlides":12,"scrollBehaviour":"slide","style":{"showDates":true,"border":{"color":"#E5E5EB","width":{"value":1,"unit":"px"}},"headingFont":{"hasCustomFontSettings":false},"bodyFont":{"hasCustomFontSettings":false},"arrows":{"color":"#676986","size":{"value":24,"unit":"px"},"enabled":true},"avatar":{"backgroundColor":"#E5E5EB","placeholderTextColor":"#2C3E50","size":{"value":48,"unit":"px"},"enabled":true},"media":{"size":{"value":80,"unit":"px"},"imageGap":{"value":4,"unit":"px"},"enabled":true},"stars":{"height":{"value":18,"unit":"px"}},"productImageSize":{"value":48,"unit":"px"},"layout":{"name":"default","reviewDetailsPosition":"below","showProductName":false,"showAttributeBars":false,"showProductVariantName":false,"showProductDetails":"only-when-grouped"},"highlightColor":"#0E7A82","spaceAbove":{"value":20,"unit":"px"},"text":{"primaryColor":"#2C3E50","fontSizeRegular":{"value":14,"unit":"px"},"fontSizeSmall":{"value":12,"unit":"px"},"secondaryColor":"#676986"},"spaceBelow":{"value":20,"unit":"px"}},"defaultSort":"rating desc","autoPlay":false,"truncation":{"bodyMaxLines":4,"enabled":true,"truncateAll":false}},"mediaCarousel":{"minimumImages":1,"linkText":"Read More","autoPlay":false,"slideSize":"medium","arrowPosition":"outside"},"mediaGrid":{"gridStyleDesktop":{"layout":"default-desktop"},"gridStyleMobile":{"layout":"default-mobile"},"showMoreArrow":{"arrowColor":"#676986","enabled":true,"backgroundColor":"#f4f4f6"},"linkText":"Read More","infiniteScroll":false,"gapSize":{"value":10,"unit":"px"}},"questions":{"initialPageSize":6,"loadMorePageSize":6},"reviewsBadge":{"layout":"large","colorScheme":"dark"},"reviewsTab":{"enabled":false},"reviewsWidget":{"tabs":{"reviews":true},"header":{"columnDistribution":"space-between","verticalAlignment":"top","blocks":[{"columnWidth":"full","modules":[{"name":"rating-average","layout":"one-line"}],"textAlignment":"center"}]},"style":{"showDates":true,"border":{"color":"#E5E5EB","width":{"value":1,"unit":"px"}},"bodyFont":{"hasCustomFontSettings":false},"headingFont":{"hasCustomFontSettings":false},"filters":{"backgroundColorActive":"#676986","backgroundColor":"#FFFFFF","borderColor":"#DBDDE4","borderRadius":{"value":100,"unit":"px"},"borderColorActive":"#676986","textColorActive":"#FFFFFF","textColor":"#2E1A4A","searchHighlightColor":"#aba3b7"},"avatar":{"enabled":false},"stars":{"height":{"value":15,"unit":"px"}},"shadingColor":"#F7F7F8","productImageSize":{"value":48,"unit":"px"},"button":{"backgroundColorActive":"#2E1A4A","borderColorHover":"#DBDDE4","backgroundColor":"#2E1A4A","borderColor":"#DBDDE4","backgroundColorHover":"#281741","textColorHover":"#FFFFFF","borderRadius":{"value":5,"unit":"px"},"borderWidth":{"value":1,"unit":"px"},"borderColorActive":"#2E1A4A","textColorActive":"#FFFFFF","textColor":"#FFFFFF","font":{"fontSize":{"value":14,"unit":"px"},"fontType":"custom","fontFamily":"\"Manrope\", sans-serif","fontWeight":300,"hasCustomFontSettings":true}},"highlightColor":"#2E1A4A","spaceAbove":{"value":20,"unit":"px"},"text":{"primaryColor":"#2E1A4A","fontSizeRegular":{"value":14,"unit":"px"},"fontSizeLarge":{"value":20,"unit":"px"},"fontSizeSmall":{"value":12,"unit":"px"},"secondaryColor":"#2E1A4A"},"spaceBelow":{"value":20,"unit":"px"},"attributeBar":{"style":"default","backgroundColor":"#D3D4DD","shadingColor":"#9A9DB1","markerColor":"#2E1A4A"}},"showWhenEmpty":false,"reviews":{"list":{"layout":{"name":"minimal","showAttributeBars":false,"showProductVariantName":false,"columnAmount":4,"showProductDetails":"never"},"loyalty":{"maxInitialAchievements":3,"showVipTiers":false},"initialPageSize":6,"replyTruncation":{"bodyMaxLines":4,"enabled":true},"media":{"layout":"hidden"},"truncation":{"bodyMaxLines":4,"truncateAll":false,"enabled":true},"loadMorePageSize":6},"controls":{"filterMode":"closed","writeReviewButtonEnabled":true,"defaultSort":"rating desc"}}},"starRatings":{"showWhenEmpty":false,"style":{"spaceAbove":{"value":0,"unit":"px"},"text":{"content":"review-count","style":"number-only","brackets":true},"singleStar":false,"height":{"value":15,"unit":"px"},"spaceBelow":{"value":0,"unit":"px"}},"clickBehavior":"scroll-to-widget"}},"features":{"recorderPlusEnabled":true,"recorderQandaPlusEnabled":true}}</script>
+            <style id="oke-css-vars">
+        :root {
+            --oke-widget-spaceAbove: 20px;
+            --oke-widget-spaceBelow: 20px;
+            --oke-starRating-spaceAbove: 0px;
+            --oke-starRating-spaceBelow: 0px;
+
+            --oke-button-backgroundColor: #2E1A4A;
+            --oke-button-backgroundColorHover: #281741;
+            --oke-button-backgroundColorActive: #2E1A4A;
+            --oke-button-textColor: #FFFFFF;
+            --oke-button-textColorHover: #FFFFFF;
+            --oke-button-textColorActive: #FFFFFF;
+            --oke-button-borderColor: #DBDDE4;
+            --oke-button-borderColorHover: #DBDDE4;
+            --oke-button-borderColorActive: #2E1A4A;
+            --oke-button-borderRadius: 5px;
+            --oke-button-borderWidth: 1px;
+            --oke-button-fontWeight: 300;
+            --oke-button-fontSize: 14px;
+            --oke-button-fontFamily: "Manrope", sans-serif, sans-serif;
+
+            --oke-border-color: #E5E5EB;
+            --oke-border-width: 1px;
+
+            --oke-text-primaryColor: #2E1A4A;
+            --oke-text-secondaryColor: #2E1A4A;
+            --oke-text-small: 12px;
+            --oke-text-regular: 14px;
+            --oke-text-large: 20px;
+            --oke-text-fontFamily: inherit;
+
+            --oke-avatar-size: 48px;
+            --oke-avatar-backgroundColor: #E5E5EB;
+            --oke-avatar-placeholderTextColor: #2C3E50;
+
+            --oke-highlightColor: #2E1A4A;
+            --oke-shadingColor: #F7F7F8;
+            --oke-productImageSize: 48px;
+
+            --oke-attributeBar-shadingColor: #9A9DB1;
+            --oke-attributeBar-borderColor: #9A9DB1;
+            --oke-attributeBar-backgroundColor: #D3D4DD;
+            --oke-attributeBar-markerColor: #2E1A4A;
+
+            --oke-filter-backgroundColor: #FFFFFF;
+            --oke-filter-backgroundColorActive: #676986;
+            --oke-filter-borderColor: #DBDDE4;
+            --oke-filter-borderColorActive: #676986;
+            --oke-filter-textColor: #2E1A4A;
+            --oke-filter-textColorActive: #FFFFFF;
+            --oke-filter-borderRadius: 100px;
+            --oke-filter-searchHighlightColor: #aba3b7;
+
+            --oke-mediaGrid-chevronColor: #676986;
+            --oke-stars-foregroundColor: #FFC942;
+            --oke-stars-backgroundColor: #E5E5E5;
+            --oke-stars-borderWidth: 0;
+        }
+        
+        
+        
+        .oke-w, oke-modal {
+            --oke-title-fontWeight: 600;
+            --oke-title-fontSize: var(--oke-text-regular, 14px);
+            --oke-title-fontFamily: inherit;
+
+            --oke-bodyText-fontWeight: 400;
+            --oke-bodyText-fontSize: var(--oke-text-regular, 14px);
+            --oke-bodyText-fontFamily: inherit;
+        }
+    </style>
+            
+            <template id="oke-reviews-body-template"></template><script>document.addEventListener('readystatechange',() =>{Array.from(document.getElementById('oke-reviews-body-template')?.content.children)?.forEach(function(child){if(!Array.from(document.body.querySelectorAll('[data-oke-id='.concat(child.getAttribute('data-oke-id'),']'))).length){document.body.prepend(child)}})},{once:true});</script>
+
+
+
+
+
+
+
+
+
+
+<!-- END app snippet -->
+<!-- BEGIN app snippet: okendo-reviews-json-ld -->
+<!-- END app snippet -->
+<!-- BEGIN app snippet: widget-plus-initialisation-script -->
+
+
+
+
+    <script async="" id="okendo-reviews-script" src="https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/js/okendo-reviews.js"></script>
+
+<!-- END app snippet -->
+
+
+<!-- END app block --><!-- BEGIN app block: shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507 -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <script async="" src="https://static.klaviyo.com/onsite/js/Tg6Mtt/klaviyo.js?company_id=Tg6Mtt"></script>
+  <script>!function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();</script>
+
+  
+
+
+
+
+  <script>
+    window.klaviyoReviewsProductDesignMode = false
+  </script>
+
+
+
+
+
+
+
+<!-- END app block --><link href="https://monorail-edge.shopifysvc.com" rel="dns-prefetch">
+<script>(function(){if ("sendBeacon" in navigator && "performance" in window) {var session_token = document.cookie.match(/_shopify_s=([^;]*)/);function handle_abandonment_event(e) {var entries = performance.getEntries().filter(function(entry) {return /monorail-edge.shopifysvc.com/.test(entry.name);});if (!window.abandonment_tracked && entries.length === 0) {window.abandonment_tracked = true;var currentMs = Date.now();var navigation_start = performance.timing.navigationStart;var payload = {shop_id: 26735378613,url: window.location.href,navigation_start,duration: currentMs - navigation_start,session_token: session_token && session_token.length === 2 ? session_token[1] : "",page_type: "index"};window.navigator.sendBeacon("https://monorail-edge.shopifysvc.com/v1/produce", JSON.stringify({schema_id: "online_store_buyer_site_abandonment/1.1",payload: payload,metadata: {event_created_at_ms: currentMs,event_sent_at_ms: currentMs}}));}}window.addEventListener('pagehide', handle_abandonment_event);}}());</script>
+<script id="web-pixels-manager-setup">(function e(e,d,r,n,o,i){if(void 0===i&&(i={}),!Boolean(null===(t=null===(a=window.Shopify)||void 0===a?void 0:a.analytics)||void 0===t?void 0:t.replayQueue)){var a,t;window.Shopify=window.Shopify||{};var s=window.Shopify;s.analytics=s.analytics||{};var l=s.analytics;l.replayQueue=[],l.publish=function(e,d,r){return l.replayQueue.push([e,d,r]),!0};try{self.performance.mark("wpm:start")}catch(e){}var u=function(){var e={modern:/Edge?\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Firefox\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(9{2}|\d{3,})\.\d+(\.\d+|)|(Maci|X1{2}).+ Version\/(15\.\d+|(1[6-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(9{2}|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(15[._]\d+|(1[6-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](13[1-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Android.+Firefox\/(13[2-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(13[1-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|SamsungBrowser\/([2-9]\d|\d{3,})\.\d+/,legacy:/Edge?\/(1[6-9]|[2-9]\d|\d{3,})\.\d+(\.\d+|)|Firefox\/(5[4-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)|Chrom(ium|e)\/(5[1-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)([\d.]+$|.*Safari\/(?![\d.]+ Edge\/[\d.]+$))|(Maci|X1{2}).+ Version\/(10\.\d+|(1[1-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(3[89]|[4-9]\d|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(10[._]\d+|(1[1-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](13[1-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(13[2-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(13[1-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(5\.\d+|([6-9]|\d{2,})\.\d+)|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/},d=e.modern,r=e.legacy,n=navigator.userAgent;return n.match(d)?"modern":n.match(r)?"legacy":"unknown"}(),c="modern"===u?"modern":"legacy",f=(null!=o?o:{modern:"",legacy:""})[c],m=function(e){return[e.baseUrl,"/wpm","/b",e.hashVersion,"modern"===e.buildTarget?"m":"l",".js"].join("")}({baseUrl:r,hashVersion:n,buildTarget:c}),p=function(e){var d=e.version,r=e.bundleTarget,n=e.surface,o=e.pageUrl,i=e.monorailEndpoint;return{emit:function(e){var a=e.status,t=e.errorMsg,s=(new Date).getTime(),l=JSON.stringify({metadata:{event_sent_at_ms:s},events:[{schema_id:"web_pixels_manager_load/3.1",payload:{version:d,bundle_target:r,page_url:o,status:a,surface:n,error_msg:t},metadata:{event_created_at_ms:s}}]});if(!i)return console&&console.warn&&console.warn("[Web Pixels Manager] No Monorail endpoint provided, skipping logging."),!1;try{return self.navigator.sendBeacon.bind(self.navigator)(i,l)}catch(e){}var u=new XMLHttpRequest;try{return u.open("POST",i,!0),u.setRequestHeader("Content-Type","text/plain"),u.send(l),!0}catch(e){return console&&console.warn&&console.warn("[Web Pixels Manager] Got an unhandled error while logging to Monorail."),!1}}}}({version:n,bundleTarget:u,surface:e.surface,pageUrl:self.location.href,monorailEndpoint:e.monorailEndpoint});try{i.browserTarget=u,function(e){var d=e.src,r=e.async,n=void 0===r||r,o=e.onload,i=e.onerror,a=e.sri,t=e.scriptDataAttributes,s=void 0===t?{}:t,l=document.createElement("script"),u=document.querySelector("head"),c=document.querySelector("body");if(l.async=n,l.src=d,a&&(l.integrity=a,l.crossOrigin="anonymous"),s)for(var f in s)if(Object.prototype.hasOwnProperty.call(s,f))try{l.dataset[f]=s[f]}catch(e){}if(o&&l.addEventListener("load",o),i&&l.addEventListener("error",i),u)u.appendChild(l);else{if(!c)throw new Error("Did not find a head or body element to append the script");c.appendChild(l)}}({src:m,async:!0,onload:function(){if(!function(){var e,d;return Boolean(null===(d=null===(e=window.Shopify)||void 0===e?void 0:e.analytics)||void 0===d?void 0:d.initialized)}()){var r=window.webPixelsManager.init(e)||void 0;if(r){d(r);var n=window.Shopify.analytics;n.replayQueue.forEach((function(e){var d=e[0],n=e[1],o=e[2];r.publishCustomEvent(d,n,o)})),n.replayQueue=[],n.publish=r.publishCustomEvent,n.visitor=r.visitor,n.initialized=!0}}},onerror:function(){return p.emit({status:"failed",errorMsg:"".concat(m," has failed to load")})},sri:function(e){var d=/^sha384-[A-Za-z0-9+/=]+$/;return"string"==typeof e&&d.test(e)}(f)?f:"",scriptDataAttributes:i}),p.emit({status:"loading"})}catch(e){p.emit({status:"failed",errorMsg:(null==e?void 0:e.message)||"Unknown error"})}}})({shopId: 26735378613,storefrontBaseUrl: "https://omiwellbeauty.com",extensionsBaseUrl: "https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager",monorailEndpoint: "https://monorail-edge.shopifysvc.com/unstable/produce_batch",surface: "storefront-renderer",enabledBetaFlags: [],webPixelsConfigList: [{"id":"685834421","configuration":"{\"campaignID\":\"29756\",\"externalExecutionURL\":\"https://engine.saasler.com/api/v1/webhook_executions/08eef2a3739b62339f950ad57bde2319\"}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"da088bce1e12a9bcc208f3607d2a36fc","type":"APP","apiClientId":3546795,"privacyPurposes":["ANALYTICS","MARKETING","SALE_OF_DATA"]},{"id":"660766901","configuration":"{\"accountID\":\"1220658\",\"workspaceId\":\"b027279e-04e8-4f8d-afbc-db046ede0911\",\"projectId\":\"b474924e-0b4d-4bc8-937f-225ededacc35\"}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"6419ca733c0a860e79f93f89945911f2","type":"APP","apiClientId":5461967,"privacyPurposes":["ANALYTICS"]},{"id":"638943413","configuration":"{\"config\":\"{\\\"pixel_id\\\":\\\"G-BD1LSEBFT1\\\",\\\"target_country\\\":\\\"US\\\",\\\"gtag_events\\\":[{\\\"type\\\":\\\"begin_checkout\\\",\\\"action_label\\\":[\\\"G-BD1LSEBFT1\\\",\\\"AW-16666871655\\/R-45CMqX48sZEOeOsYs-\\\"]},{\\\"type\\\":\\\"search\\\",\\\"action_label\\\":[\\\"G-BD1LSEBFT1\\\",\\\"AW-16666871655\\/b4MoCMSX48sZEOeOsYs-\\\"]},{\\\"type\\\":\\\"view_item\\\",\\\"action_label\\\":[\\\"G-BD1LSEBFT1\\\",\\\"AW-16666871655\\/WkM3CMGX48sZEOeOsYs-\\\",\\\"MC-M5FYGX208K\\\"]},{\\\"type\\\":\\\"purchase\\\",\\\"action_label\\\":[\\\"G-BD1LSEBFT1\\\",\\\"AW-16666871655\\/uba0CLuX48sZEOeOsYs-\\\",\\\"MC-M5FYGX208K\\\"]},{\\\"type\\\":\\\"page_view\\\",\\\"action_label\\\":[\\\"G-BD1LSEBFT1\\\",\\\"AW-16666871655\\/AMmyCL6X48sZEOeOsYs-\\\",\\\"MC-M5FYGX208K\\\"]},{\\\"type\\\":\\\"add_payment_info\\\",\\\"action_label\\\":[\\\"G-BD1LSEBFT1\\\",\\\"AW-16666871655\\/lE7iCM2X48sZEOeOsYs-\\\"]},{\\\"type\\\":\\\"add_to_cart\\\",\\\"action_label\\\":[\\\"G-BD1LSEBFT1\\\",\\\"AW-16666871655\\/Dys_CMeX48sZEOeOsYs-\\\"]}],\\\"enable_monitoring_mode\\\":false}\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"5eac266b39be96dbf2c723365d038540","type":"APP","apiClientId":1780363,"privacyPurposes":[]},{"id":"374702261","configuration":"{\"pixel_id\":\"1342834813586731\",\"pixel_type\":\"facebook_pixel\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"8d894c63179843e74a9691414b5ad83d","type":"APP","apiClientId":2329312,"privacyPurposes":["ANALYTICS","MARKETING","SALE_OF_DATA"]},{"id":"shopify-app-pixel","configuration":"{}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"0411","apiClientId":"shopify-pixel","type":"APP","privacyPurposes":["ANALYTICS","MARKETING"]},{"id":"shopify-custom-pixel","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"0411","apiClientId":"shopify-pixel","type":"CUSTOM","privacyPurposes":["ANALYTICS","MARKETING"]}],isMerchantRequest: false,effectiveTopLevelDomain: "com",initData: {"shop":{"name":"OMI Wellbeauty","paymentSettings":{"currencyCode":"USD"},"myshopifyDomain":"the-one-nutrition-just-for-you.myshopify.com","countryCode":"US","storefrontUrl":"https://omiwellbeauty.com"},"customer":null,"cart":null,"checkout":null,"productVariants":[],"purchasingCompany":null},},function pageEvents(webPixelsManagerAPI) {webPixelsManagerAPI.publish("page_viewed", {});},"https://omiwellbeauty.com/cdn","5f8264e6w7e417702p65a4c950md7b71799",{"modern":"","legacy":""},{"shopId":"26735378613","storefrontBaseUrl":"https://omiwellbeauty.com","extensionBaseUrl":"https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager","surface":"storefront-renderer","enabledBetaFlags":"[]","isMerchantRequest":"false","hashVersion":"5f8264e6w7e417702p65a4c950md7b71799"});</script><script async="" src="https://omiwellbeauty.com/cdn/wpm/b5f8264e6w7e417702p65a4c950md7b71799m.js" data-shop-id="26735378613" data-storefront-base-url="https://omiwellbeauty.com" data-extension-base-url="https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager" data-surface="storefront-renderer" data-enabled-beta-flags="[]" data-is-merchant-request="false" data-hash-version="5f8264e6w7e417702p65a4c950md7b71799" data-browser-target="modern"></script><script>
+  window.ShopifyAnalytics = window.ShopifyAnalytics || {};
+  window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
+  window.ShopifyAnalytics.meta.currency = 'USD';
+  var meta = {"page":{"pageType":"home"}};
+  for (var attr in meta) {
+    window.ShopifyAnalytics.meta[attr] = meta[attr];
+  }
+</script>
+<script class="analytics">
+  (function () {
+    var customDocumentWrite = function(content) {
+      var jquery = null;
+
+      if (window.jQuery) {
+        jquery = window.jQuery;
+      } else if (window.Checkout && window.Checkout.$) {
+        jquery = window.Checkout.$;
+      }
+
+      if (jquery) {
+        jquery('body').append(content);
+      }
+    };
+
+    var hasLoggedConversion = function(token) {
+      if (token) {
+        return document.cookie.indexOf('loggedConversion=' + token) !== -1;
+      }
+      return false;
+    }
+
+    var setCookieIfConversion = function(token) {
+      if (token) {
+        var twoMonthsFromNow = new Date(Date.now());
+        twoMonthsFromNow.setMonth(twoMonthsFromNow.getMonth() + 2);
+
+        document.cookie = 'loggedConversion=' + token + '; expires=' + twoMonthsFromNow;
+      }
+    }
+
+    var trekkie = window.ShopifyAnalytics.lib = window.trekkie = window.trekkie || [];
+    if (trekkie.integrations) {
+      return;
+    }
+    trekkie.methods = [
+      'identify',
+      'page',
+      'ready',
+      'track',
+      'trackForm',
+      'trackLink'
+    ];
+    trekkie.factory = function(method) {
+      return function() {
+        var args = Array.prototype.slice.call(arguments);
+        args.unshift(method);
+        trekkie.push(args);
+        return trekkie;
+      };
+    };
+    for (var i = 0; i < trekkie.methods.length; i++) {
+      var key = trekkie.methods[i];
+      trekkie[key] = trekkie.factory(key);
+    }
+    trekkie.load = function(config) {
+      trekkie.config = config || {};
+      trekkie.config.initialDocumentCookie = document.cookie;
+      var first = document.getElementsByTagName('script')[0];
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.onerror = function(e) {
+        var scriptFallback = document.createElement('script');
+        scriptFallback.type = 'text/javascript';
+        scriptFallback.onerror = function(error) {
+                var Monorail = {
+      produce: function produce(monorailDomain, schemaId, payload) {
+        var currentMs = new Date().getTime();
+        var event = {
+          schema_id: schemaId,
+          payload: payload,
+          metadata: {
+            event_created_at_ms: currentMs,
+            event_sent_at_ms: currentMs
+          }
+        };
+        return Monorail.sendRequest("https://" + monorailDomain + "/v1/produce", JSON.stringify(event));
+      },
+      sendRequest: function sendRequest(endpointUrl, payload) {
+        // Try the sendBeacon API
+        if (window && window.navigator && typeof window.navigator.sendBeacon === 'function' && typeof window.Blob === 'function' && !Monorail.isIos12()) {
+          var blobData = new window.Blob([payload], {
+            type: 'text/plain'
+          });
+
+          if (window.navigator.sendBeacon(endpointUrl, blobData)) {
+            return true;
+          } // sendBeacon was not successful
+
+        } // XHR beacon
+
+        var xhr = new XMLHttpRequest();
+
+        try {
+          xhr.open('POST', endpointUrl);
+          xhr.setRequestHeader('Content-Type', 'text/plain');
+          xhr.send(payload);
+        } catch (e) {
+          console.log(e);
+        }
+
+        return false;
+      },
+      isIos12: function isIos12() {
+        return window.navigator.userAgent.lastIndexOf('iPhone; CPU iPhone OS 12_') !== -1 || window.navigator.userAgent.lastIndexOf('iPad; CPU OS 12_') !== -1;
+      }
+    };
+    Monorail.produce('monorail-edge.shopifysvc.com',
+      'trekkie_storefront_load_errors/1.1',
+      {shop_id: 26735378613,
+      theme_id: 144100753589,
+      app_name: "storefront",
+      context_url: window.location.href,
+      source_url: "//omiwellbeauty.com/cdn/s/trekkie.storefront.423a314223fb7e8d7c94337fcd62d7ad8c06d7a5.min.js"});
+
+        };
+        scriptFallback.async = true;
+        scriptFallback.src = '//omiwellbeauty.com/cdn/s/trekkie.storefront.423a314223fb7e8d7c94337fcd62d7ad8c06d7a5.min.js';
+        first.parentNode.insertBefore(scriptFallback, first);
+      };
+      script.async = true;
+      script.src = '//omiwellbeauty.com/cdn/s/trekkie.storefront.423a314223fb7e8d7c94337fcd62d7ad8c06d7a5.min.js';
+      first.parentNode.insertBefore(script, first);
+    };
+    trekkie.load(
+      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":26735378613,"isMerchantRequest":null,"themeId":144100753589,"themeCityHash":"628264117173292865","contentLanguage":"en","currency":"USD"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain"},"Session Attribution":{},"S2S":{"facebookCapiEnabled":true,"source":"trekkie-storefront-renderer","apiClientId":580111}}
+    );
+
+    var loaded = false;
+    trekkie.ready(function() {
+      if (loaded) return;
+      loaded = true;
+
+      window.ShopifyAnalytics.lib = window.trekkie;
+
+      var originalDocumentWrite = document.write;
+      document.write = customDocumentWrite;
+      try { window.ShopifyAnalytics.merchantGoogleAnalytics.call(this); } catch(error) {};
+      document.write = originalDocumentWrite;
+
+      window.ShopifyAnalytics.lib.page(null,{"pageType":"home","shopifyEmitted":true});
+
+      var match = window.location.pathname.match(/checkouts\/(.+)\/(thank_you|post_purchase)/)
+      var token = match? match[1]: undefined;
+      if (!hasLoggedConversion(token)) {
+        setCookieIfConversion(token);
+        
+      }
+    });
+
+
+        var eventsListenerScript = document.createElement('script');
+        eventsListenerScript.async = true;
+        eventsListenerScript.src = "//omiwellbeauty.com/cdn/shopifycloud/shopify/assets/shop_events_listener-f55dd2979ec32029c7d9e0b454ab8b33f79c01ca039d17a6f5c9b95647564b19.js";
+        document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);
+
+})();</script><script async="" src="//omiwellbeauty.com/cdn/shopifycloud/shopify/assets/shop_events_listener-f55dd2979ec32029c7d9e0b454ab8b33f79c01ca039d17a6f5c9b95647564b19.js"></script>
+<script defer="" src="https://omiwellbeauty.com/cdn/shopifycloud/perf-kit/shopify-perf-kit-1.6.1.min.js" data-application="storefront-renderer" data-shop-id="26735378613" data-render-region="gcp-us-west1" data-page-type="index" data-theme-instance-id="144100753589" data-monorail-region="shop_domain" data-resource-timing-sampling-rate="10" data-shs="true"></script>
+<script src="https://cdn.cookielaw.org/scripttemplates/202502.1.0/otBannerSdk.js" async="" type="text/javascript"></script><script type="module" defer="" src="https://omiwellbeauty.com/cdn/shopifycloud/media-analytics/v0.1/analytics.js"></script><script charset="utf-8" src="https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/js/okendo-reviews-core.84d23785.js"></script><script charset="utf-8" src="https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/js/okendo-reviews-styles.35ef0117.js"></script><script charset="utf-8" src="https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/js/okendo-reviews-translation.c0fa6869.js"></script><script charset="utf-8" src="https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/js/modules/okendo-widget-init.6e00b10a.js"></script><script type="text/javascript" async="" src="https://static-tracking.klaviyo.com/onsite/js/fender_analytics.544b8e0964772d420a0f.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static-tracking.klaviyo.com/onsite/js/static.4b8f99d71b7685ee4f53.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/runtime.93943bcac11be02d4a46.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/sharedUtils.e6f86edb59a7c22ea57e.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/vendors~in_app_forms~signup_forms~onsite-triggering~customerHubRoot~renderWishlistButton.35ec92634b02573059d8.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/vendors~in_app_forms~signup_forms~reviews~atlas.89b1a99aedb4bfc97bc3.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/vendors~in_app_forms~signup_forms.7b8bb44ce06b964e3631.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/default~in_app_forms~signup_forms~onsite-triggering.7a64e488a2e875dd465a.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/default~in_app_forms~signup_forms.fcc3a143c64fb2b31734.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/signup_forms.a8cbfce61e5f030aaeae.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static-tracking.klaviyo.com/onsite/js/post_identification_sync.9f6450b74b882e56b859.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://static.klaviyo.com/onsite/js/event_adapter.7cf9e35416b96205a69b.js?cb=1&amp;v2-route=1" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://cdn.rebuyengine.com/onsite/js/global.js?build=1745001416"></script><link type="text/css" rel="stylesheet" href="https://cdn.rebuyengine.com/onsite/css/global.min.css?build=1745001416"><script src="https://omiwellbeauty.com/wpm@5f8264e6w7e417702p65a4c950md7b71799/app/web-pixel-638943413@5eac266b39be96dbf2c723365d038540/pixel.modern.js" async="" data-pixel-id="638943413" data-pixel-type="APP"></script><script charset="utf-8" src="https://d3hw6dc1ow8pp2.cloudfront.net/reviews-widget-plus/js/modules/okendo-star-rating.518eb7c2.js"></script><script type="module" defer="" src="https://omiwellbeauty.com/cdn/shopifycloud/consent-tracking-api/v0.1/consent-tracking-api.js"></script><style id="kl-custom-fonts">
+@import 'https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400&family=Manrope:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap';
+
+@font-face {
+        font-family: 'FeatureDisplay-Regular'; 
+        src: url(https://cdn.shopify.com/s/files/1/0267/3537/8613/files/FeatureDisplay-Regular-Web.woff?v=1735653233);
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+</style><style id="onetrust-style">#onetrust-banner-sdk .onetrust-vendors-list-handler{cursor:pointer;color:#1f96db;font-size:inherit;font-weight:bold;text-decoration:none;margin-left:5px}#onetrust-banner-sdk .onetrust-vendors-list-handler:hover{color:#1f96db}#onetrust-banner-sdk:focus{outline:2px solid #000;outline-offset:-2px}#onetrust-banner-sdk a:focus{outline:2px solid #000}#onetrust-banner-sdk #onetrust-accept-btn-handler,#onetrust-banner-sdk #onetrust-reject-all-handler,#onetrust-banner-sdk #onetrust-pc-btn-handler{outline-offset:1px}#onetrust-banner-sdk.ot-bnr-w-logo .ot-bnr-logo{height:64px;width:64px}#onetrust-banner-sdk .ot-tcf2-vendor-count.ot-text-bold{font-weight:bold}#onetrust-banner-sdk .ot-close-icon,#onetrust-pc-sdk .ot-close-icon,#ot-sync-ntfy .ot-close-icon{background-size:contain;background-repeat:no-repeat;background-position:center;height:12px;width:12px}#onetrust-banner-sdk .powered-by-logo,#onetrust-banner-sdk .ot-pc-footer-logo a,#onetrust-pc-sdk .powered-by-logo,#onetrust-pc-sdk .ot-pc-footer-logo a,#ot-sync-ntfy .powered-by-logo,#ot-sync-ntfy .ot-pc-footer-logo a{background-size:contain;background-repeat:no-repeat;background-position:center;height:25px;width:152px;display:block;text-decoration:none;font-size:.75em}#onetrust-banner-sdk .powered-by-logo:hover,#onetrust-banner-sdk .ot-pc-footer-logo a:hover,#onetrust-pc-sdk .powered-by-logo:hover,#onetrust-pc-sdk .ot-pc-footer-logo a:hover,#ot-sync-ntfy .powered-by-logo:hover,#ot-sync-ntfy .ot-pc-footer-logo a:hover{color:#565656}#onetrust-banner-sdk h3 *,#onetrust-banner-sdk h4 *,#onetrust-banner-sdk h6 *,#onetrust-banner-sdk button *,#onetrust-banner-sdk a[data-parent-id] *,#onetrust-pc-sdk h3 *,#onetrust-pc-sdk h4 *,#onetrust-pc-sdk h6 *,#onetrust-pc-sdk button *,#onetrust-pc-sdk a[data-parent-id] *,#ot-sync-ntfy h3 *,#ot-sync-ntfy h4 *,#ot-sync-ntfy h6 *,#ot-sync-ntfy button *,#ot-sync-ntfy a[data-parent-id] *{font-size:inherit;font-weight:inherit;color:inherit}#onetrust-banner-sdk .ot-hide,#onetrust-pc-sdk .ot-hide,#ot-sync-ntfy .ot-hide{display:none !important}#onetrust-banner-sdk button.ot-link-btn:hover,#onetrust-pc-sdk button.ot-link-btn:hover,#ot-sync-ntfy button.ot-link-btn:hover{text-decoration:underline;opacity:1}#onetrust-pc-sdk .ot-sdk-row .ot-sdk-column{padding:0}#onetrust-pc-sdk .ot-sdk-container{padding-right:0}#onetrust-pc-sdk .ot-sdk-row{flex-direction:initial;width:100%}#onetrust-pc-sdk [type=checkbox]:checked,#onetrust-pc-sdk [type=checkbox]:not(:checked){pointer-events:initial}#onetrust-pc-sdk [type=checkbox]:disabled+label::before,#onetrust-pc-sdk [type=checkbox]:disabled+label:after,#onetrust-pc-sdk [type=checkbox]:disabled+label{pointer-events:none;opacity:.8}#onetrust-pc-sdk #vendor-list-content{transform:translate3d(0, 0, 0)}#onetrust-pc-sdk li input[type=checkbox]{z-index:1}#onetrust-pc-sdk li .ot-checkbox label{z-index:2}#onetrust-pc-sdk li .ot-checkbox input[type=checkbox]{height:auto;width:auto}#onetrust-pc-sdk li .host-title a,#onetrust-pc-sdk li .ot-host-name a,#onetrust-pc-sdk li .accordion-text,#onetrust-pc-sdk li .ot-acc-txt{z-index:2;position:relative}#onetrust-pc-sdk input{margin:3px .1ex}#onetrust-pc-sdk .pc-logo,#onetrust-pc-sdk .ot-pc-logo{height:60px;width:180px;background-position:center;background-size:contain;background-repeat:no-repeat;display:inline-flex;justify-content:center;align-items:center}#onetrust-pc-sdk .pc-logo img,#onetrust-pc-sdk .ot-pc-logo img{max-height:100%;max-width:100%}#onetrust-pc-sdk .screen-reader-only,#onetrust-pc-sdk .ot-scrn-rdr,.ot-sdk-cookie-policy .screen-reader-only,.ot-sdk-cookie-policy .ot-scrn-rdr{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}#onetrust-pc-sdk.ot-fade-in,.onetrust-pc-dark-filter.ot-fade-in,#onetrust-banner-sdk.ot-fade-in{animation-name:onetrust-fade-in;animation-duration:400ms;animation-timing-function:ease-in-out}#onetrust-pc-sdk.ot-hide{display:none !important}.onetrust-pc-dark-filter.ot-hide{display:none !important}#ot-sdk-btn.ot-sdk-show-settings,#ot-sdk-btn.optanon-show-settings{color:#fff;background-color:#468254;height:auto;white-space:normal;word-wrap:break-word;padding:.8em 2em;font-size:.8em;line-height:1.2;cursor:pointer;-moz-transition:.1s ease;-o-transition:.1s ease;-webkit-transition:1s ease;transition:.1s ease}#ot-sdk-btn.ot-sdk-show-settings:hover,#ot-sdk-btn.optanon-show-settings:hover{color:#fff;background-color:#2c6415}#ot-sdk-btn.ot-sdk-show-settings:active,#ot-sdk-btn.optanon-show-settings:active{color:#fff;background-color:#2c6415;border:1px solid rgba(162,192,169,.5)}.onetrust-pc-dark-filter{background:rgba(0,0,0,.5);z-index:2147483646;width:100%;height:100%;overflow:hidden;position:fixed;top:0;bottom:0;left:0}@keyframes onetrust-fade-in{0%{opacity:0}100%{opacity:1}}.ot-cookie-label{text-decoration:underline}@media only screen and (min-width: 426px)and (max-width: 896px)and (orientation: landscape){#onetrust-pc-sdk p{font-size:.75em}}#onetrust-banner-sdk .banner-option-input:focus+label{outline:1px solid #000;outline-style:auto}.category-vendors-list-handler+a:focus,.category-vendors-list-handler+a:focus-visible{outline:2px solid #000}#onetrust-pc-sdk .ot-userid-title{margin-top:10px}#onetrust-pc-sdk .ot-userid-title>span,#onetrust-pc-sdk .ot-userid-timestamp>span{font-weight:700}#onetrust-pc-sdk .ot-userid-desc{font-style:italic}#onetrust-pc-sdk .ot-host-desc a{pointer-events:initial}#onetrust-pc-sdk .ot-ven-hdr>p a{position:relative;z-index:2;pointer-events:initial}#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-vnd-info a,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-vnd-info a{margin-right:auto}#onetrust-pc-sdk .ot-pc-footer-logo img{width:136px;height:16px}#onetrust-pc-sdk .ot-pur-vdr-count{font-weight:400;font-size:.8em;padding-top:3px;display:block}#onetrust-banner-sdk .ot-optout-signal,#onetrust-pc-sdk .ot-optout-signal{border:1px solid #32ae88;border-radius:3px;padding:5px;margin-bottom:10px;background-color:#f9fffa;font-size:.85rem;line-height:2}#onetrust-banner-sdk .ot-optout-signal .ot-optout-icon,#onetrust-pc-sdk .ot-optout-signal .ot-optout-icon{display:inline;margin-right:5px}#onetrust-banner-sdk .ot-optout-signal svg,#onetrust-pc-sdk .ot-optout-signal svg{height:20px;width:30px;transform:scale(0.5)}#onetrust-banner-sdk .ot-optout-signal svg path,#onetrust-pc-sdk .ot-optout-signal svg path{fill:#32ae88}#onetrust-consent-sdk .ot-general-modal{overflow:hidden;position:fixed;margin:0 auto;top:50%;left:50%;width:40%;padding:1.5rem;max-width:575px;min-width:575px;z-index:2147483647;border-radius:2.5px;transform:translate(-50%, -50%)}#onetrust-consent-sdk .ot-signature-health-group{margin-top:1rem;padding-left:1.25rem;padding-right:1.25rem;margin-bottom:.625rem;width:calc(100% - 2.5rem)}#onetrust-consent-sdk .ot-signature-health-group .ot-signature-health-form{gap:.5rem}#onetrust-consent-sdk .ot-signature-health .ot-signature-health-form{width:70%;gap:.35rem}#onetrust-consent-sdk .ot-signature-health .ot-signature-input{height:38px;padding:6px 10px;background-color:#fff;border:1px solid #d1d1d1;border-radius:4px;box-shadow:none;box-sizing:border-box}#onetrust-consent-sdk .ot-signature-health .ot-signature-subtitle{font-size:1.125rem}#onetrust-consent-sdk .ot-signature-health .ot-signature-group-title{font-size:1.25rem;font-weight:bold}#onetrust-consent-sdk .ot-signature-health,#onetrust-consent-sdk .ot-signature-health-group{display:flex;flex-direction:column;gap:1rem}#onetrust-consent-sdk .ot-signature-health .ot-signature-cont,#onetrust-consent-sdk .ot-signature-health-group .ot-signature-cont{display:flex;flex-direction:column;gap:.25rem}#onetrust-consent-sdk .ot-signature-health .ot-signature-paragraph,#onetrust-consent-sdk .ot-signature-health-group .ot-signature-paragraph{margin:0;line-height:20px;font-size:max(14px,.875rem)}#onetrust-consent-sdk .ot-signature-health .ot-health-signature-error,#onetrust-consent-sdk .ot-signature-health-group .ot-health-signature-error{color:#4d4d4d;font-size:min(12px,.75rem)}#onetrust-consent-sdk .ot-signature-health .ot-signature-buttons-cont,#onetrust-consent-sdk .ot-signature-health-group .ot-signature-buttons-cont{margin-top:max(.75rem,2%);gap:1rem;display:flex;justify-content:flex-end}#onetrust-consent-sdk .ot-signature-health .ot-signature-button,#onetrust-consent-sdk .ot-signature-health-group .ot-signature-button{flex:1;height:auto;color:#fff;cursor:pointer;line-height:1.2;min-width:125px;font-weight:600;font-size:.813em;border-radius:2px;padding:12px 10px;white-space:normal;word-wrap:break-word;word-break:break-word;background-color:#68b631;border:2px solid #68b631}#onetrust-consent-sdk .ot-signature-health .ot-signature-button.reject,#onetrust-consent-sdk .ot-signature-health-group .ot-signature-button.reject{background-color:#fff}#onetrust-consent-sdk .ot-input-field-cont{display:flex;flex-direction:column;gap:.5rem}#onetrust-consent-sdk .ot-input-field-cont .ot-signature-input{width:65%}#onetrust-consent-sdk .ot-signature-health-form{display:flex;flex-direction:column}#onetrust-consent-sdk .ot-signature-health-form .ot-signature-label{margin-bottom:0;line-height:20px;font-size:max(14px,.875rem)}@media only screen and (max-width: 600px){#onetrust-consent-sdk .ot-general-modal{min-width:100%}#onetrust-consent-sdk .ot-signature-health .ot-signature-health-form{width:100%}#onetrust-consent-sdk .ot-input-field-cont .ot-signature-input{width:100%}}#onetrust-banner-sdk,#onetrust-pc-sdk,#ot-sdk-cookie-policy,#ot-sync-ntfy{font-size:16px}#onetrust-banner-sdk *,#onetrust-banner-sdk ::after,#onetrust-banner-sdk ::before,#onetrust-pc-sdk *,#onetrust-pc-sdk ::after,#onetrust-pc-sdk ::before,#ot-sdk-cookie-policy *,#ot-sdk-cookie-policy ::after,#ot-sdk-cookie-policy ::before,#ot-sync-ntfy *,#ot-sync-ntfy ::after,#ot-sync-ntfy ::before{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}#onetrust-banner-sdk div,#onetrust-banner-sdk span,#onetrust-banner-sdk h1,#onetrust-banner-sdk h2,#onetrust-banner-sdk h3,#onetrust-banner-sdk h4,#onetrust-banner-sdk h5,#onetrust-banner-sdk h6,#onetrust-banner-sdk p,#onetrust-banner-sdk img,#onetrust-banner-sdk svg,#onetrust-banner-sdk button,#onetrust-banner-sdk section,#onetrust-banner-sdk a,#onetrust-banner-sdk label,#onetrust-banner-sdk input,#onetrust-banner-sdk ul,#onetrust-banner-sdk li,#onetrust-banner-sdk nav,#onetrust-banner-sdk table,#onetrust-banner-sdk thead,#onetrust-banner-sdk tr,#onetrust-banner-sdk td,#onetrust-banner-sdk tbody,#onetrust-banner-sdk .ot-main-content,#onetrust-banner-sdk .ot-toggle,#onetrust-banner-sdk #ot-content,#onetrust-banner-sdk #ot-pc-content,#onetrust-banner-sdk .checkbox,#onetrust-pc-sdk div,#onetrust-pc-sdk span,#onetrust-pc-sdk h1,#onetrust-pc-sdk h2,#onetrust-pc-sdk h3,#onetrust-pc-sdk h4,#onetrust-pc-sdk h5,#onetrust-pc-sdk h6,#onetrust-pc-sdk p,#onetrust-pc-sdk img,#onetrust-pc-sdk svg,#onetrust-pc-sdk button,#onetrust-pc-sdk section,#onetrust-pc-sdk a,#onetrust-pc-sdk label,#onetrust-pc-sdk input,#onetrust-pc-sdk ul,#onetrust-pc-sdk li,#onetrust-pc-sdk nav,#onetrust-pc-sdk table,#onetrust-pc-sdk thead,#onetrust-pc-sdk tr,#onetrust-pc-sdk td,#onetrust-pc-sdk tbody,#onetrust-pc-sdk .ot-main-content,#onetrust-pc-sdk .ot-toggle,#onetrust-pc-sdk #ot-content,#onetrust-pc-sdk #ot-pc-content,#onetrust-pc-sdk .checkbox,#ot-sdk-cookie-policy div,#ot-sdk-cookie-policy span,#ot-sdk-cookie-policy h1,#ot-sdk-cookie-policy h2,#ot-sdk-cookie-policy h3,#ot-sdk-cookie-policy h4,#ot-sdk-cookie-policy h5,#ot-sdk-cookie-policy h6,#ot-sdk-cookie-policy p,#ot-sdk-cookie-policy img,#ot-sdk-cookie-policy svg,#ot-sdk-cookie-policy button,#ot-sdk-cookie-policy section,#ot-sdk-cookie-policy a,#ot-sdk-cookie-policy label,#ot-sdk-cookie-policy input,#ot-sdk-cookie-policy ul,#ot-sdk-cookie-policy li,#ot-sdk-cookie-policy nav,#ot-sdk-cookie-policy table,#ot-sdk-cookie-policy thead,#ot-sdk-cookie-policy tr,#ot-sdk-cookie-policy td,#ot-sdk-cookie-policy tbody,#ot-sdk-cookie-policy .ot-main-content,#ot-sdk-cookie-policy .ot-toggle,#ot-sdk-cookie-policy #ot-content,#ot-sdk-cookie-policy #ot-pc-content,#ot-sdk-cookie-policy .checkbox,#ot-sync-ntfy div,#ot-sync-ntfy span,#ot-sync-ntfy h1,#ot-sync-ntfy h2,#ot-sync-ntfy h3,#ot-sync-ntfy h4,#ot-sync-ntfy h5,#ot-sync-ntfy h6,#ot-sync-ntfy p,#ot-sync-ntfy img,#ot-sync-ntfy svg,#ot-sync-ntfy button,#ot-sync-ntfy section,#ot-sync-ntfy a,#ot-sync-ntfy label,#ot-sync-ntfy input,#ot-sync-ntfy ul,#ot-sync-ntfy li,#ot-sync-ntfy nav,#ot-sync-ntfy table,#ot-sync-ntfy thead,#ot-sync-ntfy tr,#ot-sync-ntfy td,#ot-sync-ntfy tbody,#ot-sync-ntfy .ot-main-content,#ot-sync-ntfy .ot-toggle,#ot-sync-ntfy #ot-content,#ot-sync-ntfy #ot-pc-content,#ot-sync-ntfy .checkbox{font-family:inherit;font-weight:normal;-webkit-font-smoothing:auto;letter-spacing:normal;line-height:normal;padding:0;margin:0;height:auto;min-height:0;max-height:none;width:auto;min-width:0;max-width:none;border-radius:0;border:none;clear:none;float:none;position:static;bottom:auto;left:auto;right:auto;top:auto;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;white-space:normal;background:none;overflow:visible;vertical-align:baseline;visibility:visible;z-index:auto;box-shadow:none}#onetrust-banner-sdk label:before,#onetrust-banner-sdk label:after,#onetrust-banner-sdk .checkbox:after,#onetrust-banner-sdk .checkbox:before,#onetrust-pc-sdk label:before,#onetrust-pc-sdk label:after,#onetrust-pc-sdk .checkbox:after,#onetrust-pc-sdk .checkbox:before,#ot-sdk-cookie-policy label:before,#ot-sdk-cookie-policy label:after,#ot-sdk-cookie-policy .checkbox:after,#ot-sdk-cookie-policy .checkbox:before,#ot-sync-ntfy label:before,#ot-sync-ntfy label:after,#ot-sync-ntfy .checkbox:after,#ot-sync-ntfy .checkbox:before{content:"";content:none}#onetrust-banner-sdk .ot-sdk-container,#onetrust-pc-sdk .ot-sdk-container,#ot-sdk-cookie-policy .ot-sdk-container{position:relative;width:100%;max-width:100%;margin:0 auto;padding:0 20px;box-sizing:border-box}#onetrust-banner-sdk .ot-sdk-column,#onetrust-banner-sdk .ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-column,#onetrust-pc-sdk .ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-column,#ot-sdk-cookie-policy .ot-sdk-columns{width:100%;float:left;box-sizing:border-box;padding:0;display:initial}@media(min-width: 400px){#onetrust-banner-sdk .ot-sdk-container,#onetrust-pc-sdk .ot-sdk-container,#ot-sdk-cookie-policy .ot-sdk-container{width:90%;padding:0}}@media(min-width: 550px){#onetrust-banner-sdk .ot-sdk-container,#onetrust-pc-sdk .ot-sdk-container,#ot-sdk-cookie-policy .ot-sdk-container{width:100%}#onetrust-banner-sdk .ot-sdk-column,#onetrust-banner-sdk .ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-column,#onetrust-pc-sdk .ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-column,#ot-sdk-cookie-policy .ot-sdk-columns{margin-left:4%}#onetrust-banner-sdk .ot-sdk-column:first-child,#onetrust-banner-sdk .ot-sdk-columns:first-child,#onetrust-pc-sdk .ot-sdk-column:first-child,#onetrust-pc-sdk .ot-sdk-columns:first-child,#ot-sdk-cookie-policy .ot-sdk-column:first-child,#ot-sdk-cookie-policy .ot-sdk-columns:first-child{margin-left:0}#onetrust-banner-sdk .ot-sdk-two.ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-two.ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-two.ot-sdk-columns{width:13.3333333333%}#onetrust-banner-sdk .ot-sdk-three.ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-three.ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-three.ot-sdk-columns{width:22%}#onetrust-banner-sdk .ot-sdk-four.ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-four.ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-four.ot-sdk-columns{width:30.6666666667%}#onetrust-banner-sdk .ot-sdk-eight.ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-eight.ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-eight.ot-sdk-columns{width:65.3333333333%}#onetrust-banner-sdk .ot-sdk-nine.ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-nine.ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-nine.ot-sdk-columns{width:74%}#onetrust-banner-sdk .ot-sdk-ten.ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-ten.ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-ten.ot-sdk-columns{width:82.6666666667%}#onetrust-banner-sdk .ot-sdk-eleven.ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-eleven.ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-eleven.ot-sdk-columns{width:91.3333333333%}#onetrust-banner-sdk .ot-sdk-twelve.ot-sdk-columns,#onetrust-pc-sdk .ot-sdk-twelve.ot-sdk-columns,#ot-sdk-cookie-policy .ot-sdk-twelve.ot-sdk-columns{width:100%;margin-left:0}}#onetrust-banner-sdk h1,#onetrust-banner-sdk h2,#onetrust-banner-sdk h3,#onetrust-banner-sdk h4,#onetrust-banner-sdk h5,#onetrust-banner-sdk h6,#onetrust-pc-sdk h1,#onetrust-pc-sdk h2,#onetrust-pc-sdk h3,#onetrust-pc-sdk h4,#onetrust-pc-sdk h5,#onetrust-pc-sdk h6,#ot-sdk-cookie-policy h1,#ot-sdk-cookie-policy h2,#ot-sdk-cookie-policy h3,#ot-sdk-cookie-policy h4,#ot-sdk-cookie-policy h5,#ot-sdk-cookie-policy h6{margin-top:0;font-weight:600;font-family:inherit}#onetrust-banner-sdk h1,#onetrust-pc-sdk h1,#ot-sdk-cookie-policy h1{font-size:1.5rem;line-height:1.2}#onetrust-banner-sdk h2,#onetrust-pc-sdk h2,#ot-sdk-cookie-policy h2{font-size:1.5rem;line-height:1.25}#onetrust-banner-sdk h3,#onetrust-pc-sdk h3,#ot-sdk-cookie-policy h3{font-size:1.5rem;line-height:1.3}#onetrust-banner-sdk h4,#onetrust-pc-sdk h4,#ot-sdk-cookie-policy h4{font-size:1.5rem;line-height:1.35}#onetrust-banner-sdk h5,#onetrust-pc-sdk h5,#ot-sdk-cookie-policy h5{font-size:1.5rem;line-height:1.5}#onetrust-banner-sdk h6,#onetrust-pc-sdk h6,#ot-sdk-cookie-policy h6{font-size:1.5rem;line-height:1.6}@media(min-width: 550px){#onetrust-banner-sdk h1,#onetrust-pc-sdk h1,#ot-sdk-cookie-policy h1{font-size:1.5rem}#onetrust-banner-sdk h2,#onetrust-pc-sdk h2,#ot-sdk-cookie-policy h2{font-size:1.5rem}#onetrust-banner-sdk h3,#onetrust-pc-sdk h3,#ot-sdk-cookie-policy h3{font-size:1.5rem}#onetrust-banner-sdk h4,#onetrust-pc-sdk h4,#ot-sdk-cookie-policy h4{font-size:1.5rem}#onetrust-banner-sdk h5,#onetrust-pc-sdk h5,#ot-sdk-cookie-policy h5{font-size:1.5rem}#onetrust-banner-sdk h6,#onetrust-pc-sdk h6,#ot-sdk-cookie-policy h6{font-size:1.5rem}}#onetrust-banner-sdk p,#onetrust-pc-sdk p,#ot-sdk-cookie-policy p{margin:0 0 1em 0;font-family:inherit;line-height:normal}#onetrust-banner-sdk a,#onetrust-pc-sdk a,#ot-sdk-cookie-policy a{color:#565656;text-decoration:underline}#onetrust-banner-sdk a:hover,#onetrust-pc-sdk a:hover,#ot-sdk-cookie-policy a:hover{color:#565656;text-decoration:none}#onetrust-banner-sdk .ot-sdk-button,#onetrust-banner-sdk button,#onetrust-pc-sdk .ot-sdk-button,#onetrust-pc-sdk button,#ot-sdk-cookie-policy .ot-sdk-button,#ot-sdk-cookie-policy button{margin-bottom:1rem;font-family:inherit}#onetrust-banner-sdk .ot-sdk-button,#onetrust-banner-sdk button,#onetrust-pc-sdk .ot-sdk-button,#onetrust-pc-sdk button,#ot-sdk-cookie-policy .ot-sdk-button,#ot-sdk-cookie-policy button{display:inline-block;height:38px;padding:0 30px;color:#555;text-align:center;font-size:.9em;font-weight:400;line-height:38px;letter-spacing:.01em;text-decoration:none;white-space:nowrap;background-color:rgba(0,0,0,0);border-radius:2px;border:1px solid #bbb;cursor:pointer;box-sizing:border-box}#onetrust-banner-sdk .ot-sdk-button:hover,#onetrust-banner-sdk :not(.ot-leg-btn-container)>button:not(.ot-link-btn):hover,#onetrust-banner-sdk :not(.ot-leg-btn-container)>button:not(.ot-link-btn):focus,#onetrust-pc-sdk .ot-sdk-button:hover,#onetrust-pc-sdk :not(.ot-leg-btn-container)>button:not(.ot-link-btn):hover,#onetrust-pc-sdk :not(.ot-leg-btn-container)>button:not(.ot-link-btn):focus,#ot-sdk-cookie-policy .ot-sdk-button:hover,#ot-sdk-cookie-policy :not(.ot-leg-btn-container)>button:not(.ot-link-btn):hover,#ot-sdk-cookie-policy :not(.ot-leg-btn-container)>button:not(.ot-link-btn):focus{color:#333;border-color:#888;opacity:.9}#onetrust-banner-sdk .ot-sdk-button:focus,#onetrust-banner-sdk :not(.ot-leg-btn-container)>button:focus,#onetrust-pc-sdk .ot-sdk-button:focus,#onetrust-pc-sdk :not(.ot-leg-btn-container)>button:focus,#ot-sdk-cookie-policy .ot-sdk-button:focus,#ot-sdk-cookie-policy :not(.ot-leg-btn-container)>button:focus{outline:2px solid #000}#onetrust-banner-sdk .ot-sdk-button.ot-sdk-button-primary,#onetrust-banner-sdk button.ot-sdk-button-primary,#onetrust-banner-sdk input[type=submit].ot-sdk-button-primary,#onetrust-banner-sdk input[type=reset].ot-sdk-button-primary,#onetrust-banner-sdk input[type=button].ot-sdk-button-primary,#onetrust-pc-sdk .ot-sdk-button.ot-sdk-button-primary,#onetrust-pc-sdk button.ot-sdk-button-primary,#onetrust-pc-sdk input[type=submit].ot-sdk-button-primary,#onetrust-pc-sdk input[type=reset].ot-sdk-button-primary,#onetrust-pc-sdk input[type=button].ot-sdk-button-primary,#ot-sdk-cookie-policy .ot-sdk-button.ot-sdk-button-primary,#ot-sdk-cookie-policy button.ot-sdk-button-primary,#ot-sdk-cookie-policy input[type=submit].ot-sdk-button-primary,#ot-sdk-cookie-policy input[type=reset].ot-sdk-button-primary,#ot-sdk-cookie-policy input[type=button].ot-sdk-button-primary{color:#fff;background-color:#33c3f0;border-color:#33c3f0}#onetrust-banner-sdk .ot-sdk-button.ot-sdk-button-primary:hover,#onetrust-banner-sdk button.ot-sdk-button-primary:hover,#onetrust-banner-sdk input[type=submit].ot-sdk-button-primary:hover,#onetrust-banner-sdk input[type=reset].ot-sdk-button-primary:hover,#onetrust-banner-sdk input[type=button].ot-sdk-button-primary:hover,#onetrust-banner-sdk .ot-sdk-button.ot-sdk-button-primary:focus,#onetrust-banner-sdk button.ot-sdk-button-primary:focus,#onetrust-banner-sdk input[type=submit].ot-sdk-button-primary:focus,#onetrust-banner-sdk input[type=reset].ot-sdk-button-primary:focus,#onetrust-banner-sdk input[type=button].ot-sdk-button-primary:focus,#onetrust-pc-sdk .ot-sdk-button.ot-sdk-button-primary:hover,#onetrust-pc-sdk button.ot-sdk-button-primary:hover,#onetrust-pc-sdk input[type=submit].ot-sdk-button-primary:hover,#onetrust-pc-sdk input[type=reset].ot-sdk-button-primary:hover,#onetrust-pc-sdk input[type=button].ot-sdk-button-primary:hover,#onetrust-pc-sdk .ot-sdk-button.ot-sdk-button-primary:focus,#onetrust-pc-sdk button.ot-sdk-button-primary:focus,#onetrust-pc-sdk input[type=submit].ot-sdk-button-primary:focus,#onetrust-pc-sdk input[type=reset].ot-sdk-button-primary:focus,#onetrust-pc-sdk input[type=button].ot-sdk-button-primary:focus,#ot-sdk-cookie-policy .ot-sdk-button.ot-sdk-button-primary:hover,#ot-sdk-cookie-policy button.ot-sdk-button-primary:hover,#ot-sdk-cookie-policy input[type=submit].ot-sdk-button-primary:hover,#ot-sdk-cookie-policy input[type=reset].ot-sdk-button-primary:hover,#ot-sdk-cookie-policy input[type=button].ot-sdk-button-primary:hover,#ot-sdk-cookie-policy .ot-sdk-button.ot-sdk-button-primary:focus,#ot-sdk-cookie-policy button.ot-sdk-button-primary:focus,#ot-sdk-cookie-policy input[type=submit].ot-sdk-button-primary:focus,#ot-sdk-cookie-policy input[type=reset].ot-sdk-button-primary:focus,#ot-sdk-cookie-policy input[type=button].ot-sdk-button-primary:focus{color:#fff;background-color:#1eaedb;border-color:#1eaedb}#onetrust-banner-sdk input[type=text],#onetrust-pc-sdk input[type=text],#ot-sdk-cookie-policy input[type=text]{height:38px;padding:6px 10px;background-color:#fff;border:1px solid #d1d1d1;border-radius:4px;box-shadow:none;box-sizing:border-box}#onetrust-banner-sdk input[type=text],#onetrust-pc-sdk input[type=text],#ot-sdk-cookie-policy input[type=text]{-webkit-appearance:none;-moz-appearance:none;appearance:none}#onetrust-banner-sdk input[type=text]:focus,#onetrust-pc-sdk input[type=text]:focus,#ot-sdk-cookie-policy input[type=text]:focus{border:1px solid #000;outline:0}#onetrust-banner-sdk label,#onetrust-pc-sdk label,#ot-sdk-cookie-policy label{display:block;margin-bottom:.5rem;font-weight:600}#onetrust-banner-sdk input[type=checkbox],#onetrust-pc-sdk input[type=checkbox],#ot-sdk-cookie-policy input[type=checkbox]{display:inline}#onetrust-banner-sdk ul,#onetrust-pc-sdk ul,#ot-sdk-cookie-policy ul{list-style:circle inside}#onetrust-banner-sdk ul,#onetrust-pc-sdk ul,#ot-sdk-cookie-policy ul{padding-left:0;margin-top:0}#onetrust-banner-sdk ul ul,#onetrust-pc-sdk ul ul,#ot-sdk-cookie-policy ul ul{margin:1.5rem 0 1.5rem 3rem;font-size:90%}#onetrust-banner-sdk li,#onetrust-pc-sdk li,#ot-sdk-cookie-policy li{margin-bottom:1rem}#onetrust-banner-sdk th,#onetrust-banner-sdk td,#onetrust-pc-sdk th,#onetrust-pc-sdk td,#ot-sdk-cookie-policy th,#ot-sdk-cookie-policy td{padding:12px 15px;text-align:left;border-bottom:1px solid #e1e1e1}#onetrust-banner-sdk button,#onetrust-pc-sdk button,#ot-sdk-cookie-policy button{margin-bottom:1rem;font-family:inherit}#onetrust-banner-sdk .ot-sdk-container:after,#onetrust-banner-sdk .ot-sdk-row:after,#onetrust-pc-sdk .ot-sdk-container:after,#onetrust-pc-sdk .ot-sdk-row:after,#ot-sdk-cookie-policy .ot-sdk-container:after,#ot-sdk-cookie-policy .ot-sdk-row:after{content:"";display:table;clear:both}#onetrust-banner-sdk .ot-sdk-row,#onetrust-pc-sdk .ot-sdk-row,#ot-sdk-cookie-policy .ot-sdk-row{margin:0;max-width:none;display:block}#onetrust-banner-sdk{box-shadow:0 0 18px rgba(0,0,0,.2)}#onetrust-banner-sdk.otFlat{position:fixed;z-index:2147483645;bottom:0;right:0;left:0;background-color:#fff;max-height:90%;overflow-x:hidden;overflow-y:auto}#onetrust-banner-sdk.otFlat.top{top:0px;bottom:auto}#onetrust-banner-sdk.otRelFont{font-size:1rem}#onetrust-banner-sdk>.ot-sdk-container{overflow:hidden}#onetrust-banner-sdk::-webkit-scrollbar{width:11px}#onetrust-banner-sdk::-webkit-scrollbar-thumb{border-radius:10px;background:#c1c1c1}#onetrust-banner-sdk{scrollbar-arrow-color:#c1c1c1;scrollbar-darkshadow-color:#c1c1c1;scrollbar-face-color:#c1c1c1;scrollbar-shadow-color:#c1c1c1}#onetrust-banner-sdk #onetrust-policy{margin:1.25em 0 .625em 2em;overflow:hidden}#onetrust-banner-sdk #onetrust-policy .ot-gv-list-handler{float:left;font-size:.82em;padding:0;margin-bottom:0;border:0;line-height:normal;height:auto;width:auto}#onetrust-banner-sdk #onetrust-policy-title{font-size:1.2em;line-height:1.3;margin-bottom:10px}#onetrust-banner-sdk #onetrust-policy-text{clear:both;text-align:left;font-size:.88em;line-height:1.4}#onetrust-banner-sdk #onetrust-policy-text *{font-size:inherit;line-height:inherit}#onetrust-banner-sdk #onetrust-policy-text a{font-weight:bold;margin-left:5px}#onetrust-banner-sdk #onetrust-policy-title,#onetrust-banner-sdk #onetrust-policy-text{color:dimgray;float:left}#onetrust-banner-sdk #onetrust-button-group-parent{min-height:1px;text-align:center}#onetrust-banner-sdk #onetrust-button-group{display:inline-block}#onetrust-banner-sdk #onetrust-accept-btn-handler,#onetrust-banner-sdk #onetrust-reject-all-handler,#onetrust-banner-sdk #onetrust-pc-btn-handler{background-color:#68b631;color:#fff;border-color:#68b631;margin-right:1em;min-width:125px;height:auto;white-space:normal;word-break:break-word;word-wrap:break-word;padding:12px 10px;line-height:1.2;font-size:.813em;font-weight:600}#onetrust-banner-sdk #onetrust-pc-btn-handler.cookie-setting-link{background-color:#fff;border:none;color:#68b631;text-decoration:underline;padding-left:0;padding-right:0}#onetrust-banner-sdk .onetrust-close-btn-ui{width:44px;height:44px;background-size:12px;border:none;position:relative;margin:auto;padding:0}#onetrust-banner-sdk .banner_logo{display:none}#onetrust-banner-sdk.ot-bnr-w-logo .ot-bnr-logo{position:absolute;top:50%;transform:translateY(-50%);left:0px}#onetrust-banner-sdk.ot-bnr-w-logo #onetrust-policy{margin-left:65px}#onetrust-banner-sdk .ot-b-addl-desc{clear:both;float:left;display:block}#onetrust-banner-sdk #banner-options{float:left;display:table;margin-right:0;margin-left:1em;width:calc(100% - 1em)}#onetrust-banner-sdk .banner-option-input{cursor:pointer;width:auto;height:auto;border:none;padding:0;padding-right:3px;margin:0 0 10px;font-size:.82em;line-height:1.4}#onetrust-banner-sdk .banner-option-input *{pointer-events:none;font-size:inherit;line-height:inherit}#onetrust-banner-sdk .banner-option-input[aria-expanded=true]~.banner-option-details{display:block;height:auto}#onetrust-banner-sdk .banner-option-input[aria-expanded=true] .ot-arrow-container{transform:rotate(90deg)}#onetrust-banner-sdk .banner-option{margin-bottom:12px;margin-left:0;border:none;float:left;padding:0}#onetrust-banner-sdk .banner-option:first-child{padding-left:2px}#onetrust-banner-sdk .banner-option:not(:first-child){padding:0;border:none}#onetrust-banner-sdk .banner-option-header{cursor:pointer;display:inline-block}#onetrust-banner-sdk .banner-option-header :first-child{color:dimgray;font-weight:bold;float:left}#onetrust-banner-sdk .banner-option-header .ot-arrow-container{display:inline-block;border-top:6px solid rgba(0,0,0,0);border-bottom:6px solid rgba(0,0,0,0);border-left:6px solid dimgray;margin-left:10px;vertical-align:middle}#onetrust-banner-sdk .banner-option-details{display:none;font-size:.83em;line-height:1.5;padding:10px 0px 5px 10px;margin-right:10px;height:0px}#onetrust-banner-sdk .banner-option-details *{font-size:inherit;line-height:inherit;color:dimgray}#onetrust-banner-sdk .ot-arrow-container,#onetrust-banner-sdk .banner-option-details{transition:all 300ms ease-in 0s;-webkit-transition:all 300ms ease-in 0s;-moz-transition:all 300ms ease-in 0s;-o-transition:all 300ms ease-in 0s}#onetrust-banner-sdk .ot-dpd-container{float:left}#onetrust-banner-sdk .ot-dpd-title{margin-bottom:10px}#onetrust-banner-sdk .ot-dpd-title,#onetrust-banner-sdk .ot-dpd-desc{font-size:.88em;line-height:1.4;color:dimgray}#onetrust-banner-sdk .ot-dpd-title *,#onetrust-banner-sdk .ot-dpd-desc *{font-size:inherit;line-height:inherit}#onetrust-banner-sdk.ot-iab-2 #onetrust-policy-text *{margin-bottom:0}#onetrust-banner-sdk.ot-iab-2 .onetrust-vendors-list-handler{display:block;margin-left:0;margin-top:5px;clear:both;margin-bottom:0;padding:0;border:0;height:auto;width:auto}#onetrust-banner-sdk.ot-iab-2 #onetrust-button-group button{display:block}#onetrust-banner-sdk.ot-close-btn-link{padding-top:25px}#onetrust-banner-sdk.ot-close-btn-link #onetrust-close-btn-container{top:15px;transform:none;right:15px}#onetrust-banner-sdk.ot-close-btn-link #onetrust-close-btn-container button{padding:0;white-space:pre-wrap;border:none;height:auto;line-height:1.5;text-decoration:underline;font-size:.69em}#onetrust-banner-sdk #onetrust-policy-text,#onetrust-banner-sdk .ot-dpd-desc,#onetrust-banner-sdk .ot-b-addl-desc{font-size:.813em;line-height:1.5}#onetrust-banner-sdk .ot-dpd-desc{margin-bottom:10px}#onetrust-banner-sdk .ot-dpd-desc>.ot-b-addl-desc{margin-top:10px;margin-bottom:10px;font-size:1em}@media only screen and (max-width: 425px){#onetrust-banner-sdk #onetrust-close-btn-container{position:absolute;top:6px;right:2px}#onetrust-banner-sdk #onetrust-policy{margin-left:0;margin-top:3em}#onetrust-banner-sdk #onetrust-button-group{display:block}#onetrust-banner-sdk #onetrust-accept-btn-handler,#onetrust-banner-sdk #onetrust-reject-all-handler,#onetrust-banner-sdk #onetrust-pc-btn-handler{width:100%}#onetrust-banner-sdk .onetrust-close-btn-ui{top:auto;transform:none}#onetrust-banner-sdk #onetrust-policy-title{display:inline;float:none}#onetrust-banner-sdk #banner-options{margin:0;padding:0;width:100%}}@media only screen and (min-width: 426px)and (max-width: 896px){#onetrust-banner-sdk #onetrust-close-btn-container{position:absolute;top:0;right:0}#onetrust-banner-sdk #onetrust-policy{margin-left:1em;margin-right:1em}#onetrust-banner-sdk .onetrust-close-btn-ui{top:10px;right:10px}#onetrust-banner-sdk:not(.ot-iab-2) #onetrust-group-container{width:95%}#onetrust-banner-sdk.ot-iab-2 #onetrust-group-container{width:100%}#onetrust-banner-sdk.ot-bnr-w-logo #onetrust-button-group-parent{padding-left:50px}#onetrust-banner-sdk #onetrust-button-group-parent{width:100%;position:relative;margin-left:0}#onetrust-banner-sdk #onetrust-button-group button{display:inline-block}#onetrust-banner-sdk #onetrust-button-group{margin-right:0;text-align:center}#onetrust-banner-sdk .has-reject-all-button #onetrust-pc-btn-handler{float:left}#onetrust-banner-sdk .has-reject-all-button #onetrust-reject-all-handler,#onetrust-banner-sdk .has-reject-all-button #onetrust-accept-btn-handler{float:right}#onetrust-banner-sdk .has-reject-all-button #onetrust-button-group{width:calc(100% - 2em);margin-right:0}#onetrust-banner-sdk .has-reject-all-button #onetrust-pc-btn-handler.cookie-setting-link{padding-left:0px;text-align:left}#onetrust-banner-sdk.ot-buttons-fw .ot-sdk-three button{width:100%;text-align:center}#onetrust-banner-sdk.ot-buttons-fw #onetrust-button-group-parent button{float:none}#onetrust-banner-sdk.ot-buttons-fw #onetrust-pc-btn-handler.cookie-setting-link{text-align:center}}@media only screen and (min-width: 550px){#onetrust-banner-sdk .banner-option:not(:first-child){border-left:1px solid #d8d8d8;padding-left:25px}}@media only screen and (min-width: 425px)and (max-width: 550px){#onetrust-banner-sdk.ot-iab-2 #onetrust-button-group,#onetrust-banner-sdk.ot-iab-2 #onetrust-policy,#onetrust-banner-sdk.ot-iab-2 .banner-option{width:100%}#onetrust-banner-sdk.ot-iab-2 #onetrust-button-group #onetrust-accept-btn-handler,#onetrust-banner-sdk.ot-iab-2 #onetrust-button-group #onetrust-reject-all-handler,#onetrust-banner-sdk.ot-iab-2 #onetrust-button-group #onetrust-pc-btn-handler{width:100%}#onetrust-banner-sdk.ot-iab-2 #onetrust-button-group #onetrust-accept-btn-handler,#onetrust-banner-sdk.ot-iab-2 #onetrust-button-group #onetrust-reject-all-handler{float:left}}@media only screen and (min-width: 769px){#onetrust-banner-sdk #onetrust-button-group{margin-right:30%}#onetrust-banner-sdk #banner-options{margin-left:2em;margin-right:5em;margin-bottom:1.25em;width:calc(100% - 7em)}}@media only screen and (min-width: 897px)and (max-width: 1023px){#onetrust-banner-sdk.vertical-align-content #onetrust-button-group-parent{position:absolute;top:50%;left:80%;transform:translateY(-50%)}#onetrust-banner-sdk #onetrust-close-btn-container{top:50%;margin:auto;transform:translate(-50%, -50%);position:absolute;padding:0;right:0}#onetrust-banner-sdk #onetrust-close-btn-container button{position:relative;margin:0;right:-22px;top:2px}}@media only screen and (min-width: 1024px){#onetrust-banner-sdk #onetrust-close-btn-container{top:50%;margin:auto;transform:translate(-50%, -50%);position:absolute;right:0}#onetrust-banner-sdk #onetrust-close-btn-container button{right:-12px}#onetrust-banner-sdk #onetrust-policy{margin-left:2em}#onetrust-banner-sdk.vertical-align-content #onetrust-button-group-parent{position:absolute;top:50%;left:60%;transform:translateY(-50%)}#onetrust-banner-sdk .ot-optout-signal{width:50%}#onetrust-banner-sdk.ot-iab-2 #onetrust-policy-title{width:50%}#onetrust-banner-sdk.ot-iab-2 #onetrust-policy-text,#onetrust-banner-sdk.ot-iab-2 :not(.ot-dpd-desc)>.ot-b-addl-desc{margin-bottom:1em;width:50%;border-right:1px solid #d8d8d8;padding-right:1rem}#onetrust-banner-sdk.ot-iab-2 #onetrust-policy-text{margin-bottom:0;padding-bottom:1em}#onetrust-banner-sdk.ot-iab-2 :not(.ot-dpd-desc)>.ot-b-addl-desc{margin-bottom:0;padding-bottom:1em}#onetrust-banner-sdk.ot-iab-2 .ot-dpd-container{width:45%;padding-left:1rem;display:inline-block;float:none}#onetrust-banner-sdk.ot-iab-2 .ot-dpd-title{line-height:1.7}#onetrust-banner-sdk.ot-iab-2 #onetrust-button-group-parent{left:auto;right:4%;margin-left:0}#onetrust-banner-sdk.ot-iab-2 #onetrust-button-group button{display:block}#onetrust-banner-sdk:not(.ot-iab-2) #onetrust-button-group-parent{margin:auto;width:30%}#onetrust-banner-sdk:not(.ot-iab-2) #onetrust-group-container{width:60%}#onetrust-banner-sdk #onetrust-button-group{margin-right:auto}#onetrust-banner-sdk #onetrust-accept-btn-handler,#onetrust-banner-sdk #onetrust-reject-all-handler,#onetrust-banner-sdk #onetrust-pc-btn-handler{margin-top:1em}}@media only screen and (min-width: 890px){#onetrust-banner-sdk.ot-buttons-fw:not(.ot-iab-2) #onetrust-button-group-parent{padding-left:3%;padding-right:4%;margin-left:0}#onetrust-banner-sdk.ot-buttons-fw:not(.ot-iab-2) #onetrust-button-group{margin-right:0;margin-top:1.25em;width:100%}#onetrust-banner-sdk.ot-buttons-fw:not(.ot-iab-2) #onetrust-button-group button{width:100%;margin-bottom:5px;margin-top:5px}#onetrust-banner-sdk.ot-buttons-fw:not(.ot-iab-2) #onetrust-button-group button:last-of-type{margin-bottom:20px}}@media only screen and (min-width: 1280px){#onetrust-banner-sdk:not(.ot-iab-2) #onetrust-group-container{width:55%}#onetrust-banner-sdk:not(.ot-iab-2) #onetrust-button-group-parent{width:44%;padding-left:2%;padding-right:2%}#onetrust-banner-sdk:not(.ot-iab-2).vertical-align-content #onetrust-button-group-parent{position:absolute;left:55%}}
+        #onetrust-consent-sdk #onetrust-banner-sdk {background-color: #FFFFFF;}
+            #onetrust-consent-sdk #onetrust-policy-title,
+                    #onetrust-consent-sdk #onetrust-policy-text,
+                    #onetrust-consent-sdk .ot-b-addl-desc,
+                    #onetrust-consent-sdk .ot-dpd-desc,
+                    #onetrust-consent-sdk .ot-dpd-title,
+                    #onetrust-consent-sdk #onetrust-policy-text *:not(.onetrust-vendors-list-handler),
+                    #onetrust-consent-sdk .ot-dpd-desc *:not(.onetrust-vendors-list-handler),
+                    #onetrust-consent-sdk #onetrust-banner-sdk #banner-options *,
+                    #onetrust-banner-sdk .ot-cat-header,
+                    #onetrust-banner-sdk .ot-optout-signal
+                    {
+                        color: #696969;
+                    }
+            #onetrust-consent-sdk #onetrust-banner-sdk .banner-option-details {
+                    background-color: #E9E9E9;}
+             #onetrust-consent-sdk #onetrust-banner-sdk a[href],
+                    #onetrust-consent-sdk #onetrust-banner-sdk a[href] font,
+                    #onetrust-consent-sdk #onetrust-banner-sdk .ot-link-btn
+                        {
+                            color: #3860BE;
+                        }#onetrust-consent-sdk #onetrust-accept-btn-handler,
+                         #onetrust-banner-sdk #onetrust-reject-all-handler {
+                            background-color: #2E1A4A;border-color: #2E1A4A;
+                color: #FFFFFF;
+            }
+            #onetrust-consent-sdk #onetrust-banner-sdk *:focus,
+            #onetrust-consent-sdk #onetrust-banner-sdk:focus {
+               outline-color: #000000;
+               outline-width: 1px;
+            }
+            #onetrust-consent-sdk #onetrust-pc-btn-handler,
+            #onetrust-consent-sdk #onetrust-pc-btn-handler.cookie-setting-link {
+                color: #2E1A4A; border-color: #2E1A4A;
+                background-color:
+                #ffffff;
+            }#onetrust-pc-sdk.otPcCenter{overflow:hidden;position:fixed;margin:0 auto;top:5%;right:0;left:0;width:40%;max-width:575px;min-width:575px;border-radius:2.5px;z-index:2147483647;background-color:#fff;-webkit-box-shadow:0px 2px 10px -3px #999;-moz-box-shadow:0px 2px 10px -3px #999;box-shadow:0px 2px 10px -3px #999}#onetrust-pc-sdk.otPcCenter[dir=rtl]{right:0;left:0}#onetrust-pc-sdk.otRelFont{font-size:1rem}#onetrust-pc-sdk .ot-optout-signal{margin-top:.625rem}#onetrust-pc-sdk #ot-addtl-venlst .ot-arw-cntr,#onetrust-pc-sdk #ot-addtl-venlst .ot-plus-minus,#onetrust-pc-sdk .ot-hide-tgl{visibility:hidden}#onetrust-pc-sdk #ot-addtl-venlst .ot-arw-cntr *,#onetrust-pc-sdk #ot-addtl-venlst .ot-plus-minus *,#onetrust-pc-sdk .ot-hide-tgl *{visibility:hidden}#onetrust-pc-sdk #ot-gn-venlst .ot-ven-item .ot-acc-hdr{min-height:40px}#onetrust-pc-sdk .ot-pc-header{height:39px;padding:10px 0 10px 30px;border-bottom:1px solid #e9e9e9}#onetrust-pc-sdk #ot-pc-title,#onetrust-pc-sdk #ot-category-title,#onetrust-pc-sdk .ot-cat-header,#onetrust-pc-sdk #ot-lst-title,#onetrust-pc-sdk .ot-ven-hdr .ot-ven-name,#onetrust-pc-sdk .ot-always-active{font-weight:bold;color:dimgray}#onetrust-pc-sdk .ot-always-active-group .ot-cat-header{width:55%;font-weight:700}#onetrust-pc-sdk .ot-cat-item p{clear:both;float:left;margin-top:10px;margin-bottom:5px;line-height:1.5;font-size:.812em;color:dimgray}#onetrust-pc-sdk .ot-close-icon{height:44px;width:44px;background-size:10px}#onetrust-pc-sdk #ot-pc-title{float:left;font-size:1em;line-height:1.5;margin-bottom:10px;margin-top:10px;width:100%}#onetrust-pc-sdk #accept-recommended-btn-handler{margin-right:10px;margin-bottom:25px;position:relative;outline-offset:-1px}#onetrust-pc-sdk #ot-pc-desc{clear:both;width:100%;font-size:.812em;line-height:1.5;margin-bottom:25px}#onetrust-pc-sdk #ot-pc-desc *{font-size:inherit;line-height:inherit}#onetrust-pc-sdk #ot-pc-desc ul li{padding:10px 0px}#onetrust-pc-sdk a{color:#656565;cursor:pointer}#onetrust-pc-sdk a:hover{color:#3860be}#onetrust-pc-sdk label{margin-bottom:0}#onetrust-pc-sdk #vdr-lst-dsc{font-size:.812em;line-height:1.5;padding:10px 15px 5px 15px}#onetrust-pc-sdk button{max-width:394px;padding:12px 30px;line-height:1;word-break:break-word;word-wrap:break-word;white-space:normal;font-weight:bold;height:auto}#onetrust-pc-sdk .ot-link-btn{padding:0;margin-bottom:0;border:0;font-weight:normal;line-height:normal;width:auto;height:auto}#onetrust-pc-sdk #ot-pc-content{position:absolute;overflow-y:scroll;padding-left:2px;padding-right:30px;top:60px;bottom:110px;margin:1px 3px 0 30px;width:calc(100% - 63px)}#onetrust-pc-sdk .ot-vs-list .ot-always-active,#onetrust-pc-sdk .ot-cat-grp .ot-always-active{float:right;clear:none;color:#3860be;margin:0;font-size:.813em;line-height:1.3}#onetrust-pc-sdk .ot-pc-scrollbar::-webkit-scrollbar-track{margin-right:20px}#onetrust-pc-sdk .ot-pc-scrollbar::-webkit-scrollbar{width:11px}#onetrust-pc-sdk .ot-pc-scrollbar::-webkit-scrollbar-thumb{border-radius:10px;background:#d8d8d8}#onetrust-pc-sdk input[type=checkbox]:focus+.ot-acc-hdr{outline:#000 1px solid}#onetrust-pc-sdk .ot-pc-scrollbar{scrollbar-arrow-color:#d8d8d8;scrollbar-darkshadow-color:#d8d8d8;scrollbar-face-color:#d8d8d8;scrollbar-shadow-color:#d8d8d8}#onetrust-pc-sdk .save-preference-btn-handler{margin-right:20px}#onetrust-pc-sdk .ot-pc-refuse-all-handler{margin-right:10px}#onetrust-pc-sdk #ot-pc-desc .privacy-notice-link{margin-left:0;margin-right:8px}#onetrust-pc-sdk #ot-pc-desc .ot-imprint-handler{margin-left:0;margin-right:8px}#onetrust-pc-sdk .ot-subgrp-cntr{display:inline-block;clear:both;width:100%;padding-top:15px}#onetrust-pc-sdk .ot-switch+.ot-subgrp-cntr{padding-top:10px}#onetrust-pc-sdk ul.ot-subgrps{margin:0;font-size:initial}#onetrust-pc-sdk ul.ot-subgrps li p,#onetrust-pc-sdk ul.ot-subgrps li h5{font-size:.813em;line-height:1.4;color:dimgray}#onetrust-pc-sdk ul.ot-subgrps .ot-switch{min-height:auto}#onetrust-pc-sdk ul.ot-subgrps .ot-switch-nob{top:0}#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr{display:inline-block;width:100%}#onetrust-pc-sdk ul.ot-subgrps .ot-acc-txt{margin:0}#onetrust-pc-sdk ul.ot-subgrps li{padding:0;border:none}#onetrust-pc-sdk ul.ot-subgrps li h5{position:relative;top:5px;font-weight:bold;margin-bottom:0;float:left}#onetrust-pc-sdk li.ot-subgrp{margin-left:20px;overflow:auto}#onetrust-pc-sdk li.ot-subgrp>h5{width:calc(100% - 100px)}#onetrust-pc-sdk .ot-cat-item p>ul,#onetrust-pc-sdk li.ot-subgrp p>ul{margin:0px;list-style:disc;margin-left:15px;font-size:inherit}#onetrust-pc-sdk .ot-cat-item p>ul li,#onetrust-pc-sdk li.ot-subgrp p>ul li{font-size:inherit;padding-top:10px;padding-left:0px;padding-right:0px;border:none}#onetrust-pc-sdk .ot-cat-item p>ul li:last-child,#onetrust-pc-sdk li.ot-subgrp p>ul li:last-child{padding-bottom:10px}#onetrust-pc-sdk .ot-pc-logo{height:40px;width:120px}#onetrust-pc-sdk .ot-pc-footer{position:absolute;bottom:0px;width:100%;max-height:160px;border-top:1px solid #d8d8d8}#onetrust-pc-sdk.ot-ftr-stacked .ot-pc-refuse-all-handler{margin-bottom:0px}#onetrust-pc-sdk.ot-ftr-stacked #ot-pc-content{bottom:160px}#onetrust-pc-sdk.ot-ftr-stacked .ot-pc-footer button{width:100%;max-width:none}#onetrust-pc-sdk.ot-ftr-stacked .ot-btn-container{margin:0 30px;width:calc(100% - 60px);padding-right:0}#onetrust-pc-sdk .ot-pc-footer-logo{height:30px;width:100%;text-align:right;background:#f4f4f4}#onetrust-pc-sdk .ot-pc-footer-logo a{display:inline-block;margin-top:5px;margin-right:10px}#onetrust-pc-sdk[dir=rtl] .ot-pc-footer-logo{direction:rtl}#onetrust-pc-sdk[dir=rtl] .ot-pc-footer-logo a{margin-right:25px}#onetrust-pc-sdk .ot-tgl{float:right;position:relative;z-index:1}#onetrust-pc-sdk .ot-tgl input:checked+.ot-switch .ot-switch-nob{background-color:#468254;border:1px solid #fff}#onetrust-pc-sdk .ot-tgl input:checked+.ot-switch .ot-switch-nob:before{-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px);background-color:#fff;border-color:#fff}#onetrust-pc-sdk .ot-tgl input:focus+.ot-switch{outline:#000 solid 1px}#onetrust-pc-sdk .ot-switch{position:relative;display:inline-block;width:45px;height:25px}#onetrust-pc-sdk .ot-switch-nob{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#767676;border:1px solid #ddd;transition:all .2s ease-in 0s;-moz-transition:all .2s ease-in 0s;-o-transition:all .2s ease-in 0s;-webkit-transition:all .2s ease-in 0s;border-radius:20px}#onetrust-pc-sdk .ot-switch-nob:before{position:absolute;content:"";height:18px;width:18px;bottom:3px;left:3px;background-color:#fff;-webkit-transition:.4s;transition:.4s;border-radius:20px}#onetrust-pc-sdk .ot-chkbox input:checked~label::before{background-color:#3860be}#onetrust-pc-sdk .ot-chkbox input+label::after{content:none;color:#fff}#onetrust-pc-sdk .ot-chkbox input:checked+label::after{content:""}#onetrust-pc-sdk .ot-chkbox input:focus+label::before{outline-style:solid;outline-width:2px;outline-style:auto}#onetrust-pc-sdk .ot-chkbox input[aria-checked=mixed]~label::before{background-color:#3860be}#onetrust-pc-sdk .ot-chkbox input[aria-checked=mixed]+label::after{content:""}#onetrust-pc-sdk .ot-chkbox label{position:relative;display:inline-block;padding-left:30px;cursor:pointer;font-weight:500}#onetrust-pc-sdk .ot-chkbox label::before,#onetrust-pc-sdk .ot-chkbox label::after{position:absolute;content:"";display:inline-block;border-radius:3px}#onetrust-pc-sdk .ot-chkbox label::before{height:18px;width:18px;border:1px solid #3860be;left:0px;top:auto}#onetrust-pc-sdk .ot-chkbox label::after{height:5px;width:9px;border-left:3px solid;border-bottom:3px solid;transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);left:4px;top:5px}#onetrust-pc-sdk .ot-label-txt{display:none}#onetrust-pc-sdk .ot-chkbox input,#onetrust-pc-sdk .ot-tgl input{position:absolute;opacity:0;width:0;height:0}#onetrust-pc-sdk .ot-arw-cntr{float:right;position:relative;pointer-events:none}#onetrust-pc-sdk .ot-arw-cntr .ot-arw{width:16px;height:16px;margin-left:5px;color:dimgray;display:inline-block;vertical-align:middle;-webkit-transition:all 150ms ease-in 0s;-moz-transition:all 150ms ease-in 0s;-o-transition:all 150ms ease-in 0s;transition:all 150ms ease-in 0s}#onetrust-pc-sdk input:checked~.ot-acc-hdr .ot-arw,#onetrust-pc-sdk button[aria-expanded=true]~.ot-acc-hdr .ot-arw-cntr svg{transform:rotate(90deg);-o-transform:rotate(90deg);-ms-transform:rotate(90deg);-webkit-transform:rotate(90deg)}#onetrust-pc-sdk input[type=checkbox]:focus+.ot-acc-hdr{outline:#000 1px solid}#onetrust-pc-sdk .ot-tgl-cntr,#onetrust-pc-sdk .ot-arw-cntr{display:inline-block}#onetrust-pc-sdk .ot-tgl-cntr{float:right;margin-top:2px}#onetrust-pc-sdk #ot-lst-cnt .ot-tgl-cntr{margin-top:10px}#onetrust-pc-sdk .ot-always-active-subgroup{width:auto;padding-left:0px !important;top:3px;position:relative}#onetrust-pc-sdk .ot-label-status{font-size:.75em;display:none;font-size:.75em;position:relative;top:2px;padding-right:5px;float:left}#onetrust-pc-sdk .ot-arw-cntr{margin-top:-1px}#onetrust-pc-sdk .ot-arw-cntr svg{-webkit-transition:all 300ms ease-in 0s;-moz-transition:all 300ms ease-in 0s;-o-transition:all 300ms ease-in 0s;transition:all 300ms ease-in 0s;height:10px;width:10px}#onetrust-pc-sdk input:checked~.ot-acc-hdr .ot-arw{transform:rotate(90deg);-o-transform:rotate(90deg);-ms-transform:rotate(90deg);-webkit-transform:rotate(90deg)}#onetrust-pc-sdk .ot-arw{width:10px;margin-left:15px;transition:all 300ms ease-in 0s;-webkit-transition:all 300ms ease-in 0s;-moz-transition:all 300ms ease-in 0s;-o-transition:all 300ms ease-in 0s}#onetrust-pc-sdk .ot-vlst-cntr{margin-bottom:0}#onetrust-pc-sdk .ot-hlst-cntr{margin-top:5px;display:inline-block;width:100%}#onetrust-pc-sdk .category-vendors-list-handler,#onetrust-pc-sdk .category-vendors-list-handler+a,#onetrust-pc-sdk .category-host-list-handler{clear:both;color:#3860be;margin-left:0;font-size:.813em;text-decoration:none;float:left;overflow:hidden}#onetrust-pc-sdk .category-vendors-list-handler:hover,#onetrust-pc-sdk .category-vendors-list-handler+a:hover,#onetrust-pc-sdk .category-host-list-handler:hover{text-decoration-line:underline}#onetrust-pc-sdk .category-vendors-list-handler+a{clear:none}#onetrust-pc-sdk .ot-vlst-cntr .ot-ext-lnk,#onetrust-pc-sdk .ot-ven-hdr .ot-ext-lnk{display:inline-block;height:13px;width:13px;background-repeat:no-repeat;margin-left:1px;margin-top:6px;cursor:pointer}#onetrust-pc-sdk .ot-ven-hdr .ot-ext-lnk{margin-bottom:-1px}#onetrust-pc-sdk .back-btn-handler{font-size:1em;text-decoration:none}#onetrust-pc-sdk .back-btn-handler:hover{opacity:.6}#onetrust-pc-sdk #ot-lst-title h3{display:inline-block;word-break:break-word;word-wrap:break-word;margin-bottom:0;color:#656565;font-size:1em;font-weight:bold;margin-left:15px}#onetrust-pc-sdk #ot-lst-title{margin:10px 0 10px 0px;font-size:1em;text-align:left}#onetrust-pc-sdk #ot-pc-hdr{margin:0 0 0 30px;height:auto;width:auto}#onetrust-pc-sdk #ot-pc-hdr input::placeholder{color:#707070;font-style:italic}#onetrust-pc-sdk #vendor-search-handler{height:31px;width:100%;border-radius:50px;font-size:.8em;padding-right:35px;padding-left:15px;float:left;margin-left:15px}#onetrust-pc-sdk .ot-ven-name{display:block;width:auto;padding-right:5px}#onetrust-pc-sdk #ot-lst-cnt{overflow-y:auto;margin-left:20px;margin-right:7px;width:calc(100% - 27px);max-height:calc(100% - 80px);height:100%;transform:translate3d(0, 0, 0)}#onetrust-pc-sdk #ot-pc-lst{width:100%;bottom:100px;position:absolute;top:60px}#onetrust-pc-sdk #ot-pc-lst:not(.ot-enbl-chr) .ot-tgl-cntr .ot-arw-cntr,#onetrust-pc-sdk #ot-pc-lst:not(.ot-enbl-chr) .ot-tgl-cntr .ot-arw-cntr *{visibility:hidden}#onetrust-pc-sdk #ot-pc-lst .ot-tgl-cntr{right:12px;position:absolute}#onetrust-pc-sdk #ot-pc-lst .ot-arw-cntr{float:right;position:relative}#onetrust-pc-sdk #ot-pc-lst .ot-arw{margin-left:10px}#onetrust-pc-sdk #ot-pc-lst .ot-acc-hdr{overflow:hidden;cursor:pointer}#onetrust-pc-sdk .ot-vlst-cntr{overflow:hidden}#onetrust-pc-sdk #ot-sel-blk{overflow:hidden;width:100%;position:sticky;position:-webkit-sticky;top:0;z-index:3}#onetrust-pc-sdk #ot-back-arw{height:12px;width:12px}#onetrust-pc-sdk .ot-lst-subhdr{width:100%;display:inline-block}#onetrust-pc-sdk .ot-search-cntr{float:left;width:78%;position:relative}#onetrust-pc-sdk .ot-search-cntr>svg{width:30px;height:30px;position:absolute;float:left;right:-15px}#onetrust-pc-sdk .ot-fltr-cntr{float:right;right:50px;position:relative}#onetrust-pc-sdk #filter-btn-handler{background-color:#3860be;border-radius:17px;display:inline-block;position:relative;width:32px;height:32px;-moz-transition:.1s ease;-o-transition:.1s ease;-webkit-transition:1s ease;transition:.1s ease;padding:0;margin:0}#onetrust-pc-sdk #filter-btn-handler:hover{background-color:#3860be}#onetrust-pc-sdk #filter-btn-handler svg{width:12px;height:12px;margin:3px 10px 0 10px;display:block;position:static;right:auto;top:auto}#onetrust-pc-sdk .ot-ven-link,#onetrust-pc-sdk .ot-ven-legclaim-link{color:#3860be;text-decoration:none;font-weight:100;display:inline-block;padding-top:10px;transform:translate(0, 1%);-o-transform:translate(0, 1%);-ms-transform:translate(0, 1%);-webkit-transform:translate(0, 1%);position:relative;z-index:2}#onetrust-pc-sdk .ot-ven-link *,#onetrust-pc-sdk .ot-ven-legclaim-link *{font-size:inherit}#onetrust-pc-sdk .ot-ven-link:hover,#onetrust-pc-sdk .ot-ven-legclaim-link:hover{text-decoration:underline}#onetrust-pc-sdk .ot-ven-hdr{width:calc(100% - 160px);height:auto;float:left;word-break:break-word;word-wrap:break-word;vertical-align:middle;padding-bottom:3px}#onetrust-pc-sdk .ot-ven-link,#onetrust-pc-sdk .ot-ven-legclaim-link{letter-spacing:.03em;font-size:.75em;font-weight:400}#onetrust-pc-sdk .ot-ven-dets{border-radius:2px;background-color:#f8f8f8}#onetrust-pc-sdk .ot-ven-dets li:first-child p:first-child{border-top:none}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc:not(:first-child){border-top:1px solid #ddd !important}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc:nth-child(n+3) p{display:inline-block}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc:nth-child(n+3) p:nth-of-type(odd){width:30%}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc:nth-child(n+3) p:nth-of-type(even){width:50%;word-break:break-word;word-wrap:break-word}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc p,#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc h5{padding-top:5px;padding-bottom:5px;display:block}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc h5{display:inline-block}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc p:nth-last-child(-n+1){padding-bottom:10px}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc p:nth-child(-n+2):not(.disc-pur){padding-top:10px}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc .disc-pur-cont{display:inline}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc .disc-pur{position:relative;width:50% !important;word-break:break-word;word-wrap:break-word;left:calc(30% + 17px)}#onetrust-pc-sdk .ot-ven-dets .ot-ven-disc .disc-pur:nth-child(-n+1){position:static}#onetrust-pc-sdk .ot-ven-dets p,#onetrust-pc-sdk .ot-ven-dets h5,#onetrust-pc-sdk .ot-ven-dets span{font-size:.69em;text-align:left;vertical-align:middle;word-break:break-word;word-wrap:break-word;margin:0;padding-bottom:10px;padding-left:15px;color:#2e3644}#onetrust-pc-sdk .ot-ven-dets h5{padding-top:5px}#onetrust-pc-sdk .ot-ven-dets span{color:dimgray;padding:0;vertical-align:baseline}#onetrust-pc-sdk .ot-ven-dets .ot-ven-pur h5{border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9;padding-bottom:5px;margin-bottom:5px;font-weight:bold}#onetrust-pc-sdk #ot-host-lst .ot-sel-all{float:right;position:relative;margin-right:42px;top:10px}#onetrust-pc-sdk #ot-host-lst .ot-sel-all input[type=checkbox]{width:auto;height:auto}#onetrust-pc-sdk #ot-host-lst .ot-sel-all label{height:20px;width:20px;padding-left:0px}#onetrust-pc-sdk #ot-host-lst .ot-acc-txt{overflow:hidden;width:95%}#onetrust-pc-sdk .ot-host-hdr{position:relative;z-index:1;pointer-events:none;width:calc(100% - 125px);float:left}#onetrust-pc-sdk .ot-host-name,#onetrust-pc-sdk .ot-host-desc{display:inline-block;width:90%}#onetrust-pc-sdk .ot-host-name{pointer-events:none}#onetrust-pc-sdk .ot-host-hdr>a{text-decoration:underline;font-size:.82em;position:relative;z-index:2;float:left;margin-bottom:5px;pointer-events:initial}#onetrust-pc-sdk .ot-host-name+a{margin-top:5px}#onetrust-pc-sdk .ot-host-name,#onetrust-pc-sdk .ot-host-name a,#onetrust-pc-sdk .ot-host-desc,#onetrust-pc-sdk .ot-host-info{color:dimgray;word-break:break-word;word-wrap:break-word}#onetrust-pc-sdk .ot-host-name,#onetrust-pc-sdk .ot-host-name a{font-weight:bold;font-size:.82em;line-height:1.3}#onetrust-pc-sdk .ot-host-name a{font-size:1em}#onetrust-pc-sdk .ot-host-expand{margin-top:3px;margin-bottom:3px;clear:both;display:block;color:#3860be;font-size:.72em;font-weight:normal}#onetrust-pc-sdk .ot-host-expand *{font-size:inherit}#onetrust-pc-sdk .ot-host-desc,#onetrust-pc-sdk .ot-host-info{font-size:.688em;line-height:1.4;font-weight:normal}#onetrust-pc-sdk .ot-host-desc{margin-top:10px}#onetrust-pc-sdk .ot-host-opt{margin:0;font-size:inherit;display:inline-block;width:100%}#onetrust-pc-sdk .ot-host-opt li>div div{font-size:.8em;padding:5px 0}#onetrust-pc-sdk .ot-host-opt li>div div:nth-child(1){width:30%;float:left}#onetrust-pc-sdk .ot-host-opt li>div div:nth-child(2){width:70%;float:left;word-break:break-word;word-wrap:break-word}#onetrust-pc-sdk .ot-host-info{border:none;display:inline-block;width:calc(100% - 10px);padding:10px;margin-bottom:10px;background-color:#f8f8f8}#onetrust-pc-sdk .ot-host-info>div{overflow:auto}#onetrust-pc-sdk #no-results{text-align:center;margin-top:30px}#onetrust-pc-sdk #no-results p{font-size:1em;color:#2e3644;word-break:break-word;word-wrap:break-word}#onetrust-pc-sdk #no-results p span{font-weight:bold}#onetrust-pc-sdk #ot-fltr-modal{width:100%;height:auto;display:none;-moz-transition:.2s ease;-o-transition:.2s ease;-webkit-transition:2s ease;transition:.2s ease;overflow:hidden;opacity:1;right:0}#onetrust-pc-sdk #ot-fltr-modal .ot-label-txt{display:inline-block;font-size:.85em;color:dimgray}#onetrust-pc-sdk #ot-fltr-cnt{z-index:2147483646;background-color:#fff;position:absolute;height:90%;max-height:300px;width:325px;left:210px;margin-top:10px;margin-bottom:20px;padding-right:10px;border-radius:3px;-webkit-box-shadow:0px 0px 12px 2px #c7c5c7;-moz-box-shadow:0px 0px 12px 2px #c7c5c7;box-shadow:0px 0px 12px 2px #c7c5c7}#onetrust-pc-sdk .ot-fltr-scrlcnt{overflow-y:auto;overflow-x:hidden;clear:both;max-height:calc(100% - 60px)}#onetrust-pc-sdk #ot-anchor{border:12px solid rgba(0,0,0,0);display:none;position:absolute;z-index:2147483647;right:55px;top:75px;transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);-webkit-transform:rotate(45deg);background-color:#fff;-webkit-box-shadow:-3px -3px 5px -2px #c7c5c7;-moz-box-shadow:-3px -3px 5px -2px #c7c5c7;box-shadow:-3px -3px 5px -2px #c7c5c7}#onetrust-pc-sdk .ot-fltr-btns{margin-left:15px}#onetrust-pc-sdk #filter-apply-handler{margin-right:15px}#onetrust-pc-sdk .ot-fltr-opt{margin-bottom:5px;margin-left:15px;min-height:20px;width:75%;position:relative}#onetrust-pc-sdk .ot-fltr-opt p{display:inline-block;margin:0;font-size:.9em;color:#2e3644}#onetrust-pc-sdk .ot-chkbox label span{font-size:.85em;color:dimgray}#onetrust-pc-sdk .ot-chkbox input[type=checkbox]+label::after{content:none;color:#fff}#onetrust-pc-sdk .ot-chkbox input[type=checkbox]:checked+label::after{content:""}#onetrust-pc-sdk .ot-chkbox input[type=checkbox][aria-checked=mixed]+label::after{content:""}#onetrust-pc-sdk .ot-chkbox input[type=checkbox]:focus+label::before{outline-style:solid;outline-width:2px;outline-style:auto}#onetrust-pc-sdk #ot-selall-vencntr,#onetrust-pc-sdk #ot-selall-adtlvencntr,#onetrust-pc-sdk #ot-selall-hostcntr,#onetrust-pc-sdk #ot-selall-licntr,#onetrust-pc-sdk #ot-selall-gnvencntr{right:15px;position:relative;width:20px;height:20px;float:right}#onetrust-pc-sdk #ot-selall-vencntr label,#onetrust-pc-sdk #ot-selall-adtlvencntr label,#onetrust-pc-sdk #ot-selall-hostcntr label,#onetrust-pc-sdk #ot-selall-licntr label,#onetrust-pc-sdk #ot-selall-gnvencntr label{float:left;padding-left:0}#onetrust-pc-sdk #ot-ven-lst:first-child{border-top:1px solid #e2e2e2}#onetrust-pc-sdk ul{list-style:none;padding:0}#onetrust-pc-sdk ul li{position:relative;margin:0;padding:15px 15px 15px 10px;border-bottom:1px solid #e2e2e2}#onetrust-pc-sdk ul li h3,#onetrust-pc-sdk ul li h4{font-size:.75em;color:#656565;margin:0;display:inline-block;width:70%;height:auto;word-break:break-word;word-wrap:break-word}#onetrust-pc-sdk ul li p{margin:0;font-size:.7em}#onetrust-pc-sdk ul li input[type=checkbox]{position:absolute;cursor:pointer;width:100%;height:100%;opacity:0;margin:0;top:0;left:0}#onetrust-pc-sdk .ot-cat-item>button:focus,#onetrust-pc-sdk .ot-acc-cntr>button:focus,#onetrust-pc-sdk li>button:focus{outline:#000 solid 2px}#onetrust-pc-sdk .ot-cat-item>button,#onetrust-pc-sdk .ot-acc-cntr>button,#onetrust-pc-sdk li>button{position:absolute;cursor:pointer;width:100%;height:100%;margin:0;top:0;left:0;z-index:1;max-width:none;border:none}#onetrust-pc-sdk .ot-cat-item>button[aria-expanded=false]~.ot-acc-txt,#onetrust-pc-sdk .ot-acc-cntr>button[aria-expanded=false]~.ot-acc-txt,#onetrust-pc-sdk li>button[aria-expanded=false]~.ot-acc-txt{margin-top:0;max-height:0;opacity:0;overflow:hidden;width:100%;transition:.25s ease-out;display:none}#onetrust-pc-sdk .ot-cat-item>button[aria-expanded=true]~.ot-acc-txt,#onetrust-pc-sdk .ot-acc-cntr>button[aria-expanded=true]~.ot-acc-txt,#onetrust-pc-sdk li>button[aria-expanded=true]~.ot-acc-txt{transition:.1s ease-in;margin-top:10px;width:100%;overflow:auto;display:block}#onetrust-pc-sdk .ot-cat-item>button[aria-expanded=true]~.ot-acc-grpcntr,#onetrust-pc-sdk .ot-acc-cntr>button[aria-expanded=true]~.ot-acc-grpcntr,#onetrust-pc-sdk li>button[aria-expanded=true]~.ot-acc-grpcntr{width:auto;margin-top:0px;padding-bottom:10px}#onetrust-pc-sdk .ot-host-item>button:focus,#onetrust-pc-sdk .ot-ven-item>button:focus{outline:0;border:2px solid #000}#onetrust-pc-sdk .ot-hide-acc>button{pointer-events:none}#onetrust-pc-sdk .ot-hide-acc .ot-plus-minus>*,#onetrust-pc-sdk .ot-hide-acc .ot-arw-cntr>*{visibility:hidden}#onetrust-pc-sdk .ot-hide-acc .ot-acc-hdr{min-height:30px}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt){padding-right:10px;width:calc(100% - 37px);margin-top:10px;max-height:calc(100% - 90px)}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt) #ot-sel-blk{background-color:#f9f9fc;border:1px solid #e2e2e2;width:calc(100% - 2px);padding-bottom:5px;padding-top:5px}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt) #ot-sel-blk.ot-vnd-list-cnt{border:unset;background-color:unset}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt) #ot-sel-blk.ot-vnd-list-cnt .ot-sel-all-hdr{display:none}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt) #ot-sel-blk.ot-vnd-list-cnt .ot-sel-all{padding-right:.5rem}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt) #ot-sel-blk.ot-vnd-list-cnt .ot-sel-all .ot-chkbox{right:0}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt) .ot-sel-all{padding-right:34px}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt) .ot-sel-all-chkbox{width:auto}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt) ul li{border:1px solid #e2e2e2;margin-bottom:10px}#onetrust-pc-sdk.ot-addtl-vendors #ot-lst-cnt:not(.ot-host-cnt) .ot-acc-cntr>.ot-acc-hdr{padding:10px 0 10px 15px}#onetrust-pc-sdk.ot-addtl-vendors .ot-sel-all-chkbox{float:right}#onetrust-pc-sdk.ot-addtl-vendors .ot-plus-minus~.ot-sel-all-chkbox{right:34px}#onetrust-pc-sdk.ot-addtl-vendors #ot-ven-lst:first-child{border-top:none}#onetrust-pc-sdk .ot-acc-cntr{position:relative;border-left:1px solid #e2e2e2;border-right:1px solid #e2e2e2;border-bottom:1px solid #e2e2e2}#onetrust-pc-sdk .ot-acc-cntr input{z-index:1}#onetrust-pc-sdk .ot-acc-cntr>.ot-acc-hdr{background-color:#f9f9fc;padding:5px 0 5px 15px;width:auto}#onetrust-pc-sdk .ot-acc-cntr>.ot-acc-hdr .ot-plus-minus{vertical-align:middle;top:auto}#onetrust-pc-sdk .ot-acc-cntr>.ot-acc-hdr .ot-arw-cntr{right:10px}#onetrust-pc-sdk .ot-acc-cntr>.ot-acc-hdr input{z-index:2}#onetrust-pc-sdk .ot-acc-cntr.ot-add-tech .ot-acc-hdr{padding:10px 0 10px 15px}#onetrust-pc-sdk .ot-acc-cntr>input[type=checkbox]:checked~.ot-acc-hdr{border-bottom:1px solid #e2e2e2}#onetrust-pc-sdk .ot-acc-cntr>.ot-acc-txt{padding-left:10px;padding-right:10px}#onetrust-pc-sdk .ot-acc-cntr button[aria-expanded=true]~.ot-acc-txt{width:auto}#onetrust-pc-sdk .ot-acc-cntr .ot-addtl-venbox{display:none}#onetrust-pc-sdk .ot-vlst-cntr{margin-bottom:0;width:100%}#onetrust-pc-sdk .ot-vensec-title{font-size:.813em;vertical-align:middle;display:inline-block}#onetrust-pc-sdk .category-vendors-list-handler,#onetrust-pc-sdk .category-vendors-list-handler+a{margin-left:0;margin-top:10px}#onetrust-pc-sdk #ot-selall-vencntr.line-through label::after,#onetrust-pc-sdk #ot-selall-adtlvencntr.line-through label::after,#onetrust-pc-sdk #ot-selall-licntr.line-through label::after,#onetrust-pc-sdk #ot-selall-hostcntr.line-through label::after,#onetrust-pc-sdk #ot-selall-gnvencntr.line-through label::after{height:auto;border-left:0;transform:none;-o-transform:none;-ms-transform:none;-webkit-transform:none;left:5px;top:9px}#onetrust-pc-sdk #ot-category-title{float:left;padding-bottom:10px;font-size:1em;width:100%}#onetrust-pc-sdk .ot-cat-grp{margin-top:10px}#onetrust-pc-sdk .ot-cat-item{line-height:1.1;margin-top:10px;display:inline-block;width:100%}#onetrust-pc-sdk .ot-btn-container{text-align:right}#onetrust-pc-sdk .ot-btn-container button{display:inline-block;font-size:.75em;letter-spacing:.08em;margin-top:19px}#onetrust-pc-sdk #close-pc-btn-handler.ot-close-icon{position:absolute;top:10px;right:0;z-index:1;padding:0;background-color:rgba(0,0,0,0);border:none}#onetrust-pc-sdk #close-pc-btn-handler.ot-close-icon svg{display:block;height:10px;width:10px}#onetrust-pc-sdk #clear-filters-handler{margin-top:20px;margin-bottom:10px;float:right;max-width:200px;text-decoration:none;color:#3860be;font-size:.9em;font-weight:bold;background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0);padding:1px}#onetrust-pc-sdk #clear-filters-handler:hover{color:#2285f7}#onetrust-pc-sdk #clear-filters-handler:focus{outline:#000 solid 1px}#onetrust-pc-sdk .ot-enbl-chr h4~.ot-tgl,#onetrust-pc-sdk .ot-enbl-chr h4~.ot-always-active{right:45px}#onetrust-pc-sdk .ot-enbl-chr h4~.ot-tgl+.ot-tgl{right:120px}#onetrust-pc-sdk .ot-enbl-chr .ot-pli-hdr.ot-leg-border-color span:first-child{width:90px}#onetrust-pc-sdk .ot-enbl-chr li.ot-subgrp>h5+.ot-tgl-cntr{padding-right:25px}#onetrust-pc-sdk .ot-plus-minus{width:20px;height:20px;font-size:1.5em;position:relative;display:inline-block;margin-right:5px;top:3px}#onetrust-pc-sdk .ot-plus-minus span{position:absolute;background:#27455c;border-radius:1px}#onetrust-pc-sdk .ot-plus-minus span:first-of-type{top:25%;bottom:25%;width:10%;left:45%}#onetrust-pc-sdk .ot-plus-minus span:last-of-type{left:25%;right:25%;height:10%;top:45%}#onetrust-pc-sdk button[aria-expanded=true]~.ot-acc-hdr .ot-arw,#onetrust-pc-sdk button[aria-expanded=true]~.ot-acc-hdr .ot-plus-minus span:first-of-type,#onetrust-pc-sdk button[aria-expanded=true]~.ot-acc-hdr .ot-plus-minus span:last-of-type{transform:rotate(90deg)}#onetrust-pc-sdk button[aria-expanded=true]~.ot-acc-hdr .ot-plus-minus span:last-of-type{left:50%;right:50%}#onetrust-pc-sdk #ot-selall-vencntr label,#onetrust-pc-sdk #ot-selall-adtlvencntr label,#onetrust-pc-sdk #ot-selall-hostcntr label,#onetrust-pc-sdk #ot-selall-licntr label{position:relative;display:inline-block;width:20px;height:20px}#onetrust-pc-sdk .ot-host-item .ot-plus-minus,#onetrust-pc-sdk .ot-ven-item .ot-plus-minus{float:left;margin-right:8px;top:10px}#onetrust-pc-sdk .ot-ven-item ul{list-style:none inside;font-size:100%;margin:0}#onetrust-pc-sdk .ot-ven-item ul li{margin:0 !important;padding:0;border:none !important}#onetrust-pc-sdk .ot-pli-hdr{color:#77808e;overflow:hidden;padding-top:7.5px;padding-bottom:7.5px;width:calc(100% - 2px);border-top-left-radius:3px;border-top-right-radius:3px}#onetrust-pc-sdk .ot-pli-hdr span:first-child{top:50%;transform:translateY(50%);max-width:90px}#onetrust-pc-sdk .ot-pli-hdr span:last-child{padding-right:10px;max-width:95px;text-align:center}#onetrust-pc-sdk .ot-li-title{float:right;font-size:.813em}#onetrust-pc-sdk .ot-pli-hdr.ot-leg-border-color{background-color:#f4f4f4;border:1px solid #d8d8d8}#onetrust-pc-sdk .ot-pli-hdr.ot-leg-border-color span:first-child{text-align:left;width:70px}#onetrust-pc-sdk li.ot-subgrp>h5,#onetrust-pc-sdk .ot-cat-header{width:calc(100% - 130px)}#onetrust-pc-sdk li.ot-subgrp>h5+.ot-tgl-cntr{padding-left:13px}#onetrust-pc-sdk .ot-acc-grpcntr .ot-acc-grpdesc{margin-bottom:5px}#onetrust-pc-sdk .ot-acc-grpcntr .ot-subgrp-cntr{border-top:1px solid #d8d8d8}#onetrust-pc-sdk .ot-acc-grpcntr .ot-vlst-cntr+.ot-subgrp-cntr{border-top:none}#onetrust-pc-sdk .ot-acc-hdr .ot-arw-cntr+.ot-tgl-cntr,#onetrust-pc-sdk .ot-acc-txt h4+.ot-tgl-cntr{padding-left:13px}#onetrust-pc-sdk .ot-pli-hdr~.ot-cat-item .ot-subgrp>h5,#onetrust-pc-sdk .ot-pli-hdr~.ot-cat-item .ot-cat-header{width:calc(100% - 145px)}#onetrust-pc-sdk .ot-pli-hdr~.ot-cat-item h5+.ot-tgl-cntr,#onetrust-pc-sdk .ot-pli-hdr~.ot-cat-item .ot-cat-header+.ot-tgl{padding-left:28px}#onetrust-pc-sdk .ot-sel-all-hdr,#onetrust-pc-sdk .ot-sel-all-chkbox{display:inline-block;width:100%;position:relative}#onetrust-pc-sdk .ot-sel-all-chkbox{z-index:1}#onetrust-pc-sdk .ot-sel-all{margin:0;position:relative;padding-right:23px;float:right}#onetrust-pc-sdk .ot-consent-hdr,#onetrust-pc-sdk .ot-li-hdr{float:right;font-size:.812em;line-height:normal;text-align:center;word-break:break-word;word-wrap:break-word}#onetrust-pc-sdk .ot-li-hdr{max-width:100px;padding-right:10px}#onetrust-pc-sdk .ot-consent-hdr{max-width:55px}#onetrust-pc-sdk #ot-selall-licntr{display:block;width:21px;height:auto;float:right;position:relative;right:80px}#onetrust-pc-sdk #ot-selall-licntr label{position:absolute}#onetrust-pc-sdk .ot-ven-ctgl{margin-left:66px}#onetrust-pc-sdk .ot-ven-litgl+.ot-arw-cntr{margin-left:81px}#onetrust-pc-sdk .ot-enbl-chr .ot-host-cnt .ot-tgl-cntr{width:auto}#onetrust-pc-sdk #ot-lst-cnt:not(.ot-host-cnt) .ot-tgl-cntr{width:auto;top:auto;height:20px}#onetrust-pc-sdk #ot-lst-cnt .ot-chkbox{position:relative;display:inline-block;width:20px;height:20px}#onetrust-pc-sdk #ot-lst-cnt .ot-chkbox label{position:absolute;padding:0;width:20px;height:20px}#onetrust-pc-sdk #ot-lst-cnt .ot-vnd-info-cntr{border:1px solid #d8d8d8;padding:.75rem 2rem;padding-bottom:0;width:auto;margin-top:.5rem}#onetrust-pc-sdk .ot-acc-grpdesc+.ot-leg-btn-container{padding-left:20px;padding-right:20px;width:calc(100% - 40px);margin-bottom:5px}#onetrust-pc-sdk .ot-subgrp .ot-leg-btn-container{margin-bottom:5px}#onetrust-pc-sdk #ot-ven-lst .ot-leg-btn-container{margin-top:10px}#onetrust-pc-sdk .ot-leg-btn-container{display:inline-block;width:100%;margin-bottom:10px}#onetrust-pc-sdk .ot-leg-btn-container button{height:auto;padding:6.5px 8px;margin-bottom:0;letter-spacing:0;font-size:.75em;line-height:normal}#onetrust-pc-sdk .ot-leg-btn-container svg{display:none;height:14px;width:14px;padding-right:5px;vertical-align:sub}#onetrust-pc-sdk .ot-active-leg-btn{cursor:default;pointer-events:none}#onetrust-pc-sdk .ot-active-leg-btn svg{display:inline-block}#onetrust-pc-sdk .ot-remove-objection-handler{text-decoration:underline;padding:0;font-size:.75em;font-weight:600;line-height:1;padding-left:10px}#onetrust-pc-sdk .ot-obj-leg-btn-handler span{font-weight:bold;text-align:center;font-size:inherit;line-height:1.5}#onetrust-pc-sdk.ot-close-btn-link #close-pc-btn-handler{border:none;height:auto;line-height:1.5;text-decoration:underline;font-size:.69em;background:none;right:15px;top:15px;width:auto;font-weight:normal}#onetrust-pc-sdk .ot-pgph-link{font-size:.813em !important;margin-top:10px;position:relative}#onetrust-pc-sdk .ot-pgph-link.ot-pgph-link-subgroup{margin-bottom:1rem}#onetrust-pc-sdk .ot-accordion-layout .ot-pgph-link{margin-top:5px}#onetrust-pc-sdk .ot-pgph-contr{margin:0 2.5rem}#onetrust-pc-sdk .ot-pgph-title{font-size:1.18rem;margin-bottom:2rem}#onetrust-pc-sdk .ot-pgph-desc{font-size:1rem;font-weight:400;margin-bottom:2rem;line-height:1.5rem}#onetrust-pc-sdk .ot-pgph-desc:not(:last-child):after{content:"";width:96%;display:block;margin:0 auto;padding-bottom:2rem;border-bottom:1px solid #e9e9e9}#onetrust-pc-sdk .ot-cat-header{float:left;font-weight:600;font-size:.875em;line-height:1.5;max-width:90%;vertical-align:middle}#onetrust-pc-sdk .ot-vnd-item>button:focus{outline:#000 solid 2px}#onetrust-pc-sdk .ot-vnd-item>button{position:absolute;cursor:pointer;width:100%;height:100%;margin:0;top:0;left:0;z-index:1;max-width:none;border:none}#onetrust-pc-sdk .ot-vnd-item>button[aria-expanded=false]~.ot-acc-txt{margin-top:0;max-height:0;opacity:0;overflow:hidden;width:100%;transition:.25s ease-out;display:none}#onetrust-pc-sdk .ot-vnd-item>button[aria-expanded=true]~.ot-acc-txt{transition:.1s ease-in;margin-top:10px;width:100%;overflow:auto;display:block}#onetrust-pc-sdk .ot-vnd-item>button[aria-expanded=true]~.ot-acc-grpcntr{width:auto;margin-top:0px;padding-bottom:10px}#onetrust-pc-sdk .ot-accordion-layout.ot-cat-item{position:relative;border-radius:2px;margin:0;padding:0;border:1px solid #d8d8d8;border-top:none;width:calc(100% - 2px);float:left}#onetrust-pc-sdk .ot-accordion-layout.ot-cat-item:first-of-type{margin-top:10px;border-top:1px solid #d8d8d8}#onetrust-pc-sdk .ot-accordion-layout .ot-acc-grpdesc{padding-left:20px;padding-right:20px;width:calc(100% - 40px);font-size:.812em;margin-bottom:10px;margin-top:15px}#onetrust-pc-sdk .ot-accordion-layout .ot-acc-grpdesc>ul{padding-top:10px}#onetrust-pc-sdk .ot-accordion-layout .ot-acc-grpdesc>ul li{padding-top:0;line-height:1.5;padding-bottom:10px}#onetrust-pc-sdk .ot-accordion-layout div+.ot-acc-grpdesc{margin-top:5px}#onetrust-pc-sdk .ot-accordion-layout .ot-vlst-cntr:first-child{margin-top:10px}#onetrust-pc-sdk .ot-accordion-layout .ot-vlst-cntr:last-child,#onetrust-pc-sdk .ot-accordion-layout .ot-hlst-cntr:last-child{margin-bottom:5px}#onetrust-pc-sdk .ot-accordion-layout .ot-acc-hdr{padding-top:11.5px;padding-bottom:11.5px;padding-left:20px;padding-right:20px;width:calc(100% - 40px);display:inline-block}#onetrust-pc-sdk .ot-accordion-layout .ot-acc-txt{width:100%;padding:0}#onetrust-pc-sdk .ot-accordion-layout .ot-subgrp-cntr{padding-left:20px;padding-right:15px;padding-bottom:0;width:calc(100% - 35px)}#onetrust-pc-sdk .ot-accordion-layout .ot-subgrp{padding-right:5px}#onetrust-pc-sdk .ot-accordion-layout .ot-acc-grpcntr{z-index:1;position:relative}#onetrust-pc-sdk .ot-accordion-layout .ot-cat-header+.ot-arw-cntr{position:absolute;top:50%;transform:translateY(-50%);right:20px;margin-top:-2px}#onetrust-pc-sdk .ot-accordion-layout .ot-cat-header+.ot-arw-cntr .ot-arw{width:15px;height:20px;margin-left:5px;color:dimgray}#onetrust-pc-sdk .ot-accordion-layout .ot-cat-header{float:none;color:#2e3644;margin:0;display:inline-block;height:auto;word-wrap:break-word;min-height:inherit}#onetrust-pc-sdk .ot-accordion-layout .ot-vlst-cntr,#onetrust-pc-sdk .ot-accordion-layout .ot-hlst-cntr{padding-left:20px;width:calc(100% - 20px);display:inline-block;margin-top:0;padding-bottom:2px}#onetrust-pc-sdk .ot-accordion-layout .ot-acc-hdr{position:relative;min-height:25px}#onetrust-pc-sdk .ot-accordion-layout h4~.ot-tgl,#onetrust-pc-sdk .ot-accordion-layout h4~.ot-always-active{position:absolute;top:50%;transform:translateY(-50%);right:20px}#onetrust-pc-sdk .ot-accordion-layout h4~.ot-tgl+.ot-tgl{right:95px}#onetrust-pc-sdk .ot-accordion-layout .category-vendors-list-handler,#onetrust-pc-sdk .ot-accordion-layout .category-vendors-list-handler+a{margin-top:5px}#onetrust-pc-sdk #ot-lst-cnt{margin-top:1rem;max-height:calc(100% - 96px)}#onetrust-pc-sdk #ot-lst-cnt .ot-vnd-info-cntr{border:1px solid #d8d8d8;padding:.75rem 2rem;padding-bottom:0;width:auto;margin-top:.5rem}#onetrust-pc-sdk #ot-lst-cnt .ot-vnd-info{margin-bottom:1rem;padding-left:.75rem;padding-right:.75rem;display:flex;flex-direction:column}#onetrust-pc-sdk #ot-lst-cnt .ot-vnd-info[data-vnd-info-key*=DPOEmail]{border-top:1px solid #d8d8d8;padding-top:1rem}#onetrust-pc-sdk #ot-lst-cnt .ot-vnd-info[data-vnd-info-key*=DPOLink]{border-bottom:1px solid #d8d8d8;padding-bottom:1rem}#onetrust-pc-sdk #ot-lst-cnt .ot-vnd-info .ot-vnd-lbl{font-weight:bold;font-size:.85em;margin-bottom:.5rem}#onetrust-pc-sdk #ot-lst-cnt .ot-vnd-info .ot-vnd-cnt{margin-left:.5rem;font-weight:500;font-size:.85rem}#onetrust-pc-sdk .ot-vs-list,#onetrust-pc-sdk .ot-vnd-serv{width:auto;padding:1rem 1.25rem;padding-bottom:0}#onetrust-pc-sdk .ot-vs-list .ot-vnd-serv-hdr-cntr,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-serv-hdr-cntr{padding-bottom:.75rem;border-bottom:1px solid #d8d8d8}#onetrust-pc-sdk .ot-vs-list .ot-vnd-serv-hdr-cntr .ot-vnd-serv-hdr,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-serv-hdr-cntr .ot-vnd-serv-hdr{font-weight:600;font-size:.95em;line-height:2;margin-left:.5rem}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item{border:none;margin:0;padding:0}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item button,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item button{outline:none;border-bottom:1px solid #d8d8d8}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item button[aria-expanded=true],#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item button[aria-expanded=true]{border-bottom:none}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item:first-child,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item:first-child{margin-top:.25rem;border-top:unset}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item:last-child,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item:last-child{margin-bottom:.5rem}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item:last-child button,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item:last-child button{border-bottom:none}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-vnd-info-cntr,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-vnd-info-cntr{border:1px solid #d8d8d8;padding:.75rem 1.75rem;padding-bottom:0;width:auto;margin-top:.5rem}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-vnd-info,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-vnd-info{margin-bottom:1rem;padding-left:.75rem;padding-right:.75rem;display:flex;flex-direction:column}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-vnd-info[data-vnd-info-key*=DPOEmail],#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-vnd-info[data-vnd-info-key*=DPOEmail]{border-top:1px solid #d8d8d8;padding-top:1rem}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-vnd-info[data-vnd-info-key*=DPOLink],#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-vnd-info[data-vnd-info-key*=DPOLink]{border-bottom:1px solid #d8d8d8;padding-bottom:1rem}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-vnd-info .ot-vnd-lbl,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-vnd-info .ot-vnd-lbl{font-weight:bold;font-size:.85em;margin-bottom:.5rem}#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-vnd-info .ot-vnd-cnt,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-vnd-info .ot-vnd-cnt{margin-left:.5rem;font-weight:500;font-size:.85rem}#onetrust-pc-sdk .ot-vs-list.ot-vnd-subgrp-cnt,#onetrust-pc-sdk .ot-vnd-serv.ot-vnd-subgrp-cnt{padding-left:40px}#onetrust-pc-sdk .ot-vs-list.ot-vnd-subgrp-cnt .ot-vnd-serv-hdr-cntr .ot-vnd-serv-hdr,#onetrust-pc-sdk .ot-vnd-serv.ot-vnd-subgrp-cnt .ot-vnd-serv-hdr-cntr .ot-vnd-serv-hdr{font-size:.8em}#onetrust-pc-sdk .ot-vs-list.ot-vnd-subgrp-cnt .ot-cat-header,#onetrust-pc-sdk .ot-vnd-serv.ot-vnd-subgrp-cnt .ot-cat-header{font-size:.8em}#onetrust-pc-sdk .ot-subgrp-cntr .ot-vnd-serv{margin-bottom:1rem;padding:1rem .95rem}#onetrust-pc-sdk .ot-subgrp-cntr .ot-vnd-serv .ot-vnd-serv-hdr-cntr{padding-bottom:.75rem;border-bottom:1px solid #d8d8d8}#onetrust-pc-sdk .ot-subgrp-cntr .ot-vnd-serv .ot-vnd-serv-hdr-cntr .ot-vnd-serv-hdr{font-weight:700;font-size:.8em;line-height:20px;margin-left:.82rem}#onetrust-pc-sdk .ot-subgrp-cntr .ot-cat-header{font-weight:700;font-size:.8em;line-height:20px}#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-vnd-serv .ot-vnd-lst-cont .ot-accordion-layout .ot-acc-hdr div.ot-chkbox{margin-left:.82rem}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr{padding:.7rem 0;margin:0;display:flex;width:100%;align-items:center;justify-content:space-between}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr div:first-child,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr div:first-child,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr div:first-child,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr div:first-child,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr div:first-child,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr div:first-child,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr div:first-child{margin-left:.5rem}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr div:last-child,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr div:last-child,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr div:last-child,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr div:last-child,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr div:last-child,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr div:last-child,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr div:last-child{margin-right:.5rem;margin-left:.5rem}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr .ot-always-active,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr .ot-always-active,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr .ot-always-active,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-always-active,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr .ot-always-active,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-always-active,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr .ot-always-active{position:relative;right:unset;top:unset;transform:unset}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr .ot-plus-minus,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr .ot-plus-minus,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr .ot-plus-minus,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-plus-minus,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr .ot-plus-minus,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-plus-minus,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr .ot-plus-minus{top:0}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr .ot-arw-cntr,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr .ot-arw-cntr,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr .ot-arw-cntr,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-arw-cntr,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr .ot-arw-cntr,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-arw-cntr,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr .ot-arw-cntr{float:none;top:unset;right:unset;transform:unset;margin-top:-2px;position:relative}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr .ot-cat-header,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr .ot-cat-header,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr .ot-cat-header,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-cat-header,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr .ot-cat-header,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-cat-header,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr .ot-cat-header{flex:1;margin:0 .5rem}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr .ot-tgl,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr .ot-tgl,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr .ot-tgl,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-tgl,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr .ot-tgl,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-tgl,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr .ot-tgl{position:relative;transform:none;right:0;top:0;float:none}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr .ot-chkbox,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr .ot-chkbox,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr .ot-chkbox,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-chkbox,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr .ot-chkbox,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-chkbox,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr .ot-chkbox{position:relative;margin:0 .5rem}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr .ot-chkbox label,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr .ot-chkbox label,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr .ot-chkbox label,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-chkbox label,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr .ot-chkbox label,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-chkbox label,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr .ot-chkbox label{padding:0}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr .ot-chkbox label::before,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr .ot-chkbox label::before,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr .ot-chkbox label::before,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-chkbox label::before,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr .ot-chkbox label::before,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-chkbox label::before,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr .ot-chkbox label::before{position:relative}#onetrust-pc-sdk .ot-vs-config .ot-acc-hdr .ot-chkbox input,#onetrust-pc-sdk ul.ot-subgrps .ot-acc-hdr .ot-chkbox input,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps .ot-acc-hdr .ot-chkbox input,#onetrust-pc-sdk .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-chkbox input,#onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-acc-hdr .ot-chkbox input,#onetrust-pc-sdk #ot-pc-lst .ot-vs-list .ot-vnd-item .ot-acc-hdr .ot-chkbox input,#onetrust-pc-sdk .ot-accordion-layout.ot-checkbox-consent .ot-acc-hdr .ot-chkbox input{position:absolute;cursor:pointer;width:100%;height:100%;opacity:0;margin:0;top:0;left:0;z-index:1}#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps li.ot-subgrp .ot-acc-hdr h5.ot-cat-header,#onetrust-pc-sdk .ot-subgrp-cntr ul.ot-subgrps li.ot-subgrp .ot-acc-hdr h4.ot-cat-header{margin:0}#onetrust-pc-sdk .ot-vs-config .ot-subgrp-cntr ul.ot-subgrps li.ot-subgrp h5{top:0;line-height:20px}#onetrust-pc-sdk .ot-vs-list{display:flex;flex-direction:column;padding:0;margin:.5rem 4px}#onetrust-pc-sdk .ot-vs-selc-all{display:flex;padding:0;float:unset;align-items:center;justify-content:flex-start}#onetrust-pc-sdk .ot-vs-selc-all.ot-toggle-conf{justify-content:flex-end}#onetrust-pc-sdk .ot-vs-selc-all.ot-toggle-conf.ot-caret-conf .ot-sel-all-chkbox{margin-right:48px}#onetrust-pc-sdk .ot-vs-selc-all.ot-toggle-conf .ot-sel-all-chkbox{margin:0;padding:0;margin-right:14px;justify-content:flex-end}#onetrust-pc-sdk .ot-vs-selc-all.ot-toggle-conf #ot-selall-vencntr.ot-chkbox,#onetrust-pc-sdk .ot-vs-selc-all.ot-toggle-conf #ot-selall-vencntr.ot-tgl{display:inline-block;right:unset;width:auto;height:auto;float:none}#onetrust-pc-sdk .ot-vs-selc-all.ot-toggle-conf #ot-selall-vencntr label{width:45px;height:25px}#onetrust-pc-sdk .ot-vs-selc-all .ot-sel-all-chkbox{margin-right:11px;margin-left:.75rem;display:flex;align-items:center}#onetrust-pc-sdk .ot-vs-selc-all .sel-all-hdr{margin:0 1.25rem;font-size:.812em;line-height:normal;text-align:center;word-break:break-word;word-wrap:break-word}#onetrust-pc-sdk .ot-vnd-list-cnt #ot-selall-vencntr.ot-chkbox{float:unset;right:0}#onetrust-pc-sdk[dir=rtl] #ot-back-arw,#onetrust-pc-sdk[dir=rtl] input~.ot-acc-hdr .ot-arw{transform:rotate(180deg);-o-transform:rotate(180deg);-ms-transform:rotate(180deg);-webkit-transform:rotate(180deg)}#onetrust-pc-sdk[dir=rtl] input:checked~.ot-acc-hdr .ot-arw{transform:rotate(270deg);-o-transform:rotate(270deg);-ms-transform:rotate(270deg);-webkit-transform:rotate(270deg)}#onetrust-pc-sdk[dir=rtl] .ot-chkbox label::after{transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);border-left:0;border-right:3px solid}#onetrust-pc-sdk[dir=rtl] .ot-search-cntr>svg{right:0}@media only screen and (max-width: 600px){#onetrust-pc-sdk.otPcCenter{left:0;min-width:100%;height:100%;top:0;border-radius:0}#onetrust-pc-sdk #ot-pc-content,#onetrust-pc-sdk.ot-ftr-stacked .ot-btn-container{margin:1px 3px 0 10px;padding-right:10px;width:calc(100% - 23px)}#onetrust-pc-sdk .ot-btn-container button{max-width:none;letter-spacing:.01em}#onetrust-pc-sdk #close-pc-btn-handler{top:10px;right:17px}#onetrust-pc-sdk p{font-size:.7em}#onetrust-pc-sdk #ot-pc-hdr{margin:10px 10px 0 5px;width:calc(100% - 15px)}#onetrust-pc-sdk .vendor-search-handler{font-size:1em}#onetrust-pc-sdk #ot-back-arw{margin-left:12px}#onetrust-pc-sdk #ot-lst-cnt{margin:0;padding:0 5px 0 10px;min-width:95%}#onetrust-pc-sdk .switch+p{max-width:80%}#onetrust-pc-sdk .ot-ftr-stacked button{width:100%}#onetrust-pc-sdk #ot-fltr-cnt{max-width:320px;width:90%;border-top-right-radius:0;border-bottom-right-radius:0;margin:0;margin-left:15px;left:auto;right:40px;top:85px}#onetrust-pc-sdk .ot-fltr-opt{margin-left:25px;margin-bottom:10px}#onetrust-pc-sdk .ot-pc-refuse-all-handler{margin-bottom:0}#onetrust-pc-sdk #ot-fltr-cnt{right:40px}}@media only screen and (max-width: 476px){#onetrust-pc-sdk .ot-fltr-cntr,#onetrust-pc-sdk #ot-fltr-cnt{right:10px}#onetrust-pc-sdk #ot-anchor{right:25px}#onetrust-pc-sdk button{width:100%}#onetrust-pc-sdk:not(.ot-addtl-vendors) #ot-pc-lst:not(.ot-enbl-chr) .ot-sel-all{padding-right:9px}#onetrust-pc-sdk:not(.ot-addtl-vendors) #ot-pc-lst:not(.ot-enbl-chr) .ot-tgl-cntr{right:0}}@media(min-width: 768px){#onetrust-pc-sdk.ot-tgl-with-label .ot-label-status{display:inline}#onetrust-pc-sdk.ot-tgl-with-label #ot-pc-lst .ot-label-status{display:none}}@media only screen and (max-width: 896px)and (max-height: 425px)and (orientation: landscape){#onetrust-pc-sdk.otPcCenter{left:0;top:0;min-width:100%;height:100%;border-radius:0}#onetrust-pc-sdk .ot-pc-header{height:auto;min-height:20px}#onetrust-pc-sdk .ot-pc-header .ot-pc-logo{max-height:30px}#onetrust-pc-sdk .ot-pc-footer{max-height:60px;overflow-y:auto}#onetrust-pc-sdk #ot-pc-content,#onetrust-pc-sdk #ot-pc-lst{bottom:70px}#onetrust-pc-sdk.ot-ftr-stacked #ot-pc-content{bottom:70px}#onetrust-pc-sdk #ot-anchor{left:initial;right:50px}#onetrust-pc-sdk #ot-lst-title{margin-top:12px}#onetrust-pc-sdk #ot-lst-title *{font-size:inherit}#onetrust-pc-sdk #ot-pc-hdr input{margin-right:0;padding-right:45px}#onetrust-pc-sdk .switch+p{max-width:85%}#onetrust-pc-sdk #ot-sel-blk{position:static}#onetrust-pc-sdk #ot-pc-lst{overflow:auto}#onetrust-pc-sdk #ot-lst-cnt{max-height:none;overflow:initial}#onetrust-pc-sdk #ot-lst-cnt.no-results{height:auto}#onetrust-pc-sdk input{font-size:1em !important}#onetrust-pc-sdk p{font-size:.6em}#onetrust-pc-sdk #ot-fltr-modal{width:100%;top:0}#onetrust-pc-sdk ul li p,#onetrust-pc-sdk .category-vendors-list-handler,#onetrust-pc-sdk .category-vendors-list-handler+a,#onetrust-pc-sdk .category-host-list-handler{font-size:.6em}#onetrust-pc-sdk.ot-shw-fltr #ot-anchor{display:none !important}#onetrust-pc-sdk.ot-shw-fltr #ot-pc-lst{height:100% !important;overflow:hidden;top:0px}#onetrust-pc-sdk.ot-shw-fltr #ot-fltr-cnt{margin:0;height:100%;max-height:none;padding:10px;top:0;width:calc(100% - 20px);position:absolute;right:0;left:0;max-width:none}#onetrust-pc-sdk.ot-shw-fltr .ot-fltr-scrlcnt{max-height:calc(100% - 65px)}}
+            #onetrust-consent-sdk #onetrust-pc-sdk,
+                #onetrust-consent-sdk #ot-search-cntr,
+                #onetrust-consent-sdk #onetrust-pc-sdk .ot-switch.ot-toggle,
+                #onetrust-consent-sdk #onetrust-pc-sdk ot-grp-hdr1 .checkbox,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-pc-title:after
+                ,#onetrust-consent-sdk #onetrust-pc-sdk #ot-sel-blk,
+                        #onetrust-consent-sdk #onetrust-pc-sdk #ot-fltr-cnt,
+                        #onetrust-consent-sdk #onetrust-pc-sdk #ot-anchor {
+                    background-color: #FFFFFF;
+                }
+               
+            #onetrust-consent-sdk #onetrust-pc-sdk h3,
+                #onetrust-consent-sdk #onetrust-pc-sdk h4,
+                #onetrust-consent-sdk #onetrust-pc-sdk h5,
+                #onetrust-consent-sdk #onetrust-pc-sdk h6,
+                #onetrust-consent-sdk #onetrust-pc-sdk p,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-ven-lst .ot-ven-opts p,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-pc-desc,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-pc-title,
+                #onetrust-consent-sdk #onetrust-pc-sdk .ot-li-title,
+                #onetrust-consent-sdk #onetrust-pc-sdk .ot-sel-all-hdr span,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-host-lst .ot-host-info,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-fltr-modal #modal-header,
+                #onetrust-consent-sdk #onetrust-pc-sdk .ot-checkbox label span,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-pc-lst #ot-sel-blk p,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-pc-lst #ot-lst-title h3,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-pc-lst .back-btn-handler p,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-pc-lst .ot-ven-name,
+                #onetrust-consent-sdk #onetrust-pc-sdk #ot-pc-lst #ot-ven-lst .consent-category,
+                #onetrust-consent-sdk #onetrust-pc-sdk .ot-leg-btn-container .ot-inactive-leg-btn,
+                #onetrust-consent-sdk #onetrust-pc-sdk .ot-label-status,
+                #onetrust-consent-sdk #onetrust-pc-sdk .ot-chkbox label span,
+                #onetrust-consent-sdk #onetrust-pc-sdk #clear-filters-handler,
+                #onetrust-consent-sdk #onetrust-pc-sdk .ot-optout-signal
+                {
+                    color: #696969;
+                }
+             #onetrust-consent-sdk #onetrust-pc-sdk .privacy-notice-link,
+                    #onetrust-consent-sdk #onetrust-pc-sdk .ot-pgph-link,
+                    #onetrust-consent-sdk #onetrust-pc-sdk .category-vendors-list-handler,
+                    #onetrust-consent-sdk #onetrust-pc-sdk .category-vendors-list-handler + a,
+                    #onetrust-consent-sdk #onetrust-pc-sdk .category-host-list-handler,
+                    #onetrust-consent-sdk #onetrust-pc-sdk .ot-ven-link,
+                    #onetrust-consent-sdk #onetrust-pc-sdk .ot-ven-legclaim-link,
+                    #onetrust-consent-sdk #onetrust-pc-sdk #ot-host-lst .ot-host-name a,
+                    #onetrust-consent-sdk #onetrust-pc-sdk #ot-host-lst .ot-acc-hdr .ot-host-expand,
+                    #onetrust-consent-sdk #onetrust-pc-sdk #ot-host-lst .ot-host-info a,
+                    #onetrust-consent-sdk #onetrust-pc-sdk #ot-pc-content #ot-pc-desc .ot-link-btn,
+                    #onetrust-consent-sdk #onetrust-pc-sdk .ot-vnd-serv .ot-vnd-item .ot-vnd-info a,
+                    #onetrust-consent-sdk #onetrust-pc-sdk #ot-lst-cnt .ot-vnd-info a
+                    {
+                        color: #3860BE;
+                    }
+            #onetrust-consent-sdk #onetrust-pc-sdk .category-vendors-list-handler:hover { text-decoration: underline;}
+            #onetrust-consent-sdk #onetrust-pc-sdk .ot-acc-grpcntr.ot-acc-txt,
+            #onetrust-consent-sdk #onetrust-pc-sdk .ot-acc-txt .ot-subgrp-tgl .ot-switch.ot-toggle
+             {
+                background-color: #F8F8F8;
+            }
+             #onetrust-consent-sdk #onetrust-pc-sdk #ot-host-lst .ot-host-info,
+                    #onetrust-consent-sdk #onetrust-pc-sdk .ot-acc-txt .ot-ven-dets
+                            {
+                                background-color: #F8F8F8;
+                            }
+        #onetrust-consent-sdk #onetrust-pc-sdk
+            button:not(#clear-filters-handler):not(.ot-close-icon):not(#filter-btn-handler):not(.ot-remove-objection-handler):not(.ot-obj-leg-btn-handler):not([aria-expanded]):not(.ot-link-btn),
+            #onetrust-consent-sdk #onetrust-pc-sdk .ot-leg-btn-container .ot-active-leg-btn {
+                background-color: #2E1A4A;border-color: #2E1A4A;
+                color: #FFFFFF;
+            }
+            #onetrust-consent-sdk #onetrust-pc-sdk .ot-active-menu {
+                border-color: #2E1A4A;
+            }
+            
+            #onetrust-consent-sdk #onetrust-pc-sdk .ot-leg-btn-container .ot-remove-objection-handler{
+                background-color: transparent;
+                border: 1px solid transparent;
+            }
+            #onetrust-consent-sdk #onetrust-pc-sdk .ot-leg-btn-container .ot-inactive-leg-btn {
+                background-color: #FFFFFF;
+                color: #4D4D4D; border-color: #4D4D4D;
+            }
+            #onetrust-consent-sdk #onetrust-pc-sdk .ot-tgl input:focus + .ot-switch, .ot-switch .ot-switch-nob, .ot-switch .ot-switch-nob:before,
+            #onetrust-pc-sdk .ot-checkbox input[type="checkbox"]:focus + label::before,
+            #onetrust-pc-sdk .ot-chkbox input[type="checkbox"]:focus + label::before {
+                outline-color: #000000;
+                outline-width: 1px;
+                outline-offset: 1px;
+            }
+            #onetrust-pc-sdk .ot-host-item > button:focus, #onetrust-pc-sdk .ot-ven-item > button:focus {
+                border: 1px solid #000000;
+            }
+            #onetrust-consent-sdk #onetrust-pc-sdk *:focus,
+            #onetrust-consent-sdk #onetrust-pc-sdk .ot-vlst-cntr > a:focus {
+               outline: 1px solid #000000;
+               outline-offset: 1px;
+            }#onetrust-pc-sdk .ot-vlst-cntr .ot-ext-lnk,  #onetrust-pc-sdk .ot-ven-hdr .ot-ext-lnk{
+                    background-image: url('https://cdn.cookielaw.org/logos/static/ot_external_link.svg');
+                }
+            .ot-sdk-cookie-policy{font-family:inherit;font-size:16px}.ot-sdk-cookie-policy.otRelFont{font-size:1rem}.ot-sdk-cookie-policy h3,.ot-sdk-cookie-policy h4,.ot-sdk-cookie-policy h6,.ot-sdk-cookie-policy p,.ot-sdk-cookie-policy li,.ot-sdk-cookie-policy a,.ot-sdk-cookie-policy th,.ot-sdk-cookie-policy #cookie-policy-description,.ot-sdk-cookie-policy .ot-sdk-cookie-policy-group,.ot-sdk-cookie-policy #cookie-policy-title{color:dimgray}.ot-sdk-cookie-policy #cookie-policy-description{margin-bottom:1em}.ot-sdk-cookie-policy h4{font-size:1.2em}.ot-sdk-cookie-policy h6{font-size:1em;margin-top:2em}.ot-sdk-cookie-policy th{min-width:75px}.ot-sdk-cookie-policy a,.ot-sdk-cookie-policy a:hover{background:#fff}.ot-sdk-cookie-policy thead{background-color:#f6f6f4;font-weight:bold}.ot-sdk-cookie-policy .ot-mobile-border{display:none}.ot-sdk-cookie-policy section{margin-bottom:2em}.ot-sdk-cookie-policy table{border-collapse:inherit}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy{font-family:inherit;font-size:1rem}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy h3,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy h4,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy h6,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy p,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy li,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy a,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy th,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy #cookie-policy-description,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-cookie-policy-group,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy #cookie-policy-title{color:dimgray}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy #cookie-policy-description{margin-bottom:1em}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-subgroup{margin-left:1.5em}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy #cookie-policy-description,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-cookie-policy-group-desc,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-table-header,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy a,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy span,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy td{font-size:.9em}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy td span,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy td a{font-size:inherit}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-cookie-policy-group{font-size:1em;margin-bottom:.6em}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-cookie-policy-title{margin-bottom:1.2em}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy>section{margin-bottom:1em}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy th{min-width:75px}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy a,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy a:hover{background:#fff}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy thead{background-color:#f6f6f4;font-weight:bold}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-mobile-border{display:none}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy section{margin-bottom:2em}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-subgroup ul li{list-style:disc;margin-left:1.5em}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-subgroup ul li h4{display:inline-block}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table{border-collapse:inherit;margin:auto;border:1px solid #d7d7d7;border-radius:5px;border-spacing:initial;width:100%;overflow:hidden}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table th,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table td{border-bottom:1px solid #d7d7d7;border-right:1px solid #d7d7d7}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table tr:last-child td{border-bottom:0px}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table tr th:last-child,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table tr td:last-child{border-right:0px}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table .ot-host,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table .ot-cookies-type{width:25%}.ot-sdk-cookie-policy[dir=rtl]{text-align:left}#ot-sdk-cookie-policy h3{font-size:1.5em}@media only screen and (max-width: 530px){.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) table,.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) thead,.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) tbody,.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) th,.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) td,.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) tr{display:block}.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) thead tr{position:absolute;top:-9999px;left:-9999px}.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) tr{margin:0 0 1em 0}.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) tr:nth-child(odd),.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) tr:nth-child(odd) a{background:#f6f6f4}.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) td{border:none;border-bottom:1px solid #eee;position:relative;padding-left:50%}.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) td:before{position:absolute;height:100%;left:6px;width:40%;padding-right:10px}.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) .ot-mobile-border{display:inline-block;background-color:#e4e4e4;position:absolute;height:100%;top:0;left:45%;width:2px}.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) td:before{content:attr(data-label);font-weight:bold}.ot-sdk-cookie-policy:not(#ot-sdk-cookie-policy-v2) li{word-break:break-word;word-wrap:break-word}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table{overflow:hidden}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table td{border:none;border-bottom:1px solid #d7d7d7}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy thead,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy tbody,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy th,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy td,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy tr{display:block}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table .ot-host,#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table .ot-cookies-type{width:auto}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy tr{margin:0 0 1em 0}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy td:before{height:100%;width:40%;padding-right:10px}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy td:before{content:attr(data-label);font-weight:bold}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy li{word-break:break-word;word-wrap:break-word}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy thead tr{position:absolute;top:-9999px;left:-9999px;z-index:-9999}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table tr:last-child td{border-bottom:1px solid #d7d7d7;border-right:0px}#ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table tr:last-child td:last-child{border-bottom:0px}}
+                
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy h5,
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy h6,
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy li,
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy p,
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy a,
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy span,
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy td,
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy #cookie-policy-description {
+                        color: #696969;
+                    }
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy th {
+                        color: #696969;
+                    }
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy .ot-sdk-cookie-policy-group {
+                        color: #696969;
+                    }
+                    
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy #cookie-policy-title {
+                            color: #696969;
+                        }
+                    
+            
+                    #ot-sdk-cookie-policy-v2.ot-sdk-cookie-policy table th {
+                            background-color: #F8F8F8;
+                        }
+                    
+            .ot-floating-button__front{background-image:url('https://cdn.cookielaw.org/logos/static/opt_in_out_icon.png')}</style><link href="https://cdn.rebuyengine.com/onsite/css/rebuy-smart-cart-v2.min.css?build=1745001416" rel="stylesheet" type="text/css" id="rebuy-smart-cart-styles"><link href="https://cdn.rebuyengine.com/onsite/css/cart-widget.min.css?build=1745001416" rel="stylesheet" type="text/css" id="rebuy-cart-widget-styles"><link href="https://cdn.rebuyengine.com/onsite/css/cart-login-link.min.css?build=1745001416" rel="stylesheet" type="text/css" id="rebuy-cart-login-link-styles"><link href="https://cdn.rebuyengine.com/onsite/css/cart-progress-bar.min.css?build=1745001416" rel="stylesheet" type="text/css" id="rebuy-cart-progress-bar-styles"><link href="https://cdn.rebuyengine.com/onsite/css/cart-title-bar.min.css?build=1745001416" rel="stylesheet" type="text/css" id="rebuy-cart-title-bar-styles"><style id="rebuy-global-styles">@import "https://cached.rebuyengine.com/api/v1/user/stylesheet?shop=the-one-nutrition-just-for-you.myshopify.com&cache_key=1745028571"</style><style id="rebuy-stylesheet-199343">@import "https://cached.rebuyengine.com/api/v1/widgets/styles?id=199343&format=css&cache_key=1745028571"</style><link rel="dns-prefetch preconnect" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/polyfills.CPIGHvSH.js" crossorigin=""><style>.rc_theme--avenue .rc-container,.rc_theme--avenue .rc-container label{font-size:15px}.rc_theme--avenue .rc-radio__input:before{display:none}.rc_theme--avenue .rc-selling-plans__dropdown{background:#fff;min-width:204px;font-size:15px;border:1px solid #ccc}.rc_theme--pacific .rc-selling-plans__dropdown{appearance:auto}.rc_theme--envy .rc-option{padding:10px}.rc_theme--envy .rc-option input[type=radio]{display:none}.rc_theme--envy .rc-selling-plans__dropdown{padding:10px}.rc_theme--vantage .rc-selling-plans{margin-bottom:40px}.rc_theme--vantage .rc-selling-plans__dropdown{padding:10px 28px 10px 18px}.rc_theme--california .rc-radio__label:after{display:none}.rc_theme--reach .site-main{z-index:auto}div.rc_popup{display:block;padding:8px;white-space:nowrap}div.rc_block__type--active+div.rc_popup{margin-top:8px}.rc_popup_label_wrapper{background:rgba(0,0,0,0);border:0;outline:0}.rc_popup_label_wrapper:focus{outline:.2rem solid var(--rc-active-color)}div.rc_popup__hover,a.rc_popup__hover{display:inline-flex;align-items:center;position:relative;padding-bottom:12px;cursor:pointer}div.rc_popup__block{display:none;position:absolute;top:100%;cursor:default;left:0;text-align:left;white-space:initial}div.rc_popup__block.active{display:block}div.rc_popup__hover:hover .rc_popup__block,div.rc_popup__block:hover{display:block}div.rc_popup__hover--mobile div.rc_popup__block:hover{display:none}div.rc_popup__block{width:300px;padding:0}div.rc_popup__close{display:block;width:40px;height:40px;position:absolute;top:0;right:0;color:#fff;font-size:23px;text-align:center;line-height:40px;z-index:300;cursor:pointer;font-family:arial}div.rc_popup__block__content a{text-decoration:none}#rc_login{display:block;width:100%;text-align:center;margin:20px auto}</style><style>.rc_popup__hover a[data-v-7bc675e0]{text-decoration:none}.rc_popup__hover[data-v-7bc675e0]:after{display:none;content:"";width:1px;border:10px solid rgba(0,0,0,0);position:absolute;top:18px;border-bottom-color:var(--backgroundColor)}.rc_popup__hover[data-v-7bc675e0]:hover:after{display:block}.rc_popup__block[data-v-7bc675e0]:before{border-bottom-color:var(--backgroundColor)}.rc_popup__block__content[data-v-7bc675e0]{padding-bottom:8px}.rc_popup__block[data-v-7bc675e0]{font-size:12px;padding:12px;z-index:1000}.rc_popup__label[data-v-7bc675e0]{padding-left:8px}.rc_popup__block__footer[data-v-7bc675e0]{display:flex;justify-content:flex-end}.reload-icon[data-v-7bc675e0]{height:16px;width:16px;color:var(--rc-icon-color)}.tooltip-badge[data-v-7bc675e0]{font-size:12px;display:inline-flex;justify-content:center;align-items:center;background-color:#fff;border-radius:50px;padding:4px 12px}.tooltip-badge .powered-by[data-v-7bc675e0]{color:#191d48;font-weight:400;padding-right:4px}.tooltip-badge svg[data-v-7bc675e0]{color:#191d48;width:5em}</style><style>.rc-selling-plans__label[data-v-335eb9f1]{cursor:initial}</style><style>.rc-selling-plans__label[data-v-7965ef98]{cursor:initial}</style><style>.rc-template__legacy-radio .rc-radio{display:block;white-space:nowrap;padding:8px}.rc-template__legacy-radio .rc-radio+.rc-radio{padding-top:0}.rc-template__legacy-radio .rc-radio.rc-option__subsave{padding-bottom:0}.rc-template__legacy-radio .rc-radio__input,.rc-template__legacy-radio .rc-radio__label{display:inline;vertical-align:middle}.rc-template__legacy-radio .rc_widget__option__selector+.rc-selling-plans{padding-left:30px;padding-bottom:8px}</style><style>.rc-checkbox{display:inline-flex;align-items:center;vertical-align:top;cursor:pointer;margin-bottom:0}.rc-checkbox__input{width:16px}.rc-checkbox__input:focus{outline:0}.rc-checkbox__label{margin-inline-start:8px;line-height:2}</style><style>.rc-radio{display:inline-flex;align-items:center;vertical-align:top;cursor:pointer;margin-bottom:0}.rc-radio__input{width:16px}.rc-radio__input:focus{outline:0}.rc-radio__label{margin-left:8px;line-height:2}</style><style>.rc-template__button-group .rc-radio{border:1px solid #ccc;border-radius:10px;padding:12px 20px;text-align:center;flex:1 1 50%}.rc-template__button-group .rc-radio.rc-option--active{box-shadow:0px 0px 0px 1px #ccc}.rc-template__button-group .rc-radio:first-child{margin-right:4px;border-top-right-radius:0;border-bottom-right-radius:0}.rc-template__button-group .rc-radio:nth-child(2){border-top-left-radius:0;border-bottom-left-radius:0}.rc-template__button-group .rc-radio .rc-radio__input{border:0px;clip:rect(0px, 0px, 0px, 0px);height:1px;width:1px;margin:-1px;padding:0px;overflow:hidden;white-space:nowrap;position:absolute}.rc-template__button-group .rc-radio .rc-radio__input:focus-visible+.rc-radio__label{outline:.2rem solid var(--rc-active-color);outline-offset:.3rem}.rc-template__button-group .rc-radio .rc-radio__label{margin-left:0;line-height:1;width:100%}.rc-template__button-group .rc-radio .rc-option__price{display:block;font-weight:bold;font-size:20px;margin-top:8px}.rc-template__button-group .rc-button-group__options{justify-content:center}.rc-template__button-group .rc-radio-group__options{display:flex;justify-content:center}.rc-template__button-group .rc-radio-group__options+.rc-selling-plans{margin-top:12px}</style><style>.rc-template__checkbox{padding:0 8px}.rc-template__checkbox .rc-option__text,.rc-template__checkbox .rc-option__discount{font-weight:bold}.rc-widget .rc-template__checkbox .rc-option__discount{padding-right:0}</style><style>.rc-template__radio-group .rc-radio-group__options{overflow:hidden}.rc-template__radio-group .rc-radio{display:flex;padding:8px 20px}.rc-template__radio-group .rc-radio:not(:first-child){border-top:1px solid #ccc}.rc-template__radio-group .rc-radio .rc-radio__input{min-height:0}.rc-template__radio-group .rc-radio.rc-option__subsave .rc-radio__label{font-weight:bold}.rc-template__radio-group .rc-radio .rc-radio__label{display:flex}.rc-template__radio-group .rc-radio .rc-radio__label .rc-option__text{order:2}.rc-template__radio-group .rc-radio .rc-radio__label .rc-option__discount{order:3}.rc-template__radio-group .rc-radio .rc-radio__label .rc-option__price{order:1;font-weight:bold;margin-right:16px}.rc-template__radio-group .rc-radio-group__options{border:1px solid #ccc;border-radius:10px}.rc-template__radio-group .rc-radio-group__options+.rc-selling-plans{margin-top:16px;font-weight:bold}</style><style>.rc-container{margin-bottom:.5em}.rc-widget{color:var(--rc-color)}.rc-widget .rc-option--active{color:var(--rc-active-color);background-color:var(--rc-active-bg)}.rc-widget .rc-option__text,.rc-widget .rc-option__discount{padding-right:4px}.rc-widget label{color:inherit}</style><style>:root{--rc-color: #040404;--rc-active-bg: #efefef;--rc-active-color: #000000}.visually-hidden{border:0px;clip:rect(0px, 0px, 0px, 0px);height:1px;width:1px;margin:-1px;padding:0px;overflow:hidden;white-space:nowrap;position:absolute}</style><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/app.DE5MNd1X.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/page-OnePage.DIA9tXLr.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/DeliveryMethodSelectorSection.Bf0boBSi.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/useEditorShopPayNavigation.BHYSzY_s.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/VaultedPayment.DjeCn0w1.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/LocalizationExtensionField.Blky6-zm.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/ShopPayOptInDisclaimer.C8W8ge3q.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/ShipmentBreakdown.C8p1PNSi.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/MerchandiseModal.D3hfMTdE.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/StackedMerchandisePreview.78Hq_seI.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/PayButtonSection.B3Bp1GAh.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/component-ShopPayVerificationSwitch.C8hkarT_.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/useSubscribeMessenger.BEwr_2dv.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="script" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/index.CUKmY-Xx.js" crossorigin=""><link rel="prefetch" fetchpriority="low" as="style" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/app.CXL-GAUL.css" crossorigin=""><link rel="prefetch" fetchpriority="low" as="style" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/OnePage.PMX4OSBO.css" crossorigin=""><link rel="prefetch" fetchpriority="low" as="style" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/DeliveryMethodSelectorSection.DmqjTkNB.css" crossorigin=""><link rel="prefetch" fetchpriority="low" as="style" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/useEditorShopPayNavigation.DCOTvxC3.css" crossorigin=""><link rel="prefetch" fetchpriority="low" as="style" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/VaultedPayment.OxMVm7u-.css" crossorigin=""><link rel="prefetch" fetchpriority="low" as="style" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/StackedMerchandisePreview.CKAakmU8.css" crossorigin=""><link rel="prefetch" fetchpriority="low" as="style" href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ShopPayVerificationSwitch.DW7NMDXG.css" crossorigin=""><link rel="prefetch" fetchpriority="low" as="image" href="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/omi-logo-dark_x320.png?v=1738396635" crossorigin=""></head>
+
+  <body class="kaxsdc smart-cart--enabled" data-event="load"><access-widget-ui data-acsb="" class="notranslate"></access-widget-ui><a href="https://accessibe.com/blog/knowledgebase/screen-reader-guide" target="_blank" rel="noopener" data-acsb="sr-trigger" data-acsb-sr-only="true" class="acsb-sr-only" style="position: absolute; width: 200px; height: 1px; margin-top: -1px; z-index: -1; border: 0px; top: 0px; left: 0px; overflow: hidden; outline: 0px;">Accessibility Screen-Reader Guide, Feedback, and Issue Reporting</a><access-widget-ui data-acsb="skipLinks" class="notranslate"></access-widget-ui><access-widget-ui data-acsb="" class="notranslate"></access-widget-ui><svg id="oke-star-symbols" style="display:none!important" data-oke-id="oke-star-symbols"><symbol id="oke-star-empty" style="overflow:visible;"><path id="star-default--empty" fill="var(--oke-stars-backgroundColor)" stroke="var(--oke-stars-borderColor)" stroke-width="var(--oke-stars-borderWidth)" d="M3.34 13.86c-.48.3-.76.1-.63-.44l1.08-4.56L.26 5.82c-.42-.36-.32-.7.24-.74l4.63-.37L6.92.39c.2-.52.55-.52.76 0l1.8 4.32 4.62.37c.56.05.67.37.24.74l-3.53 3.04 1.08 4.56c.13.54-.14.74-.63.44L7.3 11.43l-3.96 2.43z"></path></symbol><symbol id="oke-star-filled" style="overflow:visible;"><path id="star-default--filled" fill="var(--oke-stars-foregroundColor)" stroke="var(--oke-stars-borderColor)" stroke-width="var(--oke-stars-borderWidth)" d="M3.34 13.86c-.48.3-.76.1-.63-.44l1.08-4.56L.26 5.82c-.42-.36-.32-.7.24-.74l4.63-.37L6.92.39c.2-.52.55-.52.76 0l1.8 4.32 4.62.37c.56.05.67.37.24.74l-3.53 3.04 1.08 4.56c.13.54-.14.74-.63.44L7.3 11.43l-3.96 2.43z"></path></symbol></svg>
+    <div class="page-container">
+      
+      
+      
+      
+
+      
+
+      <div class="header-wpr transparent make-sticky">
+        <div id="shopify-section-announcement-bar" class="shopify-section section-announcement-bar"> 
+  <div class="section announcement-bar" section_color="Copper">
+    <div class="container-fluid lg">
+      <div class="slider-wpr">
+        <div class="glide" data-glide-speed="5000">
+          <div class="glide__track" data-glide-el="track">
+            <div class="glide__slides">
+                  
+                  
+
+                  
+                    <div class="glide__slide">
+                      <p class="text block-text text-center white desktop-normal mobile-normal">OMI’s peptide formula improves hair growth in 90 days.  <a href="/products/hair-nutrition-peptides-gummies">Learn more</a> </p>
+                    </div>
+                  
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> 
+        <div id="shopify-section-header" class="shopify-section section-header">
+
+
+
+
+
+<div data-type="transparent" data-sticky="true" class="header-main make-sticky">
+  <header class="header page-width header--has-menu header--has-account">
+    <div class="container-fluid lg">
+      <div class="mobile-toggle-wpr">
+        <div class="mobile-toggle">
+          <span>
+            <img src="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/icon-hamburger.webp?v=1729608882" class="icon icon-hamburger" alt="Mobile Hamburger Icon">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-close" fill="none" viewBox="0 0 16 16">
+              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" fill="currentColor"></path>
+            </svg>
+          </span>
+        </div>
+        <div class="mobile-menu-drawer">
+          <div class="drawer-inner-container"> 
+            <div class="menu-drawer__navigation-container">
+              <nav class="menu-drawer-container">
+                <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+                  
+<li><a href="/products/hair-nutrition-peptides-gummies" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
+                          SHOP
+                        </a></li><li><a href="/pages/our-story" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
+                          Our Story
+                        </a></li><li><a href="/pages/science" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
+                          Science
+                        </a></li><li><a href="/pages/giving-back" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
+                          Giving Back
+                        </a></li><li><a href="/pages/press" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
+                          Press
+                        </a></li></ul>
+              </nav><div class="social-icons-wpr">
+                  <div class="social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+                      <div class="social-icon facebook">
+                        <a href="https://www.facebook.com/omibynaomi">
+                          <img src="//omiwellbeauty.com/cdn/shop/files/facebook-dark.png?v=1732181490&amp;width=50" alt="facebook">
+                        </a>
+                      </div>
+                    
+
+                    
+
+                    
+                      <div class="social-icon instagram">
+                        <a href="https://www.instagram.com/omibynaomi/">
+                          <img src="//omiwellbeauty.com/cdn/shop/files/instagram-dark.png?v=1732181490&amp;width=50" alt="instagram">
+                        </a>
+                      </div>
+                    
+
+                    
+                    
+                  </div>
+                </div></div>
+          </div>
+        </div>
+        <div class="mobile-menu-overlay" style="top: 114px;"></div>
+      </div>
+      <nav class="header__inline-menu">
+        <ul class="main" role="list"><li class="item">
+              <a href="/products/hair-nutrition-peptides-gummies">SHOP</a>
+            </li><li class="item">
+              <a href="/pages/our-story">Our Story</a>
+            </li><li class="item">
+              <a href="/pages/science">Science</a>
+            </li><li class="item">
+              <a href="/pages/giving-back">Giving Back</a>
+            </li></ul>
+      </nav>
+
+      <div class="branding">
+        <div class="logo">
+          <a href="/" aria-label="Home">
+            <img class="filled-in-logo logo" style="max-width: 150px; display: block;" src="//omiwellbeauty.com/cdn/shop/files/omi-logo-dark.svg?v=1738333060" alt="Filled in Logo">
+            <img class="transparent-logo logo" style="max-width: 150px; display: none;" src="//omiwellbeauty.com/cdn/shop/files/omi-logo-light.svg?v=1738333080" alt="Transparent Logo">
+          </a>
+        </div>
+      </div>
+
+      <div class="right-wpr">
+        
+          <a href="/pages/press" class="header-cta-button mb-0">PRESS</a>
+        
+
+        <a href="/account/login" class="header__icon header__icon--account link focus-inset small-hide" rel="nofollow" aria-label="Account">
+          <img src="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/user.png?v=1735402047" alt="Account Icon">
+        </a>
+
+        
+
+<details-modal class="header__search">
+  <details>
+    <summary class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle" aria-haspopup="dialog" aria-label="Search">
+      <span>
+        <span class="svg-wrapper">
+          <img src="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/search-icon.webp?v=1729251835" alt="Search">
+        </span>
+        <span class="svg-wrapper header__icon-close"><!-- inline_asset_content: Asset not found. --></span>
+        <span class="search-overlay svg-wrapper header__icon-close"></span>
+        <span class="search-close svg-wrapper header__icon-close" style="top: 114px;">Close</span>
+      </span>
+    </summary>
+    <div class="search-modal modal__content gradient" role="dialog" aria-modal="true" aria-label="Search" style="top: 114px;">
+      <div class="modal-overlay"></div>
+      <div class="search-modal__content" tabindex="-1">
+        <div class="container-fluid lg"><predictive-search class="search-modal__form" data-loading-text="Loading..."><form onsubmit="return false;" method="get" role="search" class="search search-modal__form">
+            <div class="field">
+              <svg class="icon icon-search" width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.54188 17.084C3.83209 17.084 0 13.2519 0 8.54186C0 3.83179 3.83209 0 8.54188 0C13.2517 0 17.0838 3.83179 17.0838 8.54186C17.0838 13.2519 13.2517 17.084 8.54188 17.084ZM8.54188 1.42531C4.61771 1.42531 1.42531 4.61771 1.42531 8.54186C1.42531 12.466 4.61771 15.6587 8.54188 15.6587C12.466 15.6587 15.6584 12.466 15.6584 8.54186C15.6584 4.61771 12.466 1.42531 8.54188 1.42531Z" fill="#2E1A4A"></path>
+<path d="M22.2865 21.4331C22.1041 21.4331 21.9219 21.3636 21.7825 21.2245L15.1366 14.5783C14.8581 14.3001 14.8581 13.8488 15.1366 13.5703C15.4151 13.2921 15.8661 13.2921 16.1443 13.5703L22.7905 20.2165C23.0687 20.4947 23.0687 20.9463 22.7905 21.2245C22.6511 21.3636 22.469 21.4331 22.2865 21.4331Z" fill="#2E1A4A"></path>
+</svg>
+
+              <input class="search__input field__input" id="Search-In-Modal" type="search" name="q" value="" placeholder="Search" role="combobox" aria-expanded="false" aria-owns="predictive-search-results" aria-controls="predictive-search-results" aria-haspopup="listbox" aria-autocomplete="list" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">
+              <input type="hidden" name="options[prefix]" value="last">
+              <button type="reset" class="reset__button field__button hidden" aria-label="Clear search term">
+                Reset
+                <span class="svg-wrapper"><!-- inline_asset_content: Asset not found. --></span>
+              </button>
+              <button class="search__button field__button" aria-label="Search">
+                Search
+                <span class="svg-wrapper"><!-- inline_asset_content: Asset not found. --></span>
+              </button>
+            </div><div class="predictive-search predictive-search--header" data-lenis-prevent="" tabindex="-1" data-predictive-search="">
+
+<div class="predictive-search__loading-state">
+  <!-- inline_asset_content: Asset not found. -->
+</div>
+<div class="predictive-search__products">
+                  <h3 class="collection-title"></h3><div class="product-grid grid--3-col-desktop grid--2-col-tablet-down">
+
+                      
+                      <div class="grid__item">
+                        
+<div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div class="
+        card
+         card--media
+        
+        
+        
+      " style="--ratio-percent: 100%;">
+      <div class="card__inner" style="--ratio-percent: 100%;"><div class="card__media">
+            <div class="media media--transparent media--hover-effect">
+          
+            
+          
+              
+               <a href="/products/hair-growth-peptides" id="StandardCardNoMediaLink--8118434136245" class="full-unstyled-link" aria-label="Hair Growth Peptides">
+              <img srcset="//omiwellbeauty.com/cdn/shop/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px.png?v=1740241975&amp;width=165 165w,//omiwellbeauty.com/cdn/shop/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px.png?v=1740241975&amp;width=360 360w,//omiwellbeauty.com/cdn/shop/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px.png?v=1740241975&amp;width=533 533w,//omiwellbeauty.com/cdn/shop/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px.png?v=1740241975&amp;width=720 720w,//omiwellbeauty.com/cdn/shop/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px.png?v=1740241975&amp;width=940 940w,//omiwellbeauty.com/cdn/shop/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px.png?v=1740241975&amp;width=1066 1066w,//omiwellbeauty.com/cdn/shop/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px.png?v=1740241975 2000w
+                " src="//omiwellbeauty.com/cdn/shop/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px.png?v=1740241975&amp;width=533" alt="Hair Growth Peptides" class="motion-reduce" loading="lazy" width="2000" height="2000">
+              
+              </a></div>
+          </div><div class="card__content">
+          <div class="price-info-wpr with-tag">
+            
+              <div class="product-tag">
+                <p class="mb-0">OMI</p>
+              </div>
+            
+
+            
+<div class="
+      price "> 
+    <div class="price__container"><div class="price__regular"><span class="visually-hidden visually-hidden--inline">Regular price</span>
+          <span class="price-item price-item--regular">
+            $69
+          </span></div>
+      <div class="price__sale">
+          <span class="visually-hidden visually-hidden--inline">Regular price</span>
+          <span>
+            <s class="price-item price-item--regular">
+              $79
+            </s>
+          </span><span class="price-item price-item--sale price-item--last">
+          $69
+        </span>
+      </div>
+      <small class="unit-price caption hidden">
+        <span class="visually-hidden">Unit price</span>
+        <span class="price-item price-item--last">
+          <span></span>
+          <span aria-hidden="true">/</span>
+          <span class="visually-hidden">&nbsp;per&nbsp;</span>
+          <span>
+          </span>
+        </span>
+      </small>
+    </div></div>
+
+
+
+          </div>
+          <div class="card__information">
+            <h3 class="card__heading">
+              <a href="/products/hair-growth-peptides" id="StandardCardNoMediaLink--8118434136245" class="full-unstyled-link" aria-labelledby="StandardCardNoMediaLink--8118434136245 NoMediaStandardBadge--8118434136245">
+                Hair Growth Peptides
+              </a>
+            </h3>
+
+            
+              <p class="product-subtitle">Rapid Growth and Thickness</p>
+            
+
+            
+              <p class="sm product-description">Support beautiful hair and scalp health with our unique super-peptide formula.</p>
+            
+
+             
+
+            
+              <!-- Okendo Star Ratings -->
+
+   
+  <div data-oke-star-rating="" data-oke-reviews-product-id="shopify-8118434136245" data-oke-rendered=""><div data-oke-reviews-version="0.75.2" data-oke-container="" class="okeReviews oke-sr"><div class=""><div class="oke-sr-rating"> 4.6 </div><div class="oke-sr-stars"><div class="oke-stars"><!----><div class="oke-stars-background"><svg height="15" viewBox="0 0 80.46666666666667 14" aria-hidden="true" role="none"><use x="0" href="#oke-star-empty"></use><use x="16.466666666666665" href="#oke-star-empty"></use><use x="32.93333333333333" href="#oke-star-empty"></use><use x="49.39999999999999" href="#oke-star-empty"></use><use x="65.86666666666666" href="#oke-star-empty"></use></svg></div><div class="oke-stars-foreground" style="width: 92.7423%;"><svg height="15" viewBox="0 0 80.46666666666667 14" aria-hidden="true" role="none"><use x="0" href="#oke-star-filled"></use><use x="16.466666666666665" href="#oke-star-filled"></use><use x="32.93333333333333" href="#oke-star-filled"></use><use x="49.39999999999999" href="#oke-star-filled"></use><use x="65.86666666666666" href="#oke-star-filled"></use></svg></div><span class="oke-a11yText">Rated 4.6 out of 5 stars</span></div></div><div class="oke-sr-count oke-sr-count--brackets"><span class="oke-sr-count-number">127</span><!----><!----></div><!----></div><script type="application/json" data-oke-metafield-data=""> {"averageRating":"4.6","reviewCount":127} </script></div></div>
+
+            
+
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+                      </div></div>
+                </div>
+              </div>
+
+              <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span></form></predictive-search></div>
+      </div>
+    </div>
+  </details>
+</details-modal>
+
+
+        <a href="/cart" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" aria-label="Cart">
+          <img src="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/cart-icon.webp?v=1729250177" alt="Cart Icon"></a>
+      </div>
+    </div>
+  </header>
+</div>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "OMI Wellbeauty",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https:\/\/omiwellbeauty.com\/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "https:\/\/omiwellbeauty.com"
+    }
+  </script>
+</div>
+      </div>
+
+      <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1" style="padding-top: 114px;">
+        <div id="shopify-section-template--18360772591797__hero_MrYHUL" class="shopify-section DS-padding"><div class="hero section DS-padding medium in-view">
+  
+    <video autoplay="" muted="" playsinline="" loop="" class="video-element" data-desktop-video="//omiwellbeauty.com/cdn/shop/videos/c/vp/4f2d646c535e4da8a3ec063a282d5fc6/4f2d646c535e4da8a3ec063a282d5fc6.HD-1080p-4.8Mbps-45799885.mp4?v=0" data-mobile-video="//omiwellbeauty.com/cdn/shop/videos/c/vp/4f2d646c535e4da8a3ec063a282d5fc6/4f2d646c535e4da8a3ec063a282d5fc6.HD-1080p-4.8Mbps-45799885.mp4?v=0" poster="//omiwellbeauty.com/cdn/shop/files/omi-hair-model.webp?v=1744406107" src="//omiwellbeauty.com/cdn/shop/videos/c/vp/4f2d646c535e4da8a3ec063a282d5fc6/4f2d646c535e4da8a3ec063a282d5fc6.HD-1080p-4.8Mbps-45799885.mp4?v=0" style="object-position: center 0px;"></video>
+  
+  
+
+  
+
+  
+    <div class="overlay"></div>
+  
+
+  
+
+
+  <div class="container-fluid lg  ">
+    <div class="text-wpr WYSIWYG-styles animate text-white   text-width-medium">
+      
+        
+            
+              <div class="text-width-small">
+            
+              <h5>The Future of Hair Health</h5>
+            
+            </div>
+            
+          
+      
+        
+            
+              <h2 class="fade-down">Stronger follicles in 6 days</h2><h2 class="fade-down">Visible growth in 90 days</h2>
+            
+          
+      
+        
+            
+              <!-- button-primary.liquid -->
+<a target="" href="/products/hair-nutrition-peptides-gummies" class="btn ">
+  <div class="btn-text-wrap">
+   <span class="before-text">Shop now</span>
+   
+   
+    <span class="after-text">Shop now</span>
+   
+ </div>
+</a>
+            
+        
+      
+    </div>
+
+    
+
+    
+  </div>
+</div>
+
+<style>
+
+  
+
+  #MainContent #shopify-section-template--18360772591797__hero_MrYHUL.shopify-section:last-of-type {
+    padding-bottom: 50px;
+  }
+  #MainContent #shopify-section-template--18360772591797__hero_MrYHUL.shopify-section:first-of-type .hero .container-fluid {
+    padding-top: 100px;
+  }
+
+  @media (max-width: 1080px) {
+    #MainContent #shopify-section-template--18360772591797__hero_MrYHUL.shopify-section:first-of-type .hero .container-fluid
+      margin-top: 80px;
+    }
+  }
+
+</style>
+
+
+</div><div id="shopify-section-template--18360772591797__simple_text_nqaaEM" class="shopify-section">
+  
+<section class="simple-text-section section  remove-padding-bottom " section_color="Normal" section_size="Small">
+  
+    <div class="simple-text-container">
+      <div class="container-fluid md">
+        
+            <div class="WYSIWYG-styles medium  text-center ">
+              <div class="text-wpr WYSIWYG-styles animate content-small">
+                
+                  
+                  <h3 class="simple-text-title fade-down">The World’s First Hair Growth Peptide Biotechnology</h3>
+                
+                
+
+                
+              </div>
+            </div>
+          
+      </div>
+    </div>
+  
+</section>
+
+
+</div><div id="shopify-section-template--18360772591797__bar_logos_fPLhpR" class="shopify-section"><div class="homelogo section">
+  <div class="container-fluid lg">
+    <div class="loop-wpr">
+      
+      <div class="loop">
+        
+          <div class="image">
+            
+              <a href="https://omiwellbeauty.com/pages/press" target="_blank" class="logo-link">
+            
+            <img style="max-width: 140px; max-height: px;" loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/nwlogo_medium.png?v=1739036807" alt="Naomi W - Nutritional expert" aria-hidden="true" role="presentation">
+            
+              </a>
+            
+          </div>
+        
+          <div class="image">
+            
+              <a href="https://omiwellbeauty.com/pages/press" target="_blank" class="logo-link">
+            
+            <img style="max-width: 100px; max-height: px;" loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/womenshealth_medium.webp?v=1743025268" alt="women's health" aria-hidden="true" role="presentation">
+            
+              </a>
+            
+          </div>
+        
+          <div class="image">
+            
+              <a href="https://omiwellbeauty.com/pages/press" target="_blank" class="logo-link">
+            
+            <img style="max-width: 80px; max-height: px;" loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/SHAPE_Logo_5b4e76de-a430-4281-b4fa-e1956e818037_medium.webp?v=1743025204" alt="shape logo" aria-hidden="true" role="presentation">
+            
+              </a>
+            
+          </div>
+        
+          <div class="image">
+            
+              <a href="https://omiwellbeauty.com/pages/press" target="_blank" class="logo-link">
+            
+            <img style="max-width: 100px; max-height: px;" loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/VOGUE_LOGO_medium.webp?v=1743025076" alt="vogue logo" aria-hidden="true" role="presentation">
+            
+              </a>
+            
+          </div>
+        
+          <div class="image">
+            
+              <a href="https://omiwellbeauty.com/pages/press" target="_blank" class="logo-link">
+            
+            <img style="max-width: 120px; max-height: px;" loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/Forbes-logo_eea14113-40ca-4547-85db-8288f520c20b_medium.webp?v=1743025345" alt="forbes logo" aria-hidden="true" role="presentation">
+            
+              </a>
+            
+          </div>
+        
+          <div class="image">
+            
+              <a href="https://omiwellbeauty.com/pages/press" target="_blank" class="logo-link">
+            
+            <img style="max-width: 100px; max-height: px;" loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/allure_medium.png?v=1734740305" alt="Naomi W - Nutritional expert" aria-hidden="true" role="presentation">
+            
+              </a>
+            
+          </div>
+         
+      </div>
+    </div>
+  </div>  
+</div>
+
+</div><div id="shopify-section-template--18360772591797__multi_image_parallax_wcRxbg" class="shopify-section"><div class="multi-image-parallax section">
+  <div class="container-fluid full-width">
+    <div class="inner-wrapper half-half ">
+      <div class="col-50 col-flex">
+        <div class="left-wpr">
+          <div class="text-wpr animate">
+            
+              
+                  <h3 class="subtitle lg-text">Proven to work on 100% of participants and all hair types.</h3>
+                
+            
+              
+                  <p class="">A first-of-their kind biotechnology, OMI’s follicle-fortifying peptides work at the cellular level to anchor and strengthen hair follicles. Now you can achieve the eleven virtues of good hair from the inside out.</p>
+                
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </div>
+  
+          <div class="percentage-item-wpr"> 
+            
+              
+            
+              
+            
+              
+                <div class="percentage-item animate">
+                  <span class="percentage-number" data-target="90 days">90</span>
+                  <p class="percentage-description mb-0">
+                    days to improved hair growth and reduced loss*
+                  </p>
+                  
+                  <div class="percentage-divider divider-animate"></div>
+                  
+                </div>
+              
+            
+              
+                <div class="percentage-item animate">
+                  <span class="percentage-number" data-target="93%">93%</span>
+                  <p class="percentage-description mb-0">
+                    reduction in breakage
+                  </p>
+                  
+                  <div class="percentage-divider divider-animate"></div>
+                  
+                </div>
+              
+            
+              
+                <div class="percentage-item animate">
+                  <span class="percentage-number" data-target="59%">59%</span>
+                  <p class="percentage-description mb-0">
+                    improvement in gloss and shine
+                  </p>
+                  
+                  <div class="percentage-divider divider-animate"></div>
+                  
+                </div>
+              
+            
+              
+                <div class="percentage-item">
+                  <span class="percentage-number" data-target="16x">
+                    0%
+                  </span>
+                  <p class="percentage-description mb-0">
+                    greater improvement in hair strength
+                  </p>
+                  
+                  <div class="percentage-divider"></div>
+                  
+                </div>
+              
+            
+              
+                <div class="percentage-item">
+                  <span class="percentage-number" data-target="47%">
+                    0%
+                  </span>
+                  <p class="percentage-description mb-0">
+                    less shedding
+                  </p>
+                  
+                </div>
+              
+            
+</div>
+
+          <div class="tick-list-wpr">
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-50">
+        
+          
+              
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <div class="multi-image-wpr main-image-skinny">
+          <div class="small-image first">
+            
+            
+              <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/homepage-small-01_1024x1024_1_1024x1024.webp?v=1736344896" srcset="
+                  //omiwellbeauty.com/cdn/shop/files/homepage-small-01_1024x1024_1_640x640.webp?v=1736344896 640w,
+                  //omiwellbeauty.com/cdn/shop/files/homepage-small-01_1024x1024_1_1024x1024.webp?v=1736344896 1024w,
+                  //omiwellbeauty.com/cdn/shop/files/homepage-small-01_1024x1024_1_2048x2048.webp?v=1736344896 2048w" sizes="(max-width: 768px) 100vw, 50vw" alt="First Small Image">
+            
+          </div>
+          
+            <div class="small-image second">
+              
+              
+              <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/homepage-small-02_1024x1024_1_1024x1024.webp?v=1736344951" srcset="
+                  //omiwellbeauty.com/cdn/shop/files/homepage-small-02_1024x1024_1_640x640.webp?v=1736344951 640w,
+                  //omiwellbeauty.com/cdn/shop/files/homepage-small-02_1024x1024_1_1024x1024.webp?v=1736344951 1024w,
+                  //omiwellbeauty.com/cdn/shop/files/homepage-small-02_1024x1024_1_2048x2048.webp?v=1736344951 2048w
+                " sizes="(max-width: 768px) 100vw, 50vw" alt="Second Small Image">
+              
+            </div>
+          
+          <div class="main-image">
+            
+              
+              <div class="image-wpr"> 
+                <img class="image" src="//omiwellbeauty.com/cdn/shop/files/homepage-small-03_2048x2048_1_2048x2048.webp?v=1736344842" srcset="
+                  //omiwellbeauty.com/cdn/shop/files/homepage-small-03_2048x2048_1_640x640.webp?v=1736344842 640w,
+                  //omiwellbeauty.com/cdn/shop/files/homepage-small-03_2048x2048_1_1024x1024.webp?v=1736344842 1024w,
+                  //omiwellbeauty.com/cdn/shop/files/homepage-small-03_2048x2048_1_2048x2048.webp?v=1736344842 2048w" sizes="(max-width: 768px) 100vw, 50vw" alt="Main Image" style="object-position: 50% -49px;">
+              </div>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><div id="shopify-section-template--18360772591797__simple_text_video_cPtL6N" class="shopify-section"><div class="section simple-text-video">
+  <div class="container-fluid ">
+    <div class="inner-wrapper align-center ">
+      <div class="col-50">
+        
+          <div class="video animated-container" data-scroll="" data-scroll-call="animateSection">
+            
+              <img loading="lazy" class="image-placeholder animate-image zoom-in animated-content" data-scroll="" data-scroll-call="animateSection" src="//omiwellbeauty.com/cdn/shop/files/homepage-small-04_1.webp?v=1736345107" alt="">
+            
+            
+          </div>
+        
+      </div>
+      <div class="col-50">
+        <div class="right-wpr">
+          <div class="text-wpr animate">
+            
+              
+                  <h3 class="subtitle lg-text ">Radiant hair, rooted in Nobel Prize-winning research.</h3>
+                 
+            
+              
+                  <p>Harnessing 20 years of research, OMI has pioneered a way to reactivate the biological processes needed for your healthiest, thickest hair yet.</p>
+                 
+            
+               
+            
+               
+            
+               
+            
+               
+            
+               
+            
+          </div>
+
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+
+          
+
+          
+          
+            
+          
+            
+          
+            
+              
+              
+
+          
+            <div class="icon-card-wpr">
+              
+                
+              
+                
+              
+                
+                  <div class="icon-card full-width-mobile">
+                    
+                      <div class="icon-wpr">
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/W-060_NAO_Icons-V1-10_small.svg?v=1738342093" alt="icon">
+                      </div>
+                    
+                    
+                      <p class="mb-0">Patented Biotechnology</p> 
+                    
+                  </div>
+                
+              
+                
+                  <div class="icon-card full-width-mobile">
+                    
+                      <div class="icon-wpr">
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/W-060_NAO_Icons-V1-03_small.svg?v=1738342161" alt="icon">
+                      </div>
+                    
+                    
+                      <p class="mb-0">Award-Winning Science</p> 
+                    
+                  </div>
+                
+              
+                
+                  <div class="icon-card full-width-mobile">
+                    
+                      <div class="icon-wpr">
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/W-060_NAO_Icons-V1-06_small.svg?v=1738342202" alt="icon">
+                      </div>
+                    
+                    
+                      <p class="mb-0">Clinically Proven Formulas</p> 
+                    
+                  </div>
+                
+              
+                
+                  <div class="icon-card full-width-mobile">
+                    
+                      <div class="icon-wpr">
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/W-060_NAO_Icons-V1-09_small.svg?v=1738342218" alt="icon">
+                      </div>
+                    
+                    
+                      <p class="mb-0">Drug-Free, Natural Ingredients</p> 
+                    
+                  </div>
+                
+              
+                
+              
+            </div>
+          
+
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                <div class="button-wpr">
+                  
+                    <!-- button-primary.liquid -->
+<a target="" href="/pages/science" class="btn ">
+  <div class="btn-text-wrap">
+   <span class="before-text">Learn More</span>
+   
+   
+    <span class="after-text">Learn More</span>
+   
+ </div>
+</a>
+                  
+                </div>
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  
+</style>
+
+</div><div id="shopify-section-template--18360772591797__image_text_slide_in_B4AjDF" class="shopify-section"><div class="image-text-slide-in section" data-filter="" style="background-color: #f2eae1;">
+  <div class="container-fluid">
+    <div class="title-wpr text-center">
+      <h2 class="title">Visible results in 90 days</h2>
+    </div>
+  </div>
+
+  <div class="image-wpr-mobile">
+    <img class="image" src="//omiwellbeauty.com/cdn/shop/files/Bosch_N_3-21-22_THLB_3-min.webp?v=1743155234" alt="">
+  </div>
+
+  <div class="flex-wpr" data-scroll="">
+    <div class="image-wpr desktop" data-scroll="">
+      <div class="image-tooltip-wpr">
+        
+          
+            <div class="tooltip active" style="left: 50%; top: 50%;" data-item-index="0">
+              <div class="tooltip-content">
+                <h3 class="tooltip-title">Unlike any other formula, OMI begins fortifying follicles in just six days.</h3>
+                <h5 class="tooltip-block-text">what’s happening in your hair?</h5>
+                <div class="tooltip-paragraph"><p>An increase in Collagen IV begins at the base of the hair follicle, improving hair anchoring in the bulb</p></div>
+              </div>
+            </div>
+          
+        
+          
+        
+          
+        
+          
+         
+        
+          
+            <img class="images image-item-0 visible" src="//omiwellbeauty.com/cdn/shop/files/4week_1_1.webp?v=1737722702" alt="6 Days">
+          
+        
+          
+            <img class="images image-item-1" src="//omiwellbeauty.com/cdn/shop/files/4week_1_1.webp?v=1737722702" alt="4 Weeks">
+          
+        
+          
+            <img class="images image-item-2" src="//omiwellbeauty.com/cdn/shop/files/8week_1_1.webp?v=1737722831" alt="8 Weeks">
+          
+        
+          
+            <img class="images image-item-3" src="//omiwellbeauty.com/cdn/shop/files/12week_1.webp?v=1737722883" alt="12 Weeks">
+          
+        
+        <img class="image" data-scroll="" data-scroll-sticky="" data-scroll-target=".image-wpr" data-scroll-offset="0%, -15%" src="//omiwellbeauty.com/cdn/shop/files/Bosch_N_3-21-22_THLB_3-min.webp?v=1743155234" alt="">
+      </div>
+    </div>
+    <div class="timeline-wpr desktop" data-scroll="" data-scroll-sticky="" data-scroll-target=".flex-wpr" data-scroll-offset="0%, -15%" data-timeline-length="4" style="min-height: 674px;">
+      <div class="timeline-line">
+        <div class="timeline-progress" style="transform: translateY(0px) scaleY(0); height: 140px; bottom: unset; top: 0px;"></div>
+      </div>
+      
+        <div class="timeline-item visible">
+          <div class="timeline-item-content">
+            <h2 class="title">
+              6 Days
+
+              <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+            </h2>
+            <div class="content">
+              
+                <h4 class="subtitle">follicle Anchoring</h4>
+              
+              
+                <div class="paragraph"><p>Collagen IV production at the base of hair follicles begins to increase, helping to strengthen the hair bulb and improve its anchoring.</p></div>
+              
+            </div>
+          </div>
+        </div>
+      
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <h2 class="title">
+              4 Weeks
+
+              <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+            </h2>
+            <div class="content">
+              
+              
+                <div class="paragraph"><p><strong>Hair loss reduced by 4 times</strong>, with an improvement in anchoring between 1,100 to 2,300 more hairs per month compared to the baseline.</p><p><strong>Fewer hairs shed</strong> during brushing or washing, with <strong>23% more hairs staying securely anchored to the scalp.</strong></p><p>28% of participants reported <strong>noticeably shinier, more lustrous hair</strong> with reduced dullness.</p><p>Approximately <strong>9,200 hairs transitioned into and extended their active growth</strong> (anagen) phase.</p></div>
+              
+            </div>
+          </div>
+        </div>
+      
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <h2 class="title">
+              8 Weeks
+
+              <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+            </h2>
+            <div class="content">
+              
+              
+                <div class="paragraph"><p><strong>Hair strength</strong> <strong>improved 16 times</strong>, with increased elasticity and resistance to breakage.</p><p><strong>Hair loss reduced by 43.1%</strong>, with enhanced structural integrity of the hair's inner cortex.</p><p>80% of participants experienced noticeably stronger <strong>hair structure</strong>, thanks to increased essential amino acid building blocks.</p></div>
+              
+            </div>
+          </div>
+        </div>
+      
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <h2 class="title">
+              12 Weeks
+
+              <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+            </h2>
+            <div class="content">
+              
+              
+                <div class="paragraph"><p>95.8% of participants reported a significant boost in hair <strong>brightness and shine.</strong></p><p><strong>9.2% more hairs</strong> entered the anagen (growth) phase, with a delayed transition into the telogen (rest) phase compared to the baseline. </p><p>Every participant (100%) noticed a <strong>reduction in hair loss</strong>, with at least a 20% improvement.</p></div>
+              
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-template--18360772591797__image_text_slide_in_B4AjDF {
+    background-color: #f2eae1;
+  }
+
+  
+    #shopify-section-template--18360772591797__image_text_slide_in_B4AjDF {
+      padding-top: 120px;
+
+      @media (max-width: 1080px) {
+        padding-top: 80px;
+      }
+    }
+  
+
+  #shopify-section-template--18360772591797__image_text_slide_in_B4AjDF + .shopify-section:not(.DS-padding) {
+    padding-top: 120px;
+
+    @media (max-width: 1080px) {
+      padding-top: 80px;
+    }
+  }
+</style>
+
+
+</div><div id="shopify-section-template--18360772591797__before_after_slider_tabs_mMN9F7" class="shopify-section"><div class="before-after-slider-multi before-after-slider-tabs section">
+  <div class="container-fluid xlg">
+
+    
+      <div class="title-content"><h1>Made by scientists, tested on celebrities, loved by the world.</h1></div>
+    
+
+    <div class="flex-wpr">
+      <div class="slider-container">
+      
+        
+            <div class="slide  active" style="display: block; opacity: 1;">
+              <div class="inner-wrapper align-center">
+                <div class="col-50">
+                  <div class="slider-container">
+                    <div class="image-wrapper">
+                      <div class="first-image">
+                        <h5 class="before-text image-text">Day 0</h5>
+
+                        <!-- Before Image -->
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/schneider-before_1.webp?v=1737723009" alt="Before Image" class="before-image">
+                      </div>
+                      <div class="second-image">
+                        <h5 class="after-text image-text">Day 90</h5>
+
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/schneider-after_1.webp?v=1737723027" alt="After Image" class="after-image">
+                      </div>
+                      <!-- Input Slider -->
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-50">
+                  <div class="text-content">
+                    <p>"My hairdresser said this is the best my hair has looked in a long time after only about 5 or 6 weeks. Now I can part my hair on both sides, something I couldn’t do before. It’s really awesome."</p><h6><strong>ERIN, AGE 50</strong></h6>
+
+                    <div class="pill-container">
+                      
+                        <div class="pill">hair growth</div>
+                      
+                      
+                        <div class="pill">hair</div>
+                      
+                      
+                        <div class="pill">hair growth peptides</div>
+                      
+                      
+                        <div class="pill">hair &amp; skin</div>
+                      
+                    </div>
+
+                  </div>
+
+                  
+                </div>
+              </div>
+            </div>
+          
+        
+        
+            <div class="slide " style="display: none; opacity: 0;">
+              <div class="inner-wrapper align-center">
+                <div class="col-50">
+                  <div class="slider-container">
+                    <div class="image-wrapper">
+                      <div class="first-image">
+                        <h5 class="before-text image-text">Day 0</h5>
+
+                        <!-- Before Image -->
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/marinucci-before_1.webp?v=1737723082" alt="Before Image" class="before-image">
+                      </div>
+                      <div class="second-image">
+                        <h5 class="after-text image-text">Day 90</h5>
+
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/marinucchi-after_1.webp?v=1737723153" alt="After Image" class="after-image">
+                      </div>
+                      <!-- Input Slider -->
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-50">
+                  <div class="text-content">
+                    <p>"I have tried everything – gummies, sprays, expensive shampoos, supplements. OMI Hair Growth Peptides have made a humongous difference in my hair. Visually the growth was obvious after 4 weeks. My children noticed it right away and I was in tears! Finally my hair matches my physical health and wellbeing."</p><h6><strong>JENNIFER, AGE 45</strong></h6>
+
+                    <div class="pill-container">
+                      
+                        <div class="pill">hair growth</div>
+                      
+                      
+                        <div class="pill">best hair</div>
+                      
+                      
+                        <div class="pill">clinically-proven</div>
+                      
+                      
+                    </div>
+
+                  </div>
+
+                  
+                </div>
+              </div>
+            </div>
+          
+        
+        
+            <div class="slide " style="display: none; opacity: 0;">
+              <div class="inner-wrapper align-center">
+                <div class="col-50">
+                  <div class="slider-container">
+                    <div class="image-wrapper">
+                      <div class="first-image">
+                        <h5 class="before-text image-text">Day 0</h5>
+
+                        <!-- Before Image -->
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/meachum-before_1.webp?v=1737723343" alt="Before Image" class="before-image">
+                      </div>
+                      <div class="second-image">
+                        <h5 class="after-text image-text">Day 90</h5>
+
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/meachum-after_1.webp?v=1737723355" alt="After Image" class="after-image">
+                      </div>
+                      <!-- Input Slider -->
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-50">
+                  <div class="text-content">
+                    <p>"My hair looks fuller and thicker and my scalp has filled in. I feel confident in how I look again and you can’t put a price on that."</p><h6><strong>LINDA, AGE 72</strong></h6>
+
+                    <div class="pill-container">
+                      
+                        <div class="pill">hair growth peptides</div>
+                      
+                      
+                        <div class="pill">scalp health</div>
+                      
+                      
+                        <div class="pill">fuller hair</div>
+                      
+                      
+                    </div>
+
+                  </div>
+
+                  
+                </div>
+              </div>
+            </div>
+          
+        
+        
+            <div class="slide " style="display: none; opacity: 0;">
+              <div class="inner-wrapper align-center">
+                <div class="col-50">
+                  <div class="slider-container">
+                    <div class="image-wrapper">
+                      <div class="first-image">
+                        <h5 class="before-text image-text">Day 0</h5>
+
+                        <!-- Before Image -->
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/bosch-before_1.webp?v=1737723377" alt="Before Image" class="before-image">
+                      </div>
+                      <div class="second-image">
+                        <h5 class="after-text image-text">Day 90</h5>
+
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/bosch-after_1.webp?v=1737723392" alt="After Image" class="after-image">
+                      </div>
+                      <!-- Input Slider -->
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-50">
+                  <div class="text-content">
+                    <p>"I was emotional about losing my hair and it had nothing to do with vanity. I had to do a brush-over to hide spots. With the growth I got from OMI Hair Growth Peptides, I don’t have to worry at all and am back to the fullness I’m used to. It has made me feel like my self again, complete."</p><h6><strong>NIMPA, AGE 50</strong></h6>
+
+                    <div class="pill-container">
+                      
+                        <div class="pill">hair growth peptides</div>
+                      
+                      
+                        <div class="pill">healthy hair</div>
+                      
+                      
+                        <div class="pill">peptides</div>
+                      
+                      
+                    </div>
+
+                  </div>
+
+                  
+                </div>
+              </div>
+            </div>
+          
+        
+        
+            <div class="slide " style="display: none; opacity: 0;">
+              <div class="inner-wrapper align-center">
+                <div class="col-50">
+                  <div class="slider-container">
+                    <div class="image-wrapper">
+                      <div class="first-image">
+                        <h5 class="before-text image-text">Day 0</h5>
+
+                        <!-- Before Image -->
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/armento-baseline_1.webp?v=1737723414" alt="Before Image" class="before-image">
+                      </div>
+                      <div class="second-image">
+                        <h5 class="after-text image-text">Day 90</h5>
+
+                        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/armento-after_1.webp?v=1737723434" alt="After Image" class="after-image">
+                      </div>
+                      <!-- Input Slider -->
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-50">
+                  <div class="text-content">
+                    <p>"This is crazy! I definitely see an increase in growth and filling in sparse areas. And the shine – I’ve never had that before!"</p><h6><strong>LISA, AGE 51</strong></h6>
+
+                    <div class="pill-container">
+                      
+                        <div class="pill">hair growth peptides</div>
+                      
+                      
+                        <div class="pill">hair</div>
+                      
+                      
+                        <div class="pill">hair shine</div>
+                      
+                      
+                    </div>
+
+                  </div>
+
+                  
+                </div>
+              </div>
+            </div>
+          
+        
+      </div>
+
+      <div class="slide-container-thumbs">
+        <span class="arrow arrow-prev" data-glide-dir="<"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" fill="currentColor"></path>
+</svg></span>
+        <div class="thumbs-track">
+          
+            
+                <div class="thumb-container active">
+                  <img src="//omiwellbeauty.com/cdn/shop/files/schneider-thumb.jpg?v=1737422835" alt="Thumb Image" class="thumb-image">
+                </div>
+            
+          
+            
+                <div class="thumb-container">
+                  <img src="//omiwellbeauty.com/cdn/shop/files/marinucchi-thumb.jpg?v=1737423297" alt="Thumb Image" class="thumb-image">
+                </div>
+            
+          
+            
+                <div class="thumb-container">
+                  <img src="//omiwellbeauty.com/cdn/shop/files/meachum-thumb.jpg?v=1737423458" alt="Thumb Image" class="thumb-image">
+                </div>
+            
+          
+            
+                <div class="thumb-container">
+                  <img src="//omiwellbeauty.com/cdn/shop/files/bosch-thumb.jpg?v=1737422604" alt="Thumb Image" class="thumb-image">
+                </div>
+            
+          
+            
+                <div class="thumb-container">
+                  <img src="//omiwellbeauty.com/cdn/shop/files/armento-thumb.jpg?v=1737422171" alt="Thumb Image" class="thumb-image">
+                </div>
+            
+          
+        </div>
+        <span class="arrow arrow-next" data-glide-dir=">"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" fill="currentColor"></path>
+</svg></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div><div id="shopify-section-template--18360772591797__column_cards_W4aaX7" class="shopify-section"><div data-filter="" class="column-cards id-template--18360772591797__column_cards_W4aaX7 section  section-margin " data-scroll="" data-scroll-call="fadeInCards">
+  
+  <div class="container-fluid lg">
+    
+      <div class="text-center top-text animate">
+        <h2>We’re on a mission to make good hair days a scientific certainty.</h2>
+      </div>
+    
+
+    
+    <div class="cards ">
+      
+        <div class="col-2">
+          <div class="card animated card-image no-padding-border">
+            
+              
+              
+                <div class="image-wpr"> 
+                  <img style="background-color: #faebd7; aspect-ratio: ;" loading="lazy" class="medium  cover" src="//omiwellbeauty.com/cdn/shop/files/Tracey_Cunningham.webp?v=1740010707" alt="">
+                </div>
+              
+
+
+                <div class="text-wpr">
+                  <h4>Tracey Cunningham, Celebrity Colorist</h4><p>Chief Hair Innovation Officer</p><p>Tracey Cunningham, the #1 global authority in hair color, is celebrated for her flawless, natural-looking results and an A-list clientele. As co-founder of Mèche Salon in Los Angeles, Tracey’s passion for hair color, hair bonds, beauty, and innovation has driven her to shape industry trends and redefine haircare standards. With over two decades of experience, she is dedicated to ensuring we all have more good hair days by sharing her expertise through education and groundbreaking product development. This unwavering commitment to excellence and transformation is why she now serves as Chief Hair Innovation Advisor, leading the way in advancing hair health and beauty.</p>
+
+                  
+                    
+                  
+                </div>
+
+            
+          </div>
+        </div>
+      
+        <div class="col-2">
+          <div class="card animated card-image no-padding-border">
+            
+              
+              
+                <div class="image-wpr"> 
+                  <img style="background-color: #faebd7; aspect-ratio: ;" loading="lazy" class="medium  cover" src="//omiwellbeauty.com/cdn/shop/files/Dr._Mike_Hoaglin_M.D..webp?v=1740010691" alt="">
+                </div>
+              
+
+
+                <div class="text-wpr">
+                  <h4>Dr. Mike Hoaglin, M.D.</h4><p>Chief Medical Advisor</p><p>Dr. Mike Hoaglin experienced firsthand how the intense demands of medical training—long hours, stress, and disrupted sleep—can take a toll on overall health, including hair. As he pursued dual engineering degrees at Northwestern and earned his medical degree from the Perelman School of Medicine at the University of Pennsylvania, he became deeply interested in the connection between whole-body health. His residency at Duke University Hospital and Brooklyn Hospital Center further shaped his belief in a root-cause, precision-based approach to care. Now, as Chief Medical Advisor, Dr. Hoaglin applies his medical expertise to drive innovation in hair health, strengthening follicles and promoting hair growth from the inside out.</p>
+
+                  
+                    
+                  
+                </div>
+
+            
+          </div>
+        </div>
+      
+    </div>
+
+    
+    
+  </div>
+</div>
+
+<style>
+  
+    #shopify-section-template--18360772591797__column_cards_W4aaX7 {
+      background-color: rgba(0,0,0,0);
+      position: relative;
+    }
+   
+
+  
+
+  #shopify-section-template--18360772591797__column_cards_W4aaX7 .top-text {
+    @media (max-width: 768px) {
+      text-align: center !important;
+    }
+  }
+</style> 
+
+
+</div><div id="shopify-section-template--18360772591797__clinical_trials_mGnJL7" class="shopify-section"><div class="section id-template--18360772591797__clinical_trials_mGnJL7 clinical-trials  section-margin ">
+  <div class="container-fluid">
+    <div class="inner-wrapper align-center">
+      <div class="col-50 title-col">
+        <div class="left-wpr">
+          <div>
+            
+              <h3 class="title">Internal optimization. Undeniable results.</h3>
+            
+
+            
+              <div class="text-content"><p>Give your hair a radical new advantage.</p></div>
+            
+          </div>
+
+          
+            <div class="button-wpr">
+              <!-- button-secondary.liquid -->
+<a target="" href="/pages/clinical-trials" class="btn-sec ">
+  <div class="btn-text-wrap">
+   <span class="before-text">see clinical trials</span>
+   
+   
+    <span class="after-text">see clinical trials</span>
+   
+ </div>
+</a>
+            </div>
+          
+        </div>
+      </div>
+      <div class="col-50">
+        <div class="right-wpr">
+          <div class="text-wpr">  
+            
+            <div class="percentage-item-wpr white-lines"> 
+              
+                
+                  <div class="percentage-item">
+                    <span class="percentage-number" data-target="93%">
+                      0%
+                    </span>
+                    <p class="percentage-description mb-0">
+                      reduction in breakage
+                    </p>
+                    
+                    <div class="percentage-divider"></div>
+                    
+                  </div>
+                
+              
+                
+                  <div class="percentage-item">
+                    <span class="percentage-number" data-target="59%">
+                      0%
+                    </span>
+                    <p class="percentage-description mb-0">
+                      improvement in gloss and shine
+                    </p>
+                    
+                    <div class="percentage-divider"></div>
+                    
+                  </div>
+                
+              
+                
+                  <div class="percentage-item">
+                    <span class="percentage-number" data-target="16x">
+                      0%
+                    </span>
+                    <p class="percentage-description mb-0">
+                      greater improvement in hair strength
+                    </p>
+                    
+                    <div class="percentage-divider"></div>
+                    
+                  </div>
+                
+              
+                
+                  <div class="percentage-item">
+                    <span class="percentage-number" data-target="47%">
+                      0%
+                    </span>
+                    <p class="percentage-description mb-0">
+                      less shedding
+                    </p>
+                    
+                  </div>
+                
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .clinical-trials.id-template--18360772591797__clinical_trials_mGnJL7 {
+    background-color: #2e1a4a;
+  }
+
+  .clinical-trials.id-template--18360772591797__clinical_trials_mGnJL7 *:not(.btn *):not(.btn) {
+    color: #fffaf2;
+  }
+
+  .clinical-trials.id-template--18360772591797__clinical_trials_mGnJL7 .percentage-item-wpr .percentage-item .percentage-number {
+    color: #d07749;
+  }
+</style>
+
+
+</div><div id="shopify-section-template--18360772591797__faq_one_col_8zpEq4" class="shopify-section"><div class="section faq-one-col">
+  <div class="container-fluid md">
+
+    
+      <h3 class="title">Frequently Asked Questions</h3>
+    
+    
+      <div class="text-content"></div>
+    
+
+    <div class="faq-wrapper">
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What does OMI stand for?
+          <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+        </button>
+        <div class="faq-answer" hidden="">
+          <p class="mb-0">We believe healthy should be easy and natural, accessible and attainable. It should unlock the beauty inside, so we radiate on the outside. This is our philosophy and it’s why we’re named OMI- outside meets inside.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How is OMI different from other brands?
+          <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+        </button>
+        <div class="faq-answer" hidden="">
+          <p class="mb-0">We are a WellBeauty Bio-Technology Company dedicated to optimizing a woman’s biology so she can realize the very best version of herself. OMI transcends traditional beauty by offering patented, clinically validated solutions. Our products draw from Nobel Prize-winning research and are formulated with natural, drug-free peptide ingredients to provide genuine, long-lasting improvements for hair and skin.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Why is science at the heart of OMI?
+          <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+        </button>
+        <div class="faq-answer" hidden="">
+          <p class="mb-0">With over 20 years of research, our products are formulated with precision peptides that enhance your body’s natural processes, delivering noticeable and lasting results. 
+
+Each ingredient and formula is backed by rigorous clinical studies, ensuring genuine, transformative outcomes. 
+
+By supporting wellness from within, our formulations provide visible improvements you can truly see and feel.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Who is OMI for?
+          <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+        </button>
+        <div class="faq-answer" hidden="">
+          <p class="mb-0">OMI is for anyone seeking to enhance their natural beauty and wellness from within. Whether you're dealing with thinning hair, dull skin, or simply want to feel and look your best, our peptides are designed to target and support your unique needs. By harnessing the power of peptides, OMI delivers solutions that help you achieve vibrant health and confidence at every stage.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is OMI’s commitment to sustainability?
+          <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+        </button>
+        <div class="faq-answer" hidden="">
+          <p class="mb-0">OMI is committed to sustainability through the ethical, cruelty-free sourcing of 100% single-origin peptides. Our ingredients are farm-traceable, non-GMO, and harvested with minimal environmental impact, ensuring the highest quality while respecting the planet.
+
+From clean, responsibly sourced ingredients to eco-conscious practices, OMI is dedicated to creating a healthier future—for you and the planet.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How does OMI give back?
+          <span class="faq-toggle-icon"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.679388 1.71565L1.88389 0.478151L8.36839 6.99565L14.8529 0.478152L16.0574 1.71565L8.36839 9.38815L0.679388 1.71565Z" fill="#2E1A4A"></path>
+</svg>
+</span>
+        </button>
+        <div class="faq-answer" hidden="">
+          <p class="mb-0">OMI gives back by partnering with the Living Beauty Cancer Foundation to support women battling cancer. A portion of our proceeds will go directly to the Living Beauty Cancer Foundation and will help fund programs that promote confidence and holistic health for all of their “Living Beauties”, aligning with OMI’s mission to support women at every stage of their wellness journey.</p>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+</div><div id="shopify-section-template--18360772591797__hero_WyqmhV" class="shopify-section DS-padding"><div class="hero section-margin section DS-padding medium">
+  
+
+    <div class="main-image ">
+      <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/hair-peptides-women_5333527c-930d-4b3e-9c5a-1c8cd1b15bcb_1024x1024.webp?v=1740011011" srcset="
+                //omiwellbeauty.com/cdn/shop/files/hair-peptides-women_5333527c-930d-4b3e-9c5a-1c8cd1b15bcb_640x640.webp?v=1740011011 640w,
+                //omiwellbeauty.com/cdn/shop/files/hair-peptides-women_5333527c-930d-4b3e-9c5a-1c8cd1b15bcb_1024x1024.webp?v=1740011011 1024w,
+                //omiwellbeauty.com/cdn/shop/files/hair-peptides-women_5333527c-930d-4b3e-9c5a-1c8cd1b15bcb_2048x2048.webp?v=1740011011 2048w" sizes="(max-width: 768px) 100vw, 50vw" alt="Main hero Image">
+    </div>
+  
+  
+
+  
+
+  
+    <div class="overlay"></div>
+  
+
+  
+
+
+  <div class="container-fluid lg  ">
+    <div class="text-wpr WYSIWYG-styles animate text-white center-text  text-width-large">
+      
+        
+            
+              <h2>Rooted in Strength.</h2>
+            
+          
+      
+        
+            
+              <div class="text-width-small">
+            
+              <p>With the average woman experiencing 156 bad hair days a year, we’re left feeling far from our best for almost half our lives. We deserve better. Which is why we’ve pioneered a biotechnology designed to scientifically transform your bad hair days into amazing ones. And with a community “rooted in strength," you’ll never be alone on your hair journey either. Together, we can share our experiences with people who get it, and find strength in one another. Because it's not just about hair. It's about finding the best versions of ourselves every single day.</p>
+            
+            </div>
+            
+          
+      
+        
+            
+              <!-- button-secondary.liquid -->
+<a target="" href="https://www.facebook.com/omibynaomi" class="btn-sec ">
+  <div class="btn-text-wrap">
+   <span class="before-text">Learn &amp; Share</span>
+   
+   
+    <span class="after-text">Learn &amp; Share</span>
+   
+ </div>
+</a>
+            
+        
+      
+    </div>
+
+    
+
+    
+  </div>
+</div>
+
+<style>
+
+  
+
+  #MainContent #shopify-section-template--18360772591797__hero_WyqmhV.shopify-section:last-of-type {
+    padding-bottom: 50px;
+  }
+  #MainContent #shopify-section-template--18360772591797__hero_WyqmhV.shopify-section:first-of-type .hero .container-fluid {
+    padding-top: 100px;
+  }
+
+  @media (max-width: 1080px) {
+    #MainContent #shopify-section-template--18360772591797__hero_WyqmhV.shopify-section:first-of-type .hero .container-fluid
+      margin-top: 80px;
+    }
+  }
+
+</style>
+
+
+</div><div id="shopify-section-template--18360772591797__simple_text_video_C6pLPD" class="shopify-section"><div class="section simple-text-video">
+  <div class="container-fluid lg">
+    <div class="inner-wrapper align-center  reverse-columns ">
+      <div class="col-50">
+        
+          <div class="video animated-container" data-scroll="" data-scroll-call="animateSection">
+            
+              <img loading="lazy" class="image-placeholder animate-image zoom-in animated-content" data-scroll="" data-scroll-call="animateSection" src="//omiwellbeauty.com/cdn/shop/files/Group_942_1.webp?v=1737723635" alt="">
+            
+            
+          </div>
+        
+      </div>
+      <div class="col-50">
+        <div class="right-wpr">
+          <div class="text-wpr animate">
+            
+              
+                  <h3 class="subtitle  ">Meet Naomi</h3>
+                 
+            
+              
+                  <h4>Founder, inventor, best-selling author,&nbsp;CEO &amp; bio-optimizer</h4><p>Most women face 156 bad hair days a year—a statistic Naomi Whittel found unacceptable. Working alongside world-renowned hair growth expert Dr. Rob Kelly, she leveraged his rigorous clinical research while personally testing for years—on herself, her loved ones, and even A-list celebrities—to develop a breakthrough biotechnology designed to make good hair days a scientific certainty.</p>
+                 
+            
+               
+            
+          </div>
+
+          
+          
+            
+          
+            
+          
+            
+          
+
+          
+
+          
+          
+            
+          
+            
+          
+            
+          
+
+          
+
+          
+            
+          
+            
+          
+            
+                <div class="button-wpr">
+                  
+                    <!-- button-primary.liquid -->
+<a target="" href="/pages/our-story" class="btn ">
+  <div class="btn-text-wrap">
+   <span class="before-text">Meet Naomi</span>
+   
+   
+    <span class="after-text">Meet Naomi</span>
+   
+ </div>
+</a>
+                  
+                </div>
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  
+</style>
+
+</div><div id="shopify-section-template--18360772591797__blog_journal_zRftnw" class="shopify-section section-blog-journal"><div class="blog-journal section">
+  <div class="container-fluid lg">
+    
+      <div class="text-wpr animate top-text">
+        <h2><em>The Journal</em></h2>
+      </div>
+     
+
+    <div class="blog-wrapper">
+      <div class="inner-wrapper">
+        <div class="col-50">
+           
+            <div class="featured-blog-article"> 
+              <div class="article">
+  
+    <div class="tag pill">
+      hair thinning
+    </div>
+  
+  
+    <div class="article-image animated-container" data-scroll="" data-scroll-call="animateSection">
+      <a href="/blogs/news/thin-hair-in-women">
+        <img class="animate-image zoom-in animated-content" loading="lazy" src="//omiwellbeauty.com/cdn/shop/articles/blog-image-01_c33d91ae-19e8-4455-9e97-eca842cd9e59.jpg?v=1743078976" alt="6 Causes of Thin Hair in Women (+ The Best Natural Treatments!)" data-scroll="" data-scroll-call="animateSection">
+      </a>
+    </div>
+  
+
+  <div class="text-wpr">
+    <a href="/blogs/news/thin-hair-in-women">
+      <h4 class="article-title">
+        6 Causes of Thin Hair in Women (+ The Best Natural Treatments!)
+      </h4>
+    </a>
+    <div class="article-content"> 
+      <p>While hair loss and receding hairlines are often thought of as a man’s problem, research shows that thin hair in women is a real—and prevalent— concern. And when it occurs, it can leave you feeling insecure and even “less than.” But you aren’t ...
+    </p></div>
+  </div>
+</div>
+
+            </div>
+          
+        </div>
+        <div class="col-50">
+          <div class="small-articles-wpr">
+            
+               
+                <div class="article">
+  
+    <div class="tag pill mobile-tag">
+      hair
+    </div>
+  
+
+  
+    <div class="article-image">
+      <a href="/blogs/news/top-10-hair-washing-tips">
+        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/articles/hair-wash_d74a4355-2f75-475b-9bf7-3cefc109f46f.jpg?v=1739874563" alt="Top 10 Hair Washing Tips">
+      </a>
+    </div>
+  
+
+  <div class="text-wpr">
+    
+      <div class="tag pill">
+        hair
+      </div>
+    
+    <a href="/blogs/news/top-10-hair-washing-tips">
+      <h4 class="article-title">
+        Top 10 Hair Washing Tips
+      </h4>
+    </a>
+    <div class="article-content"> 
+      <p style="text-align: left;">We all put a lot of time, effort, and energy into having our best hair. But so...
+    </p></div>
+  </div>
+</div>
+
+              
+            
+               
+                <div class="article">
+  
+    <div class="tag pill mobile-tag">
+      health
+    </div>
+  
+
+  
+    <div class="article-image">
+      <a href="/blogs/news/how-to-get-rid-of-neck-wrinkles-lines">
+        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/articles/blog-image-03_34ef2a00-2c7f-4048-a5e8-74c142229227.jpg?v=1742295625" alt="How to Get Rid of Neck Wrinkles &amp; Lines">
+      </a>
+    </div>
+  
+
+  <div class="text-wpr">
+    
+      <div class="tag pill">
+        health
+      </div>
+    
+    <a href="/blogs/news/how-to-get-rid-of-neck-wrinkles-lines">
+      <h4 class="article-title">
+        How to Get Rid of Neck Wrinkles &amp; Lines
+      </h4>
+    </a>
+    <div class="article-content"> 
+      <p>Crow’s feet, forehead wrinkles, 11 lines (between the eyebrows), and marionette lines (on either side of...
+    </p></div>
+  </div>
+</div>
+
+              
+            
+               
+                <div class="article">
+  
+
+  
+    <div class="article-image">
+      <a href="/blogs/news/8-natural-remedies-for-hair-loss">
+        <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/articles/hair_-_split_-_ends.jpg?v=1739874492" alt="8 Natural Remedies for Hair Loss">
+      </a>
+    </div>
+  
+
+  <div class="text-wpr">
+    
+    <a href="/blogs/news/8-natural-remedies-for-hair-loss">
+      <h4 class="article-title">
+        8 Natural Remedies for Hair Loss
+      </h4>
+    </a>
+    <div class="article-content"> 
+      Hair loss is something that affects many of us at different points in our lives. Whether it's due to hormon...
+    </div>
+  </div>
+</div>
+
+              
+            
+          </div>
+          
+            <div class="bottom-link-wpr">
+              <!-- button-primary.liquid -->
+<a target="" href="/blogs/news" class="btn ">
+  <div class="btn-text-wrap">
+   <span class="before-text">Explore The Journal</span>
+   
+   
+    <span class="after-text">Explore The Journal</span>
+   
+ </div>
+</a>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div> 
+      </main>
+
+      <div id="shopify-section-footer" class="shopify-section"><footer class="footer section-footer-padding">
+  <div class="container-fluid">
+    <div class="footer__content-bottom">
+      <div class="footer__content-bottom-wrapper page-width">
+        <div class="flex-wpr">
+          <div class="logo-wpr">
+                
+
+                <div class="footer-text"><p class="block-text lg"><em>OMI WellBeauty</em></p><p>Using Nobel Prize-winning science, OMI’s high-performance peptides unlock your healthiest hair at the cellular level. It’s a new era of beauty, and it begins with you.</p>
+</div>
+
+            
+              <a href="/" aria-label="The WellBeauty Company">
+                <img loading="lazy" src="//omiwellbeauty.com/cdn/shop/files/light-logo.png?v=1732099744" alt="Footer Logo">
+              </a>
+            
+          </div>
+          <div class="menu-wpr"><div class="menu-container"><div class="footer-main-wpr">
+                  
+
+                  
+                    <div class="menu-heading"><h5 class="block-text">Rooted in Strength</h5></div>
+                  
+
+                  <ul class="footer-main" role="list"><li class="item">
+                        <a href="/pages/our-story">Our Story</a>
+                      </li><li class="item">
+                        <a href="/blogs/news">The Journal</a>
+                      </li><li class="item">
+                        <a href="/pages/science">Science </a>
+                      </li><li class="item">
+                        <a href="/pages/giving-back">Giving Back</a>
+                      </li><li class="item">
+                        <a href="/pages/clinical-trials">Clinical Trials</a>
+                      </li><li class="item">
+                        <a href="/pages/press">Press</a>
+                      </li></ul>
+                </div><div class="footer-main-wpr">
+                  
+
+                  
+                    <div class="menu-heading"><h5 class="block-text">Company</h5></div>
+                  
+
+                  <ul class="footer-main" role="list"><li class="item">
+                        <a href="/pages/contact-us">Contact Us</a>
+                      </li><li class="item">
+                        <a href="/policies/shipping-policy">Shipping</a>
+                      </li><li class="item">
+                        <a href="/policies/refund-policy">Refunds &amp; Returns</a>
+                      </li><li class="item">
+                        <a href="/policies/privacy-policy">Privacy Policy</a>
+                      </li><li class="item">
+                        <a href="/policies/terms-of-service">Terms of Service</a>
+                      </li><li class="item ot-sdk-li-item"><button id="ot-sdk-btn" class="ot-sdk-show-settings">Your Privacy Rights</button></li></ul>
+                </div></div> <!-- Close the first-two-container after the second item --><!-- OneTrust Cookies Settings button start -->
+            
+            <!-- OneTrust Cookies Settings button end -->
+          </div>
+
+          <div class="form-wpr">
+            <h5 class="newsletter-title">Join our Mailing List</h5>
+            
+            <form method="post" action="/contact#ContactFooter" id="ContactFooter" accept-charset="UTF-8" class="footer__newsletter newsletter-form"><input type="hidden" name="form_type" value="customer"><input type="hidden" name="utf8" value="✓">
+              <!-- Required hidden inputs for Shopify to recognize this as a valid submission -->
+              <input type="hidden" name="form_type" value="customer">
+              <input type="hidden" name="utf8" value="✓">
+            
+              <!-- Optional: tag the contact for segmentation, e.g., "newsletter" -->
+              <input type="hidden" name="contact[tags]" value="newsletter">
+            
+              <div class="newsletter-form__field-wrapper">
+                <!-- First Name Field -->
+                <div class="newsletter-field">
+                  <input id="FirstNameForm--footer" type="text" name="contact[first_name]" class="field-input first-name-input" value="" autocorrect="off" autocapitalize="words" placeholder="" required="">
+                  <label class="field-label" for="FirstNameForm--footer">
+                    First Name
+                  </label>
+                </div>
+            
+                <!-- Email Field -->
+                <div class="newsletter-field">
+                  <input id="NewsletterForm--footer" type="email" name="contact[email]" class="field-input email-input" value="" aria-required="true" autocorrect="off" autocapitalize="off" autocomplete="email" placeholder="" required="">
+                  <label class="field-label" for="NewsletterForm--footer">
+                    Email Address
+                  </label>
+            
+                  <button type="submit" class="newsletter-form__button field__button" name="commit" id="FooterSubscribe" aria-label="Subscribe">
+                    Sign up
+                  </button>
+                </div>
+            
+                <!-- Error Messages -->
+                
+              </div>
+            
+              <!-- Success Message -->
+              
+            </form>
+            
+            <script>
+              
+            </script><div class="social-icons-wpr">
+                  <div class="social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+                      <div class="social-icon facebook">
+                        <a href="https://www.facebook.com/omibynaomi">
+                          <img src="//omiwellbeauty.com/cdn/shop/files/facebook-icon.webp?v=1729504942&amp;width=50" alt="facebook-icon" srcset="//omiwellbeauty.com/cdn/shop/files/facebook-icon.webp?v=1729504942&amp;width=50 50w" width="50" height="49">
+                        </a>
+                      </div>
+                    
+
+                    
+                      <div class="social-icon tiktok">
+                        <a href="https://www.tiktok.com/@omiwellbeauty">
+                          <img src="//omiwellbeauty.com/cdn/shop/files/tiktok-icon.webp?v=1729504942&amp;width=50" alt="TikTok Icon " srcset="//omiwellbeauty.com/cdn/shop/files/tiktok-icon.webp?v=1729504942&amp;width=50 50w" width="50" height="56">
+                        </a>
+                      </div>
+                    
+
+                    
+                      <div class="social-icon instagram">
+                        <a href="https://www.instagram.com/omibynaomi/">
+                          <img src="//omiwellbeauty.com/cdn/shop/files/instagram-icon.webp?v=1729504942&amp;width=50" alt="instagram-icon" srcset="//omiwellbeauty.com/cdn/shop/files/instagram-icon.webp?v=1729504942&amp;width=50 50w" width="50" height="50">
+                        </a>
+                      </div>
+                    
+
+                    
+                    
+                  </div>
+                </div></div>
+
+        </div>
+      </div><div class="disclaimer-text-wpr">
+          <div class="disclaimer-text"> 
+            <p class="">*Statements on this website have not been evaluated by the Food and Drug Administration. Any products discussed or advertised are not intended to diagnose, treat, cure or prevent any disease. Testimonial results are not typical. If you are pregnant, nursing, taking medication, or have a medical condition, consult your physician before using any dietary supplement.</p>
+          </div>
+        </div><div class="footer-bottom-copyright">
+        <div class="footer__content-bottom-wrapper page-width">
+          <div class="footer__copyright caption">
+            <p class="copyright__content">© 2025, <a href="/" title="">The WellBeauty Company</a>. All Rights Reserved</p>
+          </div>
+        </div><ul class="policies"><li>
+                  <small class="copyright__content"><a href="/policies/refund-policy">Refund policy</a></small>
+                </li><li>
+                  <small class="copyright__content"><a href="/policies/privacy-policy">Privacy policy</a></small>
+                </li><li>
+                  <small class="copyright__content"><a href="/policies/terms-of-service">Terms of service</a></small>
+                </li><li>
+                  <small class="copyright__content"><a href="/policies/shipping-policy">Shipping policy</a></small>
+                </li><li>
+                  <small class="copyright__content"><a href="/policies/contact-information">Contact information</a></small>
+                </li><li>
+                  <small class="copyright__content"><a href="/policies/subscription-policy">Cancellation policy</a></small>
+                </li><li>
+              <small>
+                <a data-acsb-custom-trigger="true" class="link link--text list-menu__item list-menu__item--link" href="#" role="button" tabindex="0">Accessibility Adjustments</a>
+              </small>
+            </li>
+            <li>
+              <small>
+                <a class="link link--text list-menu__item list-menu__item--link" href="#site-credits" role="button">Site Credits</a>
+              </small>
+            </li>
+          </ul></div>
+
+      <div class="modal-wpr site-credits-modal" id="site-credits">
+        <div class="modal">
+          <button class="close" aria-label="Close Site Credits Modal" data-close-modal="">
+            <span class="icon-close"> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-close" fill="none" viewBox="0 0 16 16">
+  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" fill="currentColor"></path>
+</svg></span>
+          </button>
+          <div class="modal__content">
+            <div class="modal__header text-center">
+              <h2 class="modal__title">Site Credits</h2>
+            </div>
+
+            <div class="modal__body text-center">
+              <p class="modal__text">This site was designed by <a href="https://www.skyehighinteractive.com" target="_blank" rel="noopener noreferrer">Skye High Interactive</a></p>
+              <p class="modal__text">and developed by <a href="https://www.twohourssleep.com" target="_blank" rel="noopener noreferrer">Two Hours Sleep</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</div>
+
+      <script>
+        window.shopUrl = 'https://omiwellbeauty.com';
+        window.routes = {
+          cart_add_url: '/cart/add',
+          cart_change_url: '/cart/change',
+          cart_update_url: '/cart/update',
+          cart_url: '/cart',
+          predictive_search_url: '/search/suggest',
+        };  
+      </script>
+    </div>
+
+
+    <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+    <script>
+        var klaviyo = klaviyo || [];
+        klaviyo.init({
+          account: "Tg6Mtt",
+          platform: "shopify",
+          include_on_tags: "waitlist"
+        });
+        klaviyo.enable("backinstock",{ 
+          trigger: {
+            product_page_text: "Notify Me When Available",
+            product_page_class: "btn",
+            product_page_text_align: "center",
+            product_page_margin: "0px",
+            replace_anchor: true
+          },
+          modal: {
+            headline: "{product_name}",
+            body_content: "Register to receive a notification when this item comes back in stock.",
+            email_field_label: "Email",
+            button_label: "Notify me when available",
+            subscription_success_label: "You're in! We'll let you know when it's back.",
+            footer_content: '',
+            additional_styles: "@import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');",
+            drop_background_color: "#000",
+            background_color: "#fff",
+            text_color: "#222",
+            button_text_color: "#fff",
+            button_background_color: "#2e1a4a",
+            close_button_color: "#ccc",
+            error_background_color: "#fcd6d7",
+            error_text_color: "#C72E2F",
+            success_background_color: "#d3efcd",
+            success_text_color: "#1B9500"
+          }
+      });
+    </script>
+
+  
+
+   
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-592XXLNQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+<style> h1 {font-style: normal !important; font-size: 40px !important;} </style>
+<div id="shopify-block-AQTlTWDBDUEVwNWNoZ__10641372206048101839" class="shopify-block shopify-app-block">
+<script>
+  window.rebuyAppEmbedEnabled = true;
+</script>
+
+
+<script async="" src="https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop=the-one-nutrition-just-for-you.myshopify.com"></script>
+
+
+</div>
+
+<iframe role="presentation" srcdoc="<html lang=&quot;en&quot;><head><title>apiSanitizer</title></head></body></html>" style="visibility: hidden; pointer-events: none; position: fixed;"></iframe><div id="onetrust-consent-sdk" data-nosnippet="true"><div class="onetrust-pc-dark-filter ot-hide ot-fade-in"></div><div id="onetrust-pc-sdk" class="otPcCenter ot-hide ot-fade-in" lang="en" aria-label="Preference center" role="region"><div role="dialog" aria-modal="true" style="height: 100%;" aria-label="Do Not Sell or Share My Personal Data"><!-- Close Button --><div class="ot-pc-header"><!-- Logo Tag --><div class="ot-pc-logo" role="img" aria-label="Company Logo"><img alt="Company Logo" src="https://cdn.cookielaw.org/logos/352c31ca-19e8-4144-8ad4-67a02de90040/01954384-63c9-7af5-b7d7-dca462e0bc9d/0054ae1c-5c57-480c-bd0c-b5eaee55785f/OmiLogo.png"></div><button id="close-pc-btn-handler" class="ot-close-icon" aria-label="Close" style="background-image: url(&quot;https://cdn.cookielaw.org/logos/static/ot_close.svg&quot;);"></button></div><!-- Close Button --><div id="ot-pc-content" class="ot-pc-scrollbar"><div class="ot-optout-signal ot-hide"><div class="ot-optout-icon"><svg xmlns="http://www.w3.org/2000/svg"><path class="ot-floating-button__svg-fill" d="M14.588 0l.445.328c1.807 1.303 3.961 2.533 6.461 3.688 2.015.93 4.576 1.746 7.682 2.446 0 14.178-4.73 24.133-14.19 29.864l-.398.236C4.863 30.87 0 20.837 0 6.462c3.107-.7 5.668-1.516 7.682-2.446 2.709-1.251 5.01-2.59 6.906-4.016zm5.87 13.88a.75.75 0 00-.974.159l-5.475 6.625-3.005-2.997-.077-.067a.75.75 0 00-.983 1.13l4.172 4.16 6.525-7.895.06-.083a.75.75 0 00-.16-.973z" fill="#FFF" fill-rule="evenodd"></path></svg></div><span></span></div><h2 id="ot-pc-title">Do Not Sell or Share My Personal Data</h2><div id="ot-pc-desc">When you visit our website, we store cookies on your browser to collect information. The information collected might relate to you, your preferences or your device, and is mostly used to make the site work as you expect it to and to provide a more personalized web experience. However, you can choose not to allow certain types of cookies, which may impact your experience of the site and the services we are able to offer. Click on the different category headings to find out more and change our default settings according to your preference. You cannot opt-out of our First Party Strictly Necessary Cookies as they are deployed in order to ensure the proper functioning of our website (such as prompting the cookie banner and remembering your settings, to log into your account, to redirect you when you log out, etc.). For more information about the First and Third Party Cookies used please follow this link.
+            <br><a href="https://omiwellbeauty.com/policies/privacy-policy" class="privacy-notice-link" rel="noopener" target="_blank" aria-label="More information about your privacy, opens in a new tab">More information</a></div><button id="accept-recommended-btn-handler">Allow All</button><section class="ot-sdk-row ot-cat-grp"><h3 id="ot-category-title"> Manage Consent Preferences</h3><div class="ot-accordion-layout ot-cat-item ot-vs-config" data-optanongroupid="C0001"><button aria-expanded="false" ot-accordion="true" aria-controls="ot-desc-id-C0001" aria-labelledby="ot-header-id-C0001 ot-status-id-C0001"></button><!-- Accordion header --><div class="ot-acc-hdr ot-always-active-group"><div class="ot-plus-minus"><span></span><span></span></div><h4 class="ot-cat-header" id="ot-header-id-C0001">Strictly Necessary Cookies</h4><div id="ot-status-id-C0001" class="ot-always-active">Always Active</div></div><!-- accordion detail --><div class="ot-acc-grpcntr ot-acc-txt"><p class="ot-acc-grpdesc ot-category-desc" id="ot-desc-id-C0001">These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.</p></div></div><div class="ot-accordion-layout ot-cat-item ot-vs-config" data-optanongroupid="OSSTA_BG"><button aria-expanded="false" ot-accordion="true" aria-controls="ot-desc-id-OSSTA_BG" aria-labelledby="ot-header-id-OSSTA_BG"></button><!-- Accordion header --><div class="ot-acc-hdr"><div class="ot-plus-minus"><span></span><span></span></div><h4 class="ot-cat-header" id="ot-header-id-OSSTA_BG">Opt Out of Sale of Sharing/Targeted Advertising</h4><div class="ot-tgl"><input type="checkbox" name="ot-group-id-OSSTA_BG" id="ot-group-id-OSSTA_BG" role="switch" class="category-switch-handler" data-optanongroupid="OSSTA_BG" checked="" aria-labelledby="ot-header-id-OSSTA_BG"> <label class="ot-switch" for="ot-group-id-OSSTA_BG"><span class="ot-switch-nob"></span> <span class="ot-label-txt">Opt Out of Sale of Sharing/Targeted Advertising</span></label> </div></div><!-- accordion detail --><div class="ot-acc-grpcntr ot-acc-txt"><p class="ot-acc-grpdesc ot-category-desc" id="ot-desc-id-OSSTA_BG">As a California consumer, you have the right to opt-out from the sale or sharing of your personal information at any time across business platform, services, businesses and devices. You can opt-out of the sale and sharing of your personal information by using this toggle switch. As a Virginia, Utah, Colorado and Connecticut consumer, you have the right to opt-out from the sale of your personal data and the processing of your personal data for targeted advertising. You can opt-out of the sale of your personal data and targeted advertising by using this toggle switch. For more information on your rights as a United States consumer see our privacy notice.</p><div class="ot-subgrp-cntr"><ul class="ot-subgrps"><li class="ot-subgrp" data-optanongroupid="C0004"><h5>Targeting Cookies</h5><div class="ot-tgl-cntr ot-subgrp-tgl"><div class="ot-tgl ot-hide-tgl"><input type="checkbox" name="switch" id="ot-sub-group-id-C0004" role="switch" data-optanongroupid="C0004" class="cookie-subgroup-handler" aria-label="Targeting Cookies" aria-hidden="true"> <label class="ot-switch" for="ot-sub-group-id-C0004"><span class="ot-switch-nob"></span> <span class="ot-label-txt">Switch Label</span></label> <span class="ot-label-status">label</span></div></div><p class="ot-subgrp-desc">These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites. They do not store directly personal information, but are based on uniquely identifying your browser and internet device. If you do not allow these cookies, you will experience less targeted advertising.</p></li></ul></div><div class="ot-subgrp-cntr"><ul class="ot-subgrps"><li class="ot-subgrp" data-optanongroupid="C0002"><h5>Performance Cookies</h5><div class="ot-tgl-cntr ot-subgrp-tgl"><div class="ot-tgl ot-hide-tgl"><input type="checkbox" name="switch" id="ot-sub-group-id-C0002" role="switch" data-optanongroupid="C0002" class="cookie-subgroup-handler" aria-label="Performance Cookies" aria-hidden="true"> <label class="ot-switch" for="ot-sub-group-id-C0002"><span class="ot-switch-nob"></span> <span class="ot-label-txt">Switch Label</span></label> <span class="ot-label-status">label</span></div></div><p class="ot-subgrp-desc">These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.</p></li></ul></div></div></div><!-- Groups sections starts --><!-- Group section ends --><!-- Accordion Group section starts --><!-- Accordion Group section ends --></section></div><section id="ot-pc-lst" class="ot-hide ot-hosts-ui ot-pc-scrollbar"><div id="ot-pc-hdr"><div id="ot-lst-title"><button class="ot-link-btn back-btn-handler" aria-label="Back"><svg id="ot-back-arw" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 444.531 444.531" xml:space="preserve"><title>Back Button</title><g><path fill="#656565" d="M213.13,222.409L351.88,83.653c7.05-7.043,10.567-15.657,10.567-25.841c0-10.183-3.518-18.793-10.567-25.835
+                    l-21.409-21.416C323.432,3.521,314.817,0,304.637,0s-18.791,3.521-25.841,10.561L92.649,196.425
+                    c-7.044,7.043-10.566,15.656-10.566,25.841s3.521,18.791,10.566,25.837l186.146,185.864c7.05,7.043,15.66,10.564,25.841,10.564
+                    s18.795-3.521,25.834-10.564l21.409-21.412c7.05-7.039,10.567-15.604,10.567-25.697c0-10.085-3.518-18.746-10.567-25.978
+                    L213.13,222.409z"></path></g></svg></button><h3>Cookie List</h3></div><div class="ot-lst-subhdr"><div class="ot-search-cntr"><p role="status" class="ot-scrn-rdr"></p><input id="vendor-search-handler" type="text" name="vendor-search-handler" placeholder="Search…" aria-label="Cookie list search"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 -30 110 110" aria-hidden="true"><title>Search Icon</title><path fill="#2e3644" d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
+            s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
+            c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
+            s-17-7.626-17-17S14.61,6,23.984,6z"></path></svg></div><div class="ot-fltr-cntr"><button id="filter-btn-handler" aria-label="Filter" aria-haspopup="true"><svg role="presentation" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 402.577 402.577" xml:space="preserve"><title>Filter Icon</title><g><path fill="#fff" d="M400.858,11.427c-3.241-7.421-8.85-11.132-16.854-11.136H18.564c-7.993,0-13.61,3.715-16.846,11.136
+      c-3.234,7.801-1.903,14.467,3.999,19.985l140.757,140.753v138.755c0,4.955,1.809,9.232,5.424,12.854l73.085,73.083
+      c3.429,3.614,7.71,5.428,12.851,5.428c2.282,0,4.66-0.479,7.135-1.43c7.426-3.238,11.14-8.851,11.14-16.845V172.166L396.861,31.413
+      C402.765,25.895,404.093,19.231,400.858,11.427z"></path></g></svg></button></div><div id="ot-anchor"></div><section id="ot-fltr-modal"><div id="ot-fltr-cnt"><button id="clear-filters-handler">Clear</button><div class="ot-fltr-scrlcnt ot-pc-scrollbar"><div class="ot-fltr-opts" role="list"><div class="ot-fltr-opt" role="listitem"><div class="ot-chkbox"><input id="chkbox-id" type="checkbox" class="category-filter-handler"> <label for="chkbox-id"><span class="ot-label-txt">checkbox label</span></label> <span class="ot-label-status">label</span></div></div></div><div class="ot-fltr-btns"><button id="filter-apply-handler">Apply</button> <button id="filter-cancel-handler">Cancel</button></div></div></div></section></div></div><section id="ot-lst-cnt" class="ot-host-cnt ot-pc-scrollbar"><div id="ot-sel-blk"><div class="ot-sel-all"><div class="ot-sel-all-hdr"><span class="ot-consent-hdr">Consent</span> <span class="ot-li-hdr">Leg.Interest</span></div><div class="ot-sel-all-chkbox"><div class="ot-chkbox" id="ot-selall-hostcntr"><input id="select-all-hosts-groups-handler" type="checkbox"> <label for="select-all-hosts-groups-handler"><span class="ot-label-txt">checkbox label</span></label> <span class="ot-label-status">label</span></div><div class="ot-chkbox" id="ot-selall-vencntr"><input id="select-all-vendor-groups-handler" type="checkbox"> <label for="select-all-vendor-groups-handler"><span class="ot-label-txt">checkbox label</span></label> <span class="ot-label-status">label</span></div><div class="ot-chkbox" id="ot-selall-licntr"><input id="select-all-vendor-leg-handler" type="checkbox"> <label for="select-all-vendor-leg-handler"><span class="ot-label-txt">checkbox label</span></label> <span class="ot-label-status">label</span></div></div></div></div><div class="ot-sdk-row"><div class="ot-sdk-column"></div></div></section></section><div class="ot-pc-footer ot-pc-scrollbar"><div class="ot-btn-container"> <button class="save-preference-btn-handler onetrust-close-btn-handler">Confirm My Choices</button></div><!-- Footer logo --><div class="ot-pc-footer-logo"><a href="https://www.onetrust.com/products/cookie-consent/" target="_blank" rel="noopener noreferrer" aria-label="Powered by OneTrust Opens in a new Tab"><img alt="Powered by Onetrust" src="https://cdn.cookielaw.org/logos/static/powered_by_logo.svg" title="Powered by OneTrust Opens in a new Tab"></a></div></div><!-- Cookie subgroup container --><!-- Vendor list link --><!-- Cookie lost link --><!-- Toggle HTML element --><!-- Checkbox HTML --><!-- plus minus--><!-- Arrow SVG element --><!-- Accordion basic element --><span class="ot-scrn-rdr" aria-atomic="true" aria-live="polite"></span><!-- Vendor Service container and item template --></div><iframe class="ot-text-resize" sandbox="allow-same-origin" title="onetrust-text-resize" style="position: absolute; top: -50000px; width: 100em;" aria-hidden="true"></iframe></div></div><div id="rebuy-cart" role="dialog" aria-modal="true" aria-labelledby="rebuy-cart-title" aria-hidden="true" data-rebuy-cart-layout="single" class="rebuy-cart currency-USD no-items"><div class="rebuy-cart__flyout no-items"><div data-rebuy-cart-anchor="header"><div data-rebuy-cart-header-top=""><button id="rebuy-cart-close" type="button" aria-label="Close Cart" class="rebuy-cart__flyout-close"><!----> <span>Close</span></button> <h2 id="rebuy-cart-title" data-rebuy-component-id="title_bar" data-rebuy-component="title-bar" class="rebuy-cart__title">Your Cart</h2> <!----></div></div> <div data-rebuy-cart-anchor="goalBox" style="display: none;"></div> <div data-rebuy-cart-scroll-area=""><div data-rebuy-cart-anchor="body"><!----> <div class="rebuy-cart__flyout-cart-empty"><h1>You have no items in your cart</h1> <div data-rebuy-component="cross-sell-widget" data-rebuy-component-id="82e301d5-0055-4e90-a0ba-6cfeb74447d3"><div data-rebuy-id="199344" data-initialized="true"><div id="rebuy-widget-199344" class="rebuy-widget widget-type-cart widget-display-embed is-visible widget-layout-line" tabindex="-1"><div class="rebuy-widget-container widget-display-embed is-visible"><div class="rebuy-widget-content"><div aria-label="close modal" class="rebuy-modal-close"><i aria-hidden="true" class="fas fa-times"></i></div> <!----> <!----> <h4 class="primary-title">You May Also Like</h4> <!----> <div tabindex="-1" role="list" class="rebuy-product-grid large-style-line large-columns-1 large-carousel medium-style-line medium-columns-1 medium-carousel small-style-line small-columns-1 small-carousel splide is-initialized hide-paging splide--slide splide--ltr splide--draggable is-active" id="splide01" aria-roledescription="carousel"><div class="splide__arrows rebuy-carousel__arrows splide__arrows--ltr"><button class="splide__arrow rebuy-carousel__arrow splide__arrow--prev rebuy-carousel__arrow--prev" type="button" aria-label="Go to last slide" aria-controls="splide01-track" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false"><path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path></svg></button><button class="splide__arrow rebuy-carousel__arrow splide__arrow--next rebuy-carousel__arrow--next" type="button" aria-label="Next slide" aria-controls="splide01-track" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false"><path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path></svg></button></div><div class="splide__track splide__track--slide splide__track--ltr splide__track--draggable" id="splide01-track" aria-live="polite" aria-atomic="true" style="padding-left: 0px; padding-right: 0px;"><div class="splide__list" id="splide01-list" role="presentation" style="transform: translateX(0px);"><div aria-label="product" role="group" class="rebuy-product-block hair-growth-peptides product-id-8118434136245 tag-main splide__slide rebuy-carousel__slide is-active is-visible" id="splide01-slide01" aria-roledescription="slide" style="width: calc(100%);"><div class="rebuy-product-media"><a href="/products/hair-growth-peptides?variant=44970887446709&amp;_rdiscovery-handle=hair-growth-peptides&amp;_rdiscovery-widget=199344" rel="nofollow" class="rebuy-product-image clickable" tabindex="-1"><img loading="eager" src="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px_400x400.png?v=1740241975" alt="Hair Growth Peptides"></a></div> <div class="rebuy-product-info"><a aria-level="5" href="/products/hair-growth-peptides?variant=44970887446709&amp;_rdiscovery-handle=hair-growth-peptides&amp;_rdiscovery-widget=199344" aria-label="View Hair Growth Peptides" rel="nofollow" class="rebuy-product-title clickable" tabindex="-1"> <span class="rebuy-product-tag">OMI</span>Hair Growth Peptides</a> <!----> <!----> <div class="rebuy-product-price"><!----> <div><span class="rebuy-money"><span class="sr-only">Price</span> <span tabindex="-1">$79.00</span></span></div></div> <!----></div> <!----> <div class="rebuy-product-actions"><!----> <!----> <!----> <button aria-label="Add the product, Hair Growth Peptides to Cart" type="button" class="rebuy-button" tabindex="-1"><span>+</span></button></div></div><div aria-label="product" role="group" class="rebuy-product-block hair-nutrition-peptides-gummies product-id-8125131686069 tag-main splide__slide rebuy-carousel__slide is-visible is-next" id="splide01-slide02" aria-roledescription="slide" style="width: calc(100%);"><div class="rebuy-product-media"><a href="/products/hair-nutrition-peptides-gummies?variant=45138157863093&amp;_rdiscovery-handle=hair-nutrition-peptides-gummies&amp;_rdiscovery-widget=199344" rel="nofollow" class="rebuy-product-image clickable" tabindex="-1"><img loading="eager" src="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/WellBeauty_Peptides_Gummies_400x400.webp?v=1740782303" alt="View Hair Growth Peptides Gummies"></a></div> <div class="rebuy-product-info"><a aria-level="5" href="/products/hair-nutrition-peptides-gummies?variant=45138157863093&amp;_rdiscovery-handle=hair-nutrition-peptides-gummies&amp;_rdiscovery-widget=199344" aria-label="View Hair Growth Peptides Gummies" rel="nofollow" class="rebuy-product-title clickable" tabindex="-1"> <span class="rebuy-product-tag">OMI</span>Hair Growth Peptides Gummies</a> <!----> <!----> <div class="rebuy-product-price"><!----> <div><span class="rebuy-money"><span class="sr-only">Price</span> <span tabindex="-1">$79.00</span></span></div></div> <!----></div> <!----> <div class="rebuy-product-actions"><!----> <!----> <!----> <button aria-label="Add the product, Hair Growth Peptides Gummies to Cart" type="button" class="rebuy-button" tabindex="-1"><span>+</span></button></div></div><div aria-label="product" role="group" class="rebuy-product-block hair-growth-peptides-gummies-large-120-count product-id-8169517646005 tag-main splide__slide rebuy-carousel__slide is-visible" id="splide01-slide03" aria-roledescription="slide" style="width: calc(100%);"><div class="rebuy-product-media"><a href="/products/hair-growth-peptides-gummies-large-120-count?variant=45138351882421&amp;_rdiscovery-handle=hair-growth-peptides-gummies-large-120-count&amp;_rdiscovery-widget=199344" rel="nofollow" class="rebuy-product-image clickable" tabindex="-1"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/gummies-120_400x400.png?v=1740621768" alt="Hair Growth Peptides Gummies (Large, 120 Count)"></a></div> <div class="rebuy-product-info"><a aria-level="5" href="/products/hair-growth-peptides-gummies-large-120-count?variant=45138351882421&amp;_rdiscovery-handle=hair-growth-peptides-gummies-large-120-count&amp;_rdiscovery-widget=199344" aria-label="View Hair Growth Peptides Gummies" rel="nofollow" class="rebuy-product-title clickable" tabindex="-1"> <span class="rebuy-product-tag">OMI</span>Hair Growth Peptides Gummies</a> <!----> <!----> <div class="rebuy-product-price"><!----> <div><span class="rebuy-money"><span class="sr-only">Price</span> <span tabindex="-1">$115.00</span></span></div></div> <!----></div> <!----> <div class="rebuy-product-actions"><!----> <!----> <!----> <button aria-label="Add the product, Hair Growth Peptides Gummies to Cart" type="button" class="rebuy-button" tabindex="-1"><span>+</span></button></div></div></div></div></div> <!----> <div class="powered-by-rebuy"><a href="https://rebuyengine.com/?shop=the-one-nutrition-just-for-you.myshopify.com" target="_blank" rel="noopener" tabindex="-1">
+                    Powered by Rebuy
+                </a></div></div></div></div></div> <div data-rebuy-id="199343" data-initialized="true"><div id="rebuy-widget-199343" class="rebuy-widget widget-type-cart widget-display-embed is-visible widget-layout-line" tabindex="-1"><div class="rebuy-widget-container widget-display-embed is-visible"><div class="rebuy-widget-content"><div aria-label="close modal" class="rebuy-modal-close"><i aria-hidden="true" class="fas fa-times"></i></div> <!----> <!----> <h4 class="primary-title">We Recommend:</h4> <!----> <div tabindex="-1" role="list" class="rebuy-product-grid large-style-line large-columns-1 medium-style-line medium-columns-1 small-style-line small-columns-1 splide is-overflow is-initialized" id="splide02"><div class="splide__track" id="splide02-track"><div class="splide__list" id="splide02-list"><div class="rebuy-product-block hair-growth-peptides product-id-8118434136245 tag-main splide__slide rebuy-carousel__slide" id="splide02-slide01" style="width: calc(100%);" aria-label="product"><div class="rebuy-product-media"><a href="/products/hair-growth-peptides?variant=44970887446709&amp;_rdiscovery-handle=hair-growth-peptides&amp;_rdiscovery-widget=199343" rel="nofollow" class="rebuy-product-image clickable" tabindex="-1"><img loading="eager" src="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/OMI_Render_White_Hair_Growth_Peptides_60ct_2000px_x_2000px_400x400.png?v=1740241975" alt="Hair Growth Peptides"></a></div> <div class="rebuy-product-info"><a aria-level="5" href="/products/hair-growth-peptides?variant=44970887446709&amp;_rdiscovery-handle=hair-growth-peptides&amp;_rdiscovery-widget=199343" aria-label="View Hair Growth Peptides" rel="nofollow" class="rebuy-product-title clickable" tabindex="-1"> <span class="rebuy-product-tag">OMI</span>Hair Growth Peptides<div class="rebuy-variant-title">One-Time Purchase</div></a>  <!----> <div class="rebuy-product-price"><!----> <div><span class="rebuy-money"><span class="sr-only">Price</span> <span tabindex="-1">$79.00</span></span></div></div> <!----></div> <!----> <div class="rebuy-product-actions"><!----> <!----> <!----> <button aria-label="Select Hair Growth Peptides qty" type="button" class="rebuy-button" tabindex="-1"><span>QTY</span></button></div></div><div class="rebuy-product-block hair-nutrition-peptides-gummies product-id-8125131686069 tag-main splide__slide rebuy-carousel__slide" id="splide02-slide02" style="width: calc(100%);" aria-label="product"><div class="rebuy-product-media"><a tabindex="-1" href="/products/hair-nutrition-peptides-gummies?variant=45138157863093&amp;_rdiscovery-handle=hair-nutrition-peptides-gummies&amp;_rdiscovery-widget=199343" rel="nofollow" class="rebuy-product-image clickable"><img loading="eager" src="https://cdn.shopify.com/s/files/1/0267/3537/8613/files/WellBeauty_Peptides_Gummies_400x400.webp?v=1740782303" alt="View Hair Growth Peptides Gummies"></a></div> <div class="rebuy-product-info"><a aria-level="5" href="/products/hair-nutrition-peptides-gummies?variant=45138157863093&amp;_rdiscovery-handle=hair-nutrition-peptides-gummies&amp;_rdiscovery-widget=199343" aria-label="View Hair Growth Peptides Gummies" rel="nofollow" class="rebuy-product-title clickable" tabindex="-1"> <span class="rebuy-product-tag">OMI</span>Hair Growth Peptides Gummies<div class="rebuy-variant-title">One-Time Purchase</div></a>  <!----> <div class="rebuy-product-price"><!----> <div><span class="rebuy-money"><span class="sr-only">Price</span> <span tabindex="-1">$79.00</span></span></div></div> <!----></div> <!----> <div class="rebuy-product-actions"><!----> <!----> <!----> <button aria-label="Select Hair Growth Peptides Gummies qty" type="button" class="rebuy-button" tabindex="-1"><span>QTY</span></button></div></div></div></div></div> <!----> <div class="powered-by-rebuy"><a href="https://rebuyengine.com/?shop=the-one-nutrition-just-for-you.myshopify.com" target="_blank" rel="noopener" tabindex="-1">
+                    Powered by Rebuy
+                </a></div></div></div></div></div></div></div></div></div> <div data-rebuy-cart-anchor="footer"><!----> <div data-rebuy-component="checkout-area" data-rebuy-component-id="checkout" style="display: none;"><!----> <button type="button" class="rebuy-button rebuy-cart__checkout-button block"><span>Checkout</span></button> <!----> <!----> <div class="rebuy-cart__flyout-installments"></div> <!----> <div class="rebuy-cart__flyout-shipping"></div></div> <div><a href="/collections/all" class="button">Continue Shopping</a></div></div></div> <div class="rebuy-cart__background"></div> <div id="rebuy-cart-live-region" aria-live="polite" class="sr-only"></div></div><div id="recharge-app" data-v-app=""><!--v-if--></div><div class="acsb-trigger acsb-widget" tabindex="0" role="button"></div><iframe id="ibody" src="https://ssl.kaptcha.com/logo.htm?m=287305628508401&amp;s=01JS66955C085V1BN3BYHG6714&amp;sv=2.1.0&amp;kddcgid=6fe50a7e-9e8e-44b8-b545-b0930d6a3b39&amp;impl=bundle&amp;repo=github" style="border: 0px; height: 1px; width: 1px; position: absolute;"></iframe></body></html>
