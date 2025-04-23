@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 // Simple debounce function
 function debounce<F extends (...args: any[]) => any>(func: F, waitFor: number) {
@@ -57,70 +58,53 @@ const timelineTabs = [
   }
 ];
 
+// Component to observe intersection for each content section
+// Add types for props
+interface TimelineSectionObserverProps {
+  index: number;
+  setActiveIndex: (index: number) => void;
+}
+
+function TimelineSectionObserver({ index, setActiveIndex }: TimelineSectionObserverProps) {
+  const { ref, inView, entry } = useInView({
+    threshold: 0.5, // Trigger when 50% visible
+    // Optional: Adjust rootMargin if needed, e.g., to trigger earlier/later
+    // rootMargin: "-40% 0px -60% 0px", 
+  });
+
+  useEffect(() => {
+    // When this section becomes the most visible (passes the threshold)
+    // We also check entry?.isIntersecting to be sure, although `inView` should suffice
+    if (inView && entry?.isIntersecting) {
+      setActiveIndex(index);
+    }
+  }, [inView, index, setActiveIndex, entry]);
+
+  // Render an invisible div to act as the trigger
+  return <div ref={ref} style={{ position: 'absolute', height: '100%', top: 0, left: 0, width: '100%', pointerEvents: 'none' }} data-index={index} />;
+}
+
 export function ResultsTimeline() {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  
-  // Ref for the main section element
-  const sectionRef = useRef<HTMLDivElement>(null);
-  // Animation controls for the progress line
   const progressControls = useAnimation();
+  const sectionRef = useRef<HTMLDivElement>(null); // Ref for the main section
 
-  // Debounced function to set active tab and animate progress
-  const debouncedUpdate = useCallback(
-    debounce((index: number) => {
-      setActiveTabIndex(index);
-      const totalItems = timelineTabs.length;
-      const percentage = totalItems > 1 ? (index / (totalItems - 1)) * 100 : 0;
-      progressControls.start({ height: `${percentage}%` });
-    }, 50), // Reduce debounce time for responsiveness
-    [progressControls] // Dependency for useCallback
-  );
-
-  // Effect to handle scroll events
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-
-      const sectionTop = sectionRef.current.offsetTop;
-      const scrollY = window.scrollY;
-      const scrollPosition = scrollY - sectionTop; // How far scrolled past the section top
-      const stepHeight = 550; // Height of the content area, adjust if needed
-      const sectionHeight = sectionRef.current.offsetHeight; // Actual height of the section
-      const viewportHeight = window.innerHeight;
-
-      // Calculate scroll progress within the sticky section (0 to 1)
-      // This assumes the section becomes sticky at its top
-      const scrollableDistance = sectionHeight - viewportHeight; // How much scroll range inside the section
-      const scrollProgress = Math.max(0, scrollY - sectionTop) / scrollableDistance;
-
-      // Map progress to index
-      let newActiveIndex = Math.floor(scrollProgress * timelineTabs.length);
-
-      // Clamp the index within bounds
-      newActiveIndex = Math.max(0, Math.min(timelineTabs.length - 1, newActiveIndex));
-
-      // Only update if the index has actually changed
-      setActiveTabIndex(prevIndex => {
-        if (newActiveIndex !== prevIndex) {
-          debouncedUpdate(newActiveIndex); // Call the debounced update for state & animation
-        }
-        return newActiveIndex; // Return the new index for the state update
-      });
-    };
-
-    const debouncedScrollHandler = debounce(handleScroll, 50); // Debounce the scroll handler
-
-    window.addEventListener('scroll', debouncedScrollHandler);
-    return () => {
-      window.removeEventListener('scroll', debouncedScrollHandler);
-    }
-  }, [debouncedUpdate]); // Dependency includes the debounced function
+  // Callback to update state and animation, memoized
+  const updateActiveTab = useCallback((index: number) => {
+    setActiveTabIndex(index);
+    const totalItems = timelineTabs.length;
+    const percentage = totalItems > 1 ? (index / (totalItems - 1)) * 100 : 0;
+    progressControls.start({ height: `${percentage}%` });
+  }, [progressControls]); // Dependency
 
   return (
-    <section 
-      ref={sectionRef} 
-      className="py-24 bg-contrast overflow-hidden relative z-10" // Added relative and z-index
-      style={{ height: '300vh', position: 'sticky', top: '0' }} // Make section sticky and tall
+    <section
+      ref={sectionRef}
+      // Keep sticky positioning for the scroll effect, but the height might not need to be excessive anymore.
+      // Let's reduce it initially, can be adjusted. Maybe just enough height for content + viewport.
+      className="py-24 bg-contrast relative min-h-screen" // Removed overflow-hidden, added min-h-screen
+      // Style adjustments: remove fixed height, let content dictate height
+      // style={{ height: '300vh', position: 'sticky', top: '0' }} // <-- Remove or adjust
     >
       <div className="container mx-auto max-w-6xl px-4">
         {/* Section Title */}
@@ -131,97 +115,107 @@ export function ResultsTimeline() {
           Follow the science-backed journey as Photonique Touch progressively revitalizes your hair.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
-          
-          {/* Left Column: Now acts as scroll indicator (make sticky later) */}
-          <div className="md:col-span-3"> {/* REMOVED md:sticky md:top-24 */} 
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start relative">
+          {/* Left Column: Sticky Navigation */}
+          {/* Make this sticky within the parent section */}
+          <div className="md:col-span-3 md:sticky md:top-24 h-fit"> {/* Added h-fit */}
             <nav className="relative flex flex-col space-y-1 py-2 pl-8 pr-4" aria-label="Timeline Stages">
-              {/* Static Background Connecting Line (using ::before on nav) */}
-              
+              {/* Static Background Line (using ::before/::after or a simple div) */}
+              <div className="absolute left-[22px] top-0 bottom-0 w-[3px] bg-neutral-200 rounded-full"></div>
+
               {/* Animated Progress Line */}
-              <motion.div 
-                className="absolute left-[22px] top-0 w-[3px] bg-rose-500 rounded-full z-10" // Positioned over static line
-                style={{ height: '0%' }} // Initial height
-                animate={progressControls} // Control height with animation
-                transition={{ duration: 0.3, ease: "easeOut" }} // Animation transition
+              <motion.div
+                className="absolute left-[22px] top-0 w-[3px] bg-rose-500 rounded-full z-10"
+                style={{ height: '0%' }}
+                animate={progressControls}
+                transition={{ duration: 0.3, ease: "easeOut" }}
               />
 
-              {timelineTabs.map((tab, index) => ( 
+              {/* Timeline Tabs */}
+              {timelineTabs.map((tab, index) => (
                 <div
                   key={tab.title}
-                  className={`relative w-full text-left px-4 py-3 rounded-md font-serif text-xl md:text-2xl transition-colors duration-200 ease-in-out z-20 
+                  // Removed unused role/aria attributes for simplicity here, can add back if needed
+                  className={`relative w-full text-left px-4 py-3 rounded-md font-serif text-xl md:text-2xl transition-colors duration-200 ease-in-out z-20
                     ${activeTabIndex === index
-                      ? 'text-neutral-900' 
-                      : 'text-neutral-400' 
+                      ? 'text-neutral-900'
+                      : 'text-neutral-400'
                     }
-                    timeline-tab-item // New class for targeting point styles
                   `}
-                  role="tab" 
-                  aria-selected={activeTabIndex === index}
+                  // Add ::before pseudo-element styling in CSS for the dot
                 >
-                  <span>{tab.title}</span> 
-                  {/* Point indicator (using ::before on item) */}
+                  {/* Dot Indicator REMOVED */}
+                  {/* <span className={`absolute left-[15.5px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-contrast z-10 transition-colors duration-200 ease-in-out ${activeTabIndex >= index ? 'bg-rose-500' : 'bg-neutral-300'}`}></span> */}
+
+                  <span className="ml-4">{tab.title}</span>{/* Adjust margin if needed */}
                 </div>
               ))}
             </nav>
           </div>
 
-          {/* Right Column: Add relative positioning and fixed height */}
-          {/* Height needs careful adjustment based on content/design */}
-          <div className="md:col-span-9 mt-6 md:mt-0 relative h-[550px] overflow-hidden"> 
-            {timelineTabs.map((tab, index) => ( 
-              // Make each section absolute, control animation via activeTabIndex
-              <motion.div 
-                key={tab.title} 
-                id={`timeline-section-${index}`} 
-                // Add absolute positioning
-                className="absolute inset-0 p-8 md:p-12" // Added padding back here
-                role="tabpanel" 
-                aria-labelledby={`timeline-tab-${index}`}
-                // Animate opacity and scale based on activeTabIndex
-                initial={{ opacity: 0, scale: 0.95 }} // Start hidden and slightly scaled down
-                animate={{
-                  opacity: index === activeTabIndex ? 1 : 0,
-                  scale: index === activeTabIndex ? 1 : 0.95,
-                  transitionEnd: {
-                     // Keep inactive sections visible to refs but hidden from user
-                     display: index === activeTabIndex ? 'block' : 'none',
-                   }
-                }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                // Disable pointer events for inactive sections
-                style={{ pointerEvents: index === activeTabIndex ? 'auto' : 'none' }}
-              >
-                {/* Content Layout: Text LEFT, Image RIGHT */}
-                {/* Wrap content in a div to handle potential overflow if needed */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center h-full">
-                  {/* Text Points Column */}
-                  <div className="md:col-span-7">
-                    <h3 className="text-2xl font-semibold font-serif mb-4 text-neutral-800">{tab.title}</h3>
-                    <ul className="space-y-4 list-none pl-0">
-                      {tab.points.map((point, pointIndex) => (
-                        <li key={pointIndex} className="text-base text-neutral-700 leading-relaxed font-sans flex gap-3 items-start">
-                          <span className="text-rose-500 mt-1 flex-shrink-0">✓</span> 
-                          <span dangerouslySetInnerHTML={{ __html: point.replace(/\*\*(.*?)\*\*/g, '<strong class="font-medium text-neutral-800">$1</strong>').replace(/\[(.*?)\]/g, '<em class="text-sm text-neutral-500 not-italic">$1</em>') }} />
-                        </li>
-                      ))}
-                    </ul>
+          {/* Right Column: Content Sections */}
+          {/* Needs enough height to contain the largest content block */}
+           {/* Removed fixed height, let content determine height, add relative */}
+          <div className="md:col-span-9 mt-6 md:mt-0 relative">
+            {/* Render all sections, visibility controlled by Framer Motion & Observer */}
+            {timelineTabs.map((tab, index) => (
+              // Wrap each section content for observation
+              // Use min-height to ensure observers have space even if content is short
+              <div key={tab.title} className="relative" style={{ minHeight: '80vh' }}>
+                {/* Observer Trigger */}
+                <TimelineSectionObserver index={index} setActiveIndex={updateActiveTab} />
+
+                {/* Content Section (using Framer Motion for transitions) */}
+                <motion.div
+                  id={`timeline-section-${index}`}
+                  className="absolute inset-0 p-8 md:p-12" // Keep absolute positioning for fade effect
+                  aria-hidden={index !== activeTabIndex} // Better for accessibility
+                  initial={{ opacity: 0, y: 20 }} // Start hidden and slightly down
+                  animate={{
+                    opacity: index === activeTabIndex ? 1 : 0,
+                    y: index === activeTabIndex ? 0 : 20, // Slight vertical slide
+                    // Keep element in layout but invisible for observer; use visibility
+                    visibility: index === activeTabIndex ? 'visible' : 'hidden',
+                  }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                   // Use visibility instead of display none for observer
+                  style={{ pointerEvents: index === activeTabIndex ? 'auto' : 'none' }}
+                >
+                  {/* Content Layout (keep as is) */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center h-full">
+                    {/* Text Points Column */}
+                    <div className="md:col-span-7">
+                      <h3 className="text-2xl font-semibold font-serif mb-4 text-neutral-800">{tab.title}</h3>
+                      <ul className="space-y-4 list-none pl-0">
+                        {tab.points.map((point, pointIndex) => (
+                          <li key={pointIndex} className="text-base text-neutral-700 leading-relaxed font-sans flex gap-3 items-start">
+                            <span className="text-rose-500 mt-1 flex-shrink-0">✓</span> 
+                            <span dangerouslySetInnerHTML={{ __html: point.replace(/\*\*(.*?)\*\*/g, '<strong class="font-medium text-neutral-800">$1</strong>').replace(/\[(.*?)\]/g, '<em class="text-sm text-neutral-500 not-italic">$1</em>') }} />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Image Column */}
+                    <div className="md:col-span-5 w-full overflow-hidden rounded-lg border border-neutral-100 shadow-sm">
+                      <img 
+                        src={tab.image} 
+                        alt={`${tab.title} results visual`} 
+                        className="w-full h-auto object-cover aspect-[4/3] bg-neutral-100" 
+                        onError={(e) => e.currentTarget.src = 'https://placehold.co/600x450/f0f0f0/cccccc?text=Image%5CnNot+Found'} 
+                      />
+                    </div>
                   </div>
-                  {/* Image Column */}
-                  <div className="md:col-span-5 w-full overflow-hidden rounded-lg border border-neutral-100 shadow-sm">
-                    <img 
-                      src={tab.image} 
-                      alt={`${tab.title} results visual`} 
-                      className="w-full h-auto object-cover aspect-[4/3] bg-neutral-100" 
-                      onError={(e) => e.currentTarget.src = 'https://placehold.co/600x450/f0f0f0/cccccc?text=Image%5CnNot+Found'} 
-                    />
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </div>
     </section>
   );
-} 
+}
+
+// Add required dependencies: react-intersection-observer
+// npm install react-intersection-observer
+// or
+// yarn add react-intersection-observer 

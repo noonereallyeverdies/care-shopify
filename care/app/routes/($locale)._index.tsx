@@ -266,8 +266,8 @@ export default function Homepage() {
             <PrimaryButton to="/products/photonique-touch" text="Discover the device" icon={ArrowUpRight} />
           </div>
         </motion.div>
-        <motion.div  
-          className="col-span-12 md:col-span-7 lg:col-span-8 overflow-hidden relative min-h-[400px] md:min-h-0 h-[60vh] md:h-auto"
+        <motion.div 
+          className="col-span-12 md:col-span-7 lg:col-span-8 overflow-hidden relative min-h-[400px] md:min-h-0 h-[60vh] md:h-auto" 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}

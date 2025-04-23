@@ -68,7 +68,8 @@ export const Testimonials = () => {
           }}
           className="testimonial-swiper"
         >
-          {testimonialsData.map((testimonial, index) => (
+          {/* Duplicate the testimonialsData array to ensure enough slides for loop mode */}
+          {[...testimonialsData, ...testimonialsData].map((testimonial, index) => (
             <SwiperSlide key={index} className="pb-12">
               {/* --- USE "Your journey..." CARD STRUCTURE --- */}
               <div
