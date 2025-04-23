@@ -92,7 +92,13 @@ export type FeaturedCollectionDetailsFragment = Pick<
 
 export type HomepageProductFragment = Pick<
   StorefrontAPI.Product,
-  'id' | 'title' | 'description' | 'handle' | 'availableForSale'
+  | 'id'
+  | 'title'
+  | 'description'
+  | 'descriptionHtml'
+  | 'vendor'
+  | 'handle'
+  | 'availableForSale'
 > & {
   featuredImage?: StorefrontAPI.Maybe<
     Pick<StorefrontAPI.Image, 'url' | 'altText' | 'width' | 'height'>
@@ -102,7 +108,10 @@ export type HomepageProductFragment = Pick<
   };
   variants: {
     nodes: Array<
-      Pick<StorefrontAPI.ProductVariant, 'id' | 'availableForSale'> & {
+      Pick<
+        StorefrontAPI.ProductVariant,
+        'id' | 'availableForSale' | 'title'
+      > & {
         price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
         compareAtPrice?: StorefrontAPI.Maybe<
           Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
@@ -127,7 +136,13 @@ export type HomepageProductQuery = {
   product?: StorefrontAPI.Maybe<
     Pick<
       StorefrontAPI.Product,
-      'id' | 'title' | 'description' | 'handle' | 'availableForSale'
+      | 'id'
+      | 'title'
+      | 'description'
+      | 'descriptionHtml'
+      | 'vendor'
+      | 'handle'
+      | 'availableForSale'
     > & {
       featuredImage?: StorefrontAPI.Maybe<
         Pick<StorefrontAPI.Image, 'url' | 'altText' | 'width' | 'height'>
@@ -137,7 +152,10 @@ export type HomepageProductQuery = {
       };
       variants: {
         nodes: Array<
-          Pick<StorefrontAPI.ProductVariant, 'id' | 'availableForSale'> & {
+          Pick<
+            StorefrontAPI.ProductVariant,
+            'id' | 'availableForSale' | 'title'
+          > & {
             price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
             compareAtPrice?: StorefrontAPI.Maybe<
               Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
@@ -181,7 +199,7 @@ export type LayoutQueryVariables = StorefrontAPI.Exact<{
 }>;
 
 export type LayoutQuery = {
-  shop: Pick<StorefrontAPI.Shop, 'name'>;
+  shop: Pick<StorefrontAPI.Shop, 'name' | 'description'>;
   headerMenu?: StorefrontAPI.Maybe<
     Pick<StorefrontAPI.Menu, 'id'> & {
       items: Array<
@@ -1081,15 +1099,19 @@ export type HomepageProductQueryQueryVariables = StorefrontAPI.Exact<{
 
 export type HomepageProductQueryQuery = {
   product?: StorefrontAPI.Maybe<
-    Pick<StorefrontAPI.Product, 'id' | 'title' | 'descriptionHtml'> & {
+    Pick<
+      StorefrontAPI.Product,
+      'id' | 'title' | 'descriptionHtml' | 'description' | 'handle' | 'vendor'
+    > & {
       featuredImage?: StorefrontAPI.Maybe<
         Pick<StorefrontAPI.Image, 'url' | 'altText' | 'width' | 'height'>
       >;
       variants: {
         nodes: Array<
-          Pick<StorefrontAPI.ProductVariant, 'id'> & {
-            price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
-          }
+          Pick<
+            StorefrontAPI.ProductVariant,
+            'id' | 'availableForSale' | 'title'
+          > & {price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>}
         >;
       };
     }
@@ -1097,11 +1119,11 @@ export type HomepageProductQueryQuery = {
 };
 
 interface GeneratedQueryTypes {
-  '#graphql\n  fragment HomepageProduct on Product {\n    id\n    title\n    description\n    handle\n    availableForSale\n    featuredImage {\n      url\n      altText\n      width\n      height\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 1) {\n      nodes {\n        id\n        availableForSale\n        price {\n          amount\n          currencyCode\n        }\n        compareAtPrice {\n          amount\n          currencyCode\n        }\n        selectedOptions {\n          name\n          value\n        }\n      }\n    }\n  }\n\n  query homepageProduct($handle: String!) {\n    shop {\n      name\n      description\n      primaryDomain {\n        url\n      }\n    }\n    products(first: 1, query: "available_for_sale:true") {\n      nodes {\n        handle\n      }\n    }\n    product(handle: $handle) {\n      ...HomepageProduct\n    }\n  }\n': {
+  '#graphql\n  fragment HomepageProduct on Product {\n    id\n    title\n    description\n    descriptionHtml\n    vendor\n    handle\n    availableForSale\n    featuredImage {\n      url\n      altText\n      width\n      height\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 1) {\n      nodes {\n        id\n        availableForSale\n        title\n        price {\n          amount\n          currencyCode\n        }\n        compareAtPrice {\n          amount\n          currencyCode\n        }\n        selectedOptions {\n          name\n          value\n        }\n      }\n    }\n  }\n\n  query homepageProduct($handle: String!) {\n    shop {\n      name\n      description\n      primaryDomain {\n        url\n      }\n    }\n    products(first: 1, query: "available_for_sale:true") {\n      nodes {\n        handle\n      }\n    }\n    product(handle: $handle) {\n      ...HomepageProduct\n    }\n  }\n': {
     return: HomepageProductQuery;
     variables: HomepageProductQueryVariables;
   };
-  '#graphql\n  #graphql\n  fragment MenuItem on MenuItem {\n    id\n    resourceId\n    tags\n    title\n    type\n    url\n  }\n  fragment ChildMenuItem on MenuItem {\n    ...MenuItem\n  }\n  fragment ParentMenuItem on MenuItem {\n    ...MenuItem\n    items {\n      ...ChildMenuItem\n    }\n  }\n\n  query Layout(\n    $language: LanguageCode\n    $headerMenuHandle: String!\n    $footerMenuHandle: String!\n  ) @inContext(language: $language) {\n    shop {\n      name\n    }\n    headerMenu: menu(handle: $headerMenuHandle) {\n      id\n      items {\n        ...ParentMenuItem\n      }\n    }\n    footerMenu: menu(handle: $footerMenuHandle) {\n      id\n      items {\n        ...ParentMenuItem\n      }\n    }\n  }\n': {
+  '#graphql\n  #graphql\n  fragment MenuItem on MenuItem {\n    id\n    resourceId\n    tags\n    title\n    type\n    url\n  }\n  fragment ChildMenuItem on MenuItem {\n    ...MenuItem\n  }\n  fragment ParentMenuItem on MenuItem {\n    ...MenuItem\n    items {\n      ...ChildMenuItem\n    }\n  }\n\n  query Layout(\n    $language: LanguageCode\n    $headerMenuHandle: String!\n    $footerMenuHandle: String!\n  ) @inContext(language: $language) {\n    shop {\n      name\n      description\n    }\n    headerMenu: menu(handle: $headerMenuHandle) {\n      id\n      items {\n        ...ParentMenuItem\n      }\n    }\n    footerMenu: menu(handle: $footerMenuHandle) {\n      id\n      items {\n        ...ParentMenuItem\n      }\n    }\n  }\n': {
     return: LayoutQuery;
     variables: LayoutQueryVariables;
   };
@@ -1161,7 +1183,7 @@ interface GeneratedQueryTypes {
     return: PaginatedProductsSearchQuery;
     variables: PaginatedProductsSearchQueryVariables;
   };
-  '#graphql\n  query HomepageProductQuery(\n    $handle: String!\n    $country: CountryCode\n    $language: LanguageCode\n  ) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      id\n      title\n      descriptionHtml\n      featuredImage {\n        url\n        altText\n        width\n        height\n      }\n      variants(first: 1) {\n        nodes {\n          id\n          price {\n            amount\n            currencyCode\n          }\n        }\n      }\n    }\n  }\n': {
+  '#graphql\n  query HomepageProductQuery(\n    $handle: String!\n    $country: CountryCode\n    $language: LanguageCode\n  ) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      id\n      title\n      descriptionHtml # Ensure we fetch HTML description\n      description # Keep plain text as fallback\n      handle # Ensure handle is fetched for the link\n      vendor # Added vendor\n      featuredImage {\n        url\n        altText\n        width\n        height\n      }\n      variants(first: 1) {\n        nodes {\n          id\n          availableForSale\n          title # Added variant title\n          price {\n            amount\n            currencyCode\n          }\n          # compareAtPrice { ... } # Uncomment if needed\n        }\n      }\n    }\n  }\n': {
     return: HomepageProductQueryQuery;
     variables: HomepageProductQueryQueryVariables;
   };

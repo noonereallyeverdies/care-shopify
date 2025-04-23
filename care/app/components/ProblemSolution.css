@@ -1,0 +1,55 @@
+/* care/app/components/ProblemSolution.css */
+
+.problem-solution-section {
+  background-color: var(--c-bg-secondary, #f9f9f9);
+  padding: var(--space-xl) var(--space-md);
+}
+
+.problem-solution-layout { /* Added class for the grid container */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: var(--space-xl);
+  align-items: center; 
+  max-width: 1200px; /* Optional: constrain width */
+  margin: 0 auto; /* Optional: center layout */
+}
+
+.problem-column, 
+.solution-column {
+  /* Common column styles if any */
+}
+
+.problem-column .column-image,
+.solution-column .column-image { /* Added class to images */
+  width: 100%;
+  height: auto;
+  max-height: 300px; /* Keep constraints */
+  object-fit: cover;
+  border-radius: var(--border-radius-md, 8px); /* Use theme variable */
+  margin-bottom: var(--space-md);
+}
+
+.problem-column .column-title,
+.solution-column .column-title { /* Added class to h2 */
+  font-size: var(--text-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.problem-column .column-text,
+.solution-column .column-text { /* Added class to p */
+  font-size: var(--text-body);
+}
+
+/* Placeholder Icon Styles (if used) */
+.placeholder-icon {
+  width: 40px; 
+  height: 40px; 
+  background: var(--c-accent-rlt); 
+  border-radius: 50%; 
+  margin: 0 auto var(--space-md); 
+  color: var(--c-text-inverse, white); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-weight: bold;
+} 

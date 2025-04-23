@@ -1,74 +1,109 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination'; // If pagination is desired
-import 'swiper/css/navigation'; // If navigation arrows are desired
+import { motion } from 'framer-motion';
+import { useState } from 'react'; // Needed for potential future dot navigation
 
-// import required modules
-import { Pagination, Navigation } from 'swiper/modules';
-
-import { ReviewCard } from './ReviewCard';
-
-// Static placeholder data
-const testimonials = [
+// Placeholder testimonial data
+const testimonialsData = [
   {
-    quote: "I was skeptical, but after 3 months of consistent use, my hair feels noticeably thicker, especially around my temples. The device is easy to use, and I'm seeing less shedding.",
-    author: 'Sarah K.',
-    rating: 5,
+    quote: "I was skeptical, but the difference is undeniable. My hair feels thicker and I'm seeing less shedding after just 2 months!",
+    author: "Jessica M., Age 42",
+    rating: 5 // Optional star rating
   },
   {
-    quote: "Seeing definite improvement in overall hair health and shine after about 4 months. It takes patience, but it's becoming part of my routine. Wish the battery lasted a bit longer, but overall happy.",
-    author: 'Michael B.',
-    rating: 4,
+    quote: "Finally, something that actually works for my thinning hair. It's easy to use and I love the confidence boost.",
+    author: "David R., Age 55",
+    rating: 5
   },
   {
-    quote: "My hairdresser even commented on new growth! I use it 3-4 times a week as recommended. It's comfortable to wear while watching TV. Really impressed with the results so far (6 months in).",
-    author: 'Jessica T.',
-    rating: 5,
+    quote: "My hairdresser noticed the difference first! My hair is definitely growing back stronger and looks much healthier.",
+    author: "Sarah K., Age 38",
+    rating: 4
   },
-  // Add more testimonials if needed
+  {
+    quote: "Consistent use is key, but the results are worth it. My part line looks fuller than it has in years.",
+    author: "Michael P., Age 61",
+    rating: 5
+  }
 ];
 
-export function TestimonialSlider() {
+// Animation variants
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.5, delay: 0.1 } }
+};
+
+// Simple Star Rating component (can be enhanced)
+const StarRating = ({ rating }: { rating: number }) => {
   return (
-    <section className="testimonial-slider-section" style={{ padding: 'var(--section-padding-y) 0', overflow: 'hidden' /* Prevent horizontal scroll */ }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 var(--container-padding-x)', textAlign: 'center' }}>
-        <h2 style={{ marginBottom: 'var(--space-xl)' }}>Real People, Real Results</h2>
-      </div>
-      <Swiper
-        // Install Swiper modules
-        modules={[Pagination, Navigation]} // Add Navigation if arrows are needed
-        spaceBetween={30} // Space between slides
-        slidesPerView={1} // Default slides per view
-        pagination={{ clickable: true }} // Enable clickable pagination dots
-        // navigation={true} // Enable navigation arrows
-        loop={true} // Enable continuous loop mode
-        breakpoints={{
-          // when window width is >= 640px
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          // when window width is >= 1024px
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
+    <div style={{ color: '#FFD700', /* Gold color */ marginBottom: 'var(--space-xs)' }}>
+      {'★'.repeat(rating)}
+      {'☆'.repeat(5 - rating)}
+    </div>
+  );
+};
+
+export function TestimonialSlider() {
+  // State for potential future dot navigation (not implemented in this basic version)
+  // const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <motion.section
+      className="testimonial-slider section-padding"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={sectionVariants}
+      style={{ 
+        padding: 'var(--space-xl) 0', // Padding top/bottom, no side padding for full-width scroll
+        overflow: 'hidden', // Hide scrollbar for cleaner look
+        backgroundColor: 'var(--c-bg-tertiary, #e8e8e8)' // Optional contrasting background
+      }}
+    >
+      <h2 style={{ textAlign: 'center', marginBottom: 'var(--space-lg)', padding: '0 var(--space-md)', fontSize: 'var(--text-heading)' }}>
+        Hear From Our Community
+      </h2>
+
+      {/* Basic Scroll Snap Container */}
+      <div 
+        className="testimonial-scroll-container"
+        style={{
+          display: 'flex',
+          overflowX: 'auto', // Enable horizontal scrolling
+          scrollSnapType: 'x mandatory', // Snap scrolling
+          gap: 'var(--space-md)', // Gap between slides
+          padding: '0 var(--space-md) var(--space-md) var(--space-md)', // Add padding around slides
+          WebkitOverflowScrolling: 'touch', // Smooth scrolling on iOS
         }}
-        style={{ paddingBottom: 'var(--space-xxl)' /* Space for pagination */ }}
-        className="mySwiper"
       >
-        {testimonials.map((testimonial, index) => (
-          <SwiperSlide key={index} style={{ height: 'auto' /* Allow slide height to adjust */ }}>
-            <ReviewCard
-              quote={testimonial.quote}
-              author={testimonial.author}
-              rating={testimonial.rating}
-            />
-          </SwiperSlide>
+        {testimonialsData.map((testimonial, index) => (
+          <div
+            key={index}
+            className="testimonial-slide"
+            style={{
+              flex: '0 0 auto', // Prevent slides from shrinking
+              width: '80%', // Adjust width as needed, e.g., 80% for peeking effect
+              maxWidth: '450px', // Max width for larger screens
+              scrollSnapAlign: 'center', // Center the snapped slide
+              backgroundColor: 'var(--c-white, white)',
+              padding: 'var(--space-lg)',
+              borderRadius: '8px',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.08)', // Subtle shadow
+              textAlign: 'center'
+            }}
+          >
+            {testimonial.rating && <StarRating rating={testimonial.rating} />}
+            <blockquote style={{ fontStyle: 'italic', fontSize: 'var(--text-body)', margin: '0 0 var(--space-md) 0' }}>
+              " {testimonial.quote} "
+            </blockquote>
+            <cite style={{ fontWeight: 'bold', fontSize: 'var(--text-body-sm)', color: 'var(--c-text-secondary)' }}>
+              - {testimonial.author}
+            </cite>
+          </div>
         ))}
-      </Swiper>
-    </section>
+      </div>
+      
+      {/* Placeholder for Dots/Arrows - requires more complex implementation */}
+      {/* <div className="slider-controls" style={{ textAlign: 'center', marginTop: 'var(--space-md)' }}>...</div> */}
+
+    </motion.section>
   );
 } 

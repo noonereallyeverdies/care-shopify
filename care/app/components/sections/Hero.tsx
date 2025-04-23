@@ -1,11 +1,19 @@
-import { useEffect, useRef, useState } from "react"
-import { animate, stagger } from "@motionone/dom"
-import { motion, useAnimation, useInView } from "framer-motion"
-import Floating, { FloatingElement } from "~/components/ui/parallax-floating"
+import { useEffect, useRef, useState, Suspense, lazy } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
+// import { animate, stagger } from "@motionone/dom"
+// import { motion, useAnimation, useInView } from "framer-motion"
+// import Floating, { FloatingElement } from "~/components/ui/parallax-floating"
 import { Link } from "@remix-run/react"
 import { Button } from "~/components/Button"
 import { Money } from "@shopify/hydrogen"
 import type { HomepageProduct } from '~/routes/($locale)._index';
+import { Canvas } from "@react-three/fiber";
+import { ClientOnly } from "~/components/utility/ClientOnly";
+
+// Dynamically import the 3D scene component for client-side only rendering
+const LazyDeviceScene = lazy(() => 
+  import('~/components/3d/DeviceScene').then(module => ({ default: module.DeviceScene }))
+);
 
 // Original hardcoded images - We'll keep the structure but replace URLs later
 const heroImagesData = [
@@ -63,43 +71,69 @@ const spring = {
   mass: 0.8
 };
 
+// Define ParallaxBackground component inside Hero.tsx
+const ParallaxBackground: React.FC<{ imageUrl?: string; speed?: number; overlayColor?: string }> = 
+  ({ imageUrl, speed = 0.3, overlayColor = 'bg-black/40' }) => { // Adjusted default overlay
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ 
+    target: ref,
+    offset: ["start start", "end start"] // Adjusted offset for hero
+  });
+  // Calculate y based on scroll progress, moving opposite direction slightly
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+
+  if (!imageUrl) return null; // Don't render if no image
+
+  return (
+    // The outer div needs position:absolute and full coverage
+    <div ref={ref} className="absolute inset-0 z-0 overflow-hidden">
+      {/* The motion div handles the background image and parallax movement */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: `url(${imageUrl})`,
+          y: y,
+          // Scale slightly to prevent edges showing during movement
+          scale: 1.1, 
+        }}
+      />
+      {/* Overlay div remains static on top */}
+      <div className={`absolute inset-0 ${overlayColor} z-10`}></div> 
+    </div>
+  );
+};
+
 export function Hero({ product }: HeroProps) {
-  // Combine state and refs from both versions
-  const scope = useRef<HTMLDivElement>(null) // Keep scope for potential animations
-  const controls = useAnimation(); // From incorrect version
-  const isInViewRef = useRef(null); // Renamed ref for clarity
-  const isInView = useInView(isInViewRef, { once: false, amount: 0.3 }); // From incorrect version
-  const [hoveredImageIndex, setHoveredImageIndex] = useState<number | null>(null); // From incorrect version
-  // const [isImageLoaded, setIsImageLoaded] = useState(false) // Remove if not used
+  // State to track client-side mounting for dynamic import
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => { setIsMounted(true); }, []);
 
-  // Sound effect logic from incorrect version
-  const playInteractionSound = () => {
-    if (typeof window !== 'undefined') {
-      try {
-        const audio = new Audio('/sounds/interaction.mp3');
-        audio.volume = 0.2;
-        audio.play().catch(() => {});
-      } catch (e) {}
-    }
-  };
+  // Remove state and refs related to animation/hover
+  // const scope = useRef<HTMLDivElement>(null) 
+  // const controls = useAnimation(); 
+  // const isInViewRef = useRef(null);
+  // const isInView = useInView(isInViewRef, { once: false, amount: 0.3 });
+  // const [hoveredImageIndex, setHoveredImageIndex] = useState<number | null>(null);
 
-  // Use effect for scroll-based animation trigger from incorrect version
+  // Remove sound effect logic
+  /*
+  const playInteractionSound = () => { ... };
+  */
+
+  // Remove useEffect for animation trigger
+  /*
   useEffect(() => {
     if (isInView) {
       controls.start('visible');
     }
-    // Removed old animation logic
   }, [controls, isInView]);
+  */
 
-  // Hover handler for floating images from incorrect version
-  const onHoverImage = (index: number) => {
-    setHoveredImageIndex(index);
-    playInteractionSound();
-  };
-
-  const onHoverImageEnd = () => {
-     setHoveredImageIndex(null);
-  }
+  // Remove hover handlers
+  /*
+  const onHoverImage = (index: number) => { ... };
+  const onHoverImageEnd = () => { ... };
+  */
 
   // Null check from correct version
   if (!product) {
@@ -112,131 +146,66 @@ export function Hero({ product }: HeroProps) {
 
   const firstVariant = product?.variants?.nodes[0]
   const featuredImage = product?.featuredImage
+  const heroImageUrl = featuredImage?.url || '/images/prettyhair.jpg'; // Fallback image
 
   return (
-    // Use section structure and background from incorrect version
-    <section ref={isInViewRef} className="relative min-h-[100vh] overflow-hidden bg-gradient-to-br from-white via-neutral-50 to-red-50/30">
-      {/* Asymmetrical background grid from incorrect version */}
-      <div className="absolute inset-0 grid grid-cols-12 opacity-30 pointer-events-none">
-        {gridItems.map((item, index) => (
-          <motion.div
-            key={index}
-            className={`${item.width} ${item.height} ${item.bgColor} border border-neutral-200/30`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, delay: index * 0.2, ease: [0.165, 0.84, 0.44, 1] }}
-          />
-        ))}
-      </div>
+    <section 
+      className="relative min-h-[80vh] md:min-h-[90vh] flex items-center justify-center text-center overflow-hidden"
+      // Remove explicit background color/gradient
+    >
+      {/* Replace ParallaxBackground with the 3D Device Scene */}
+      {/* The DeviceScene component positions itself absolutely */}
+      {/* Conditionally render the scene only on the client using ClientOnly and isMounted */}
+      {/* Temporarily commented out to diagnose MiniOxygen error */}
+      {/* 
+      <ClientOnly>
+        {isMounted && (
+            <Canvas
+              className="absolute inset-0 z-10"
+            >
+              <Suspense fallback={null}>
+                <LazyDeviceScene />
+              </Suspense>
+            </Canvas>
+        )}
+      </ClientOnly>
+      */}
 
-      {/* Visual anchoring element from incorrect version */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <motion.div
-          className="w-[35vmin] h-[35vmin] rounded-full bg-gradient-to-br from-rose-100/20 to-rose-200/30 backdrop-blur-md"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: [0.8, 1.05, 1], opacity: [0, 0.7, 0.5] }}
-          transition={{ duration: 3, ease: "easeInOut", times: [0, 0.7, 1] }}
-        />
-      </div>
-
-      {/* Main content container structure from incorrect version */}
-      <div className="relative z-10 container mx-auto pt-40 md:pt-48 pb-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          {/* Headline block from incorrect version, with spring physics */}
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={controls} // Trigger animation on scroll
-            variants={{ visible: { opacity: 1, y: 0, transition: spring } }}
-          >
-            <h1 className="text-8xl md:text-10xl font-light text-neutral-900 leading-[0.9] mb-6 lowercase tracking-[0.02em]">
-              <motion.span className="inline-block" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring, delay: 0.2 }}>the</motion.span>{" "}
-              <motion.span className="inline-block text-rose-500" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring, delay: 0.5 }}>•</motion.span>{" "}
-              <motion.span className="inline-block" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring, delay: 0.7 }}>science</motion.span>{" "}
-              <motion.span className="inline-block text-rose-500" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring, delay: 0.9 }}>•</motion.span>{" "}
-              <motion.span className="inline-block" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring, delay: 1.1 }}>of</motion.span>{" "}
-              <motion.span className="inline-block text-rose-500" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring, delay: 1.3 }}>•</motion.span>{" "}
-              <motion.span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-rose-400" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring, delay: 1.5 }}>shine</motion.span>
+      {/* Main content container - Ensure it's above the parallax layer */}
+      {/* Ensure text color contrasts with scene background (e.g., dark text on light grey) */}
+      <div className="relative z-20 container mx-auto py-20 md:py-28 px-6 text-neutral-900">
+        <div className="max-w-3xl mx-auto">
+          {/* Content block mimicking Omiwell structure */}
+          <div className="mb-8">
+            {/* Subtitle (like Omiwell's h5) */}
+            <h5 className="text-base md:text-lg font-light uppercase tracking-widest mb-4 font-body text-neutral-700">
+              The Future of Hair Health {/* Example Subtitle */} 
+            </h5>
+            {/* Main Headline (like Omiwell's h2, using Playfair) */}
+            <h1 className="mb-6 font-semibold"> {/* Re-using H1, styles defined in app.css */}
+              the science of shine
             </h1>
-            <motion.p
-              className="text-xl md:text-2xl text-neutral-700 max-w-2xl mx-auto leading-relaxed tracking-wide"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.7 }}
-              whileHover={{ scale: 1.02, rotate: 0.5, transition: { duration: 0.3, ease: "easeOut" } }}
+            {/* Optional paragraph (Omiwell hero didn't seem to have one) */}
+            {/* 
+            <p
+              className="text-lg md:text-xl text-neutral-700 max-w-2xl mx-auto leading-relaxed mb-8 md:mb-10"
+              // initial/animate/transition/whileHover removed
             >
               Transform your relationship with hair care through our{" "}
-              <motion.span className="font-medium text-rose-500" whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}>revolutionary</motion.span>{" "}
+              <span className="font-medium text-primary">revolutionary</span>{" "}
               approach to hair wellness.
-            </motion.p>
-          </motion.div>
+            </p>
+            */}
+          </div>
 
-          {/* Product Display block from incorrect version, with spring physics */}
-          <motion.div
-            className="relative mt-16 md:mt-24 max-w-lg mx-auto"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ ...spring, delay: 2 }}
-          >
-            {/* Ensure featuredImage is used if available */}
-            {featuredImage && (
-                <motion.img
-                    // Use IMAGE_URL_3 if featuredImage isn't the desired one here, otherwise use featuredImage.url
-                    src={IMAGE_URL_3} // Or featuredImage.url
-                    alt={featuredImage.altText || "Care•atin Photonique Touch - The science of shine"}
-                    className="w-full h-auto object-contain transform -rotate-[15deg]"
-                    style={{ transformOrigin: "center bottom" }}
-                    whileHover={{ rotate: "-12deg", scale: 1.03, transition: { duration: 0.4, ease: "backOut" } }}
-                />
-            )}
-             {/* Isolation Effect tag from incorrect version */}
-            <motion.div
-              className="absolute -right-6 bottom-12 bg-rose-500 text-white px-4 py-2 rounded-full text-sm font-medium"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ ...spring, delay: 2.3 }}
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(225, 29, 72, 0.4)", transition: { duration: 0.2 } }}
-            >
-              3-in-1 technology
-            </motion.div>
-          </motion.div>
+          {/* CTA Button */}
+          <div className="mt-8 md:mt-10">
+            <Link to="/products/photonique-touch" className="btn-primary-refined">
+              Shop Now {/* Keep text or adjust */} 
+            </Link>
+          </div>
         </div>
       </div>
-
-      {/* Floating Images section from incorrect version */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none z-5"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      >
-        {heroFloatingImagesData.map((imageData, index) => {
-          const imageUrl = uniqueHeroImageUrls[index % 5];
-          const imageAlt = `Hero background image ${index + 1}`;
-
-          return (
-            <motion.div
-              key={index}
-              className="absolute pointer-events-auto"
-              style={{ left: imageData.x, top: imageData.y, width: imageData.size, height: imageData.size, zIndex: hoveredImageIndex === index ? 10 : 5 }}
-              initial={{ opacity: 0, scale: 0.8, rotate: imageData.rotation }}
-              animate={{ opacity: [0, 0.9, 0.8], scale: [0.8, 1.02, 1], rotate: imageData.rotation }}
-              // Use a tween transition instead of spring for multi-keyframe animation
-              transition={{ duration: 1.5, ease: [0.165, 0.84, 0.44, 1], delay: imageData.delay }}
-              whileHover={{ scale: 1.05, rotate: hoveredImageIndex === index ? 0 : imageData.rotation, zIndex: 10, boxShadow: "0 20px 40px rgba(0,0,0,0.2)", filter: "brightness(1.1)", transition: { ...spring, stiffness: 300, damping: 20 } }}
-              onHoverStart={() => onHoverImage(index)}
-              onHoverEnd={onHoverImageEnd}
-            >
-              <motion.div className="w-full h-full overflow-hidden rounded-lg" whileHover={{ borderRadius: "12px" }}>
-                <motion.img
-                  src={imageUrl}
-                  alt={imageAlt}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.08, transition: spring }}
-                />
-              </motion.div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
     </section>
   );
 }

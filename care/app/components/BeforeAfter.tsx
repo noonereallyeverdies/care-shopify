@@ -1,127 +1,112 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+// Placeholder data - replace with actual images and text
+const beforeAfterData = {
+  title: "Visible Transformations",
+  subtitle: "See the real results achieved with consistent use of Care-atin.",
+  examples: [
+    {
+      beforeImage: "/placeholder-before-1.jpg",
+      afterImage: "/placeholder-after-1.jpg",
+      caption: "Fuller hairline after 90 days.",
+      beforeLabel: "Day 0",
+      afterLabel: "Day 90"
+    },
+    // Add more examples if needed
+    // {
+    //   beforeImage: "/placeholder-before-2.jpg",
+    //   afterImage: "/placeholder-after-2.jpg",
+    //   caption: "Increased density in the crown area.",
+    //   beforeLabel: "Start",
+    //   afterLabel: "4 Months"
+    // },
+  ]
+};
+
+// Animation variants
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.5, delay: 0.1 } }
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
 
 export function BeforeAfter() {
-  const [sliderPos, setSliderPos] = useState(50); // Initial slider position (percentage)
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-
-  const beforeImageUrl = '/images/hair.jpg'; // Placeholder before image
-  const afterImageUrl = '/images/prettyhair.jpg'; // Placeholder after image
-
-  const handleMove = (clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    let x = clientX - rect.left;
-    // Clamp position between 0 and container width
-    x = Math.max(0, Math.min(x, rect.width));
-    const percent = (x / rect.width) * 100;
-    setSliderPos(percent);
-  };
-
-  const handleMouseMove = (event: MouseEvent) => {
-    if (!isDragging) return;
-    handleMove(event.clientX);
-  };
-
-  const handleTouchMove = (event: TouchEvent) => {
-    if (!isDragging) return;
-    handleMove(event.touches[0].clientX);
-  };
-
-  const handleMouseDown = () => {
-    setIsDragging(true);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  useEffect(() => {
-    if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchmove', handleTouchMove);
-      document.addEventListener('touchend', handleMouseUp);
-    }
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleMouseUp);
-    };
-  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove]);
+  // For now, just display the first example
+  const example = beforeAfterData.examples[0]; 
 
   return (
-    <section className="before-after-section" style={{ padding: 'var(--section-padding-y) var(--container-padding-x)', textAlign: 'center' }}>
-      <h2 style={{ marginBottom: 'var(--space-xl)' }}>See the Difference</h2>
-      <div
-        ref={containerRef}
-        className="before-after-container"
-        style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: '600px', // Max width for the component
-          margin: '0 auto',
-          overflow: 'hidden',
-          aspectRatio: '1 / 1', // Adjust aspect ratio as needed
-          cursor: isDragging ? 'grabbing' : 'grab',
-          borderRadius: 'var(--border-radius-md)',
-        }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown} // Use same handler for touch start
-      >
-        {/* After Image (Bottom Layer) */}
-        <img
-          src={afterImageUrl}
-          alt="After using Care-atin device" // Add descriptive alt text
-          style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
-        />
-        {/* Before Image (Top Layer, clipped) */}
-        <div
-          className="before-image-wrapper"
+    <motion.section
+      className="before-after-section section-padding"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={sectionVariants}
+      style={{ 
+        padding: 'var(--space-xl) var(--space-md)',
+        textAlign: 'center' 
+      }}
+    >
+      <motion.h2 variants={itemVariants} style={{ marginBottom: 'var(--space-sm)', fontSize: 'var(--text-heading)' }}>
+        {beforeAfterData.title}
+      </motion.h2>
+      <motion.p variants={itemVariants} style={{ marginBottom: 'var(--space-lg)', maxWidth: '600px', margin: '0 auto var(--space-lg) auto', fontSize: 'var(--text-body)' }}>
+        {beforeAfterData.subtitle}
+      </motion.p>
+
+      {example && (
+        <motion.div 
+          className="comparison-container"
+          variants={itemVariants} // Animate the whole comparison block
           style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            clipPath: `polygon(0% 0%, ${sliderPos}% 0%, ${sliderPos}% 100%, 0% 100%)`,
-            overflow: 'hidden',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', // Responsive columns
+            gap: 'var(--space-lg)',
+            alignItems: 'start',
+            maxWidth: '800px', // Limit width for better side-by-side view
+            margin: '0 auto' // Center the container
           }}
         >
-          <img
-            src={beforeImageUrl}
-            alt="Before using Care-atin device" // Add descriptive alt text
-            style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </div>
-        {/* Slider Handle */}
-        <div
-          className="slider-handle"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: `calc(${sliderPos}% - 2px)`,
-            width: '4px',
-            height: '100%',
-            backgroundColor: 'var(--c-primary-white)',
-            cursor: 'ew-resize',
-            boxShadow: '0px 0px 5px rgba(0,0,0,0.5)',
-          }}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleMouseDown}
-        >
-          <div className="slider-grabber" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '30px', height: '30px', background: 'var(--c-primary-white)', borderRadius: '50%', border: '2px solid var(--c-accent-rlt)', display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', flexDirection: 'column', padding: '5px' }}>
-            <span style={{width: '2px', height: '40%', background: 'var(--c-accent-rlt)'}}></span>
-            <span style={{width: '2px', height: '40%', background: 'var(--c-accent-rlt)'}}></span>
+          {/* Before Image Column */}
+          <div className="before-column">
+            <h3 style={{ marginBottom: 'var(--space-xs)', fontSize: 'var(--text-subheading)' }}>{example.beforeLabel}</h3>
+            <img 
+              src={example.beforeImage}
+              alt={`Before - ${example.caption}`}
+              style={{ width: '100%', height: 'auto', borderRadius: '8px', border: '1px solid var(--color-border, #eee)' }}
+            />
           </div>
-        </div>
-      </div>
-      {/* Add optional captions/labels here */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '600px', margin: 'var(--space-sm) auto 0 auto', padding: '0 5px' }}>
-        <span style={{fontSize: 'var(--font-size-small)', color: 'var(--c-primary-text-medium)' }}>Before</span>
-        <span style={{fontSize: 'var(--font-size-small)', color: 'var(--c-primary-text-medium)' }}>After</span>
-      </div>
-    </section>
+
+          {/* After Image Column */}
+          <div className="after-column">
+            <h3 style={{ marginBottom: 'var(--space-xs)', fontSize: 'var(--text-subheading)' }}>{example.afterLabel}</h3>
+            <img 
+              src={example.afterImage}
+              alt={`After - ${example.caption}`}
+              style={{ width: '100%', height: 'auto', borderRadius: '8px', border: '1px solid var(--color-border, #eee)' }}
+            />
+          </div>
+        </motion.div>
+      )}
+      
+      {/* Optional: Add controls here later if implementing a slider/gallery */}
+      
+      {example && (
+         <motion.p variants={itemVariants} style={{ marginTop: 'var(--space-md)', fontStyle: 'italic', fontSize: 'var(--text-body-sm)' }}>
+           {example.caption}
+         </motion.p>
+      )}
+
+    </motion.section>
   );
 } 

@@ -3,6 +3,8 @@ export const HOMEPAGE_PRODUCT_QUERY = `#graphql
     id
     title
     description
+    descriptionHtml
+    vendor
     handle
     availableForSale
     featuredImage {
@@ -21,6 +23,7 @@ export const HOMEPAGE_PRODUCT_QUERY = `#graphql
       nodes {
         id
         availableForSale
+        title
         price {
           amount
           currencyCode

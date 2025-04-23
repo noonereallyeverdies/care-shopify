@@ -1,19 +1,9 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'); */ /* Re-commented fonts */
+
+/* Apple+Glossier Inspired Styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Apple+Glossier Inspired Styles */
-@layer base {
-  /* Smooth scroll for entire site */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Custom selection color */
-  ::selection {
-    @apply bg-rose-200 text-stone-900;
-  }
-}
 
 /* Apple-inspired loader */
 @layer components {
@@ -72,9 +62,9 @@
   /* Refined color palette */
   --color-primary: 34, 33, 31; /* stone-800 */
   --color-contrast: 250, 249, 247; /* stone-50 */
-  --color-accent: 26, 25, 24; /* stone-900 */
-  --color-brand: 255, 237, 242; /* rose-100 */
-  --color-red-light-accent: 233, 58, 121; /* rose-600 */
+  --color-accent: 233, 58, 121; /* Changed to rose-600 */
+  --color-brand: 233, 58, 121; /* Changed to rose-600 */
+  /* --color-red-light-accent: 233, 58, 121; */ /* Removed redundant variable */
   --color-shop-pay: 27, 29, 29;
   --black: var(--color-primary);
   
@@ -86,9 +76,10 @@
 
 /* Ensure body uses theme colors by default */
 body {
-  @apply bg-contrast text-primary/80 font-sans antialiased;
+  @apply bg-contrast text-primary/80 antialiased;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Manrope', sans-serif; /* Revert to Manrope for body */
 }
 
 /* Add smooth transitions to all interactive elements */
@@ -104,6 +95,217 @@ a, button, input, select, textarea {
 /* Apple-like input styles */
 input, textarea, select {
   @apply rounded-xl border-stone-200 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50;
+}
+
+/* Define base body styles */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Infant', serif; /* Revert to Cormorant Infant */
+    @apply font-semibold text-neutral-900 tracking-tight; /* Remove lowercase */
+  }
+
+  /* Adjust heading weights if needed - Cormorant might need different weights */
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl; font-weight: 700; }
+  h2 { @apply text-3xl md:text-4xl lg:text-5xl; font-weight: 600; }
+  h3 { @apply text-2xl md:text-3xl lg:text-4xl; font-weight: 600; }
+  h4 { @apply text-xl md:text-2xl lg:text-3xl; font-weight: 600; }
+  h5 { @apply text-lg md:text-xl lg:text-2xl; font-weight: 600; }
+  h6 { @apply text-base md:text-lg lg:text-xl; font-weight: 600; }
+
+  p {
+     @apply text-base leading-relaxed tracking-normal;
+     /* Ensure body paragraphs use Manrope */
+     font-family: 'Manrope', sans-serif; /* Revert to Manrope */
+     font-weight: 300; /* Keep lighter body weight */
+   }
+
+   /* Other base styles */
+   a {
+    @apply text-primary hover:text-primary/80 transition-colors duration-200;
+  }
+}
+
+/* Refined Primary Button Style */
+.btn-primary-refined {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ease-out;
+  /* background-color: #C70039; */ /* Use the main red color */
+  background-color: rgb(var(--color-accent)); /* Use theme accent color (rose-600) */
+  color: white;
+}
+
+.btn-primary-refined:hover {
+  /* background-color: #a1002d; */ /* Darker red on hover */
+  background-color: theme('colors.rose.700'); /* Use darker rose shade on hover */
+  transform: translateY(-1px); /* Subtle lift */
+  box-shadow: 0 4px 15px rgba(233, 58, 121, 0.2); /* Adjusted shadow color to match accent */
+}
+
+/* Base Content Card Style */
+.content-card {
+  @apply relative flex flex-col overflow-hidden rounded-2xl border border-neutral-100 bg-white p-6 transition-all duration-300 ease-out;
+}
+
+.content-card:hover {
+  @apply shadow-lg -translate-y-1;
+}
+
+/* Swiper Flip Card Styles */
+.swiper-slide {
+  /* Ensure slides have perspective for 3D effect */
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Swiper adds swiper-slide-active etc. The flip effect works by rotating the SwiperSlide itself */
+/* We position front and back absolutely within the inner container */
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  /* Add common styling for faces if needed (e.g., border-radius) */
+  border-radius: inherit; /* Inherit border-radius from parent */
+}
+
+/* Front face (starts visible) */
+.flip-card-front {
+  /* No rotation needed initially */
+}
+
+/* Back face (starts hidden, rotated) */
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Optional: Style Swiper Navigation/Pagination if needed */
+/* Example: Make navigation arrows more prominent */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: var(--color-primary); /* Use theme color */
+  font-size: 1.5rem; /* Make slightly larger */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-primary); /* Use theme color */
+}
+
+/* ================================== */
+/* Custom Swiper Overrides            */
+/* ================================== */
+
+/* Ensure Swiper container allows overflow for absolutely positioned elements if needed */
+.mySwiper {
+  position: relative; /* Needed for absolute positioning of nav buttons */
+}
+
+/* --- Navigation Arrows --- */
+.swiper-button-prev,
+.swiper-button-next {
+  color: theme('colors.neutral.600'); /* Use a neutral color */
+  width: 32px; /* Smaller size */
+  height: 32px;
+  /* background-color: rgba(255, 255, 255, 0.7); Optional: Add a subtle background */
+  /* border-radius: 50%; */
+  transition: color 0.3s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+   color: theme('colors.rose.600'); /* Accent color on hover */
+}
+
+/* Adjust positioning if needed */
+.swiper-button-prev {
+  left: -10px; /* Move slightly outside the card */
+}
+.swiper-button-next {
+  right: -10px; /* Move slightly outside the card */
+}
+
+/* Make arrows smaller */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 18px; /* Reduce default arrow size */
+  font-weight: 600;
+}
+
+
+/* --- Pagination Dots --- */
+.swiper-pagination-bullet {
+  background-color: theme('colors.neutral.300'); /* Inactive color */
+  width: 8px;
+  height: 8px;
+  opacity: 0.8;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: theme('colors.rose.600'); /* Active color (accent) */
+  opacity: 1;
+}
+
+/* Adjust pagination position if needed */
+.swiper-pagination {
+  bottom: 10px !important; /* Ensure it's visible and slightly offset from bottom */
+}
+
+/* --- Flip Card Specific (Optional) --- */
+/* Ensure backface visibility is handled correctly by Swiper */
+.flip-card-inner .swiper-slide-invisible-blank {
+  opacity: 0; /* Hide blank slides used by loop/flip effect */
+}
+
+/* ================================== */
+/* Results Timeline Tabs             */
+/* ================================== */
+
+/* Nav container */
+nav[aria-label="Timeline Stages"] {
+  position: relative;
+}
+
+/* Style for the static background connecting line */
+nav[aria-label="Timeline Stages"]::before {
+  content: '';
+  position: absolute;
+  left: 22px; /* Align with the animated line & point indicators */
+  top: 1rem; /* Start below first item's top padding/text */
+  bottom: 1rem; /* End above last item's bottom padding/text */
+  width: 3px; /* Match animated line thickness */
+  background-color: theme('colors.neutral.200'); /* Faint background color */
+  border-radius: 9999px;
+  z-index: 5; /* Below animated line and points */
+}
+
+/* Style for individual item points */
+.timeline-tab-item::before {
+  content: '';
+  position: absolute;
+  left: -8px; /* Overlap the lines slightly */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: theme('colors.neutral.200'); /* Default state - same as background line */
+  border: 2px solid theme('colors.contrast'); /* Match section background for cutout effect */
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  z-index: 25; /* Above lines */
+}
+
+/* Style for the active item point */
+.timeline-tab-item[aria-selected='true']::before {
+  background-color: theme('colors.rose.500'); /* Active color */
 }
 
 /* ... rest of your app.css */ 

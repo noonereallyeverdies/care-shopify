@@ -2,12 +2,15 @@
   "dependencies": {
     "@shopify/cli": "^3.78.1",
     "@splinetool/react-spline": "^4.0.0",
+    "@studio-freight/react-lenis": "^0.0.47",
     "clsx": "^2.1.1",
     "framer-motion": "^12.6.2",
     "lucide-react": "^0.485.0",
     "motion": "^12.6.2",
+    "react-before-after-slider-component": "^1.1.8",
     "recharts": "^2.12.2",
     "simplex-noise": "^4.0.3",
+    "swiper": "^11.2.6",
     "tailwind-merge": "^3.0.2",
     "three": "^0.175.0"
   },

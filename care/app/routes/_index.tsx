@@ -1,5 +1,7 @@
 import { defer, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
 import { useLoaderData, type MetaFunction } from '@remix-run/react';
+import { AnalyticsPageType, Seo } from '@shopify/hydrogen';
+import { json } from '@shopify/remix-oxygen';
 
 // Import the planned section components (create these next)
 // import { HeroSection } from '~/components/HeroSection';
@@ -10,6 +12,23 @@ import { useLoaderData, type MetaFunction } from '@remix-run/react';
 // import { BeforeAfter } from '~/components/BeforeAfter';
 // import { SocialProofLogos } from '~/components/SocialProofLogos';
 // import { FinalCta } from '~/components/FinalCta';
+
+// Import the HeroSection component
+import { HeroSection } from '~/components/HeroSection';
+// Import the HowItWorksSnippet component
+import { HowItWorksSnippet } from '~/components/HowItWorksSnippet';
+// Import the ProblemSolution component
+import { ProblemSolution } from '~/components/ProblemSolution';
+// Import the TestimonialSlider component
+import { TestimonialSlider } from '~/components/TestimonialSlider';
+// Import the BeforeAfter component
+import { BeforeAfter } from '~/components/BeforeAfter';
+// Import the DeviceSpotlight component
+import {DeviceSpotlight} from '~/components/DeviceSpotlight';
+// Import the FinalCta component
+import {FinalCta} from '~/components/FinalCta';
+// Import the SocialProofLogos component
+import {SocialProofLogos} from '~/components/SocialProofLogos';
 
 export const meta: MetaFunction = () => {
   return [
@@ -23,50 +42,65 @@ export const meta: MetaFunction = () => {
 };
 
 // Loader to fetch data needed specifically for the landing page sections
-// For now, just fetching basic product info for DeviceSpotlight
 export async function loader({ context }: LoaderFunctionArgs) {
   const { storefront } = context;
-  // Example: Fetch a specific product by handle (replace 'care-atin-rlt-device' with actual handle)
+  // Fetch the product data
   const { product } = await storefront.query(PRODUCT_QUERY, {
     variables: {
-      handle: 'care-atin-rlt-device', // Replace with your actual product handle
+      handle: 'care-atin-rlt-device', // Ensure this handle is correct
       country: storefront.i18n.country,
       language: storefront.i18n.language,
     },
+    // Optional: Add caching
+    // cache: storefront.CacheShort()
   });
 
   if (!product?.id) {
-    console.warn(`Product with handle 'care-atin-rlt-device' not found.`);
-    // Handle case where product isn't found - maybe throw redirect or return null
+    // Log a warning if the product isn't found, but don't crash the page
+    console.warn(`Product with handle 'care-atin-rlt-device' not found. DeviceSpotlight might not render correctly.`);
   }
 
-  return defer({ product });
+  const analytics = { pageType: AnalyticsPageType.home };
+  
+  // Return both product and analytics data
+  // Use defer if you want analytics or other non-critical data to load later
+  return json({ product: product || null, analytics }); 
 }
 
 export default function Homepage() {
-  const { product } = useLoaderData<typeof loader>();
+  // Destructure product along with analytics
+  const { product, analytics } = useLoaderData<typeof loader>();
 
   return (
-    <div className="homepage">
-      {/* <HeroSection /> */}
-      {/* <ProblemSolution /> */}
-      {/* <HowItWorksSnippet /> */}
-      {/* Pass product data to the DeviceSpotlight component */}
-      {/* {product ? <DeviceSpotlight product={product} /> : <p>Device information loading...</p>} */}
-      {/* <TestimonialSlider /> */}
-      {/* <BeforeAfter /> */}
-      {/* <SocialProofLogos /> */}
-      {/* <FinalCta /> */}
-      {/* Add other sections as they are built */}
-      {/* <SocialProofLogos /> */}
-      {/* <FinalCta /> */}
-      <div>Homepage Content Placeholder (Sections commented out)</div>
-    </div>
+    <>
+      {/* <Seo type="homepage" data={analytics} /> */}
+      
+      <HeroSection />
+      <HowItWorksSnippet />
+      <ProblemSolution />
+      <SocialProofLogos />
+      <TestimonialSlider />
+      <BeforeAfter />
+      {/* Render DeviceSpotlight only if product data exists */}
+      {product && <DeviceSpotlight product={product} />}
+
+      {/* === Other Homepage Sections Go Here === */}
+      {/* Example:
+      <FeaturedProducts products={data.featuredProducts} />
+      */}
+      
+      {/* Temporary placeholder content */}
+      <div style={{ padding: '40px', textAlign: 'center' }}>
+        <h2>Homepage Content Placeholder</h2>
+        <p>Other sections like Featured Products will go here.</p>
+      </div>
+
+      <FinalCta />
+    </>
   );
 }
 
 // Basic GraphQL query to fetch product info
-// Needs refinement based on exactly what data DeviceSpotlight requires
 const PRODUCT_QUERY = `#graphql
   query HomepageProductQuery(
     $handle: String!
@@ -76,7 +110,10 @@ const PRODUCT_QUERY = `#graphql
     product(handle: $handle) {
       id
       title
-      descriptionHtml
+      descriptionHtml # Ensure we fetch HTML description
+      description # Keep plain text as fallback
+      handle # Ensure handle is fetched for the link
+      vendor # Added vendor
       featuredImage {
         url
         altText
@@ -86,10 +123,13 @@ const PRODUCT_QUERY = `#graphql
       variants(first: 1) {
         nodes {
           id
+          availableForSale
+          title # Added variant title
           price {
             amount
             currencyCode
           }
+          # compareAtPrice { ... } # Uncomment if needed
         }
       }
     }

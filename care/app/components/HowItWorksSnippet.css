@@ -1,0 +1,51 @@
+/* care/app/components/HowItWorksSnippet.css */
+
+.how-it-works-snippet {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  background-color: var(--c-bg-primary, white); /* Or other background */
+}
+
+.how-it-works-heading { /* Added class to h2 */
+  margin-bottom: var(--space-sm);
+  font-size: var(--text-heading);
+}
+
+.how-it-works-subtitle { /* Added class to p */
+  margin-bottom: var(--space-lg);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto; /* Centering */
+  font-size: var(--text-body);
+}
+
+.how-it-works-steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  max-width: 1000px; /* Optional max width */
+  margin: 0 auto; /* Optional centering */
+}
+
+.how-it-works-step {
+  padding: var(--space-md);
+  border: 1px solid var(--c-border, #e5e5e5); 
+  border-radius: var(--border-radius-md, 8px); 
+  background-color: var(--c-bg-surface, white); /* Card background */
+  text-align: center; /* Ensure content inside is centered if needed */
+}
+
+.step-icon {
+  font-size: 2.5rem; /* Consider using theme variables if available */
+  margin-bottom: var(--space-sm);
+  line-height: 1; /* Adjust if icon looks off vertically */
+}
+
+.step-title { /* Added class to h3 */
+  font-size: var(--text-subheading);
+  margin-bottom: var(--space-xs);
+}
+
+.step-description { /* Added class to p */
+  font-size: var(--text-body-sm);
+} 

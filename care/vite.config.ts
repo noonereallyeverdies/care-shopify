@@ -19,9 +19,15 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  // Force Vite to use a single instance of React/ReactDOM
+  // to prevent errors caused by multiple versions.
+  resolve: {
+    dedupe: ['react', 'react-dom'],
+  },
   ssr: {
     optimizeDeps: {
       include: [
+        'use-sync-external-store/shim/with-selector.js',
         'lodash/some',
         'lodash/range',
         'lodash/first',

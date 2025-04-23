@@ -15,6 +15,7 @@ import {
   useRouteLoaderData,
   useRouteError,
   type ShouldRevalidateFunction,
+  Await,
 } from '@remix-run/react';
 import {
   useNonce,
@@ -23,7 +24,7 @@ import {
   getSeoMeta,
   type SeoConfig,
 } from '@shopify/hydrogen';
-import {Suspense} from 'react';
+import {Suspense, useState, useEffect} from 'react';
 import invariant from 'tiny-invariant';
 import type { SerializeFrom } from '@remix-run/server-runtime';
 
@@ -43,6 +44,12 @@ import {seoPayload} from '~/lib/seo.server';
 import globalStyles from '~/styles/global.css?url';
 // Keep app.css if it contains utility classes or specific styles you want to preserve
 import appStyles from '~/styles/app.css?url';
+import headerStylesUrl from '~/components/Shared/Header.css?url';
+import footerStylesUrl from '~/components/Shared/Footer.css?url';
+import heroStylesUrl from '~/components/HeroSection.css?url';
+import deviceSpotlightStylesUrl from '~/components/DeviceSpotlight.css?url';
+import problemSolutionStylesUrl from '~/components/ProblemSolution.css?url';
+import howItWorksSnippetStylesUrl from '~/components/HowItWorksSnippet.css?url';
 
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import type {EnhancedMenu} from './lib/utils';
@@ -79,6 +86,7 @@ const LAYOUT_QUERY = `#graphql
   ) @inContext(language: $language) {
     shop {
       name
+      description
     }
     headerMenu: menu(handle: $headerMenuHandle) {
       id
@@ -125,10 +133,14 @@ export const links: LinksFunction = () => {
       href: 'https://shop.app',
     },
     {rel: 'icon', type: 'image/svg+xml', href: favicon},
-    // Add the global styles link
     {rel: 'stylesheet', href: globalStyles},
-    // Keep app styles if needed
     {rel: 'stylesheet', href: appStyles},
+    {rel: 'stylesheet', href: headerStylesUrl},
+    {rel: 'stylesheet', href: footerStylesUrl},
+    {rel: 'stylesheet', href: heroStylesUrl},
+    {rel: 'stylesheet', href: deviceSpotlightStylesUrl},
+    {rel: 'stylesheet', href: problemSolutionStylesUrl},
+    {rel: 'stylesheet', href: howItWorksSnippetStylesUrl},
     // Consider adding font preloads here once fonts are finalized
     // Example:
     // {
@@ -148,6 +160,78 @@ export const links: LinksFunction = () => {
   ];
 };
 
+// Export a headers function to modify response headers
+export function headers({loaderHeaders}: {loaderHeaders: Headers}) {
+  // Create a new Headers object based on loader headers
+  const headers = new Headers(loaderHeaders);
+
+  // Define a base CSP with explicit font-src AND data: in default-src
+  const baseCsp =
+    "default-src 'self' data: https://cdn.shopify.com https://shopify.com; " + // Added data: here
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.shopify.com http://localhost:*; " + 
+    "style-src 'self' 'unsafe-inline' https://cdn.shopify.com; " + 
+    "img-src 'self' data: https://cdn.shopify.com; " +
+    "font-src 'self' data: https://cdn.shopify.com; " + // Keep explicit font-src too
+    "connect-src 'self' https://cdn.shopify.com http://localhost:* ws://localhost:*; " + 
+    "frame-src 'self' https://cdn.shopify.com;";
+
+  let csp = headers.get('Content-Security-Policy');
+
+  if (csp) {
+    // If a CSP already exists, ensure font-src and default-src allow 'data:'
+    
+    // Ensure font-src allows 'data:'
+    if (csp.includes('font-src')) {
+      if (!csp.match(/font-src[^;]*data:/)) {
+         csp = csp.replace(/font-src\s+([^;]+)/, "font-src $1 data:");
+      }
+    } else {
+      csp = csp.trimRight();
+      if (csp.slice(-1) !== ';') { csp += ';'; }
+      csp += " font-src 'self' data: https://cdn.shopify.com;";
+    }
+
+    // Ensure default-src allows 'data:'
+    if (csp.includes('default-src')) {
+        if (!csp.match(/default-src[^;]*data:/)) {
+            csp = csp.replace(/default-src\s+([^;]+)/, "default-src $1 data:");
+        }
+    } else {
+        // Extremely unlikely default-src is missing, but handle defensively
+        csp = csp.trimRight();
+        if (csp.slice(-1) !== ';') { csp += ';'; }
+        csp += " default-src 'self' data: https://cdn.shopify.com;";
+    }
+
+    // Also ensure connect-src includes localhost for HMR WebSocket if needed
+    if (!csp.includes('connect-src')) {
+       csp = csp.trimRight();
+       if (csp.slice(-1) !== ';') { csp += ';'; }
+       csp += " connect-src 'self' https://cdn.shopify.com http://localhost:* ws://localhost:*;";
+    } else if (!csp.match(/connect-src[^;]*ws:\/\/localhost:\*/)) {
+         csp = csp.replace(/connect-src\s+([^;]+)/, "connect-src $1 http://localhost:* ws://localhost:*");
+    }
+
+  } else {
+    // If no CSP exists from loader, use our base CSP
+    csp = baseCsp;
+  }
+
+  // Set the modified CSP header
+  // Note: Nonce handling happens during render via useNonce(), this just sets the policy structure
+  headers.set('Content-Security-Policy', csp);
+
+  // Add other security headers (optional but recommended)
+  headers.set('X-Frame-Options', 'SAMEORIGIN');
+  headers.set('X-Content-Type-Options', 'nosniff');
+  headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  // Only set HSTS if you are sure your site is fully HTTPS
+  // headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+
+  // Return the modified headers object
+  return headers;
+}
+
 export async function loader(args: LoaderFunctionArgs) {
   // Start fetching non-critical data without blocking time to first byte
   const deferredData = loadDeferredData(args);
@@ -166,81 +250,54 @@ export async function loader(args: LoaderFunctionArgs) {
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
 async function loadCriticalData({request, context}: LoaderFunctionArgs) {
-  try {
-    // --- Temporary Simplification: Fetch only shop name --- 
-    // const [layoutData] = await Promise.all([
-    //   getLayoutData(context), // Fetches shop, headerMenu, footerMenu
-    //   // Add other queries here, so that they are loaded in parallel
-    // ]);
-    //
-    // if (!layoutData || !layoutData.shop /* || !layoutData.headerMenu || !layoutData.footerMenu */) {
-    //   // Temporarily removed menu check
-    //   throw new Error('Failed to load essential layout data (shop or menus).');
-    // }
-    const shop = { name: 'Care-atin (Temp)' }; // Static shop data
-    // --- End Temporary Simplification ---
+  const {storefront, env} = context;
+  
+  const [layout] = await Promise.all([
+    getLayoutData(context),
+  ]);
 
-    // Use placeholder SEO for now, real SEO handled by specific routes
-    const seo = {
-      title: 'Care-atin | Red Light Therapy for Hair', // Placeholder Title
-      description:
-        'Discover clinically inspired Red Light Therapy for healthier, fuller hair. Science-backed care for radiant growth.', // Placeholder Description
-    } as SeoConfig;
+  invariant(layout, 'Layout data is missing');
 
-    // If seoPayload.root exists and works, prefer that, but use placeholders if needed
-    // const seo = seoPayload.root({
-    //   shop: layoutData.shop,
-    //   url: request.url,
-    // });
+  // Pass the entire menu object to parseMenu
+  const headerMenu = layout.headerMenu
+    ? parseMenu(layout.headerMenu, env.PUBLIC_STORE_DOMAIN, env)
+    : undefined; 
 
-    const {storefront, env} = context;
-    
-    // Parse the menus
-    // --- Temporary Simplification: Use static menus --- 
-    // const headerMenu = layoutData.headerMenu ? parseMenu(layoutData.headerMenu, env.PUBLIC_STORE_DOMAIN, env) : undefined;
-    // const footerMenu = layoutData.footerMenu ? parseMenu(layoutData.footerMenu, env.PUBLIC_STORE_DOMAIN, env) : undefined;
-    const headerMenu = null; // Static null menu
-    const footerMenu = null; // Static null menu
-    // --- End Temporary Simplification ---
+  const footerMenu = layout.footerMenu
+    ? parseMenu(layout.footerMenu, env.PUBLIC_STORE_DOMAIN, env)
+    : undefined;
 
-    return {
-      layout: {
-        shop: shop, // Use static shop data
-        headerMenu,
-        footerMenu,
-      },
-      seo,
-      shop: getShopAnalytics({
-        storefront,
-        publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
-      }),
-      consent: {
-        checkoutDomain: env.PUBLIC_CHECKOUT_DOMAIN,
-        storefrontAccessToken: env.PUBLIC_STOREFRONT_API_TOKEN,
-        withPrivacyBanner: true, // Or false, depending on requirements
-      },
-      selectedLocale: storefront.i18n,
+  const shop = layout.shop;
+
+  // Use seoPayload if available, otherwise a basic fallback
+  const seo = seoPayload.root({
+      shop,
+      url: request.url,
+    }) || {
+      title: shop?.name ?? 'Care-atin',
+      description: shop?.description ?? 'Red Light Therapy for Hair Growth',
     };
-  } catch (error) {
-    console.error('Error in loadCriticalData:', error);
-    // Return a minimal data object with default values
-    return {
-      layout: null,
-      seo: {
-        title: 'Care-atin | Red Light Therapy for Hair', // Placeholder Title
-        description:
-          'Discover clinically inspired Red Light Therapy for healthier, fuller hair. Science-backed care for radiant growth.', // Placeholder Description
-        url: request.url,
-      } as SeoConfig,
-      shop: null,
-      consent: {
-        checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
-        storefrontAccessToken: context.env.PUBLIC_STOREFRONT_API_TOKEN,
-        withPrivacyBanner: true,
-      },
-      selectedLocale: context.storefront.i18n,
-    };
-  }
+
+  return {
+    layout: {
+      shop,
+      headerMenu,
+      footerMenu,
+    },
+    seo,
+    shop: getShopAnalytics({
+      storefront,
+      publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
+    }),
+    consent: {
+      checkoutDomain: env.PUBLIC_STORE_DOMAIN,
+      storefrontAccessToken: env.PUBLIC_STOREFRONT_API_TOKEN,
+      withPrivacyBanner: true, // Or false, depending on requirements
+    },
+    selectedLocale: storefront.i18n,
+  };
+  // Note: Removed the previous try...catch block that returned minimal data.
+  // If getLayoutData fails, it should ideally throw, leading to the ErrorBoundary.
 }
 
 /**
@@ -257,127 +314,58 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
   };
 }
 
-export const meta = ({data}: MetaArgs<typeof loader>) => {
-  return [
-    {title: data?.seo?.title ?? 'Care-atin'},
-    {description: data?.seo?.description ?? 'Red Light Therapy for Hair Growth'},
-  ];
-};
+// Define props for Layout component
+interface LayoutProps {
+  children?: React.ReactNode;
+  layout: SerializeFrom<typeof loader>['layout']; // Get type from loader
+  cart?: SerializeFrom<typeof loader>['cart']; // Cart is optional/deferred
+}
 
-function Layout({children}: {children?: React.ReactNode}) {
-  const nonce = useNonce();
-  const data = useRouteLoaderData<typeof loader>('root');
-  invariant(data, "Root loader data is missing"); // Add invariant check
-  // Now locale should always be present if data exists
-  const locale = data.selectedLocale ?? DEFAULT_LOCALE;
-  const shopData = data?.shop;
-  const cartData = data?.cart ?? null;
-  const consentData = data?.consent;
+// Modify Layout to accept props instead of using the hook
+function Layout({children, layout, cart}: LayoutProps) {
+  const nonce = useNonce(); 
+  const locale = layout?.selectedLocale ?? DEFAULT_LOCALE;
+  const headerMenu = layout?.headerMenu;
+  const footerMenu = layout?.footerMenu;
+  const isLoggedIn = false; // Placeholder - needs actual data if Header requires it
 
   return (
-    // Use locale directly
-    <html lang={locale.language}>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        {/* --- Temporarily Removed Header --- */}
-        {data.layout?.headerMenu && (
-          <Suspense fallback={<HeaderFallback />}>
-            <Header header={data.layout.headerMenu} />
-          </Suspense>
-        )}
-        <main role="main" id="mainContent" className="flex-grow">
-          {children}
-        </main>
-        {/* --- Temporarily Removed Footer --- */}
-        {data.layout?.footerMenu && (
-          <Suspense fallback={<FooterFallback />}>
-            <Footer footer={data.layout.footerMenu} />
-          </Suspense>
-        )}
-        <ScrollRestoration nonce={nonce} />
-        <Scripts nonce={nonce} />
-        {/* 
-          --- Analytics Provider Temporarily Removed --- 
-          {shopData && consentData ? (
-            <Analytics.Provider
-              cart={cartData} 
-              shop={shopData}
-              consent={consentData}
-            >
-              Analytics helpers go here
-            </Analytics.Provider>
-          ) : null}
-        */}
-      </body>
-    </html>
+    <>
+      {headerMenu && (
+        <Suspense fallback={<HeaderFallback />}>
+          <Header
+            header={headerMenu}
+            shop={layout?.shop}
+            cart={cart}
+            isLoggedIn={isLoggedIn}
+          />
+        </Suspense>
+      )}
+      <main role="main" id="mainContent" className="flex-grow">
+        {children} {/* Render Outlet/page content here */}
+      </main>
+      {footerMenu && (
+        <Suspense fallback={<FooterFallback />}>
+          <Footer footer={footerMenu} shop={layout?.shop} />
+        </Suspense>
+      )}
+    </>
   );
 }
 
 export default function App() {
   const data = useRouteLoaderData<typeof loader>('root');
+  invariant(data, 'Root loader data is required'); // Ensure data exists
+  const {analytics, layout, seo, cart, isLoggedIn} = data;
 
-  if (!data) {
-    // Handle the case where data is null, perhaps render a minimal layout or error message
-    // This might happen if loadCriticalData fails severely
-    return (
-      <Layout>
-        <GenericError error={{ message: 'Failed to load essential data' }} />
-      </Layout>
-    );
-  }
+  const nonce = useNonce();
+  const selectedLocale = layout?.selectedLocale ?? DEFAULT_LOCALE;
 
-  // Keep existing layout logic if PageLayout was used, otherwise use Outlet directly
-  // If PageLayout was used:
-  // return (
-  //   <PageLayout {...data.layout}>
-  //     <Outlet />
-  //   </PageLayout>
-  // );
-
-  // If using direct Outlet within Layout:
-  return (
-    <Layout>
-      <Outlet />
-    </Layout>
-  );
-}
-
-export function ErrorBoundary() {
-  const error = useRouteError();
-  const rootData = useRouteLoaderData<RootLoader>('root');
-  const errorBoundaryLocale = rootData?.selectedLocale ?? DEFAULT_LOCALE;
-  
-  let title = 'Error';
-  let pageType = 'page';
-  let status = 500; // Default status
-
-  if (isRouteErrorResponse(error)) {
-    title = 'Not found';
-    status = error.status;
-    if (error.status === 404) pageType = error.data || pageType;
-  }
-
-  // Safely construct the message
-  let errorMessage = `We found an error while loading this page.`;
-  if (isRouteErrorResponse(error)) {
-    errorMessage = `${status}: ${ typeof error.data === 'string' ? error.data : 'An unexpected error occurred.' }`;
-  }
-  else if (error instanceof Error) {
-    errorMessage = error.message;
-  }
-
-  // Pass the constructed message and potential stack trace
-  const errorForGeneric = error instanceof Error 
-    ? { message: errorMessage, stack: error.stack } 
-    : { message: errorMessage };
+  const cartPromise = cart; 
+  const analyticsPromise = analytics;
 
   return (
-    <html lang={errorBoundaryLocale?.language ?? 'en'}>
+    <html lang={selectedLocale.language.toLowerCase()}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -385,20 +373,89 @@ export function ErrorBoundary() {
         <Links />
       </head>
       <body>
-        <Suspense fallback={
-          <div className="flex items-center justify-center w-full h-screen">
-            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
-          </div>
-        }>
-          {status === 404 ? (
-            <NotFound type={pageType} />
-          ) : (
-            // Pass the safely constructed error object
-            <GenericError error={errorForGeneric} />
-          )}
+        <Suspense fallback={<LayoutFallback layout={layout} />}>
+          <Await resolve={cartPromise}>
+            {(resolvedCart) => (
+              <Layout layout={layout} cart={resolvedCart}>
+                <Outlet />
+              </Layout>
+            )}
+          </Await>
         </Suspense>
-        <ScrollRestoration />
-        <Scripts />
+
+        <ScrollRestoration nonce={nonce} />
+        <Scripts nonce={nonce} />
+
+        <Suspense>
+          <Await resolve={analyticsPromise}>
+            {(resolvedAnalytics) => (
+              resolvedAnalytics?.shop && resolvedAnalytics?.analytics ? (
+                <Analytics.Provider
+                  cart={cartPromise}
+                  shop={resolvedAnalytics.shop}
+                  consent={layout?.consent}
+                  cookieDomain={resolvedAnalytics.analytics.domain}
+                >
+                  <></>
+                </Analytics.Provider>
+              ) : null
+            )}
+          </Await>
+        </Suspense>
+      </body>
+    </html>
+  );
+}
+
+function LayoutFallback({ layout }: { layout: SerializeFrom<typeof loader>['layout'] }) {
+  return (
+    <>
+      <HeaderFallback />
+      <main role="main" id="mainContent" className="flex-grow">
+        <div className="flex items-center justify-center h-screen">
+          Loading...
+        </div>
+      </main>
+      <FooterFallback />
+    </>
+  );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  const rootData = useRouteLoaderData<SerializeFrom<RootLoader>>('root');
+  const nonce = useNonce();
+  let errorMessage = 'Unknown error';
+  let errorStatus = 500;
+
+  if (isRouteErrorResponse(error)) {
+    errorMessage = error?.data?.message ?? error.data;
+    errorStatus = error.status;
+  } else if (error instanceof Error) {
+    errorMessage = error.message;
+  }
+
+  const errorLayout = rootData?.layout ?? { shop: { name: 'Hydrogen Store' } } as any;
+  const selectedLocale = rootData?.selectedLocale ?? DEFAULT_LOCALE;
+
+  return (
+    <html lang={selectedLocale.language.toLowerCase()}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Layout layout={errorLayout}>
+          {errorStatus === 404 ? (
+            <NotFound type="page" />
+          ) : (
+            <GenericError error={{ message: errorMessage }} />
+          )}
+        </Layout>
+        <ScrollRestoration nonce={nonce} />
+        <Scripts nonce={nonce} />
       </body>
     </html>
   );
@@ -424,3 +481,13 @@ async function getLayoutData({storefront, env}: AppLoadContext) {
   // Return shop and raw menu data
   return { shop, headerMenu, footerMenu };
 }
+
+// Use getSeoMeta
+export const meta = ({data}: MetaArgs<typeof loader>) => {
+  // Ensure data and seo payload exist
+  if (!data?.seo) {
+    return [{ title: 'Care-atin' }, { description: 'Fallback description' }];
+  }
+  // Use getSeoMeta utility
+  return getSeoMeta(data.seo);
+};

@@ -33,6 +33,12 @@ export type EnhancedMenu = Pick<MenuItemFragment, 'id'> & {
   items: ParentEnhancedMenuItem[];
 };
 
+// Define an inline type for the expected Menu structure
+interface MenuLike {
+  id: string;
+  items: (ParentMenuItemFragment | ChildMenuItemFragment)[];
+}
+
 export function missingClass(string?: string, prefix?: string) {
   if (!string) {
     return true;
@@ -213,25 +219,29 @@ function parseItem(primaryDomain: string, env: Env, customPrefixes = {}) {
   It optionally overwrites url paths based on item.type
 */
 export function parseMenu(
-  menu: MenuItemFragment,
+  menu: MenuLike, // Use the inline type
   primaryDomain: string,
   env: Env,
   customPrefixes = {},
 ): EnhancedMenu | null {
-  if (!menu?.items) {
-    // eslint-disable-next-line no-console
-    console.warn('Invalid menu passed to parseMenu');
+  if (!menu?.items?.length) {
+    // console.warn('Menu has no items');
     return null;
   }
 
-  const parser = parseItem(primaryDomain, env, customPrefixes);
+  try {
+    const parser = parseItem(primaryDomain, env, customPrefixes);
+    const enhancedMenu = {
+      id: menu.id,
+      // Ensure items exist before mapping
+      items: menu.items.map(parser).filter(Boolean),
+    } as EnhancedMenu;
 
-  const parsedMenu = {
-    ...menu,
-    items: menu.items.map(parser).filter(Boolean),
-  } as EnhancedMenu;
-
-  return parsedMenu;
+    return enhancedMenu;
+  } catch (e) {
+    console.error('Error parsing menu:', e);
+    return null;
+  }
 }
 
 export const INPUT_STYLE_CLASSES =
