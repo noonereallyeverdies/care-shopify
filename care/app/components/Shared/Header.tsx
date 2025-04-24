@@ -31,7 +31,7 @@ export function HeaderFallback() {
       <div className="container mx-auto h-full flex justify-between items-center px-4">
         <Link to="/" className="brand-heading text-xl">
           care<span className="brand-dot">•</span>atin
-        </Link>
+      </Link>
         <div className="flex items-center gap-4">
           <div className="h-5 w-12 bg-neutral-200 rounded"></div> {/* Placeholder Nav */}
           <div className="h-5 w-5 bg-neutral-200 rounded-full"></div> {/* Placeholder Icon */}
@@ -208,13 +208,13 @@ export function Header({ header, cart, isLoggedIn }: HeaderProps) {
               {cart && cart.totalQuantity > 0 && 
                 <span className="text-xs bg-rose-500 text-white rounded-full px-2 py-0.5">{cart.totalQuantity}</span>
               }
-            </Link>
+      </Link>
           </div>
-        </nav>
+      </nav>
       </div>
     </header>
   );
-}
+} 
 
 function CartLink({ cart, isScrolled }: { cart: HeaderProps['cart']; isScrolled: boolean }) {
   const cartQuantity = cart?.totalQuantity || 0;

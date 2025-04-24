@@ -267,7 +267,7 @@ export function ScienceHub() {
                 <motion.div 
                   key={concept.title}
                   className="border border-neutral-200 rounded-xl overflow-hidden"
-                  initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
@@ -336,10 +336,10 @@ export function ScienceHub() {
                   benefit: "Hair grows in areas that had previously thinned or stopped growing"
                 }
               ].map((benefit, index) => (
-                <motion.div
-                  key={index}
+              <motion.div 
+                key={index}
                   className="bg-white rounded-2xl shadow-sm border border-neutral-100 p-8 text-center h-full flex flex-col"
-                  initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                   viewport={{ once: true }}
@@ -353,12 +353,12 @@ export function ScienceHub() {
                     <p className="text-rose-600 font-medium text-sm">
                       What this means for you: {benefit.benefit}
                     </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
           </motion.div>
-
+          
           {/* Treatment Specs - Clinical details for credibility */}
           <motion.div 
             className="mb-20 bg-neutral-50 rounded-2xl p-8 md:p-12"
@@ -407,7 +407,7 @@ export function ScienceHub() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-rose-600 text-white hover:bg-rose-700 transition-colors text-lg font-medium shadow-md hover:shadow-lg"
             >
               Explore our clinical research
-              <ArrowUpRight className="h-5 w-5" />
+                <ArrowUpRight className="h-5 w-5" />
             </Link>
             
             <p className="text-neutral-500 text-sm mt-4">

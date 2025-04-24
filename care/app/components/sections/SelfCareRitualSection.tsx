@@ -1,31 +1,82 @@
 import { motion } from "framer-motion";
 
+// Define SVG Animation Components (or inline SVGs)
+const FillAnimation = () => (
+  <svg viewBox="0 0 100 100" className="w-full h-full">
+    {/* Canister Outline */}
+    <path d="M30 90 V20 H70 V90 A10 10 0 0 1 60 100 H40 A10 10 0 0 1 30 90 M30 20 Q50 5 70 20" fill="none" stroke="#e5e7eb" strokeWidth="2"/>
+    {/* Lid */}
+    <rect x="25" y="10" width="50" height="10" rx="3" fill="#e5e7eb" />
+    {/* Animated Drops */}
+    {[0, 0.3, 0.6].map((delay, i) => (
+      <motion.circle
+        key={i}
+        cx={50 + (i - 1) * 10} // Position drops slightly apart
+        cy={30}
+        r="3"
+        fill="#fecdd3" // Light rose color
+        initial={{ y: 0, opacity: 1 }}
+        animate={{ y: 50, opacity: 0 }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          delay: delay,
+          ease: "easeIn"
+        }}
+      />
+    ))}
+  </svg>
+);
+
+const MassageAnimation = () => (
+  <svg viewBox="0 0 100 100" className="w-full h-full">
+    {/* Scalp Outline (simple arc) */}
+    <path d="M20 80 Q50 30 80 80" fill="none" stroke="#e5e7eb" strokeWidth="2"/>
+    {/* Pulsing Circles */}
+    {[0, 0.5, 1].map((delay, i) => (
+      <motion.circle
+        key={i}
+        cx="50"
+        cy="55" // Center of pulse
+        r="5"
+        stroke="#fecdd3" // Light rose color
+        strokeWidth="1.5"
+        fill="none"
+        initial={{ scale: 0, opacity: 0.8 }}
+        animate={{ scale: 3.5, opacity: 0 }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          delay: delay,
+          ease: "easeOut"
+        }}
+      />
+    ))}
+    {/* Center static dot */}
+     <circle cx="50" cy="55" r="3" fill="#fecdd3" />
+  </svg>
+);
+
 export function SelfCareRitualSection() {
   const steps = [
     {
       number: "01",
-      title: "Prepare",
-      description: "Detangle your hair with a wide-tooth comb for even light distribution",
+      title: "fill & prepare",
+      description: "fill the canister with your chosen hair serum or oil. prepare for your moment of care.",
       image: "/images/ritual-step1.jpg"
     },
     {
       number: "02",
-      title: "Position",
-      description: "Place the device comfortably on your head and secure the strap",
+      title: "massage & activate",
+      description: "gently massage your scalp as the device delivers the treatment and red light therapy begins.",
       image: "/images/ritual-step2.jpg"
     },
     {
       number: "03",
-      title: "Relax",
-      description: "Enjoy 5 minutes of quiet self-care time while the therapy works",
+      title: "relax & transform",
+      description: "enjoy 5 minutes of restorative therapy, 3 times per week, as care•atin works at the root.",
       image: "/images/ritual-step3.jpg"
     },
-    {
-      number: "04",
-      title: "Repeat",
-      description: "Use 3x weekly for optimal results and track your progress",
-      image: "/images/ritual-step4.jpg"
-    }
   ];
 
   return (
@@ -40,11 +91,11 @@ export function SelfCareRitualSection() {
         >
           <h2 className="text-3xl md:text-4xl font-light mb-4">your self-care ritual</h2>
           <p className="text-neutral-600 max-w-2xl mx-auto">
-            A few minutes, three times a week is all it takes to transform your hair
+            embrace this simple ritual to transform your hair from the root
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto">
           {steps.map((step, index) => (
             <motion.div 
               key={index}
@@ -54,17 +105,23 @@ export function SelfCareRitualSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="relative mb-6 w-full aspect-square overflow-hidden rounded-xl">
-                <img 
-                  src={step.image} 
-                  alt={`Step ${step.number}: ${step.title}`}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 left-4 bg-rose-500 text-white text-xl font-medium w-10 h-10 rounded-full flex items-center justify-center">
+              <div className="relative mb-6 w-full aspect-square overflow-hidden rounded-xl bg-neutral-50 flex items-center justify-center border border-neutral-100">
+                {index === 0 ? (
+                  <FillAnimation />
+                ) : index === 1 ? (
+                  <MassageAnimation />
+                ) : (
+                  <img
+                    src={step.image}
+                    alt={`Step ${step.number}: ${step.title}`}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+                <div className="absolute top-4 left-4 bg-rose-500 text-white text-xl font-medium w-10 h-10 rounded-full flex items-center justify-center z-10">
                   {step.number}
                 </div>
               </div>
-              <h3 className="text-xl font-medium mb-2">{step.title}</h3>
+              <h3 className="text-xl font-medium mb-2 lowercase">{step.title}</h3>
               <p className="text-neutral-600 text-center text-sm">{step.description}</p>
             </motion.div>
           ))}
@@ -95,14 +152,8 @@ export function SelfCareRitualSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <div className="mb-6 md:mb-0">
-            <h3 className="text-xl font-medium mb-2">Ready to start your journey?</h3>
-            <p className="text-neutral-600">Our companion app guides you through each step</p>
-          </div>
-          <div className="flex gap-4">
-            <img src="/images/app-store-badge.png" alt="Download on the App Store" className="h-10" />
-            <img src="/images/google-play-badge.png" alt="Get it on Google Play" className="h-10" />
-          </div>
+         
+         
         </motion.div>
       </div>
     </section>

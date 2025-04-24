@@ -39,6 +39,12 @@ import { ProblemSolutionSection } from "~/components/sections/ProblemSolutionSec
 import { SelfCareRitualSection } from "~/components/sections/SelfCareRitualSection";
 import { VisualScienceSection } from "~/components/sections/VisualScienceSection";
 import { ResultsTimeline } from "~/components/sections/ResultsTimeline";
+import { ProductHighlight } from "~/components/sections/ProductHighlight";
+
+// Lazy load the slider component
+const BeforeAfterSliderSection = lazy(() => 
+  import('~/components/sections/BeforeAfterSliderSection').then(module => ({ default: module.BeforeAfterSliderSection }))
+);
 
 export const headers = {
   'Cache-Control': 'public, max-age=60',
@@ -122,17 +128,36 @@ export async function loader({request, context, params}: LoaderFunctionArgs) {
 }
 
 export const meta = ({data}: MetaArgs<typeof loader>) => {
-  if (!data?.seo) {
+  const shopName = data?.shop?.name || 'care•atin';
+  const defaultTitle = `${shopName} | The Science of Shine`;
+  const defaultDescription = `Discover ${shopName}'s innovative approach to hair care, combining red light therapy and science for healthier, stronger hair.`;
+
+  const homeSeo: SeoConfig = {
+    title: `care•atin Red Light Therapy Hair Growth Device | Visible Results`,
+    description: `Revitalize your hair with care•atin's patented red light therapy device. Clinically proven for thicker, fuller hair growth & reduced shedding. Experience visible results & regain confidence. Shop now!`,
+    ...(data?.seo ?? {}),
+    titleTemplate: `%s`,
+  };
+
+  if (!data) {
     return [
-        {title: 'care•atin | The Science of Shine'},
-        {description: 'Default description if SEO data is missing.'}
+      {title: defaultTitle},
+      {description: defaultDescription}
     ];
   }
-  return getSeoMeta(data.seo as SeoConfig);
+
+  return getSeoMeta(homeSeo);
 };
 
 export default function Homepage() {
   const {product} = useLoaderData<typeof loader>();
+
+  // Basic loading fallback UI
+  const sliderFallback = (
+    <div className="text-center py-16 md:py-24 bg-contrast">
+      Loading slider...
+    </div>
+  );
 
   return (
     <>
@@ -145,6 +170,13 @@ export default function Homepage() {
       <SelfCareRitualSection />
 
       <ResultsTimeline />
+
+      {/* Wrap lazy-loaded component in Suspense */}
+      <Suspense fallback={sliderFallback}>
+        <BeforeAfterSliderSection />
+      </Suspense>
+
+      <ProductHighlight product={product} />
 
       <VisualScienceSection />
     </>

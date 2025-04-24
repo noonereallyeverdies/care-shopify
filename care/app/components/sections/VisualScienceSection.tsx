@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Zap, Waves, Droplet } from 'lucide-react';
 
 // Animation variants
 const fadeIn = {
@@ -37,36 +38,36 @@ export function VisualScienceSection() {
   const tripleActionData = [
     {
       title: "Red Light Therapy",
-      icon: "🔴",
+      icon: Zap,
       description: "Clinically proven wavelengths (630-660nm) penetrate the scalp to energize cells, stimulate circulation, and reduce inflammation.",
       benefits: [
-        "Increases cellular ATP production by up to 200%",
+        "Enhances cellular energy (ATP) production",
         "Stimulates dormant follicles to reactivate",
         "Extends the active growth phase (anagen) of hair"
       ],
-      scientificFact: "Our patented light array delivers precise wavelengths that have been shown in clinical studies to increase hair count by 22% in 16 weeks."
+      scientificFact: "Our patented light array delivers precise wavelengths that have been shown in clinical studies to support increased hair count and density."
     },
     {
       title: "Therapeutic Scalp Massage",
-      icon: "💆‍♀️",
+      icon: Waves,
       description: "Our gentle vibration technology provides a soothing massage that enhances blood flow and product absorption.",
       benefits: [
         "Increases nutrient delivery to follicles",
         "Relieves tension that can contribute to hair loss",
         "Creates a relaxing self-care ritual"
       ],
-      scientificFact: "Mechanical stimulation has been shown to increase dermal papilla cell activity by 38%, a key factor in hair growth cycles."
+      scientificFact: "Mechanical stimulation, like gentle massage, may support dermal papilla cell activity, a key factor in hair growth cycles."
     },
     {
       title: "Precision Oil Application",
-      icon: "💧",
+      icon: Droplet,
       description: "Our innovative delivery system ensures nourishing oils reach the exact areas where they're needed most.",
       benefits: [
         "Targeted delivery of active ingredients",
         "Prevents product waste and mess",
         "Creates perfect environment for follicle health"
       ],
-      scientificFact: "Combining red light therapy with our specialized oil formulation increases absorption of key nutrients by 64% compared to topical application alone."
+      scientificFact: "Combining red light therapy with our specialized oil formulation may enhance the scalp's receptiveness to key nutrients compared to topical application alone."
     }
   ];
 
@@ -83,7 +84,7 @@ export function VisualScienceSection() {
           <h2 className="text-3xl md:text-4xl font-light mb-2">triple-action technology</h2>
           <h3 className="text-xl md:text-2xl font-light text-rose-500 mb-6">the science of transformative hair care</h3>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Care•atin's revolutionary 3-in-1 system combines <span className="text-rose-500 font-medium">red light therapy</span>, 
+            care•atin's revolutionary 3-in-1 system combines <span className="text-rose-500 font-medium">red light therapy</span>, 
             <span className="text-rose-500 font-medium"> therapeutic scalp massage</span>, and 
             <span className="text-rose-500 font-medium"> precision oil application</span> to deliver 
             transformative results that no single-approach product can match.
@@ -93,29 +94,32 @@ export function VisualScienceSection() {
         {/* Tab Navigation */}
         <div className="flex justify-center mb-12">
           <div className="inline-flex bg-neutral-100 rounded-full p-1">
-            {tripleActionData.map((item, index) => (
-              <div key={index} className="relative">
-                <button
-                  onClick={() => setActiveTab(index)}
-                  className={`relative z-10 px-6 py-3 rounded-full text-sm md:text-base font-medium transition-colors duration-300 ${
-                    activeTab === index 
-                      ? 'text-white' 
-                      : 'text-neutral-500 hover:text-neutral-700'
-                  }`}
-                >
-                  <span className="mr-2">{item.icon}</span>
-                  {item.title}
-                </button>
-                {activeTab === index && (
-                  <motion.div
-                    layoutId="activeTechnology"
-                    className="absolute inset-0 bg-rose-500 rounded-full"
-                    initial={false}
-                    transition={{ type: 'spring', duration: 0.4 }}
-                  />
-                )}
-              </div>
-            ))}
+            {tripleActionData.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={index} className="relative">
+                  <button
+                    onClick={() => setActiveTab(index)}
+                    className={`relative z-10 px-4 md:px-6 py-3 rounded-full text-sm md:text-base font-medium transition-colors duration-300 flex items-center gap-2 ${
+                      activeTab === index 
+                        ? 'text-white' 
+                        : 'text-neutral-500 hover:text-neutral-700'
+                    }`}
+                  >
+                    <IconComponent size={16} className="opacity-80"/>
+                    <span>{item.title}</span>
+                  </button>
+                  {activeTab === index && (
+                    <motion.div
+                      layoutId="activeTechnology"
+                      className="absolute inset-0 bg-rose-500 rounded-full"
+                      initial={false}
+                      transition={{ type: 'spring', duration: 0.4 }}
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -221,7 +225,7 @@ export function VisualScienceSection() {
                       ))}
                     </div>
                     <motion.div 
-                      className="w-32 h-32 bg-white rounded-full shadow-lg flex justify-center items-center text-5xl z-10"
+                      className="w-32 h-32 bg-white rounded-full shadow-lg flex justify-center items-center text-rose-400 z-10"
                       animate={{ 
                         scale: [1, 1.03, 1],
                       }}
@@ -231,7 +235,7 @@ export function VisualScienceSection() {
                         repeatType: "reverse" 
                       }}
                     >
-                      💆‍♀️
+                      <Waves size={48} strokeWidth={1.5} />
                     </motion.div>
                   </div>
                 </motion.div>
@@ -307,7 +311,10 @@ export function VisualScienceSection() {
               >
                 <div className="bg-white p-8 rounded-xl shadow-md border border-[#f8d6e3]">
                   <div className="flex items-center mb-4">
-                    <span className="text-4xl mr-4">{tripleActionData[activeTab].icon}</span>
+                    {(() => {
+                      const ActiveIcon = tripleActionData[activeTab].icon;
+                      return <ActiveIcon size={24} className="mr-4 text-rose-500 flex-shrink-0" />;
+                    })()}
                     <h3 className="text-2xl font-medium text-rose-600">{tripleActionData[activeTab].title}</h3>
                   </div>
                   <p className="text-gray-600 mb-6 text-lg">
@@ -384,9 +391,9 @@ export function VisualScienceSection() {
             The sum is greater than its parts
           </h3>
           <p className="text-neutral-600 max-w-3xl mx-auto mb-8">
-            While each technology offers significant benefits on its own, clinical studies show that 
-            the <span className="font-medium">combination of all three technologies</span> creates a 
-            synergistic effect that accelerates results by up to 64% compared to single-approach treatments.
+            While each technology offers significant benefits on its own, the 
+            <span className="font-medium"> combination of all three technologies</span> creates a 
+            synergistic effect, potentially accelerating results compared to single-approach treatments.
           </p>
           
           <motion.a 

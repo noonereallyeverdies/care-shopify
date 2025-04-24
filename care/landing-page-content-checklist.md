@@ -122,8 +122,12 @@
 ## Mobile-First Experience Design
 - [ ] Apply the peak-end rule: create memorable moments at key scroll positions
 - [ ] Use progressive disclosure principle for technical information
-- [ ] Create tap-friendly CTAs with clear haptic feedback states
-- [ ] Optimize for one-handed scrolling with important elements in thumb-friendly zones
+- [x] Create tap-friendly CTAs with clear haptic feedback states (via Button component sizing/padding)
+- [x] Optimize for one-handed scrolling with important elements in thumb-friendly zones (Hero CTAs position + full width)
+- [x] Ensure all key information is visible above the fold on mobile (Hero adjustments)
+- [x] Simplify the hero section for mobile viewing (Hero adjustments)
+- [x] Adjust the timeline visualization to work on smaller screens (ResultsTimeline adjustments)
+- [x] Make CTAs full-width on mobile for easier tapping (Button component default)
 
 ## Copy Frameworks & Examples
 

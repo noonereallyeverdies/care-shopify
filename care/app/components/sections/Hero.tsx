@@ -3,6 +3,7 @@ import { Link } from "@remix-run/react"
 import { useState, useEffect } from "react"
 import type { HomepageProduct } from '~/routes/($locale)._index';
 import { ArrowRight } from "lucide-react";
+import { ButtonLink } from "~/components/ui/buttons/Button";
 
 // Original hardcoded images - We'll keep the structure but replace URLs later
 const heroImagesData = [
@@ -118,7 +119,7 @@ export function Hero({ product }: HeroProps) {
       </div>
 
       {/* Main content container - positioned in lower left */}
-      <div className="relative z-20 container mx-auto pb-28 px-6 md:pb-36 md:px-12 text-white">
+      <div className="relative z-20 container mx-auto pb-20 px-4 sm:pb-28 sm:px-6 md:pb-36 md:px-12 text-white">
         <motion.div 
           className="max-w-2xl"
           initial={{ opacity: 0, y: 20 }}
@@ -126,21 +127,21 @@ export function Hero({ product }: HeroProps) {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           {/* Content block */}
-          <div className="mb-8">
-            <h5 className="text-base md:text-lg font-light uppercase tracking-widest mb-4 text-white/80 brand-body">
+          <div className="mb-6 md:mb-8">
+            <h5 className="text-base md:text-lg font-light uppercase tracking-widest mb-3 md:mb-4 text-white/80 brand-body">
               reclaim what's been lost
             </h5>
-            <h1 className="mb-6 font-light text-4xl md:text-5xl lg:text-6xl tracking-wide text-white brand-heading">
+            <h1 className="mb-4 md:mb-6 font-light text-4xl sm:text-5xl md:text-6xl tracking-wide text-white brand-heading">
               beauty begins <span className="italic">at the root</span>
             </h1>
             <p
-              className="text-lg md:text-xl text-white/90 max-w-xl leading-relaxed mb-6 md:mb-8 font-light brand-body"
+              className="text-base sm:text-lg md:text-xl text-white/90 max-w-xl leading-relaxed mb-5 md:mb-8 font-light brand-body"
             >
               Every day without care•atin is another day of shedding and thinning. Our red light technology awakens dormant follicles at the cellular level, reviving the thick, lustrous hair you deserve.
             </p>
             
             {/* Animated timeframes */}
-            <div className="mt-4 mb-8">
+            <div className="mt-4 mb-6 md:mb-8">
               <motion.div 
                 className="flex items-center space-x-2"
                 initial={{ opacity: 0, y: 10 }}
@@ -153,10 +154,10 @@ export function Hero({ product }: HeroProps) {
                     className={`transition-all duration-500 ${showTimeframe === index ? 'opacity-100 scale-105' : 'opacity-50 scale-95'}`}
                   >
                     <div className="flex items-baseline">
-                      <span className="text-rose-300 text-4xl md:text-5xl font-light mr-2">{item.days}</span>
-                      <span className="text-white/80 text-sm uppercase tracking-wide">days</span>
+                      <span className="text-rose-300 text-3xl sm:text-4xl md:text-5xl font-light mr-1 sm:mr-2">{item.days}</span>
+                      <span className="text-white/80 text-xs sm:text-sm uppercase tracking-wide">days</span>
                     </div>
-                    <p className="text-sm text-white/70 tracking-wide">{item.text}</p>
+                    <p className="text-xs sm:text-sm text-white/70 tracking-wide">{item.text}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -168,10 +169,12 @@ export function Hero({ product }: HeroProps) {
           </div>
 
           {/* CTA Button */}
-          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Link 
+          <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+            <ButtonLink 
               to="/products/photonique-touch" 
-              className="group inline-flex items-center bg-rose-500 text-white px-8 py-3.5 rounded-full hover:bg-rose-600 transition-all duration-300 font-light tracking-wide text-lg"
+              variant="primary"
+              size="md"
+              className="group text-lg"
               onMouseEnter={() => setIsHoveringCTA(true)}
               onMouseLeave={() => setIsHoveringCTA(false)}
             >
@@ -184,43 +187,45 @@ export function Hero({ product }: HeroProps) {
               >
                 <ArrowRight size={18} />
               </motion.span>
-            </Link>
+            </ButtonLink>
             
-            <Link 
+            <ButtonLink 
               to="/pages/science" 
-              className="inline-flex items-center bg-transparent border border-white/30 text-white px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300 font-light"
+              variant="outline"
+              size="md"
+              className="border-white/30 text-white hover:bg-white/10 font-light"
             >
               discover the science
-            </Link>
+            </ButtonLink>
           </div>
           
           {/* Social proof capsule */}
           <motion.div 
-            className="mt-10 bg-black/30 backdrop-blur-sm py-3 px-5 rounded-full inline-flex items-center border border-white/10"
+            className="mt-8 md:mt-10 bg-black/30 backdrop-blur-sm py-2.5 px-4 sm:py-3 sm:px-5 rounded-full inline-flex items-center border border-white/10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 1 }}
           >
             <div className="flex -space-x-2 mr-3">
               {[1,2,3].map((_, i) => (
-                <div key={i} className="w-8 h-8 rounded-full bg-neutral-300 border-2 border-white overflow-hidden">
-                  <img src={`/images/testimonial-${i+1}.jpg`} alt="Customer" className="w-full h-full object-cover" />
+                <div key={i} className="w-8 h-8 rounded-full bg-neutral-400 border-2 border-white overflow-hidden">
+                  {/* <img src={`/images/testimonial-${i+1}.jpg`} alt="Customer" className="w-full h-full object-cover" /> */}
                 </div>
               ))}
             </div>
-            <p className="text-sm font-light">
-              <span className="text-rose-300 font-normal">93%</span> of users reported feeling more confident after 90 days
+            <p className="text-xs sm:text-sm font-light">
+              <span className="text-rose-300 font-normal">In user surveys, 93%</span> reported feeling more confident after 90 days
             </p>
           </motion.div>
           
           {/* Limited time offer capsule - Loss aversion trigger */}
           <motion.div 
-            className="mt-4 bg-rose-500/20 backdrop-blur-sm py-2 px-4 rounded-full inline-flex items-center border border-rose-500/30"
+            className="mt-3 sm:mt-4 bg-rose-500/20 backdrop-blur-sm py-2 px-3 sm:py-2 sm:px-4 rounded-full inline-flex items-center border border-rose-500/30"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.2 }}
           >
-            <p className="text-sm font-medium text-rose-200">
+            <p className="text-xs sm:text-sm font-medium text-rose-200">
               Don't miss out: First-time users save 15% with code NEWGROWTH
             </p>
           </motion.div>

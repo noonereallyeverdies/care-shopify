@@ -54,7 +54,7 @@ const timelineTabs = [
       'existing hair appears healthier with more shine',
     ],
     benefit: 'Less shedding means your confidence stops washing down the drain.',
-    statistic: '74% reduction in daily shedding reported by week 4'
+    statistic: 'In surveys, users reported up to 74% reduction in daily shedding by week 4'
   },
   {
     tab: 'week 8',
@@ -88,7 +88,7 @@ const timelineTabs = [
       'increased confidence from your visible hair transformation',
     ],
     benefit: 'Reclaim the hair you once had, and discover a confidence you may have forgotten.',
-    statistic: '93% reported feeling more confident in social situations'
+    statistic: 'In user surveys, 93% reported feeling more confident in social situations'
   },
 ];
 
@@ -156,7 +156,7 @@ export function ResultsTimeline() {
   return (
     <section
       ref={sectionRef}
-      className="py-12 md:py-24 bg-contrast relative section-spacing"
+      className="py-12 md:py-20 lg:py-24 bg-contrast relative section-spacing"
     >
       <div className="container mx-auto max-w-6xl px-4">
         {/* Section Title */}
@@ -165,27 +165,27 @@ export function ResultsTimeline() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-neutral-900 text-center mb-4 md:mb-6 tracking-tight brand-heading">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-neutral-900 text-center mb-4 tracking-tight brand-heading">
             your 90-day transformation
           </h2>
-          <p className="text-base md:text-lg text-center text-neutral-700 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed brand-body">
+          <p className="text-base md:text-lg text-center text-neutral-700 mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed brand-body">
             follow your journey as care<span className="brand-dot">•</span>atin progressively revitalizes your hair with clinically-proven red light therapy
           </p>
           
           {/* Loss aversion callout */}
-          <div className="inline-block mt-4 bg-rose-50 border border-rose-200 rounded-lg px-6 py-3">
-            <p className="text-rose-600 font-medium">
+          <div className="inline-block mt-4 bg-rose-50 border border-rose-200 rounded-lg px-4 py-2 sm:px-6 sm:py-3">
+            <p className="text-sm sm:text-base text-rose-600 font-medium">
               Every day without starting is another day delayed on your journey to fuller hair
             </p>
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start relative">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start relative">
           {/* Left Column: Sticky Navigation */}
           <div className="md:col-span-3 md:sticky md:top-24 h-fit mb-6 md:mb-0">
-            <nav className="relative flex md:flex-col flex-row overflow-x-auto whitespace-nowrap pb-2 md:pb-0 space-x-4 md:space-x-0 md:space-y-1 py-2 md:pl-8 md:pr-4" aria-label="Timeline Stages">
+            <nav className="relative flex md:flex-col flex-row overflow-x-auto whitespace-nowrap pb-2 md:pb-0 -mx-4 px-4 space-x-2 md:space-x-0 md:space-y-1 py-2 md:pl-8 md:pr-4 scrollbar-hide" aria-label="Timeline Stages">
               {/* Static Background Line */}
               <div className="absolute left-[22px] top-0 bottom-0 w-[3px] bg-neutral-200 rounded-full hidden md:block"></div>
 
@@ -206,10 +206,10 @@ export function ResultsTimeline() {
                     onClick={() => handleTabClick(index)}
                     onMouseEnter={() => setHoveredTab(index)}
                     onMouseLeave={() => setHoveredTab(null)}
-                    className={`relative md:w-full text-left px-3 md:px-4 py-2 md:py-3 rounded-md text-base md:text-lg transition-colors duration-200 ease-in-out z-20 flex-shrink-0 flex items-center gap-2
+                    className={`relative md:w-full text-left px-3 md:px-4 py-2 md:py-3 rounded-lg md:rounded-md text-sm md:text-base transition-colors duration-200 ease-in-out z-20 flex-shrink-0 flex items-center gap-2
                       ${activeTabIndex === index
                         ? 'text-white md:text-neutral-900 bg-rose-500 md:bg-transparent'
-                        : 'text-neutral-600 md:text-neutral-400 bg-neutral-100 md:bg-transparent'
+                        : 'text-neutral-600 md:text-neutral-400 bg-neutral-100 md:bg-transparent hover:bg-neutral-200 md:hover:bg-transparent'
                       }
                     `}
                     aria-selected={activeTabIndex === index}
@@ -241,106 +241,90 @@ export function ResultsTimeline() {
             {timelineTabs.map((tab, index) => (
               <div 
                 key={tab.title} 
-                className="relative" 
+                className="relative group"
                 style={{ 
-                  minHeight: '50vh', 
+                  minHeight: '60vh',
                   height: 'auto',
                   scrollMarginTop: '100px'
                 }}
                 ref={el => contentRefs.current[index] = el}
               >
-                {/* Observer Trigger */}
                 <TimelineSectionObserver index={index} setActiveIndex={setActiveTabIndex} />
-
-                {/* Content Section */}
-                <motion.div
-                  id={`timeline-section-${index}`}
-                  className="absolute md:relative inset-0 p-4 md:p-8 lg:p-12"
-                  aria-hidden={index !== activeTabIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: index === activeTabIndex ? 1 : 0,
-                    visibility: index === activeTabIndex ? 'visible' : 'hidden',
-                  }}
-                  transition={{ duration: 0.4 }}
-                  style={{ 
-                    pointerEvents: index === activeTabIndex ? 'auto' : 'none',
-                    zIndex: index === activeTabIndex ? 2 : 1 
-                  }}
+                <motion.div 
+                  className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true, amount: 0.3 }}
                 >
-                  {/* Content Layout */}
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 lg:gap-12 items-center h-full">
-                    {/* Text Points Column */}
-                    <div className="md:col-span-7 mb-6 md:mb-0">
-                      <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: 0.1 }}
-                      >
-                        <h3 className="text-xl md:text-2xl font-light mb-3 md:mb-5 text-neutral-800 brand-heading flex items-center gap-2">
-                          {tab.title}
-                          <span className="inline-block bg-rose-100 p-1.5 rounded-full">
-                            <tab.icon className="h-4 w-4 text-rose-600" />
-                          </span>
-                        </h3>
-                        
-                        {/* Benefit callout - high visual priority */}
-                        <div className="mb-6 p-4 bg-rose-50 border-l-4 border-rose-400 rounded-r-lg">
-                          <p className="text-rose-700 font-medium">{tab.benefit}</p>
-                        </div>
-                        
-                        <ul className="space-y-4 md:space-y-5 list-none pl-0">
-                          {tab.points.map((point, pointIndex) => (
-                            <motion.li 
-                              key={pointIndex} 
-                              className="text-sm md:text-base text-neutral-700 leading-relaxed flex gap-2 md:gap-3 items-start brand-body"
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.3, delay: 0.2 + (pointIndex * 0.1) }}
-                            >
-                              <span className="text-rose-500 mt-1 flex-shrink-0">✦</span> 
-                              <span dangerouslySetInnerHTML={{ __html: point.replace(/\*\*(.*?)\*\*/g, '<strong class="font-medium text-neutral-800">$1</strong>').replace(/\[(.*?)\]/g, '<em class="text-sm text-neutral-500 not-italic">$1</em>') }} />
-                            </motion.li>
-                          ))}
-                        </ul>
-                        
-                        {/* Statistic callout - draws attention */}
-                        <motion.div 
-                          className="mt-6 flex items-center"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.6 }}
-                        >
-                          <div className="bg-rose-100 rounded-full p-3 mr-4">
-                            <Sparkles className="h-5 w-5 text-rose-600" />
-                          </div>
-                          <p className="text-neutral-900 font-medium">
-                            <span className="text-rose-600">{tab.statistic.split(' ')[0]}</span> {tab.statistic.split(' ').slice(1).join(' ')}
-                          </p>
-                        </motion.div>
-                      </motion.div>
-                    </div>
+                  {/* Image Column */}
+                  <motion.div 
+                    className="w-full md:w-5/12 flex-shrink-0 overflow-hidden rounded-lg shadow-sm order-1 md:order-2"
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                  >
+                    <img 
+                      src={tab.image.src} 
+                      alt={tab.image.alt}
+                      className="w-full h-auto object-cover aspect-square"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://cdn.shopify.com/s/files/1/0XXX/XXXX/files/placeholder-image.png?v=YYYYYY" || '/images/placeholder-fallback.png'; 
+                        target.onerror = null;
+                      }}
+                      loading="lazy"
+                    />
+                  </motion.div>
+
+                  {/* Text Content Column */}
+                  <div className="w-full md:w-7/12 order-2 md:order-1">
+                    <motion.h3 
+                      className="text-2xl md:text-3xl font-light text-neutral-800 mb-3 md:mb-4 tracking-tight brand-heading"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                    >
+                      {tab.title}
+                    </motion.h3>
                     
-                    {/* Image Column */}
-                    <div className="md:col-span-5 w-full overflow-hidden rounded-lg">
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="relative"
-                      >
-                        <img 
-                          src={tab.image.src} 
-                          alt={tab.image.alt} 
-                          className="w-full h-auto object-cover aspect-[4/3] bg-neutral-100 rounded-lg shadow-md" 
-                          loading="lazy"
-                        />
-                        {/* Week indicator badge */}
-                        <div className="absolute top-3 left-3 bg-rose-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
-                          {tab.tab}
-                        </div>
-                      </motion.div>
-                    </div>
+                    <ul className="list-none space-y-2 mb-4 md:mb-5">
+                      {tab.points.map((point, pointIndex) => (
+                        <motion.li 
+                          key={pointIndex} 
+                          className="flex items-start text-sm md:text-base text-neutral-600 brand-body"
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.4, delay: 0.4 + pointIndex * 0.1 }}
+                          viewport={{ once: true, amount: 0.2 }}
+                        >
+                          <span className="text-rose-500 mr-2 mt-1">✓</span>
+                          <span>{point}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                    
+                    <motion.p 
+                      className="text-base md:text-lg text-neutral-800 italic mt-4 md:mt-6 mb-3 md:mb-4 font-light brand-body"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                    >
+                      {tab.benefit}
+                    </motion.p>
+                    
+                    <motion.p 
+                      className="text-sm md:text-base text-rose-600 font-medium bg-rose-50/80 px-3 py-1.5 rounded inline-block brand-body"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: 0.6 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                    >
+                      {tab.statistic}
+                    </motion.p>
                   </div>
                 </motion.div>
               </div>

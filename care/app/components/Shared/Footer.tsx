@@ -221,8 +221,8 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
               <img src="/images/payment/shopify.svg" alt="shop pay" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
             </div>
           </div>
-        </div>
-      </footer>
+      </div>
+    </footer>
     </>
   );
 }

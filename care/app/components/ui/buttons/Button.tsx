@@ -30,7 +30,7 @@ export function Button({
   return (
     <button
       className={clsx(
-        'inline-flex items-center justify-center transition-colors font-normal rounded-md brand-body',
+        'inline-flex items-center justify-center transition-colors font-normal rounded-md brand-body w-full md:w-auto',
         {
           // Variant styles
           'bg-rose-500 text-white hover:bg-rose-600 focus:ring-2 focus:ring-rose-500/50': variant === 'primary',
@@ -43,8 +43,8 @@ export function Button({
           'text-base px-6 py-3': size === 'md',
           'text-lg px-8 py-4': size === 'lg',
           
-          // Width
-          'w-full': fullWidth,
+          // Width - Apply fullWidth override specifically for larger screens if needed
+          'md:w-full': fullWidth,
           
           // Disabled state
           'opacity-50 cursor-not-allowed pointer-events-none': disabled,
@@ -71,7 +71,7 @@ export function ButtonLink({
   ...props
 }: ButtonLinkProps) {
   const buttonClasses = clsx(
-    'inline-flex items-center justify-center transition-colors font-normal rounded-md brand-body',
+    'inline-flex items-center justify-center transition-colors font-normal rounded-md brand-body w-full md:w-auto',
     {
       // Variant styles
       'bg-rose-500 text-white hover:bg-rose-600 focus:ring-2 focus:ring-rose-500/50': variant === 'primary',
@@ -84,8 +84,8 @@ export function ButtonLink({
       'text-base px-6 py-3': size === 'md',
       'text-lg px-8 py-4': size === 'lg',
       
-      // Width
-      'w-full': fullWidth,
+      // Width - Apply fullWidth override specifically for larger screens if needed
+      'md:w-full': fullWidth,
       
       // Disabled state
       'opacity-50 cursor-not-allowed pointer-events-none': disabled,

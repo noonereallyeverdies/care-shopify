@@ -8,6 +8,20 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 import { StarRating } from '~/components/StarRating';
 
+// Simple mapping for color names to CSS colors
+const colorMap: Record<string, string> = {
+  'black': '#000000',
+  'white': '#FFFFFF',
+  'silver': '#C0C0C0',
+  'graphite': '#383838',
+  'rose gold': '#B76E79', // Example, adjust as needed
+  'pink': '#FFC0CB',
+  'red': '#FF0000',
+  'blue': '#0000FF',
+  'green': '#008000',
+  // Add more colors as needed
+};
+
 type ProductFormProps = {
   product: Product;
   selectedVariant: ProductVariant;
@@ -101,23 +115,57 @@ export function ProductForm({
         <div key={option.name} className="grid gap-2">
           <h3 className="text-sm font-medium text-neutral-900">{option.name}</h3>
           <div className="flex flex-wrap gap-2">
-            {option.values.map(value => (
-              <button
-                key={value}
-                onClick={() => handleOptionChange(option.name, value)}
-                className={`px-3 py-2 text-sm rounded-md border transition
-                  ${
-                    optionSelections.some(
-                      selection => selection.name === option.name && selection.value === value
-                    )
-                      ? 'border-black bg-black text-white'
-                      : 'border-neutral-200 hover:border-neutral-400'
-                  }
-                `}
-              >
-                {value}
-              </button>
-            ))}
+            {option.values.map(value => {
+              const isSelected = optionSelections.some(
+                selection => selection.name === option.name && selection.value === value
+              );
+
+              // Check if this is the Color option
+              if (option.name.toLowerCase() === 'color') {
+                const backgroundColor = colorMap[value.toLowerCase()] || value; // Use mapped color or value itself as fallback
+                
+                return (
+                  <button
+                    key={`${option.name}-${value}`}
+                    onClick={() => handleOptionChange(option.name, value)}
+                    aria-label={`Select ${option.name} ${value}`}
+                    className={`w-8 h-8 rounded-full border-2 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-black/50
+                      ${isSelected 
+                        ? 'ring-2 ring-offset-1 ring-black border-black' 
+                        : 'border-neutral-300 hover:border-neutral-500'
+                      }
+                      ${backgroundColor === '#FFFFFF' ? 'shadow-sm' : ''} // Add shadow for white swatch
+                    `}
+                    style={{ backgroundColor: backgroundColor }}
+                    title={value} // Show color name on hover
+                  >
+                    {/* Optional: Add a checkmark for selected white swatch */}
+                    {isSelected && backgroundColor === '#FFFFFF' && (
+                      <svg className="w-4 h-4 text-black mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </button>
+                );
+              } else {
+                // Render default text button for other options
+                return (
+                  <button
+                    key={`${option.name}-${value}`}
+                    onClick={() => handleOptionChange(option.name, value)}
+                    className={`px-3 py-2 text-sm rounded-md border transition
+                      ${
+                        isSelected
+                          ? 'border-black bg-black text-white'
+                          : 'border-neutral-200 hover:border-neutral-400'
+                      }
+                    `}
+                  >
+                    {value}
+                  </button>
+                );
+              }
+            })}
           </div>
         </div>
       ))}

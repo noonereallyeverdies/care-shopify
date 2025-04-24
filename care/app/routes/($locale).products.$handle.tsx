@@ -65,6 +65,20 @@ import {
 import { getVariantUrl } from '~/lib/variants';
 import { StarRating } from '~/components/StarRating';
 
+// Simple mapping for color names to CSS colors (moved here)
+const colorMap: Record<string, string> = {
+  'black': '#000000',
+  'white': '#FFFFFF',
+  'silver': '#C0C0C0',
+  'graphite': '#383838',
+  'rose gold': '#B76E79', // Example, adjust as needed
+  'pink': '#FFC0CB',
+  'red': '#FF0000',
+  'blue': '#0000FF',
+  'green': '#008000',
+  // Add more colors as needed
+};
+
 // Define color options with their styling properties
 const PRODUCT_COLORS = {
   'Rose Gold': {
@@ -150,18 +164,18 @@ export default function Product() {
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
 
+  // Reverted to getting selectedVariant directly
   const selectedVariant = useOptimisticVariant(
     product.selectedOrFirstAvailableVariant,
     variants,
   );
-
-  // Track selected option in URL for better UX
-  useSelectedOptionInUrlParam(selectedVariant.selectedOptions);
-
   const productOptions = getProductOptions({
     ...product,
     selectedOrFirstAvailableVariant: selectedVariant,
   });
+
+  // Track selected option in URL for better UX
+  useSelectedOptionInUrlParam(selectedVariant.selectedOptions);
 
   return (
     <>
@@ -191,60 +205,60 @@ export default function Product() {
             media={media.nodes}
             className="w-full lg:col-span-2"
           />
+          {/* Render the form section directly again */}
           <div className="sticky md:top-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
-            <section className="flex flex-col w-full gap-8 p-6 md:p-8 bg-white rounded-xl shadow-sm border border-neutral-100 md:max-w-md md:mx-auto lg:gap-10">
-              <div className="grid gap-3">
-                <ProductPrice 
+             <section className="flex flex-col w-full gap-8 p-6 md:p-8 bg-white rounded-xl shadow-sm border border-neutral-100 md:max-w-md md:mx-auto lg:gap-10">
+                <div className="grid gap-3">
+                   <ProductPrice 
+                     selectedVariant={selectedVariant} 
+                     className="text-3xl md:text-4xl"
+                   />
+                   {/* Customer reviews - Keep outside lazy load if possible, or include */}
+                   <div className="flex items-center gap-2 mt-2">
+                     <div className="flex text-yellow-400">
+                       {[...Array(5)].map((_, i) => (
+                         <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                           <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                         </svg>
+                       ))}
+                     </div>
+                     <Text className="text-sm text-primary/60">4.9 (94 reviews)</Text>
+                   </div>
+                   {/* Premium badges - Keep outside lazy load if possible, or include */}
+                   <div className="flex flex-wrap gap-2 mt-2">
+                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                       In Stock
+                     </span>
+                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                       Dermatologist Approved
+                     </span>
+                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                       Award Winning
+                     </span>
+                   </div>
+                </div>
+                {/* Product form with options */}
+                <ProductForm 
+                  productOptions={productOptions} 
                   selectedVariant={selectedVariant} 
-                  className="text-3xl md:text-4xl"
+                  storeDomain={storeDomain} 
                 />
-                
-                {/* Customer reviews */}
-                <div className="flex items-center gap-2 mt-2">
-                  <div className="flex text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                      </svg>
-                    ))}
+                {/* Satisfaction guarantee - Keep outside lazy load if possible, or include */}
+                <div className="bg-neutral-50 p-4 rounded-lg border border-neutral-100 flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <div>
+                    <Text className="font-medium text-sm">30-Day Money Back Guarantee</Text>
+                    <Text className="text-xs text-primary/60">We stand behind our products with complete confidence.</Text>
                   </div>
-                  <Text className="text-sm text-primary/60">4.9 (94 reviews)</Text>
                 </div>
-                
-                {/* Premium badges */}
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                    In Stock
-                  </span>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                    Dermatologist Approved
-                  </span>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                    Award Winning
-                  </span>
-                </div>
-              </div>
-              
-              {/* Product form with options */}
-              <ProductForm 
-                productOptions={productOptions} 
-                selectedVariant={selectedVariant} 
-                storeDomain={storeDomain} 
-              />
-              
-              {/* Satisfaction guarantee */}
-              <div className="bg-neutral-50 p-4 rounded-lg border border-neutral-100 flex items-start gap-3">
-                <svg className="w-5 h-5 text-green-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <div>
-                  <Text className="font-medium text-sm">30-Day Money Back Guarantee</Text>
-                  <Text className="text-xs text-primary/60">We stand behind our products with complete confidence.</Text>
-                </div>
-              </div>
-              
-              {/* Product details accordion section */}
-              <div className="grid gap-4 py-4 border-t border-primary/10">
+             </section>
+          </div>
+          
+          {/* Product details accordion section - moved outside lazy load */}
+          <div className="md:col-span-3 lg:col-span-1 lg:col-start-3 py-8 md:py-0">
+             <div className="grid gap-4 py-4 border-t border-primary/10">
                 {descriptionHtml && (
                   <ProductDetail
                     title="product details"
@@ -269,8 +283,7 @@ export default function Product() {
                     learnMore={`/policies/${refundPolicy.handle}`}
                   />
                 )}
-              </div>
-            </section>
+             </div>
           </div>
         </div>
         
@@ -333,153 +346,199 @@ export function ProductForm({
   selectedVariant: ProductFragment['selectedOrFirstAvailableVariant'];
   storeDomain: string;
 }) {
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const navigate = useNavigate();
-
-  // Find color option if it exists
-  const colorOption = productOptions.find(option => 
-    option.name.toLowerCase() === 'color'
+  const {lines, status: cartStatus, linesAdd} = useCart();
+  const {state} = useNavigation();
+  const [quantity, setQuantity] = useState(1);
+  const [currentVariant, setCurrentVariant] = useState(selectedVariant);
+  const [showError, setShowError] = useState(false);
+  const [optionSelections, setOptionSelections] = useState(
+    selectedVariant?.selectedOptions || []
   );
+  const navigate = useNavigate();
+  
+  // ---> Add state to track client-side mount
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  // <--- End client-side tracking
 
-  // Handle option selection
+  // Update local state when selectedVariant prop changes (e.g., via URL)
+  useEffect(() => {
+    if (selectedVariant) {
+      setCurrentVariant(selectedVariant);
+      setOptionSelections(selectedVariant.selectedOptions);
+    }
+  }, [selectedVariant]);
+
   const handleOptionChange = (optionName: string, value: string) => {
-    // Find the matching variant with this option value
-    const newSelectedOptions = selectedVariant.selectedOptions.map(opt => {
-      if (opt.name === optionName) {
-        return { name: optionName, value };
-      }
-      return opt;
+    const newSelections = [...optionSelections];
+    const existingOptionIndex = newSelections.findIndex(
+      option => option.name === optionName
+    );
+
+    if (existingOptionIndex !== -1) {
+      newSelections[existingOptionIndex].value = value;
+    } else {
+      newSelections.push({name: optionName, value});
+    }
+
+    setOptionSelections(newSelections);
+
+    // Find the variant that matches all current selections
+    const matchedVariant = productOptions.find(variantOption => {
+      return variantOption.selectedOptions.every(option => {
+        const selection = newSelections.find(sel => sel.name === option.name);
+        return selection?.value === option.value;
+      });
     });
-    
-    // Create the query string
-    const searchParams = new URLSearchParams();
-    newSelectedOptions.forEach(({name, value}) => {
-      searchParams.set(name, value);
-    });
-    
-    // Navigate to the same product with different options
-    navigate(`${window.location.pathname}?${searchParams.toString()}`, { replace: true });
+
+    if (matchedVariant) {
+      // Update the URL without full page reload
+      navigate(matchedVariant.to, { replace: true, preventScrollReset: true });
+      // setCurrentVariant is now handled by the useEffect hook watching selectedVariant
+    }
   };
 
-  // State for quantity
-  const [quantity, setQuantity] = useState(1);
+   const handleAddToCart = async () => {
+    if (!currentVariant?.availableForSale) {
+      setShowError(true);
+      return;
+    }
+    setShowError(false);
+    if (currentVariant.quantityAvailable != null && quantity > currentVariant.quantityAvailable) {
+      setShowError(true);
+      return;
+    }
+    await linesAdd([
+      {
+        merchandiseId: currentVariant.id,
+        quantity,
+      },
+    ]);
+  };
+
+  const isOutOfStock = !currentVariant?.availableForSale;
+  const isLoading = state !== 'idle' || cartStatus === 'fetching';
 
   return (
-    <div className="grid gap-8">
-      <div className="grid gap-4">
-        {productOptions.map((option) => (
-          <div
-            key={option.name}
-            className="flex flex-col flex-wrap mb-2 gap-y-3"
-          >
-            <Heading as="legend" size="lead" className="min-w-[4rem] text-primary font-medium mb-2">
-              {option.name}
-            </Heading>
-            <div className="flex flex-wrap items-center gap-3">
-              {option.optionValues.map(
-                ({
-                  name,
-                  selected,
-                  available,
-                }) => {
-                  const isColor = option.name.toLowerCase() === 'color';
-                  const colorData = isColor ? PRODUCT_COLORS[name as keyof typeof PRODUCT_COLORS] : null;
-                  
-                  // For color options, render color swatches
-                  if (isColor && colorData) {
-                    return (
-                      <button
-                        key={name}
-                        onClick={() => handleOptionChange(option.name, name)}
-                        className={clsx(
-                          'w-10 h-10 rounded-full transition-all duration-200 relative',
-                          available ? 'cursor-pointer' : 'opacity-50 cursor-not-allowed',
-                          selected ? 'ring-2 ring-offset-1 ring-accent' : 'border border-neutral-300',
-                        )}
-                        style={{ backgroundColor: colorData.hex }}
-                        disabled={!available}
-                        aria-label={`Color: ${name}`}
-                      >
-                        {selected && (
-                          <span className="absolute inset-0 flex items-center justify-center">
-                            <IconCheck className="w-5 h-5 text-white drop-shadow-md" />
-                          </span>
-                        )}
-                      </button>
-                    );
-                  }
-                  
-                  // For non-color options, render standard buttons
-                  return (
-                    <button
-                      key={name}
-                      onClick={() => handleOptionChange(option.name, name)}
-                      className={clsx(
-                        'py-2 px-4 rounded-full text-sm transition-all duration-200',
-                        available ? 'cursor-pointer' : 'opacity-50 cursor-not-allowed',
-                        selected 
-                          ? 'bg-primary/10 text-primary border border-primary/30' 
-                          : 'bg-neutral-100 text-neutral-800 border border-neutral-200 hover:border-neutral-300'
-                      )}
-                      disabled={!available}
-                    >
-                      {name}
-                    </button>
-                  );
-                }
-              )}
-            </div>
-          </div>
-        ))}
-        
-        {/* Quantity Selector */}
-        <div className="flex flex-col gap-2 mt-2">
-          <Heading as="legend" size="lead" className="text-primary font-medium mb-2">
-            Quantity
-          </Heading>
-          <div className="flex items-center border border-neutral-300 rounded-lg w-32">
-            <button 
-              onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
-              className="w-8 h-10 flex items-center justify-center text-primary hover:bg-neutral-100"
-              aria-label="Decrease quantity"
-            >
-              -
-            </button>
-            <input 
-              type="number" 
-              min="1"
-              value={quantity} 
-              onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-              className="w-16 h-10 text-center border-none focus:outline-none text-primary"
-            />
-            <button 
-              onClick={() => setQuantity(prev => prev + 1)}
-              className="w-8 h-10 flex items-center justify-center text-primary hover:bg-neutral-100"
-              aria-label="Increase quantity"
-            >
-              +
-            </button>
+    <div className="grid gap-6">
+      {/* Options selector - MODIFIED */}
+      {productOptions.map(option => (
+        <div key={option.name} className="grid gap-2">
+          <h3 className="text-sm font-medium text-neutral-900">{option.name}</h3>
+          <div className="flex flex-wrap gap-2">
+            {option.values.map(value => {
+              const isSelected = optionSelections.some(
+                selection => selection.name === option.name && selection.value === value
+              );
+
+              // Check if this is the Color option
+              if (option.name.toLowerCase() === 'color') {
+                const backgroundColor = colorMap[value.toLowerCase()] || value; // Use mapped color or value itself as fallback
+                
+                return (
+                  <button
+                    key={`${option.name}-${value}`}
+                    onClick={() => handleOptionChange(option.name, value)}
+                    aria-label={`Select ${option.name} ${value}`}
+                    className={`w-8 h-8 rounded-full border-2 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-black/50
+                      ${isSelected 
+                        ? 'ring-2 ring-offset-1 ring-black border-black' 
+                        : 'border-neutral-300 hover:border-neutral-500'
+                      }
+                      ${backgroundColor === '#FFFFFF' ? 'shadow-sm' : ''} // Add shadow for white swatch
+                    `}
+                    style={{ backgroundColor: backgroundColor }}
+                    title={value} // Show color name on hover
+                  >
+                    {/* Optional: Add a checkmark for selected white swatch */}
+                    {isSelected && backgroundColor === '#FFFFFF' && (
+                      <svg className="w-4 h-4 text-black mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </button>
+                );
+              } else {
+                // Render default text button for other options
+                return (
+                  <button
+                    key={`${option.name}-${value}`}
+                    onClick={() => handleOptionChange(option.name, value)}
+                    className={`px-3 py-2 text-sm rounded-md border transition
+                      ${
+                        isSelected
+                          ? 'border-black bg-black text-white'
+                          : 'border-neutral-200 hover:border-neutral-400'
+                      }
+                    `}
+                  >
+                    {value}
+                  </button>
+                );
+              }
+            })}
           </div>
         </div>
-      </div>
-      
-      {/* Buttons Section */}
-      <div className="grid gap-4">
-        <PurchaseControls 
-          selectedVariant={selectedVariant} 
-          storeDomain={storeDomain}
-          quantity={quantity}
-        />
-        
-        {/* Shop Pay Button */}
-        {selectedVariant && selectedVariant.availableForSale && (
-          <ShopPayButton
-            storeDomain={storeDomain}
-            variantIds={[selectedVariant.id]}
-            width="full"
+      ))}
+
+      {/* Quantity selector - Assuming this part is correct */}
+      <div className="flex flex-col gap-2 mt-2">
+        <Heading as="legend" size="lead" className="text-primary font-medium mb-2">
+          Quantity
+        </Heading>
+        <div className="flex items-center border border-neutral-300 rounded-lg w-32">
+          <button 
+            onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+            className="w-8 h-10 flex items-center justify-center text-primary hover:bg-neutral-100"
+            aria-label="Decrease quantity"
+          >
+            -
+          </button>
+          <input 
+            type="number" 
+            min="1"
+            value={quantity} 
+            onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+            className="w-16 h-10 text-center border-none focus:outline-none text-primary"
           />
-        )}
+          <button 
+            onClick={() => setQuantity(prev => prev + 1)}
+            className="w-8 h-10 flex items-center justify-center text-primary hover:bg-neutral-100"
+            aria-label="Increase quantity"
+          >
+            +
+          </button>
+        </div>
       </div>
+
+      {/* Purchase Controls */}
+      <PurchaseControls 
+         selectedVariant={currentVariant} 
+         storeDomain={storeDomain} 
+         quantity={quantity} 
+       />
+
+      {/* Shop Pay button - Conditionally render based on isClient */}
+      {isClient && currentVariant && (
+        <div className="mt-2">
+          <ShopPayButton
+            variantIds={[currentVariant.id]}
+            storeDomain={storeDomain} // Use prop here, not window.location.host
+            className="w-full"
+          />
+        </div>
+      )}
+
+      {/* Error message */}
+      {showError && (
+        <div className="text-red-500 text-sm">
+          {currentVariant?.quantityAvailable != null && quantity > currentVariant.quantityAvailable
+            ? `Only ${currentVariant.quantityAvailable} in stock`
+            : 'Unable to add to cart'}
+        </div>
+      )}
     </div>
   );
 }

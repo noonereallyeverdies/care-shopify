@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 
 export function BeforeAfterGallery() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -45,121 +46,100 @@ export function BeforeAfterGallery() {
 
   const active = testimonials[activeIndex];
 
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, delay: 0.2 }
+    }
+  };
+  
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      transition: { duration: 0.6, delay: 0.4 }
+    }
+  };
+  
+  const slideInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      transition: { duration: 0.6, delay: 0.4 }
+    }
+  };
+
   return (
-    <section className="py-20 bg-neutral-50">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-neutral-50 to-white overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          className="text-center mb-12 md:mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
         >
-          <h2 className="text-3xl md:text-4xl font-light mb-4">real results</h2>
-          <p className="text-neutral-600 max-w-2xl mx-auto">
-            See the transformation for yourself with these before & after photos from real care•atin users
+          <h2 className="text-3xl md:text-4xl font-light mb-4 tracking-tight">
+            experience the transformation
+          </h2>
+          <p className="text-neutral-600 max-w-xl mx-auto">
+            Consistent use reveals visibly thicker, healthier hair. Drag the slider to see the difference care•atin makes.
           </p>
         </motion.div>
-
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
-          <motion.div 
-            className="w-full lg:w-2/3 flex flex-col md:flex-row gap-4"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="relative w-full md:w-1/2 aspect-square">
-              <div className="absolute top-4 left-4 bg-white py-1 px-3 rounded-full text-sm font-medium">Before</div>
-              <img 
-                src={active.beforeImage} 
-                alt={`${active.name} before using care•atin`} 
-                className="w-full h-full object-cover rounded-xl"
-              />
-            </div>
-            <div className="relative w-full md:w-1/2 aspect-square">
-              <div className="absolute top-4 left-4 bg-rose-500 text-white py-1 px-3 rounded-full text-sm font-medium">After</div>
-              <img 
-                src={active.afterImage} 
-                alt={`${active.name} after using care•atin`} 
-                className="w-full h-full object-cover rounded-xl"
-              />
-            </div>
-          </motion.div>
-
-          <motion.div 
-            className="w-full lg:w-1/3"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="bg-white p-8 rounded-xl shadow-sm">
-              <div className="mb-6">
-                <h3 className="text-xl font-medium mb-1">{active.name}, {active.age}</h3>
-                <div className="text-sm text-neutral-500">
-                  <span className="inline-block mr-3">{active.issue}</span>
-                  <span className="inline-block before:content-['•'] before:mr-2">Using for {active.duration}</span>
-                </div>
-              </div>
-              
-              <p className="text-neutral-700 mb-8 italic">"{active.quote}"</p>
-              
-              <div className="flex gap-3">
-                {testimonials.map((testimonial, index) => (
-                  <button 
-                    key={index}
-                    onClick={() => setActiveIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      index === activeIndex ? 'bg-rose-500 scale-125' : 'bg-neutral-300'
-                    }`}
-                    aria-label={`View ${testimonial.name}'s testimonial`}
-                  />
-                ))}
-              </div>
-            </div>
-            
-            <div className="mt-8 flex justify-between items-center">
-              <button 
-                onClick={() => setActiveIndex((activeIndex - 1 + testimonials.length) % testimonials.length)}
-                className="w-10 h-10 rounded-full border border-neutral-300 flex items-center justify-center hover:bg-neutral-100 transition-colors"
-                aria-label="Previous testimonial"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-              
-              <div className="text-sm text-neutral-500">
-                {activeIndex + 1} of {testimonials.length}
-              </div>
-              
-              <button 
-                onClick={() => setActiveIndex((activeIndex + 1) % testimonials.length)}
-                className="w-10 h-10 rounded-full border border-neutral-300 flex items-center justify-center hover:bg-neutral-100 transition-colors"
-                aria-label="Next testimonial"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-            </div>
-          </motion.div>
-        </div>
         
         <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="max-w-3xl mx-auto rounded-xl overflow-hidden shadow-lg border border-neutral-100"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <button className="bg-rose-500 hover:bg-rose-600 text-white rounded-full py-3 px-8 transition-colors">
-            Start your transformation
-          </button>
-          <p className="mt-4 text-sm text-neutral-500">
-            Results vary from person to person. Most users see visible improvement within 8-12 weeks.
-          </p>
+          <ReactCompareSlider
+            itemOne={(
+              <ReactCompareSliderImage 
+                src={active.beforeImage} 
+                alt={`${active.name} before using care•atin`}
+                style={{objectFit: 'cover'}} 
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://cdn.shopify.com/s/files/1/0XXX/XXXX/files/placeholder-image.png?v=YYYYYY"; // Replace with your actual placeholder
+                  target.onerror = null; 
+                }}
+              />
+            )}
+            itemTwo={(
+              <ReactCompareSliderImage 
+                src={active.afterImage} 
+                alt={`${active.name} after using care•atin`}
+                style={{objectFit: 'cover'}} 
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://cdn.shopify.com/s/files/1/0XXX/XXXX/files/placeholder-image.png?v=YYYYYY"; // Replace with your actual placeholder
+                  target.onerror = null; 
+                }}
+              />
+            )}
+            style={{
+              width: '100%',
+              aspectRatio: '16 / 10', // Adjust aspect ratio as needed
+              cursor: 'ew-resize',
+            }}
+            handle={(
+              <div style={{ width: '4px', height: '100%', backgroundColor: 'rgba(255, 255, 255, 0.7)', backdropFilter: 'blur(4px)' }}>
+                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '40px', height: '40px', border: '2px solid rgba(255, 255, 255, 0.7)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {/* Double arrow icon */}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ color: 'white' }}>
+                    <path d="M6 4L2 8L6 12M10 4L14 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            )}
+          />
         </motion.div>
       </div>
     </section>
