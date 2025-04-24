@@ -20,10 +20,12 @@ import type {
 import {Button} from '~/components/Button';
 import {Text, Heading} from '~/components/Text';
 import {Link} from '~/components/Link';
-import {IconRemove} from '~/components/Icon';
+import {IconRemove, IconClose} from '~/components/Icon';
 import {FeaturedProducts} from '~/components/FeaturedProducts';
 import {getInputStyleClasses} from '~/lib/utils';
-import {CartLoading} from './CartLoading';
+import {CartLoading} from '~/components/CartLoading';
+import {Drawer} from '~/components/Drawer';
+import {useCart} from '~/lib/useCart';
 
 type Layouts = 'page' | 'drawer';
 
@@ -53,9 +55,9 @@ export function Cart({
           <CartLoading />
         </div>
       }>
-        <div className="flex flex-col">
+        <div className="flex flex-col h-full">
           <CartEmpty hidden={linesCount} onClose={onClose} layout={layout} />
-          <CartDetails cart={cart} layout={layout} />
+          <CartDetails cart={cart} layout={layout} onClose={onClose} />
         </div>
       </Suspense>
     </ErrorBoundary>
@@ -65,19 +67,35 @@ export function Cart({
 export function CartDetails({
   layout,
   cart,
+  onClose,
 }: {
   layout: Layouts;
   cart: CartType | null;
+  onClose?: () => void;
 }) {
   // @todo: get optimistic cart cost
   const cartHasItems = !!cart && cart.totalQuantity > 0;
   const container = {
-    drawer: 'grid grid-cols-1 h-screen-no-nav grid-rows-[1fr_auto]',
+    drawer: 'grid grid-cols-1 h-full grid-rows-[1fr_auto]',
     page: 'w-full pb-12 grid md:grid-cols-2 md:items-start gap-8 md:gap-8 lg:gap-12',
   };
 
   return (
     <div className={container[layout]}>
+      {layout === 'drawer' && (
+        <div className="flex items-center justify-between px-6 py-4 border-b">
+          <h2 className="text-lg font-medium">Your Cart ({cart?.totalQuantity || 0})</h2>
+          {onClose && (
+            <button 
+              onClick={onClose}
+              className="p-2 -mr-2 transition rounded-md hover:bg-gray-100"
+              aria-label="Close cart"
+            >
+              <IconClose />
+            </button>
+          )}
+        </div>
+      )}
       <CartLines lines={cart?.lines} layout={layout} />
       {cartHasItems && (
         <CartSummary cost={cart.cost} layout={layout}>
@@ -107,12 +125,12 @@ function CartDiscounts({
   return (
     <>
       {/* Have existing discount, display it with a remove option */}
-      <dl className={codes && codes.length !== 0 ? 'grid' : 'hidden'}>
+      <dl className={codes && codes.length !== 0 ? 'grid mb-4' : 'hidden'}>
         <div className="flex items-center justify-between font-medium">
           <Text as="dt">Discount(s)</Text>
           <div className="flex items-center justify-between">
             <UpdateDiscountForm>
-              <button>
+              <button className="flex items-center">
                 <IconRemove
                   aria-hidden="true"
                   style={{height: 18, marginRight: 4}}
@@ -179,10 +197,9 @@ function CartLines({
   const {y} = useScroll(scrollRef);
 
   const className = clsx([
-    y > 0 ? 'border-t' : '',
     layout === 'page'
       ? 'flex-grow md:translate-y-4'
-      : 'px-6 pb-6 sm-max:pt-2 overflow-auto transition md:px-12',
+      : 'flex-grow px-6 pb-6 overflow-auto transition md:px-6',
   ]);
 
   return (
@@ -191,7 +208,7 @@ function CartLines({
       aria-labelledby="cart-contents"
       className={className}
     >
-      <ul className="grid gap-6 md:gap-10">
+      <ul className="grid gap-6 pt-4 md:gap-8">
         {currentLines.map((line) => (
           <CartLineItem key={line.id} line={line as CartLine} />
         ))}
@@ -204,13 +221,17 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl: string}) {
   if (!checkoutUrl) return null;
 
   return (
-    <div className="flex flex-col mt-2">
+    <div className="flex flex-col mt-4">
       <a href={checkoutUrl} target="_self">
         <Button as="span" width="full">
           Continue to Checkout
         </Button>
       </a>
-      {/* @todo: <CartShopPayButton cart={cart} /> */}
+      <div className="mt-4 text-center">
+        <Link to="/collections/all" className="text-sm text-gray-500 hover:text-gray-900">
+          Continue Shopping
+        </Link>
+      </div>
     </div>
   );
 }
@@ -225,7 +246,7 @@ function CartSummary({
   layout: Layouts;
 }) {
   const summary = {
-    drawer: 'grid gap-4 p-6 border-t md:px-12',
+    drawer: 'grid gap-4 p-6 border-t md:px-6 bg-gray-50',
     page: 'sticky top-nav grid gap-6 p-4 md:px-6 md:translate-y-4 bg-primary/5 rounded w-full',
   };
 
@@ -234,7 +255,7 @@ function CartSummary({
       <h2 id="summary-heading" className="sr-only">
         Order summary
       </h2>
-      <dl className="grid">
+      <dl className="grid gap-2">
         <div className="flex items-center justify-between font-medium">
           <Text as="dt">Subtotal</Text>
           <Text as="dd" data-test="subtotal">
@@ -245,7 +266,22 @@ function CartSummary({
             )}
           </Text>
         </div>
+        <div className="flex items-center justify-between font-medium">
+          <Text as="dt">Shipping</Text>
+          <Text as="dd">Calculated at checkout</Text>
+        </div>
+        <div className="flex items-center justify-between font-medium pt-2 mt-2 border-t">
+          <Text as="dt" className="text-lg">Total</Text>
+          <Text as="dd" data-test="subtotal" className="text-lg">
+            {cost?.totalAmount?.amount ? (
+              <Money data={cost?.totalAmount} />
+            ) : (
+              '-'
+            )}
+          </Text>
+        </div>
       </dl>
+      
       {children}
     </section>
   );
@@ -257,66 +293,52 @@ type OptimisticData = {
 };
 
 function CartLineItem({line}: {line: CartLine}) {
-  const optimisticData = useOptimisticData<OptimisticData>(line?.id);
-
   if (!line?.id) return null;
-
+  
   const {id, quantity, merchandise} = line;
-
+  
   if (typeof quantity === 'undefined' || !merchandise?.product) return null;
 
   return (
-    <li
-      key={id}
-      className="flex gap-4"
-      style={{
-        // Hide the line item if the optimistic data action is remove
-        // Do not remove the form from the DOM
-        display: optimisticData?.action === 'remove' ? 'none' : 'flex',
-      }}
-    >
-      <div className="flex-shrink">
-        {merchandise.image && (
-          <Image
-            width={110}
-            height={110}
-            data={merchandise.image}
-            className="object-cover object-center w-24 h-24 border rounded md:w-28 md:h-28"
-            alt={merchandise.title}
-          />
-        )}
-      </div>
-
-      <div className="flex justify-between flex-grow">
-        <div className="grid gap-2">
-          <Heading as="h3" size="copy">
-            {merchandise?.product?.handle ? (
-              <Link to={`/products/${merchandise.product.handle}`}>
-                {merchandise?.product?.title || ''}
-              </Link>
-            ) : (
-              <Text>{merchandise?.product?.title || ''}</Text>
-            )}
-          </Heading>
-
-          <div className="grid pb-2">
-            {(merchandise?.selectedOptions || []).map((option) => (
-              <Text color="subtle" key={option.name}>
-                {option.name}: {option.value}
-              </Text>
+    <li key={id} className="flex flex-col gap-2">
+      <div className="flex gap-4">
+        <div className="w-24 h-24 overflow-hidden rounded-md border">
+          {merchandise.image && (
+            <Image
+              width={96}
+              height={96}
+              data={merchandise.image}
+              className="object-cover object-center w-full h-full"
+              alt={merchandise.title}
+            />
+          )}
+        </div>
+        
+        <div className="flex-grow flex flex-col">
+          <Link
+            to={`/products/${merchandise.product.handle}`}
+            className="text-sm hover:underline"
+          >
+            {merchandise?.product?.title || ''}
+          </Link>
+          
+          <div className="text-xs text-gray-500 mt-1">
+            {merchandise?.selectedOptions?.map((option) => (
+              <span key={option.name}>{option.name}: {option.value}</span>
             ))}
           </div>
-
-          <div className="flex items-center gap-2">
-            <div className="flex justify-start text-copy">
-              <CartLineQuantityAdjust line={line} />
+          
+          <div className="mt-auto pt-2 flex items-center justify-between">
+            <QuantityAdjuster line={line} />
+            <div className="text-sm font-medium">
+              <CartLinePrice line={line} as="span" />
             </div>
-            <ItemRemoveButton lineId={id} />
           </div>
         </div>
-        <Text>
-          <CartLinePrice line={line} as="span" />
-        </Text>
+        
+        <div>
+          <ItemRemoveButton lineId={id} />
+        </div>
       </div>
     </li>
   );
@@ -332,71 +354,74 @@ function ItemRemoveButton({lineId}: {lineId: CartLine['id']}) {
       }}
     >
       <button
-        className="flex items-center justify-center w-10 h-10 border rounded"
+        className="flex items-center justify-center w-8 h-8 border rounded-md hover:bg-gray-100"
         type="submit"
+        aria-label="Remove from cart"
       >
-        <span className="sr-only">Remove</span>
-        <IconRemove aria-hidden="true" />
+        <IconRemove aria-hidden="true" style={{height: 16}} />
       </button>
-      <OptimisticInput id={lineId} data={{action: 'remove'}} />
     </CartForm>
   );
 }
 
-function CartLineQuantityAdjust({line}: {line: CartLine}) {
-  const optimisticId = line?.id;
-  const optimisticData = useOptimisticData<OptimisticData>(optimisticId);
-
-  if (!line || typeof line?.quantity === 'undefined') return null;
-
-  const optimisticQuantity = optimisticData?.quantity || line.quantity;
-
-  const {id: lineId} = line;
-  const prevQuantity = Number(Math.max(0, optimisticQuantity - 1).toFixed(0));
-  const nextQuantity = Number((optimisticQuantity + 1).toFixed(0));
+function QuantityAdjuster({line}: {line: CartLine}) {
+  const {id: lineId, quantity} = line;
+  
+  const [optimisticId, setOptimisticId] = useOptimisticData(`cart-line-${lineId}`);
+  
+  const optimisticData: OptimisticData = optimisticId
+    ? (JSON.parse(String(optimisticId)) as OptimisticData)
+    : {};
+    
+  const optimisticQuantity = optimisticData.quantity || quantity;
 
   return (
-    <>
-      <label htmlFor={`quantity-${lineId}`} className="sr-only">
-        Quantity, {optimisticQuantity}
-      </label>
-      <div className="flex items-center border rounded">
-        <UpdateCartButton lines={[{id: lineId, quantity: prevQuantity}]}>
+    <div className="flex items-center border rounded-md overflow-hidden h-8">
+      <UpdateCartButton
+        lines={[
+          {
+            id: lineId,
+            quantity: Math.max(0, optimisticQuantity - 1),
+          },
+        ]}
+      >
+        <OptimisticInput id={`cart-line-${lineId}`} data={{quantity: optimisticQuantity - 1}}>
           <button
             name="decrease-quantity"
             aria-label="Decrease quantity"
-            className="w-10 h-10 transition text-primary/50 hover:text-primary disabled:text-primary/10"
-            value={prevQuantity}
+            className="w-8 h-8 flex items-center justify-center transition hover:bg-gray-100 disabled:cursor-wait"
+            value={optimisticQuantity}
             disabled={optimisticQuantity <= 1}
           >
-            <span>&#8722;</span>
-            <OptimisticInput
-              id={optimisticId}
-              data={{quantity: prevQuantity}}
-            />
+            −
           </button>
-        </UpdateCartButton>
+        </OptimisticInput>
+      </UpdateCartButton>
 
-        <div className="px-2 text-center" data-test="item-quantity">
-          {optimisticQuantity}
-        </div>
-
-        <UpdateCartButton lines={[{id: lineId, quantity: nextQuantity}]}>
-          <button
-            className="w-10 h-10 transition text-primary/50 hover:text-primary"
-            name="increase-quantity"
-            value={nextQuantity}
-            aria-label="Increase quantity"
-          >
-            <span>&#43;</span>
-            <OptimisticInput
-              id={optimisticId}
-              data={{quantity: nextQuantity}}
-            />
-          </button>
-        </UpdateCartButton>
+      <div className="px-3 text-center">
+        {optimisticQuantity}
       </div>
-    </>
+
+      <UpdateCartButton
+        lines={[
+          {
+            id: lineId,
+            quantity: Math.min(999, optimisticQuantity + 1),
+          },
+        ]}
+      >
+        <OptimisticInput id={`cart-line-${lineId}`} data={{quantity: optimisticQuantity + 1}}>
+          <button
+            name="increase-quantity"
+            aria-label="Increase quantity"
+            className="w-8 h-8 flex items-center justify-center transition hover:bg-gray-100"
+            value={optimisticQuantity}
+          >
+            +
+          </button>
+        </OptimisticInput>
+      </UpdateCartButton>
+    </div>
   );
 }
 
@@ -452,40 +477,29 @@ export function CartEmpty({
   layout?: Layouts;
   onClose?: () => void;
 }) {
-  const scrollRef = useRef(null);
-  const {y} = useScroll(scrollRef);
-
   const container = {
-    drawer: clsx([
-      'content-start gap-4 px-6 pb-8 transition overflow-y-scroll md:gap-12 md:px-12 h-screen-no-nav md:pb-12',
-      y > 0 ? 'border-t' : '',
-    ]),
-    page: clsx([
-      hidden ? '' : 'grid',
-      `pb-12 w-full md:items-start gap-4 md:gap-8 lg:gap-12`,
-    ]),
+    drawer: 'h-full flex flex-col justify-center items-center px-4',
+    page: 'flex flex-col justify-center items-center w-full',
   };
 
   return (
-    <div ref={scrollRef} className={container[layout]} hidden={hidden}>
-      <section className="grid gap-6">
-        <Text format>
-          Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
-          started!
-        </Text>
-        <div>
-          <Button onClick={onClose}>Continue shopping</Button>
+    <div className={clsx(container[layout], {hidden})}>
+      <div className="flex flex-col space-y-6 w-full text-center items-center justify-center">
+        <h2 className="whitespace-pre-wrap max-w-prose font-bold text-2xl">
+          Your cart is empty
+        </h2>
+        <div className="max-w-md text-center">
+          <p>Looks like you haven't added any items to your cart yet.</p>
         </div>
-      </section>
-      <section className="grid gap-8 pt-16">
-        <FeaturedProducts
-          count={4}
-          heading="Shop Best Sellers"
-          layout={layout}
-          onClose={onClose}
-          sortKey="BEST_SELLING"
-        />
-      </section>
+        <div>
+          <Button
+            onClick={onClose}
+            className="w-auto"
+          >
+            Continue Shopping
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -44,6 +44,7 @@ import {seoPayload} from '~/lib/seo.server';
 import globalStyles from '~/styles/global.css?url';
 // Keep app.css if it contains utility classes or specific styles you want to preserve
 import appStyles from '~/styles/app.css?url';
+import customStyles from '~/styles/custom.css?url';
 import headerStylesUrl from '~/components/Shared/Header.css?url';
 import footerStylesUrl from '~/components/Shared/Footer.css?url';
 import heroStylesUrl from '~/components/HeroSection.css?url';
@@ -135,6 +136,7 @@ export const links: LinksFunction = () => {
     {rel: 'icon', type: 'image/svg+xml', href: favicon},
     {rel: 'stylesheet', href: globalStyles},
     {rel: 'stylesheet', href: appStyles},
+    {rel: 'stylesheet', href: customStyles},
     {rel: 'stylesheet', href: headerStylesUrl},
     {rel: 'stylesheet', href: footerStylesUrl},
     {rel: 'stylesheet', href: heroStylesUrl},
@@ -167,18 +169,18 @@ export function headers({loaderHeaders}: {loaderHeaders: Headers}) {
 
   // Define a base CSP with explicit font-src AND data: in default-src
   const baseCsp =
-    "default-src 'self' data: https://cdn.shopify.com https://shopify.com; " + // Added data: here
+    "default-src 'self' data: blob: https://cdn.shopify.com https://shopify.com; " + // Added blob: here
     "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.shopify.com http://localhost:*; " + 
     "style-src 'self' 'unsafe-inline' https://cdn.shopify.com; " + 
-    "img-src 'self' data: https://cdn.shopify.com; " +
-    "font-src 'self' data: https://cdn.shopify.com; " + // Keep explicit font-src too
-    "connect-src 'self' https://cdn.shopify.com http://localhost:* ws://localhost:*; " + 
+    "img-src 'self' data: blob: https://cdn.shopify.com; " + // Added blob: to img-src
+    "font-src 'self' data: https://cdn.shopify.com; " + 
+    "connect-src 'self' blob: https://cdn.shopify.com http://localhost:* ws://localhost:*; " + // Added blob: to connect-src
     "frame-src 'self' https://cdn.shopify.com;";
 
   let csp = headers.get('Content-Security-Policy');
 
   if (csp) {
-    // If a CSP already exists, ensure font-src and default-src allow 'data:'
+    // If a CSP already exists, ensure font-src and default-src allow 'data:' and 'blob:'
     
     // Ensure font-src allows 'data:'
     if (csp.includes('font-src')) {
@@ -191,27 +193,45 @@ export function headers({loaderHeaders}: {loaderHeaders: Headers}) {
       csp += " font-src 'self' data: https://cdn.shopify.com;";
     }
 
-    // Ensure default-src allows 'data:'
+    // Ensure default-src allows 'data:' and 'blob:'
     if (csp.includes('default-src')) {
-        if (!csp.match(/default-src[^;]*data:/)) {
-            csp = csp.replace(/default-src\s+([^;]+)/, "default-src $1 data:");
-        }
+      if (!csp.match(/default-src[^;]*data:/)) {
+        csp = csp.replace(/default-src\s+([^;]+)/, "default-src $1 data:");
+      }
+      if (!csp.match(/default-src[^;]*blob:/)) {
+        csp = csp.replace(/default-src\s+([^;]+)/, "default-src $1 blob:");
+      }
     } else {
-        // Extremely unlikely default-src is missing, but handle defensively
-        csp = csp.trimRight();
-        if (csp.slice(-1) !== ';') { csp += ';'; }
-        csp += " default-src 'self' data: https://cdn.shopify.com;";
+      // Extremely unlikely default-src is missing, but handle defensively
+      csp = csp.trimRight();
+      if (csp.slice(-1) !== ';') { csp += ';'; }
+      csp += " default-src 'self' data: blob: https://cdn.shopify.com;";
     }
 
-    // Also ensure connect-src includes localhost for HMR WebSocket if needed
+    // Ensure img-src includes 'blob:'
+    if (csp.includes('img-src')) {
+      if (!csp.match(/img-src[^;]*blob:/)) {
+        csp = csp.replace(/img-src\s+([^;]+)/, "img-src $1 blob:");
+      }
+    } else {
+      csp = csp.trimRight();
+      if (csp.slice(-1) !== ';') { csp += ';'; }
+      csp += " img-src 'self' data: blob: https://cdn.shopify.com;";
+    }
+
+    // Ensure connect-src includes localhost and blob: for HMR WebSocket
     if (!csp.includes('connect-src')) {
-       csp = csp.trimRight();
-       if (csp.slice(-1) !== ';') { csp += ';'; }
-       csp += " connect-src 'self' https://cdn.shopify.com http://localhost:* ws://localhost:*;";
-    } else if (!csp.match(/connect-src[^;]*ws:\/\/localhost:\*/)) {
-         csp = csp.replace(/connect-src\s+([^;]+)/, "connect-src $1 http://localhost:* ws://localhost:*");
+      csp = csp.trimRight();
+      if (csp.slice(-1) !== ';') { csp += ';'; }
+      csp += " connect-src 'self' blob: https://cdn.shopify.com http://localhost:* ws://localhost:*;";
+    } else {
+      if (!csp.match(/connect-src[^;]*ws:\/\/localhost:\*/)) {
+        csp = csp.replace(/connect-src\s+([^;]+)/, "connect-src $1 http://localhost:* ws://localhost:*");
+      }
+      if (!csp.match(/connect-src[^;]*blob:/)) {
+        csp = csp.replace(/connect-src\s+([^;]+)/, "connect-src $1 blob:");
+      }
     }
-
   } else {
     // If no CSP exists from loader, use our base CSP
     csp = baseCsp;

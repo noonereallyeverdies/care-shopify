@@ -1,0 +1,120 @@
+/* Article styling for consistent appearance */
+
+.article {
+  /* Base text styling */
+  @apply text-neutral-700 leading-relaxed;
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply brand-heading text-neutral-800 mb-4 mt-8 font-light;
+  }
+  
+  h1 {
+    @apply text-4xl;
+  }
+  
+  h2 {
+    @apply text-3xl;
+  }
+  
+  h3 {
+    @apply text-2xl;
+  }
+  
+  h4 {
+    @apply text-xl;
+  }
+  
+  /* Paragraphs */
+  p {
+    @apply mb-6 brand-body;
+  }
+  
+  /* Lists */
+  ul, ol {
+    @apply mb-6 pl-6;
+  }
+  
+  ul {
+    @apply list-disc;
+  }
+  
+  ol {
+    @apply list-decimal;
+  }
+  
+  li {
+    @apply mb-2;
+  }
+  
+  /* Links */
+  a {
+    @apply text-rose-500 hover:text-rose-600 transition-colors;
+  }
+  
+  /* Blockquotes */
+  blockquote {
+    @apply pl-4 border-l-4 border-rose-200 italic my-6 text-neutral-600;
+  }
+  
+  /* Images */
+  img {
+    @apply rounded-lg my-6 mx-auto;
+  }
+  
+  /* Tables */
+  table {
+    @apply w-full my-6 border-collapse;
+  }
+  
+  th {
+    @apply text-left px-4 py-2 border border-neutral-200 bg-neutral-50 font-medium;
+  }
+  
+  td {
+    @apply px-4 py-2 border border-neutral-200;
+  }
+  
+  /* Code */
+  pre, code {
+    @apply bg-neutral-50 rounded px-2 py-1 font-mono text-sm;
+  }
+  
+  pre {
+    @apply p-4 my-6 overflow-x-auto;
+  }
+  
+  /* Horizontal rule */
+  hr {
+    @apply my-8 border-t border-neutral-200;
+  }
+  
+  /* Abbreviations */
+  abbr[title] {
+    @apply cursor-help border-b border-dotted;
+  }
+  
+  /* Small text */
+  small {
+    @apply text-sm text-neutral-500;
+  }
+  
+  /* Figure with caption */
+  figure {
+    @apply my-8;
+  }
+  
+  figcaption {
+    @apply text-sm text-neutral-500 text-center mt-2;
+  }
+  
+  /* Callout/info box */
+  .callout {
+    @apply bg-rose-50 border-l-4 border-rose-500 p-4 my-6 rounded-r;
+  }
+  
+  /* Embedded content */
+  .embed {
+    @apply my-6 aspect-video w-full;
+  }
+} 

@@ -57,12 +57,21 @@ export default {
       /**
        * Create a client for Customer Account API.
        */
+      // Get actual host and protocol from request
+      const url = new URL(request.url);
+      const host = url.host;
+      const protocol = url.protocol;
+      
       const customerAccount = createCustomerAccountClient({
         waitUntil,
         request,
         session,
         customerAccountId: env.PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID,
         shopId: env.SHOP_ID,
+        customerAccountUrl: env.PUBLIC_CUSTOMER_ACCOUNT_API_URL,
+        // Set the redirect URI based on the current host
+        redirectUriScheme: protocol.replace(':', ''),
+        redirectUriHost: host,
       });
 
       const cart = createCartHandler({
@@ -103,6 +112,26 @@ export default {
          * will pass through the 404 response.
          */
         return storefrontRedirect({request, response, storefront});
+      }
+
+      // Update Content-Security-Policy to include font-src directive
+      const existingCspHeader = response.headers.get('Content-Security-Policy') || '';
+      if (existingCspHeader) {
+        // If there's an existing CSP header, append the font-src directive
+        if (existingCspHeader.includes('font-src')) {
+          // If font-src already exists, add data: to it
+          const updatedCsp = existingCspHeader.replace(
+            /(font-src\s[^;]*)/,
+            '$1 data:'
+          );
+          response.headers.set('Content-Security-Policy', updatedCsp);
+        } else {
+          // If font-src doesn't exist, add it as a new directive
+          response.headers.set('Content-Security-Policy', `${existingCspHeader}; font-src data: 'self'`);
+        }
+      } else {
+        // If no CSP exists, create a minimal one that allows data: for fonts and preserves default behavior
+        response.headers.set('Content-Security-Policy', "default-src 'self' https://cdn.shopify.com https://shopify.com http://localhost:*; font-src data: 'self'");
       }
 
       return response;

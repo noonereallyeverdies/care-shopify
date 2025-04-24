@@ -1,19 +1,8 @@
-import { useEffect, useRef, useState, Suspense, lazy } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-// import { animate, stagger } from "@motionone/dom"
-// import { motion, useAnimation, useInView } from "framer-motion"
-// import Floating, { FloatingElement } from "~/components/ui/parallax-floating"
+import { motion } from "framer-motion"
 import { Link } from "@remix-run/react"
-import { Button } from "~/components/Button"
-import { Money } from "@shopify/hydrogen"
+import { useState, useEffect } from "react"
 import type { HomepageProduct } from '~/routes/($locale)._index';
-import { Canvas } from "@react-three/fiber";
-import { ClientOnly } from "~/components/utility/ClientOnly";
-
-// Dynamically import the 3D scene component for client-side only rendering
-const LazyDeviceScene = lazy(() => 
-  import('~/components/3d/DeviceScene').then(module => ({ default: module.DeviceScene }))
-);
+import { ArrowRight } from "lucide-react";
 
 // Original hardcoded images - We'll keep the structure but replace URLs later
 const heroImagesData = [
@@ -63,79 +52,32 @@ interface HeroProps {
   product: HomepageProduct | null;
 }
 
-// Spring physics config from incorrect version
-const spring = {
-  type: "spring",
-  stiffness: 250,
-  damping: 30,
-  mass: 0.8
-};
-
-// Define ParallaxBackground component inside Hero.tsx
-const ParallaxBackground: React.FC<{ imageUrl?: string; speed?: number; overlayColor?: string }> = 
-  ({ imageUrl, speed = 0.3, overlayColor = 'bg-black/40' }) => { // Adjusted default overlay
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ 
-    target: ref,
-    offset: ["start start", "end start"] // Adjusted offset for hero
-  });
-  // Calculate y based on scroll progress, moving opposite direction slightly
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-
-  if (!imageUrl) return null; // Don't render if no image
-
-  return (
-    // The outer div needs position:absolute and full coverage
-    <div ref={ref} className="absolute inset-0 z-0 overflow-hidden">
-      {/* The motion div handles the background image and parallax movement */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: `url(${imageUrl})`,
-          y: y,
-          // Scale slightly to prevent edges showing during movement
-          scale: 1.1, 
-        }}
-      />
-      {/* Overlay div remains static on top */}
-      <div className={`absolute inset-0 ${overlayColor} z-10`}></div> 
-    </div>
-  );
-};
-
 export function Hero({ product }: HeroProps) {
-  // State to track client-side mounting for dynamic import
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => { setIsMounted(true); }, []);
-
-  // Remove state and refs related to animation/hover
-  // const scope = useRef<HTMLDivElement>(null) 
-  // const controls = useAnimation(); 
-  // const isInViewRef = useRef(null);
-  // const isInView = useInView(isInViewRef, { once: false, amount: 0.3 });
-  // const [hoveredImageIndex, setHoveredImageIndex] = useState<number | null>(null);
-
-  // Remove sound effect logic
-  /*
-  const playInteractionSound = () => { ... };
-  */
-
-  // Remove useEffect for animation trigger
-  /*
+  // State for animated statistics
+  const [isVisible, setIsVisible] = useState(false);
+  
+  // Timeframe visibility states
+  const [showTimeframe, setShowTimeframe] = useState(0);
+  // Hover state for CTA button
+  const [isHoveringCTA, setIsHoveringCTA] = useState(false);
+  
+  // Update timeframe every 3 seconds
   useEffect(() => {
-    if (isInView) {
-      controls.start('visible');
-    }
-  }, [controls, isInView]);
-  */
-
-  // Remove hover handlers
-  /*
-  const onHoverImage = (index: number) => { ... };
-  const onHoverImageEnd = () => { ... };
-  */
-
-  // Null check from correct version
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 1000);
+    
+    const timeframeInterval = setInterval(() => {
+      setShowTimeframe(prev => (prev + 1) % 3);
+    }, 3000);
+    
+    return () => {
+      clearTimeout(timer);
+      clearInterval(timeframeInterval);
+    };
+  }, []);
+  
+  // Null check
   if (!product) {
     return (
       <section className="relative w-full min-h-screen bg-contrast flex items-center justify-center">
@@ -144,67 +86,145 @@ export function Hero({ product }: HeroProps) {
     );
   }
 
-  const firstVariant = product?.variants?.nodes[0]
   const featuredImage = product?.featuredImage
   const heroImageUrl = featuredImage?.url || '/images/prettyhair.jpg'; // Fallback image
 
+  // Timeline data
+  const timelineData = [
+    { days: 6, text: "to stronger follicles" },
+    { days: 30, text: "to reduced shedding" },
+    { days: 90, text: "to visible transformation" }
+  ];
+
   return (
     <section 
-      className="relative min-h-[80vh] md:min-h-[90vh] flex items-center justify-center text-center overflow-hidden"
-      // Remove explicit background color/gradient
+      className="relative min-h-[90vh] flex items-end justify-start text-left overflow-hidden"
     >
-      {/* Replace ParallaxBackground with the 3D Device Scene */}
-      {/* The DeviceScene component positions itself absolutely */}
-      {/* Conditionally render the scene only on the client using ClientOnly and isMounted */}
-      {/* Temporarily commented out to diagnose MiniOxygen error */}
-      {/* 
-      <ClientOnly>
-        {isMounted && (
-            <Canvas
-              className="absolute inset-0 z-10"
-            >
-              <Suspense fallback={null}>
-                <LazyDeviceScene />
-              </Suspense>
-            </Canvas>
-        )}
-      </ClientOnly>
-      */}
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video 
+          className="object-cover w-full h-full"
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          src="/hair-homepage.mp4"
+        >
+          <source src="/hair-homepage.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Gradient overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent z-10"></div>
+      </div>
 
-      {/* Main content container - Ensure it's above the parallax layer */}
-      {/* Ensure text color contrasts with scene background (e.g., dark text on light grey) */}
-      <div className="relative z-20 container mx-auto py-20 md:py-28 px-6 text-neutral-900">
-        <div className="max-w-3xl mx-auto">
-          {/* Content block mimicking Omiwell structure */}
+      {/* Main content container - positioned in lower left */}
+      <div className="relative z-20 container mx-auto pb-28 px-6 md:pb-36 md:px-12 text-white">
+        <motion.div 
+          className="max-w-2xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          {/* Content block */}
           <div className="mb-8">
-            {/* Subtitle (like Omiwell's h5) */}
-            <h5 className="text-base md:text-lg font-light uppercase tracking-widest mb-4 font-body text-neutral-700">
-              The Future of Hair Health {/* Example Subtitle */} 
+            <h5 className="text-base md:text-lg font-light uppercase tracking-widest mb-4 text-white/80 brand-body">
+              reclaim what's been lost
             </h5>
-            {/* Main Headline (like Omiwell's h2, using Playfair) */}
-            <h1 className="mb-6 font-semibold"> {/* Re-using H1, styles defined in app.css */}
-              the science of shine
+            <h1 className="mb-6 font-light text-4xl md:text-5xl lg:text-6xl tracking-wide text-white brand-heading">
+              beauty begins <span className="italic">at the root</span>
             </h1>
-            {/* Optional paragraph (Omiwell hero didn't seem to have one) */}
-            {/* 
             <p
-              className="text-lg md:text-xl text-neutral-700 max-w-2xl mx-auto leading-relaxed mb-8 md:mb-10"
-              // initial/animate/transition/whileHover removed
+              className="text-lg md:text-xl text-white/90 max-w-xl leading-relaxed mb-6 md:mb-8 font-light brand-body"
             >
-              Transform your relationship with hair care through our{" "}
-              <span className="font-medium text-primary">revolutionary</span>{" "}
-              approach to hair wellness.
+              Every day without care•atin is another day of shedding and thinning. Our red light technology awakens dormant follicles at the cellular level, reviving the thick, lustrous hair you deserve.
             </p>
-            */}
+            
+            {/* Animated timeframes */}
+            <div className="mt-4 mb-8">
+              <motion.div 
+                className="flex items-center space-x-2"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                {timelineData.map((item, index) => (
+                  <motion.div 
+                    key={index}
+                    className={`transition-all duration-500 ${showTimeframe === index ? 'opacity-100 scale-105' : 'opacity-50 scale-95'}`}
+                  >
+                    <div className="flex items-baseline">
+                      <span className="text-rose-300 text-4xl md:text-5xl font-light mr-2">{item.days}</span>
+                      <span className="text-white/80 text-sm uppercase tracking-wide">days</span>
+                    </div>
+                    <p className="text-sm text-white/70 tracking-wide">{item.text}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+            
+            <p className="text-lg text-white/90 font-light italic">
+              Stop watching your confidence wash down the drain.
+            </p>
           </div>
 
           {/* CTA Button */}
-          <div className="mt-8 md:mt-10">
-            <Link to="/products/photonique-touch" className="btn-primary-refined">
-              Shop Now {/* Keep text or adjust */} 
+          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <Link 
+              to="/products/photonique-touch" 
+              className="group inline-flex items-center bg-rose-500 text-white px-8 py-3.5 rounded-full hover:bg-rose-600 transition-all duration-300 font-light tracking-wide text-lg"
+              onMouseEnter={() => setIsHoveringCTA(true)}
+              onMouseLeave={() => setIsHoveringCTA(false)}
+            >
+              begin your transformation
+              <motion.span 
+                className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                initial={{ x: 0 }}
+                animate={{ x: isHoveringCTA ? 5 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ArrowRight size={18} />
+              </motion.span>
+            </Link>
+            
+            <Link 
+              to="/pages/science" 
+              className="inline-flex items-center bg-transparent border border-white/30 text-white px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300 font-light"
+            >
+              discover the science
             </Link>
           </div>
-        </div>
+          
+          {/* Social proof capsule */}
+          <motion.div 
+            className="mt-10 bg-black/30 backdrop-blur-sm py-3 px-5 rounded-full inline-flex items-center border border-white/10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 1 }}
+          >
+            <div className="flex -space-x-2 mr-3">
+              {[1,2,3].map((_, i) => (
+                <div key={i} className="w-8 h-8 rounded-full bg-neutral-300 border-2 border-white overflow-hidden">
+                  <img src={`/images/testimonial-${i+1}.jpg`} alt="Customer" className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+            <p className="text-sm font-light">
+              <span className="text-rose-300 font-normal">93%</span> of users reported feeling more confident after 90 days
+            </p>
+          </motion.div>
+          
+          {/* Limited time offer capsule - Loss aversion trigger */}
+          <motion.div 
+            className="mt-4 bg-rose-500/20 backdrop-blur-sm py-2 px-4 rounded-full inline-flex items-center border border-rose-500/30"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.2 }}
+          >
+            <p className="text-sm font-medium text-rose-200">
+              Don't miss out: First-time users save 15% with code NEWGROWTH
+            </p>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

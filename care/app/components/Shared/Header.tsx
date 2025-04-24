@@ -2,7 +2,7 @@ import { Link, NavLink } from '@remix-run/react';
 import { useState, useEffect } from 'react'; // Import useEffect
 import useRootLoaderData from '~/root'; // Assuming this hook provides layout data
 import type { Menu } from '@shopify/hydrogen/storefront-api-types'; // Use Menu type
-import { ShoppingCart, User, Menu as MenuIcon, X } from 'lucide-react'; // Import icons, alias MenuIcon, Added X
+import { ShoppingCart, User, Heart, Menu as MenuIcon, X, Search } from 'lucide-react'; // Import icons, alias MenuIcon, Added X and Search
 
 // Import the CSS file for styling - We will rely less on this
 import './Header.css';
@@ -29,8 +29,8 @@ export function HeaderFallback() {
   return (
     <header className="h-20 sticky top-0 z-40 w-full bg-contrast/80 backdrop-blur-lg border-b border-neutral-100/50">
       <div className="container mx-auto h-full flex justify-between items-center px-4">
-        <Link to="/" className="font-serif text-xl font-semibold">
-          care•atin
+        <Link to="/" className="brand-heading text-xl">
+          care<span className="brand-dot">•</span>atin
         </Link>
         <div className="flex items-center gap-4">
           <div className="h-5 w-12 bg-neutral-200 rounded"></div> {/* Placeholder Nav */}
@@ -46,6 +46,15 @@ export function HeaderFallback() {
 export function Header({ header, cart, isLoggedIn }: HeaderProps) {
   const shopName = header?.shop?.name ?? 'care•atin'; // Default to stylized name
   const menu = header?.menu ?? FALLBACK_HEADER_MENU;
+
+  // Add custom navigation items specifically for hair care
+  const customNav = [
+    { id: 'shop', title: 'shop', url: '/collections/all' },
+    { id: 'hair-science', title: 'hair science', url: '/pages/science' },
+    { id: 'our-story', title: 'our story', url: '/pages/our-story' },
+    { id: 'quiz', title: 'hair quiz', url: '/pages/hair-quiz' },
+    { id: 'journal', title: 'journal', url: '/journal' },
+  ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // State to track scroll position
@@ -68,27 +77,33 @@ export function Header({ header, cart, isLoggedIn }: HeaderProps) {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    // Prevent scrolling when menu is open
+    if (!isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   };
 
   return (
     // Conditionally apply background and shadow based on isScrolled state
     // Add transition classes
-    <header className={`h-20 sticky top-0 z-40 w-full border-b transition-colors duration-300 ease-in-out ${isScrolled ? 'bg-white shadow-md border-neutral-100' : 'bg-transparent border-transparent'} backdrop-blur-lg`}>
-      <div className="container mx-auto h-full flex justify-between items-center px-4 md:px-6 lg:px-8">
-        {/* Logo - Stylized Text */}
-        <Link to="/" className={`header-logo font-serif text-2xl font-medium tracking-tight ${isScrolled ? 'text-primary' : 'text-white'}`}> {/* Adjust text color for transparency */}
-          care<span className="text-rose-500">•</span>atin
+    <header className={`h-20 sticky top-0 z-40 w-full border-b transition-all duration-300 ease-in-out ${isScrolled ? 'bg-white shadow-md border-neutral-100' : 'bg-transparent border-transparent'} backdrop-blur-lg`}>
+      <div className="container mx-auto h-full flex justify-between items-center">
+        {/* Logo */}
+        <Link to="/" className={`brand-heading text-2xl font-medium tracking-tight ${isScrolled ? 'text-primary' : 'text-white'}`}>
+          care<span className="brand-dot">•</span>atin
         </Link>
 
-        {/* Desktop Navigation - Hidden on mobile */} 
-        <nav className="hidden lg:flex items-center gap-6">
-          {menu.items.map((item: MenuItem) => (
+        {/* Desktop Navigation */} 
+        <nav className="hidden lg:flex items-center gap-8">
+          {customNav.map((item) => (
             <NavLink
               key={item.id}
-              to={item.url ?? '#'}
+              to={item.url}
               prefetch="intent"
               className={({ isActive }) => 
-                `text-sm font-medium transition-colors ${isActive ? (isScrolled ? 'text-primary' : 'text-white') : (isScrolled ? 'text-neutral-600 hover:text-primary' : 'text-neutral-200 hover:text-white')}` /* Adjust text color */
+                `text-sm font-normal tracking-wide transition-colors brand-body ${isActive ? (isScrolled ? 'text-rose-500' : 'text-rose-300') : (isScrolled ? 'text-neutral-700 hover:text-rose-500' : 'text-neutral-100 hover:text-white')}`
               }
             >
               {item.title}
@@ -97,22 +112,32 @@ export function Header({ header, cart, isLoggedIn }: HeaderProps) {
         </nav>
 
         {/* Header Icons & Mobile Toggle */} 
-        <div className="flex items-center gap-4">
-          {/* Desktop Icons - Hidden on mobile */} 
-          <div className="hidden lg:flex items-center gap-4">
-            <NavLink 
-              to="/account" 
-              className={`transition-colors ${isScrolled ? 'text-neutral-600 hover:text-primary' : 'text-neutral-200 hover:text-white'}`} /* Adjust text color */
-              prefetch="intent"
-            >
-              <User size={20} strokeWidth={1.5}/> 
-              <span className="sr-only">Account</span>
-            </NavLink>
-            <CartLink cart={cart} isScrolled={isScrolled} /> {/* Pass isScrolled to CartLink */}
-          </div>
-          {/* Mobile Menu Toggle - Hidden on desktop */} 
+        <div className="flex items-center gap-6">
+          {/* Search Icon */}
+          <Link to="/search" className={`hidden md:flex transition-colors ${isScrolled ? 'text-neutral-600 hover:text-rose-500' : 'text-neutral-200 hover:text-white'}`} aria-label="Search">
+            <Search size={20} strokeWidth={1.5} />
+          </Link>
+          
+          {/* Wishlist */}
+          <Link to="/wishlist" className={`hidden md:flex transition-colors ${isScrolled ? 'text-neutral-600 hover:text-rose-500' : 'text-neutral-200 hover:text-white'}`} aria-label="Wishlist">
+            <Heart size={20} strokeWidth={1.5} />
+          </Link>
+          
+          {/* Account */}
+          <Link 
+            to="/account" 
+            className={`hidden md:flex transition-colors ${isScrolled ? 'text-neutral-600 hover:text-rose-500' : 'text-neutral-200 hover:text-white'}`}
+            aria-label="Account"
+          >
+            <User size={20} strokeWidth={1.5}/> 
+          </Link>
+          
+          {/* Cart */}
+          <CartLink cart={cart} isScrolled={isScrolled} />
+          
+          {/* Mobile Menu Toggle */} 
           <button 
-            className={`lg:hidden p-2 transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`} // Adjust text color
+            className={`lg:hidden p-2 transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`}
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
@@ -122,52 +147,68 @@ export function Header({ header, cart, isLoggedIn }: HeaderProps) {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay & Navigation - Tailwind styled */}
+      {/* Mobile Menu Overlay & Navigation */}
       <div 
-        className={`lg:hidden fixed inset-0 bg-black/40 z-40 transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
-        onClick={toggleMobileMenu} // Close on overlay click
+        className={`lg:hidden fixed inset-0 bg-black/40 z-40 transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+        onClick={toggleMobileMenu}
       >
         <nav 
-          className={`fixed top-0 right-0 h-full w-4/5 max-w-sm bg-contrast shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside nav
+          className={`fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out overflow-y-auto ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          onClick={(e) => e.stopPropagation()}
         >
-          {/* Close Button inside mobile menu */}
+          {/* Close Button */}
           <div className="flex justify-end p-4">
             <button onClick={toggleMobileMenu} aria-label="Close menu" className="p-2 text-primary">
               <X size={24} />
             </button>
           </div>
+          
+          {/* Brand logo in mobile menu */}
+          <div className="px-6 pb-6">
+            <Link to="/" className="brand-heading text-2xl font-medium tracking-tight text-primary" onClick={toggleMobileMenu}>
+              care<span className="brand-dot">•</span>atin
+            </Link>
+          </div>
+          
           {/* Mobile Links */}
-          <div className="flex flex-col space-y-4 p-6">
-            {menu.items.map((item: MenuItem) => (
+          <div className="flex flex-col space-y-4 p-6 pt-0">
+            {customNav.map((item) => (
               <NavLink
                 key={item.id}
-                to={item.url ?? '#'}
+                to={item.url}
                 prefetch="intent"
                 className={({ isActive }) => 
-                  `text-lg font-medium transition-colors ${isActive ? 'text-primary' : 'text-neutral-700 hover:text-primary'}`
+                  `text-lg brand-body transition-colors ${isActive ? 'text-rose-500' : 'text-neutral-700 hover:text-rose-500'}`
                 }
-                onClick={toggleMobileMenu} // Close menu on link click
+                onClick={toggleMobileMenu}
               >
                 {item.title}
               </NavLink>
             ))}
-            <hr className="border-neutral-200" />
-            <NavLink 
-               to="/account" 
-               className="text-lg font-medium text-neutral-700 hover:text-primary transition-colors"
-               prefetch="intent"
-               onClick={toggleMobileMenu}
-              >
-                Account
-             </NavLink>
-            {/* Optional: Add Cart link to mobile menu */}
-             <Link to="/cart" className="flex items-center gap-2 text-lg font-medium text-neutral-700 hover:text-primary transition-colors" onClick={toggleMobileMenu}>
-               Cart
-               {cart && cart.totalQuantity > 0 && 
-                 <span className="text-xs bg-primary text-contrast rounded-full px-2 py-0.5">{cart.totalQuantity}</span>
-               }
-             </Link>
+            <hr className="border-neutral-200 my-4" />
+            
+            <Link to="/search" className="flex items-center gap-2 brand-body text-lg text-neutral-700 hover:text-rose-500 transition-colors" onClick={toggleMobileMenu}>
+              <Search size={20} strokeWidth={1.5} />
+              <span>search</span>
+            </Link>
+            
+            <Link to="/wishlist" className="flex items-center gap-2 brand-body text-lg text-neutral-700 hover:text-rose-500 transition-colors" onClick={toggleMobileMenu}>
+              <Heart size={20} strokeWidth={1.5} />
+              <span>wishlist</span>
+            </Link>
+            
+            <Link to="/account" className="flex items-center gap-2 brand-body text-lg text-neutral-700 hover:text-rose-500 transition-colors" onClick={toggleMobileMenu}>
+              <User size={20} strokeWidth={1.5} />
+              <span>account</span>
+            </Link>
+            
+            <Link to="/cart" className="flex items-center gap-2 brand-body text-lg text-neutral-700 hover:text-rose-500 transition-colors" onClick={toggleMobileMenu}>
+              <ShoppingCart size={20} strokeWidth={1.5} />
+              <span>cart</span>
+              {cart && cart.totalQuantity > 0 && 
+                <span className="text-xs bg-rose-500 text-white rounded-full px-2 py-0.5">{cart.totalQuantity}</span>
+              }
+            </Link>
           </div>
         </nav>
       </div>
@@ -175,23 +216,24 @@ export function Header({ header, cart, isLoggedIn }: HeaderProps) {
   );
 }
 
-function CartLink({ cart, isScrolled }: { cart: HeaderProps['cart']; isScrolled: boolean }) { // Add isScrolled prop
+function CartLink({ cart, isScrolled }: { cart: HeaderProps['cart']; isScrolled: boolean }) {
   const cartQuantity = cart?.totalQuantity || 0;
 
   return (
     <Link 
       to="/cart" 
-      className={`relative transition-colors ${isScrolled ? 'text-neutral-600 hover:text-primary' : 'text-neutral-200 hover:text-white'}`} // Adjust text color
+      className={`relative transition-colors ${isScrolled ? 'text-neutral-600 hover:text-rose-500' : 'text-neutral-200 hover:text-white'}`}
+      aria-label={`Cart (${cartQuantity} items)`}
     >
       <ShoppingCart size={20} strokeWidth={1.5} />
       {cartQuantity > 0 && (
         <span 
-          className="absolute -top-1 -right-2 text-xs bg-primary text-contrast rounded-full w-4 h-4 flex items-center justify-center font-bold"
+          className="absolute -top-1 -right-2 text-xs bg-rose-500 text-white rounded-full w-4 h-4 flex items-center justify-center font-bold"
+          aria-hidden="true"
         >
           {cartQuantity}
         </span>
       )}
-      <span className="sr-only">Cart ({cartQuantity})</span> 
     </Link>
   );
 }
@@ -201,45 +243,54 @@ export const FALLBACK_HEADER_MENU: Menu = {
   id: 'fallback-gid://shopify/Menu/199655526488',
   title: 'Fallback Main Menu',
   handle: 'main-menu',
-  itemsCount: 4,
+  itemsCount: 5,
   items: [
     {
-      id: 'fallback-gid://shopify/MenuItem/461609468186',
+      id: 'fallback-gid://shopify/MenuItem/shop',
       resourceId: null,
       tags: [],
-      title: 'Collections',
+      title: 'shop',
       type: 'HTTP',
-      url: '/collections',
+      url: '/collections/all',
       items: []
     },
     {
-      id: 'fallback-gid://shopify/MenuItem/461609533496',
+      id: 'fallback-gid://shopify/MenuItem/science',
       resourceId: null,
       tags: [],
-      title: 'Blog',
+      title: 'hair science',
       type: 'HTTP',
-      url: '/blogs/journal',
+      url: '/pages/science',
       items: []
     },
     {
-      id: 'fallback-gid://shopify/MenuItem/461609566264',
+      id: 'fallback-gid://shopify/MenuItem/results',
       resourceId: null,
       tags: [],
-      title: 'Policies',
+      title: 'results',
       type: 'HTTP',
-      url: '/policies',
+      url: '/pages/results',
       items: []
     },
     {
-      id: 'fallback-gid://shopify/MenuItem/461609599032',
-      resourceId: 'gid://shopify/Page/92591030328',
+      id: 'fallback-gid://shopify/MenuItem/quiz',
+      resourceId: null,
       tags: [],
-      title: 'About',
-      type: 'PAGE',
-      url: '/pages/about',
+      title: 'hair quiz',
+      type: 'HTTP',
+      url: '/pages/hair-quiz',
       items: []
     },
-  ],
+    {
+      id: 'fallback-gid://shopify/MenuItem/journal',
+      resourceId: null,
+      tags: [],
+      title: 'journal',
+      type: 'HTTP',
+      url: '/journal',
+      items: []
+    }
+  ]
 };
 
 // Media query would go in a CSS file, e.g.:

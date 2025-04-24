@@ -8,7 +8,7 @@ import {
 import {CartForm, type CartQueryDataReturn, Analytics} from '@shopify/hydrogen';
 
 import {isLocalPath} from '~/lib/utils';
-import {Cart} from '~/components/Cart';
+import {CartWrapper} from '~/components/CartWrapper';
 
 export async function action({request, context}: ActionFunctionArgs) {
   const {cart} = context;
@@ -87,8 +87,8 @@ export default function CartRoute() {
 
   return (
     <div className="cart">
-      <h1>Cart</h1>
-      <Cart layout="page" cart={cart} />
+      <h1 className="text-2xl font-bold mb-8 text-center">Your Cart</h1>
+      <CartWrapper cart={cart} />
       <Analytics.CartView />
     </div>
   );

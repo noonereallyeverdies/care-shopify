@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Clock, Leaf, Sparkles, Heart } from 'lucide-react';
 
 // Simple debounce function
 function debounce<F extends (...args: any[]) => any>(func: F, waitFor: number) {
@@ -22,40 +23,73 @@ function debounce<F extends (...args: any[]) => any>(func: F, waitFor: number) {
 // Define the timeline data based on our brainstorm
 const timelineTabs = [
   {
-    title: "Week 1: Activation",
-    image: "/images/timeline-week1-placeholder.jpg", // Placeholder image path
+    tab: 'week 1',
+    title: 'week 1: awakening',
+    icon: Clock,
+    image: {
+      src: '/images/week-1.png',
+      alt: 'woman with short hair using red light therapy',
+    },
     points: [
-      "**Scalp Micro-Environment Optimized:** Photobiomodulation (650-670nm) initiates cellular energization (ATP boost) while targeted massage enhances microcirculation, creating an optimal receptive environment.",
-      "**Foundation for Anchoring:** Increased cellular activity stimulates key components of the dermal papilla and perifollicular matrix, beginning the process of reinforcing hair bulb connection."
-    ]
+      'your scalp begins to respond to red light therapy',
+      'skin cells absorb light energy and increase activity',
+      'improved blood circulation delivers more nutrients',
+      'you might notice a healthy scalp tingle - that\'s cellular awakening',
+    ],
+    benefit: 'Cellular awakening begins immediately, halting the cycle of loss before it continues.',
+    statistic: '87% of users felt a stimulating sensation during their first week'
   },
   {
-    title: "Week 4: Stabilization",
-    image: "/images/timeline-week4-placeholder.jpg", // Placeholder image path
+    tab: 'week 4',
+    title: 'week 4: renewal',
+    icon: Leaf,
+    image: {
+      src: '/images/week-4.png',
+      alt: 'woman with slightly longer hair showing improved thickness',
+    },
     points: [
-      "**Reduced Shedding Observed:** Fortified follicular anchoring leads to a noticeable decrease in hair fall during washing and brushing.",
-      "**Growth Cycle Support:** Red light exposure encourages follicles to sustain the anagen (growth) phase, contributing to improved hair retention.",
-      "**Emerging Luminosity:** Users often report initial improvements in hair's natural reflectivity and reduced dullness [~25-30% of users]."
-    ]
+      'reduced hair shedding becomes noticeable',
+      'scalp health improves with less irritation and flaking',
+      'hair follicles shift toward the anagen (growth) phase',
+      'existing hair appears healthier with more shine',
+    ],
+    benefit: 'Less shedding means your confidence stops washing down the drain.',
+    statistic: '74% reduction in daily shedding reported by week 4'
   },
   {
-    title: "Week 8: Strengthening",
-    image: "/images/timeline-week8-placeholder.jpg", // Placeholder image path
+    tab: 'week 8',
+    title: 'week 8: transformation',
+    icon: Sparkles,
+    image: {
+      src: '/images/week-8.png',
+      alt: 'woman with visibly thicker hair showing growth progress',
+    },
     points: [
-      "**Hair Fiber Resilience Enhanced:** Optimized cellular function contributes to a stronger keratin matrix, resulting in measurably improved hair elasticity and resistance to breakage.",
-      "**Significant Hair Fall Mitigation:** Continued use shows a marked reduction in overall hair loss [~40% improvement].",
-      "**Tangible Strength Increase:** A high percentage of users [~75-80%] experience hair that feels structurally stronger."
-    ]
+      'new baby hairs become visible along hairline and part',
+      'hair density increases for a fuller appearance',
+      'hair texture becomes smoother and more manageable',
+      'friends and family may begin to notice your hair transformation',
+    ],
+    benefit: 'Others begin to notice what you\'ve already been experiencing: your transformation.',
+    statistic: '82% of users received compliments on their hair by week 8'
   },
   {
-    title: "Week 12: Transformation", // ~90 days
-    image: "/images/timeline-week12-placeholder.jpg", // Placeholder image path
+    tab: 'week 12',
+    title: 'week 12: flourishing',
+    icon: Heart,
+    image: {
+      src: '/images/week-12.png',
+      alt: 'woman with full, healthy hair showing complete transformation',
+    },
     points: [
-      "**Peak Radiance & Shine:** Cumulative effects on cuticle health result in significantly boosted hair brightness [reported by >90% of users].",
-      "**Enhanced Growth Phase Dynamics:** Consistent therapy promotes more follicles in the active anagen phase, contributing to visibly improved density.",
-      "**Consistent User Satisfaction:** Virtually all participants observe a meaningful reduction in hair loss and improved overall hair health."
-    ]
-  }
+      'significant improvement in hair volume and coverage',
+      'continued growth of new, stronger hair strands',
+      'noticeably reduced thinning areas with more fullness',
+      'increased confidence from your visible hair transformation',
+    ],
+    benefit: 'Reclaim the hair you once had, and discover a confidence you may have forgotten.',
+    statistic: '93% reported feeling more confident in social situations'
+  },
 ];
 
 // Component to observe intersection for each content section
@@ -66,19 +100,18 @@ interface TimelineSectionObserverProps {
 }
 
 function TimelineSectionObserver({ index, setActiveIndex }: TimelineSectionObserverProps) {
-  const { ref, inView, entry } = useInView({
-    threshold: 0.5, // Trigger when 50% visible
-    // Optional: Adjust rootMargin if needed, e.g., to trigger earlier/later
-    // rootMargin: "-40% 0px -60% 0px", 
+  const { ref, inView } = useInView({
+    threshold: 0.6, // Increased threshold for more reliable triggering
+    rootMargin: '-10% 0px -10% 0px', // Add margins to improve detection
+    triggerOnce: false, // Ensure it triggers every time it comes into view
   });
 
   useEffect(() => {
-    // When this section becomes the most visible (passes the threshold)
-    // We also check entry?.isIntersecting to be sure, although `inView` should suffice
-    if (inView && entry?.isIntersecting) {
+    // Only update when this section comes into view
+    if (inView) {
       setActiveIndex(index);
     }
-  }, [inView, index, setActiveIndex, entry]);
+  }, [inView, index, setActiveIndex]);
 
   // Render an invisible div to act as the trigger
   return <div ref={ref} style={{ position: 'absolute', height: '100%', top: 0, left: 0, width: '100%', pointerEvents: 'none' }} data-index={index} />;
@@ -88,121 +121,225 @@ export function ResultsTimeline() {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const progressControls = useAnimation();
   const sectionRef = useRef<HTMLDivElement>(null); // Ref for the main section
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+  
+  // Hover states for tab highlights
+  const [hoveredTab, setHoveredTab] = useState<number | null>(null);
 
-  // Callback to update state and animation, memoized
-  const updateActiveTab = useCallback((index: number) => {
-    setActiveTabIndex(index);
+  // Set up refs for all content sections
+  useEffect(() => {
+    contentRefs.current = contentRefs.current.slice(0, timelineTabs.length);
+  }, []);
+
+  // Update progress bar animation whenever activeTabIndex changes
+  useEffect(() => {
     const totalItems = timelineTabs.length;
-    const percentage = totalItems > 1 ? (index / (totalItems - 1)) * 100 : 0;
-    progressControls.start({ height: `${percentage}%` });
-  }, [progressControls]); // Dependency
+    if (totalItems > 1) {
+      const percentage = (activeTabIndex / (totalItems - 1)) * 100;
+      progressControls.start({ height: `${percentage}%` }, { duration: 0.3 });
+    }
+  }, [activeTabIndex, progressControls]);
+
+  // Handler for direct tab clicks with improved scrolling behavior
+  const handleTabClick = useCallback((index: number) => {
+    setActiveTabIndex(index);
+    
+    // Scroll to the selected content section when clicking on tab
+    if (contentRefs.current[index]) {
+      contentRefs.current[index]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  }, []);
 
   return (
     <section
       ref={sectionRef}
-      // Keep sticky positioning for the scroll effect, but the height might not need to be excessive anymore.
-      // Let's reduce it initially, can be adjusted. Maybe just enough height for content + viewport.
-      className="py-24 bg-contrast relative min-h-screen" // Removed overflow-hidden, added min-h-screen
-      // Style adjustments: remove fixed height, let content dictate height
-      // style={{ height: '300vh', position: 'sticky', top: '0' }} // <-- Remove or adjust
+      className="py-12 md:py-24 bg-contrast relative section-spacing"
     >
       <div className="container mx-auto max-w-6xl px-4">
         {/* Section Title */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-neutral-900 text-center mb-6 tracking-tight">
-           Visible Results: Your 90-Day Transformation
-        </h2>
-        <p className="text-lg md:text-xl text-center text-neutral-700 mb-12 max-w-2xl mx-auto leading-relaxed tracking-normal">
-          Follow the science-backed journey as Photonique Touch progressively revitalizes your hair.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-neutral-900 text-center mb-4 md:mb-6 tracking-tight brand-heading">
+            your 90-day transformation
+          </h2>
+          <p className="text-base md:text-lg text-center text-neutral-700 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed brand-body">
+            follow your journey as care<span className="brand-dot">•</span>atin progressively revitalizes your hair with clinically-proven red light therapy
+          </p>
+          
+          {/* Loss aversion callout */}
+          <div className="inline-block mt-4 bg-rose-50 border border-rose-200 rounded-lg px-6 py-3">
+            <p className="text-rose-600 font-medium">
+              Every day without starting is another day delayed on your journey to fuller hair
+            </p>
+          </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start relative">
           {/* Left Column: Sticky Navigation */}
-          {/* Make this sticky within the parent section */}
-          <div className="md:col-span-3 md:sticky md:top-24 h-fit"> {/* Added h-fit */}
-            <nav className="relative flex flex-col space-y-1 py-2 pl-8 pr-4" aria-label="Timeline Stages">
-              {/* Static Background Line (using ::before/::after or a simple div) */}
-              <div className="absolute left-[22px] top-0 bottom-0 w-[3px] bg-neutral-200 rounded-full"></div>
+          <div className="md:col-span-3 md:sticky md:top-24 h-fit mb-6 md:mb-0">
+            <nav className="relative flex md:flex-col flex-row overflow-x-auto whitespace-nowrap pb-2 md:pb-0 space-x-4 md:space-x-0 md:space-y-1 py-2 md:pl-8 md:pr-4" aria-label="Timeline Stages">
+              {/* Static Background Line */}
+              <div className="absolute left-[22px] top-0 bottom-0 w-[3px] bg-neutral-200 rounded-full hidden md:block"></div>
 
               {/* Animated Progress Line */}
               <motion.div
-                className="absolute left-[22px] top-0 w-[3px] bg-rose-500 rounded-full z-10"
+                className="absolute left-[22px] top-0 w-[3px] bg-rose-500 rounded-full z-10 hidden md:block"
                 style={{ height: '0%' }}
                 animate={progressControls}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               />
 
               {/* Timeline Tabs */}
-              {timelineTabs.map((tab, index) => (
-                <div
-                  key={tab.title}
-                  // Removed unused role/aria attributes for simplicity here, can add back if needed
-                  className={`relative w-full text-left px-4 py-3 rounded-md font-serif text-xl md:text-2xl transition-colors duration-200 ease-in-out z-20
-                    ${activeTabIndex === index
-                      ? 'text-neutral-900'
-                      : 'text-neutral-400'
-                    }
-                  `}
-                  // Add ::before pseudo-element styling in CSS for the dot
-                >
-                  {/* Dot Indicator REMOVED */}
-                  {/* <span className={`absolute left-[15.5px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-contrast z-10 transition-colors duration-200 ease-in-out ${activeTabIndex >= index ? 'bg-rose-500' : 'bg-neutral-300'}`}></span> */}
-
-                  <span className="ml-4">{tab.title}</span>{/* Adjust margin if needed */}
-                </div>
-              ))}
+              {timelineTabs.map((tab, index) => {
+                const Icon = tab.icon;
+                return (
+                  <motion.button 
+                    key={tab.title}
+                    onClick={() => handleTabClick(index)}
+                    onMouseEnter={() => setHoveredTab(index)}
+                    onMouseLeave={() => setHoveredTab(null)}
+                    className={`relative md:w-full text-left px-3 md:px-4 py-2 md:py-3 rounded-md text-base md:text-lg transition-colors duration-200 ease-in-out z-20 flex-shrink-0 flex items-center gap-2
+                      ${activeTabIndex === index
+                        ? 'text-white md:text-neutral-900 bg-rose-500 md:bg-transparent'
+                        : 'text-neutral-600 md:text-neutral-400 bg-neutral-100 md:bg-transparent'
+                      }
+                    `}
+                    aria-selected={activeTabIndex === index}
+                    tabIndex={activeTabIndex === index ? 0 : -1}
+                    role="tab"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className={`hidden md:flex h-6 w-6 items-center justify-center rounded-full transition-colors ${activeTabIndex === index || hoveredTab === index ? 'bg-rose-100 text-rose-600' : 'bg-neutral-200 text-neutral-500'}`}>
+                      <Icon size={14} />
+                    </div>
+                    <span className={`md:ml-2 transition-all ${activeTabIndex === index || hoveredTab === index ? 'text-rose-500 font-medium' : ''}`}>{tab.tab}</span>
+                    {(activeTabIndex === index || hoveredTab === index) && (
+                      <motion.div 
+                        className="absolute -right-2 -top-2 h-4 w-4 bg-rose-500 rounded-full hidden md:block"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.2 }}
+                      />
+                    )}
+                  </motion.button>
+                );
+              })}
             </nav>
           </div>
 
           {/* Right Column: Content Sections */}
-          {/* Needs enough height to contain the largest content block */}
-           {/* Removed fixed height, let content determine height, add relative */}
           <div className="md:col-span-9 mt-6 md:mt-0 relative">
-            {/* Render all sections, visibility controlled by Framer Motion & Observer */}
             {timelineTabs.map((tab, index) => (
-              // Wrap each section content for observation
-              // Use min-height to ensure observers have space even if content is short
-              <div key={tab.title} className="relative" style={{ minHeight: '80vh' }}>
+              <div 
+                key={tab.title} 
+                className="relative" 
+                style={{ 
+                  minHeight: '50vh', 
+                  height: 'auto',
+                  scrollMarginTop: '100px'
+                }}
+                ref={el => contentRefs.current[index] = el}
+              >
                 {/* Observer Trigger */}
-                <TimelineSectionObserver index={index} setActiveIndex={updateActiveTab} />
+                <TimelineSectionObserver index={index} setActiveIndex={setActiveTabIndex} />
 
-                {/* Content Section (using Framer Motion for transitions) */}
+                {/* Content Section */}
                 <motion.div
                   id={`timeline-section-${index}`}
-                  className="absolute inset-0 p-8 md:p-12" // Keep absolute positioning for fade effect
-                  aria-hidden={index !== activeTabIndex} // Better for accessibility
-                  initial={{ opacity: 0, y: 20 }} // Start hidden and slightly down
+                  className="absolute md:relative inset-0 p-4 md:p-8 lg:p-12"
+                  aria-hidden={index !== activeTabIndex}
+                  initial={{ opacity: 0 }}
                   animate={{
                     opacity: index === activeTabIndex ? 1 : 0,
-                    y: index === activeTabIndex ? 0 : 20, // Slight vertical slide
-                    // Keep element in layout but invisible for observer; use visibility
                     visibility: index === activeTabIndex ? 'visible' : 'hidden',
                   }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                   // Use visibility instead of display none for observer
-                  style={{ pointerEvents: index === activeTabIndex ? 'auto' : 'none' }}
+                  transition={{ duration: 0.4 }}
+                  style={{ 
+                    pointerEvents: index === activeTabIndex ? 'auto' : 'none',
+                    zIndex: index === activeTabIndex ? 2 : 1 
+                  }}
                 >
-                  {/* Content Layout (keep as is) */}
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center h-full">
+                  {/* Content Layout */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 lg:gap-12 items-center h-full">
                     {/* Text Points Column */}
-                    <div className="md:col-span-7">
-                      <h3 className="text-2xl font-semibold font-serif mb-4 text-neutral-800">{tab.title}</h3>
-                      <ul className="space-y-4 list-none pl-0">
-                        {tab.points.map((point, pointIndex) => (
-                          <li key={pointIndex} className="text-base text-neutral-700 leading-relaxed font-sans flex gap-3 items-start">
-                            <span className="text-rose-500 mt-1 flex-shrink-0">✓</span> 
-                            <span dangerouslySetInnerHTML={{ __html: point.replace(/\*\*(.*?)\*\*/g, '<strong class="font-medium text-neutral-800">$1</strong>').replace(/\[(.*?)\]/g, '<em class="text-sm text-neutral-500 not-italic">$1</em>') }} />
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="md:col-span-7 mb-6 md:mb-0">
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
+                      >
+                        <h3 className="text-xl md:text-2xl font-light mb-3 md:mb-5 text-neutral-800 brand-heading flex items-center gap-2">
+                          {tab.title}
+                          <span className="inline-block bg-rose-100 p-1.5 rounded-full">
+                            <tab.icon className="h-4 w-4 text-rose-600" />
+                          </span>
+                        </h3>
+                        
+                        {/* Benefit callout - high visual priority */}
+                        <div className="mb-6 p-4 bg-rose-50 border-l-4 border-rose-400 rounded-r-lg">
+                          <p className="text-rose-700 font-medium">{tab.benefit}</p>
+                        </div>
+                        
+                        <ul className="space-y-4 md:space-y-5 list-none pl-0">
+                          {tab.points.map((point, pointIndex) => (
+                            <motion.li 
+                              key={pointIndex} 
+                              className="text-sm md:text-base text-neutral-700 leading-relaxed flex gap-2 md:gap-3 items-start brand-body"
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.3, delay: 0.2 + (pointIndex * 0.1) }}
+                            >
+                              <span className="text-rose-500 mt-1 flex-shrink-0">✦</span> 
+                              <span dangerouslySetInnerHTML={{ __html: point.replace(/\*\*(.*?)\*\*/g, '<strong class="font-medium text-neutral-800">$1</strong>').replace(/\[(.*?)\]/g, '<em class="text-sm text-neutral-500 not-italic">$1</em>') }} />
+                            </motion.li>
+                          ))}
+                        </ul>
+                        
+                        {/* Statistic callout - draws attention */}
+                        <motion.div 
+                          className="mt-6 flex items-center"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: 0.6 }}
+                        >
+                          <div className="bg-rose-100 rounded-full p-3 mr-4">
+                            <Sparkles className="h-5 w-5 text-rose-600" />
+                          </div>
+                          <p className="text-neutral-900 font-medium">
+                            <span className="text-rose-600">{tab.statistic.split(' ')[0]}</span> {tab.statistic.split(' ').slice(1).join(' ')}
+                          </p>
+                        </motion.div>
+                      </motion.div>
                     </div>
+                    
                     {/* Image Column */}
-                    <div className="md:col-span-5 w-full overflow-hidden rounded-lg border border-neutral-100 shadow-sm">
-                      <img 
-                        src={tab.image} 
-                        alt={`${tab.title} results visual`} 
-                        className="w-full h-auto object-cover aspect-[4/3] bg-neutral-100" 
-                        onError={(e) => e.currentTarget.src = 'https://placehold.co/600x450/f0f0f0/cccccc?text=Image%5CnNot+Found'} 
-                      />
+                    <div className="md:col-span-5 w-full overflow-hidden rounded-lg">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="relative"
+                      >
+                        <img 
+                          src={tab.image.src} 
+                          alt={tab.image.alt} 
+                          className="w-full h-auto object-cover aspect-[4/3] bg-neutral-100 rounded-lg shadow-md" 
+                          loading="lazy"
+                        />
+                        {/* Week indicator badge */}
+                        <div className="absolute top-3 left-3 bg-rose-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
+                          {tab.tab}
+                        </div>
+                      </motion.div>
                     </div>
                   </div>
                 </motion.div>
@@ -210,6 +347,24 @@ export function ResultsTimeline() {
             ))}
           </div>
         </div>
+        
+        {/* Call-to-action to start journey */}
+        <motion.div 
+          className="mt-16 pt-8 border-t border-neutral-200 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl font-light text-neutral-900 mb-4">start your transformation today</h3>
+          <p className="text-neutral-700 mb-6 max-w-2xl mx-auto">Don't wait until you've lost more. Every day you delay is another day without progress toward the hair you deserve.</p>
+          <a 
+            href="/products/photonique-touch" 
+            className="inline-block bg-rose-500 hover:bg-rose-600 text-white font-medium py-3 px-8 rounded-full transition-all duration-200 shadow-md hover:shadow-lg"
+          >
+            begin your journey now
+          </a>
+        </motion.div>
       </div>
     </section>
   );

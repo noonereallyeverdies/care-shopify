@@ -1,59 +1,57 @@
-import {Image} from '@shopify/hydrogen';
+import React, { useState } from 'react';
+import { Image } from '@shopify/hydrogen';
+import type { MediaImage } from '@shopify/hydrogen/storefront-api-types';
 
-import type {MediaFragment} from 'storefrontapi.generated';
+interface ProductGalleryProps {
+  media: MediaImage[];
+  className?: string;
+}
 
 /**
  * A client component that defines a media gallery for hosting images, 3D models, and videos of products
  */
-export function ProductGallery({
-  media,
-  className,
-}: {
-  media: MediaFragment[];
-  className?: string;
-}) {
-  if (!media.length) {
+export function ProductGallery({ media, className = '' }: ProductGalleryProps) {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  
+  if (!media || media.length === 0) {
     return null;
   }
 
   return (
-    <div
-      className={`swimlane md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 ${className}`}
-    >
-      {media.map((med, i) => {
-        const isFirst = i === 0;
-        const isFourth = i === 3;
-        const isFullWidth = i % 3 === 0;
-
-        const image =
-          med.__typename === 'MediaImage'
-            ? {...med.image, altText: med.alt || 'Product image'}
-            : null;
-
-        const style = [
-          isFullWidth ? 'md:col-span-2' : 'md:col-span-1',
-          isFirst || isFourth ? '' : 'md:aspect-[4/5]',
-          'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-full',
-        ].join(' ');
-
-        return (
-          <div className={style} key={med.id || image?.id}>
-            {image && (
+    <div className={`product-gallery ${className}`}>
+      <div className="main-image-container mb-4 rounded-lg overflow-hidden relative">
+        <Image 
+          data={media[activeImageIndex]?.image} 
+          className="w-full h-auto object-cover aspect-square"
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          loading="eager"
+        />
+      </div>
+      
+      {media.length > 1 && (
+        <div className="thumbnails-container flex gap-2 overflow-x-auto pb-2">
+          {media.map((item, index) => (
+            <button
+              key={`thumbnail-${index}`}
+              className={`thumbnail-item rounded-md overflow-hidden border-2 min-w-[80px] h-[80px] transition-all ${
+                index === activeImageIndex
+                  ? 'border-accent-rlt opacity-100'
+                  : 'border-transparent opacity-70 hover:opacity-100'
+              }`}
+              onClick={() => setActiveImageIndex(index)}
+              aria-label={`View product image ${index + 1}`}
+            >
               <Image
-                loading={i === 0 ? 'eager' : 'lazy'}
-                data={image}
-                aspectRatio={!isFirst && !isFourth ? '4/5' : undefined}
-                sizes={
-                  isFirst || isFourth
-                    ? '(min-width: 48em) 60vw, 90vw'
-                    : '(min-width: 48em) 30vw, 90vw'
-                }
-                className="object-cover w-full h-full aspect-square fadeIn"
+                data={item.image}
+                className="w-full h-full object-cover"
+                width={80}
+                height={80}
+                sizes="80px"
               />
-            )}
-          </div>
-        );
-      })}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
