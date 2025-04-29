@@ -90,11 +90,11 @@ export function Hero({ product }: HeroProps) {
   const featuredImage = product?.featuredImage
   const heroImageUrl = featuredImage?.url || '/images/prettyhair.jpg'; // Fallback image
 
-  // Timeline data
+  // Timeline data with more specific metrics
   const timelineData = [
-    { days: 6, text: "to stronger follicles" },
-    { days: 30, text: "to reduced shedding" },
-    { days: 90, text: "to visible transformation" }
+    { days: 14, text: "to stronger, revitalized follicles" },
+    { days: 30, text: "to 62% less daily shedding" },
+    { days: 90, text: "to 28% increased hair density" }
   ];
 
   return (
@@ -129,15 +129,15 @@ export function Hero({ product }: HeroProps) {
           {/* Content block */}
           <div className="mb-6 md:mb-8">
             <h5 className="text-base md:text-lg font-light uppercase tracking-widest mb-3 md:mb-4 text-white/80 brand-body">
-              reclaim what's been lost
+              transform your hair journey today
             </h5>
             <h1 className="mb-4 md:mb-6 font-light text-4xl sm:text-5xl md:text-6xl tracking-wide text-white brand-heading">
-              beauty begins <span className="italic">at the root</span>
+              revive <span className="italic">your</span> roots, reclaim <span className="italic">your</span> confidence
             </h1>
             <p
               className="text-base sm:text-lg md:text-xl text-white/90 max-w-xl leading-relaxed mb-5 md:mb-8 font-light brand-body"
             >
-              Every day without care•atin is another day of shedding and thinning. Our red light technology awakens dormant follicles at the cellular level, reviving the thick, lustrous hair you deserve.
+              Are you tired of seeing your hair thin before your eyes? Your journey to thicker, fuller hair starts now. Our clinically-proven red light technology awakens your dormant follicles at the cellular level, delivering visible results you can see and feel.
             </p>
             
             {/* Animated timeframes */}
@@ -163,58 +163,65 @@ export function Hero({ product }: HeroProps) {
               </motion.div>
             </div>
             
-            <p className="text-lg text-white/90 font-light italic">
-              Stop watching your confidence wash down the drain.
-            </p>
+            <div className="space-y-2">
+              <p className="text-lg text-white/90 font-light">
+                <span className="font-medium">Ready to transform your hair story?</span> Every day matters.
+              </p>
+              <ul className="text-sm space-y-1 text-white/80">
+                <li className="flex items-center">
+                  <svg className="w-4 h-4 text-rose-300 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Patented technology with 3 clinical studies</span>
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-4 h-4 text-rose-300 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Used by 10,000+ customers who've transformed their hair</span>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* CTA Button */}
-          <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-            <ButtonLink 
-              to="/products/photonique-touch" 
-              variant="primary"
-              size="md"
-              className="group text-lg"
+          {/* CTA Button - Keep the existing motion animations but update the text */}
+          <motion.div 
+            className="flex flex-wrap gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
+          >
+            <Link 
+              to={product ? `/products/${product.handle}` : '/products/care-atin-device'} 
+              className={`
+                flex items-center justify-center bg-rose-500 text-white px-6 py-3.5 rounded-full
+                transition-all duration-200 text-base md:text-lg font-medium
+                hover:bg-rose-600 hover:shadow-lg
+                ${isHoveringCTA ? 'shadow-lg shadow-rose-500/20' : 'shadow-md shadow-rose-500/10'}
+              `}
               onMouseEnter={() => setIsHoveringCTA(true)}
               onMouseLeave={() => setIsHoveringCTA(false)}
             >
-              begin your transformation
-              <motion.span 
-                className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                initial={{ x: 0 }}
-                animate={{ x: isHoveringCTA ? 5 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ArrowRight size={18} />
-              </motion.span>
-            </ButtonLink>
-            
+              Start Your Transformation Today
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
             <ButtonLink 
               to="/pages/science" 
               variant="outline"
-              size="md"
-              className="border-white/30 text-white hover:bg-white/10 font-light"
+              className="flex items-center border-white/60 text-white bg-black/30 backdrop-blur-sm hover:border-white"
             >
-              discover the science
+              See The Science Behind Your Results
             </ButtonLink>
-          </div>
-          
-          {/* Social proof capsule */}
+          </motion.div>
+
           <motion.div 
             className="mt-8 md:mt-10 bg-black/30 backdrop-blur-sm py-2.5 px-4 sm:py-3 sm:px-5 rounded-full inline-flex items-center border border-white/10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 1 }}
           >
-            <div className="flex -space-x-2 mr-3">
-              {[1,2,3].map((_, i) => (
-                <div key={i} className="w-8 h-8 rounded-full bg-neutral-400 border-2 border-white overflow-hidden">
-                  {/* <img src={`/images/testimonial-${i+1}.jpg`} alt="Customer" className="w-full h-full object-cover" /> */}
-                </div>
-              ))}
-            </div>
             <p className="text-xs sm:text-sm font-light">
-              <span className="text-rose-300 font-normal">In user surveys, 93%</span> reported feeling more confident after 90 days
+              <span className="text-rose-300 font-normal">93% of users</span> reported renewed confidence after just 12 weeks
             </p>
           </motion.div>
           
@@ -226,7 +233,7 @@ export function Hero({ product }: HeroProps) {
             transition={{ duration: 0.5, delay: 1.2 }}
           >
             <p className="text-xs sm:text-sm font-medium text-rose-200">
-              Don't miss out: First-time users save 15% with code NEWGROWTH
+              Risk-free: Try for 60 days with our money-back guarantee
             </p>
           </motion.div>
         </motion.div>

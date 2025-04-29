@@ -6,7 +6,7 @@
   
   /* Headings */
   h1, h2, h3, h4, h5, h6 {
-    @apply brand-heading text-neutral-800 mb-4 mt-8 font-light;
+    @apply text-neutral-800 mb-4 mt-8 font-light tracking-tight normal-case;
   }
   
   h1 {
@@ -27,7 +27,7 @@
   
   /* Paragraphs */
   p {
-    @apply mb-6 brand-body;
+    @apply mb-6 font-normal;
   }
   
   /* Lists */
