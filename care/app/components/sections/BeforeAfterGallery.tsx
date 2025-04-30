@@ -8,39 +8,30 @@ export function BeforeAfterGallery() {
   const testimonials = [
     {
       name: "Sarah",
-      age: 42,
-      issue: "Thinning at crown",
-      duration: "3 months",
-      beforeImage: "/images/before-after/sarah-before.jpg",
-      afterImage: "/images/before-after/sarah-after.jpg",
-      quote: "I was skeptical at first, but after consistent use, I've seen dramatic improvement in thickness around my crown area."
-    },
-    {
-      name: "Michael",
-      age: 38,
-      issue: "Receding hairline",
-      duration: "4 months",
-      beforeImage: "/images/before-after/michael-before.jpg",
-      afterImage: "/images/before-after/michael-after.jpg",
-      quote: "The most noticeable change has been the regrowth along my temples. My hairline looks much fuller now."
-    },
-    {
-      name: "Emma",
-      age: 35,
-      issue: "Post-pregnancy shedding",
+      age: 34,
+      issue: "Under-eye bags and uneven skin",
       duration: "2 months",
-      beforeImage: "/images/before-after/emma-before.jpg",
-      afterImage: "/images/before-after/emma-after.jpg",
-      quote: "After having my baby, I lost so much hair. care•atin helped reduce the shedding and I'm seeing new growth already."
+      beforeImage: "/images/before-after/before-after-1-before.png",
+      afterImage: "/images/before-after/before-after-1-after.png",
+      quote: "The treatment has significantly reduced my under-eye bags and improved my skin's appearance."
     },
     {
-      name: "David",
+      name: "Jennifer",
+      age: 41,
+      issue: "Fine lines and wrinkles",
+      duration: "3 months",
+      beforeImage: "/images/before-after/before-after-2-before.png",
+      afterImage: "/images/before-after/before-after-2-after.png",
+      quote: "I've noticed a dramatic reduction in my fine lines and wrinkles, especially around my eyes and forehead."
+    },
+    {
+      name: "Lisa",
       age: 45,
-      issue: "Overall thinning",
-      duration: "5 months",
-      beforeImage: "/images/before-after/david-before.jpg",
-      afterImage: "/images/before-after/david-after.jpg",
-      quote: "My scalp used to be visible under bright lights. Now my hair feels and looks much denser."
+      issue: "Sagging skin and volume loss",
+      duration: "3 months",
+      beforeImage: "/images/before-after/before-after-3-before.png",
+      afterImage: "/images/before-after/before-after-3-after.png",
+      quote: "The treatment has helped restore volume to my face and improved my skin's firmness and elasticity."
     }
   ];
 
@@ -88,7 +79,7 @@ export function BeforeAfterGallery() {
             experience the transformation
           </h2>
           <p className="text-neutral-600 max-w-xl mx-auto">
-            Consistent use reveals visibly thicker, healthier hair. Drag the slider to see the difference care•atin makes.
+            Consistent treatment reveals visibly smoother, younger-looking skin. Drag the slider to see the difference.
           </p>
         </motion.div>
         
@@ -103,11 +94,11 @@ export function BeforeAfterGallery() {
             itemOne={(
               <ReactCompareSliderImage 
                 src={active.beforeImage} 
-                alt={`${active.name} before using care•atin`}
+                alt={`${active.name} before treatment`}
                 style={{objectFit: 'cover'}} 
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "https://cdn.shopify.com/s/files/1/0XXX/XXXX/files/placeholder-image.png?v=YYYYYY"; // Replace with your actual placeholder
+                  target.src = "/images/placeholder-image.png"; // Generic placeholder
                   target.onerror = null; 
                 }}
               />
@@ -115,11 +106,11 @@ export function BeforeAfterGallery() {
             itemTwo={(
               <ReactCompareSliderImage 
                 src={active.afterImage} 
-                alt={`${active.name} after using care•atin`}
+                alt={`${active.name} after treatment`}
                 style={{objectFit: 'cover'}} 
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "https://cdn.shopify.com/s/files/1/0XXX/XXXX/files/placeholder-image.png?v=YYYYYY"; // Replace with your actual placeholder
+                  target.src = "/images/placeholder-image.png"; // Generic placeholder
                   target.onerror = null; 
                 }}
               />
@@ -140,6 +131,37 @@ export function BeforeAfterGallery() {
               </div>
             )}
           />
+        </motion.div>
+        
+        {/* Testimonial selection */}
+        <div className="mt-8 flex justify-center space-x-4">
+          {testimonials.map((testimonial, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === activeIndex 
+                  ? 'bg-rose-500 scale-125' 
+                  : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+              aria-label={`View ${testimonial.name}'s before and after`}
+            />
+          ))}
+        </div>
+        
+        {/* Testimonial quote */}
+        <motion.div
+          className="mt-6 max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-sm border border-neutral-100"
+          key={activeIndex}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <p className="text-gray-700 italic mb-3">"{active.quote}"</p>
+          <div className="flex justify-between text-sm text-gray-500">
+            <span>{active.name}, {active.age} - {active.issue}</span>
+            <span>After {active.duration} of treatment</span>
+          </div>
         </motion.div>
       </div>
     </section>

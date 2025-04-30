@@ -24,8 +24,8 @@ const fadeInCinematic = {
 export function ProductHighlight({ product }: ProductHighlightProps) {
   if (!product) return null;
   
-  // Mock URL for now, should use product.featuredImage in production
-  const productImageUrl = '/images/product.png';
+  // Updated image path
+  const productImageUrl = '/images/product/lifestyle-woman.jpg';
   
   return (
     <section className="relative py-16 bg-white overflow-hidden">
@@ -114,15 +114,15 @@ export function ProductHighlight({ product }: ProductHighlightProps) {
           </p>
         </div>
 
-        {/* Product Image */}
+        {/* Product Image - Updated styling for lifestyle image */}
         <motion.div className="flex justify-center"
           initial={{ scale:0.95, opacity:0 }} whileInView={{ scale:1, opacity:1 }} 
           transition={{ type:"spring", stiffness:120, damping:20 }}
         >
           <img 
             src={productImageUrl} 
-            alt="Photonique Touch red light hair therapy device" 
-            className="max-w-sm object-contain"
+            alt="Woman with healthy, vibrant hair in natural setting" 
+            className="rounded-xl shadow-lg max-h-[500px] object-cover"
             loading="eager"
           />
         </motion.div>
