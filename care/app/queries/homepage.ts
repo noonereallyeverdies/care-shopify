@@ -40,17 +40,13 @@ export const HOMEPAGE_PRODUCT_QUERY = `#graphql
     }
   }
 
-  query homepageProduct($handle: String!) {
+  query homepageProduct($handle: String!, $country: CountryCode, $language: LanguageCode) 
+    @inContext(country: $country, language: $language) {
     shop {
       name
       description
       primaryDomain {
         url
-      }
-    }
-    products(first: 1, query: "available_for_sale:true") {
-      nodes {
-        handle
       }
     }
     product(handle: $handle) {

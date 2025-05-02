@@ -1,117 +1,164 @@
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Button } from '~/components/ui/buttons/Button'; // Ensure button path is correct
 
 // Remove unused animation components
 // const FillAnimation = () => { ... };
 // const MassageAnimation = () => { ... };
 
 export function SelfCareRitualSection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const { scrollXProgress } = useScroll({ container: scrollRef });
+
   const steps = [
     {
       number: '01',
-      title: 'fill & prepare',
-      description:
-        'Fill the canister with your chosen hair serum or oil. Prepare for your moment of care.',
+      title: 'fill', // Updated title
+      description: '**fill** the device with your favorite hair oil or serum',
       image: '/images/self-care-ritual/step-1.JPG',
     },
     {
       number: '02',
-      title: 'massage & activate',
-      description:
-        'Gently massage your scalp as the device delivers the treatment and red light therapy begins.',
+      title: 'massage', // Updated title
+      description: '**massage** gently in circular motions across scalp',
       image: '/images/self-care-ritual/step-2.png',
     },
     {
       number: '03',
-      title: 'relax & transform',
-      description:
-        'Enjoy 5 minutes of restorative therapy, 3 times per week, as care•atin works at the root.',
+      title: 'relax', // Updated title
+      description: '**relax** while red light and massage activate recovery',
       image: '/images/self-care-ritual/step-3.JPG',
     },
   ];
 
+  // Helper to render description with bold tags
+  const renderDescription = (desc: string) => {
+    const parts = desc.split(/(\*\*.*\*\*)/g); // Split by bold markdown
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={index} className="font-medium text-inherit">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
+  // Define animation variants for number and text overlay
+  const numberVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, delay: 0.3, ease: "easeOut" } // Delay after card appears
+    }
+  };
+
+  const textOverlayVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, delay: 0.4, ease: "easeOut" } // Slightly more delay
+    }
+  };
+
   return (
-    <section className="py-20 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section className="py-16 md:py-24 bg-neutral-50 text-foreground overflow-hidden">
+      <div className="container mx-auto px-0 md:px-6">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16 px-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-light mb-4">
-            your self-care ritual
+          <h2 className="text-3xl md:text-4xl font-light mb-4 lowercase">
+             🧴 your 3-step self-care ritual
           </h2>
-          <p className="text-neutral-600 max-w-2xl mx-auto">
-            Embrace this simple ritual to transform your hair from the root
-          </p>
+          {/* Optional: Add a subtitle if needed */}
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className="relative mb-6 w-full aspect-square overflow-hidden rounded-xl bg-neutral-50 flex items-center justify-center border border-neutral-100">
-                {/* Always use image now */}
-                {step.image ? (
-                  <img
-                    src={step.image}
-                    alt={`Step ${step.number}: ${step.title}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy" // Added lazy loading
-                    onError={(e) => {
-                      // Fallback if image fails to load
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/images/placeholders/placeholder.svg';
-                      target.onerror = null;
-                    }}
-                  />
-                ) : (
-                  // Optional: Placeholder if image path is null/missing
-                  <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
-                    Missing Image
-                  </div>
-                )}
-                <div className="absolute top-4 left-4 bg-rose-500 text-white text-xl font-medium w-10 h-10 rounded-full flex items-center justify-center z-10">
-                  {step.number}
+        {/* Horizontal Scroll Container */}
+        <div 
+          ref={scrollRef} 
+          className="relative flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-0 pb-8 no-scrollbar"
+          style={{ scrollPaddingLeft: '1.5rem' }} // Ensures padding on snap
+        >
+          {steps.map((step, index) => {
+            // Simple parallax effect based on scroll position
+            const imageY = useTransform(scrollXProgress, [0, 1], ['0%', '-10%']); 
+
+            return (
+              <motion.div
+                key={index}
+                className="flex-shrink-0 w-[85vw] md:w-[40vw] lg:w-[30vw] snap-start first:ml-0 last:mr-0 md:first:ml-0 md:last:mr-0"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ root: scrollRef, amount: 0.4, once: false }} // Adjusted amount slightly
+                transition={{ duration: 0.5, delay: 0.1 }}
+                 whileHover={{ 
+                   scale: 1.02, // Slight scale for glow/lift
+                   boxShadow: '0px 10px 25px rgba(0, 0, 0, 0.1)' // Enhance shadow for glow
+                 }}
+              >
+                <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-lg bg-neutral-200">
+                   {/* Image with Parallax */}
+                   <motion.img
+                      src={step.image}
+                      alt={`${step.title}`}
+                      className="absolute inset-0 w-full h-[110%] object-cover" // Slightly larger height for parallax
+                      style={{ y: imageY }} 
+                      loading="lazy"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/images/placeholders/placeholder.svg';
+                        target.onerror = null;
+                      }}
+                    />
+                    {/* Step Number Overlay - Animate Reveal */}
+                    <motion.div 
+                      className="absolute bottom-4 right-4 text-[8rem] leading-none font-bold text-white/20 select-none z-10"
+                      variants={numberVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ root: scrollRef, amount: 0.4, once: false }} // Use same viewport as card
+                    >
+                      {step.number}
+                    </motion.div>
+                    {/* Text Overlay - Animate Reveal */}
+                    <motion.div 
+                      className="absolute bottom-0 left-0 right-0 p-6 pt-12 bg-gradient-to-t from-black/60 via-black/40 to-transparent z-20"
+                      variants={textOverlayVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ root: scrollRef, amount: 0.4, once: false }} // Use same viewport as card
+                    >
+                       <p className="text-lg md:text-xl text-white/90 lowercase">
+                        {renderDescription(step.description)}
+                       </p>
+                    </motion.div>
                 </div>
-              </div>
-              <h3 className="text-xl font-medium mb-2 lowercase">
-                {step.title}
-              </h3>
-              <p className="text-neutral-600 text-center text-sm">
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
+        {/* Testimonial & CTA */}
         <motion.div
-          className="mt-16 text-center"
+          className="mt-12 md:mt-16 text-center px-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-rose-500 rounded-full"></div>
-            <div className="w-2 h-2 bg-rose-500 rounded-full"></div>
-            <div className="w-2 h-2 bg-rose-500 rounded-full"></div>
-          </div>
-          <p className="text-neutral-700 max-w-xl mx-auto italic">
-            "I've made it part of my evening wind-down routine. Five minutes of
-            care•atin therapy while I read or meditate has become my favorite
-            part of the day."
+          <p className="text-neutral-700 max-w-xl mx-auto italic mb-4 normal-case">
+            "it's become my evening ritual. just 5 minutes and both my hair and mindset feel stronger."
           </p>
-          <p className="text-neutral-500 text-sm mt-2">
-            — Mia, using care•atin for 6 months
+          <p className="text-neutral-500 text-sm mb-8 lowercase">
+             — mia
           </p>
+          <Button variant="primary" size="lg" className="w-full sm:w-auto">
+             start your ritual for $89 → limited time
+          </Button>
         </motion.div>
       </div>
     </section>

@@ -135,6 +135,7 @@ export default {
       fontFamily: {
         sans: ['"SF Pro Display"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         serif: ['"New York"', '"IBMPlexSerif"', 'Palatino', 'ui-serif'],
+        script: ['"Dancing Script"', 'cursive']
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],

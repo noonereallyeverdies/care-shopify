@@ -54,6 +54,27 @@ interface HeroProps {
   product: HomepageProduct | null;
 }
 
+// Define standard fade-in-up variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' }
+  }
+};
+
+// Define stagger container variants
+const staggerContainer = {
+  hidden: {}, // Can be empty
+  visible: {
+    transition: {
+      staggerChildren: 0.2, // Adjust stagger timing as needed
+      delayChildren: 0.5, // Delay after main content animation
+    }
+  }
+};
+
 export function Hero({ product }: HeroProps) {
   // State for animated statistics
   const [isVisible, setIsVisible] = useState(false);
@@ -248,22 +269,21 @@ export function Hero({ product }: HeroProps) {
         >
           {/* Content block */}
           <div className="mb-6 md:mb-8">
-            <motion.h5 
-              className="text-base md:text-lg font-light uppercase tracking-widest mb-3 md:mb-4 text-white/80 brand-body"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              transform your hair journey today
-            </motion.h5>
-            <motion.h1 
-              className="mb-4 md:mb-6 font-light text-4xl sm:text-5xl md:text-6xl tracking-wide text-white brand-heading"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              revive <span className="italic">your</span> roots, reclaim <span className="italic">your</span> confidence
-            </motion.h1>
+            {/* Loss Aversion Trigger */}
+            {showLossAversion && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-rose-100 px-3 py-1 text-xs font-medium text-rose-700"
+              >
+                <Clock size={12} /> Limited spots for the {currentSeason} cohort!
+              </motion.div>
+            )}
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight lowercase leading-tight sm:leading-none md:leading-tight">
+              Don't just stop hair loss. <br className="hidden sm:block" />
+              <span className="text-primary">reverse it.</span>
+            </h1>
             
             {/* New skepticism-addressing subheading */}
             <motion.p 
@@ -284,70 +304,65 @@ export function Hero({ product }: HeroProps) {
               Are you tired of seeing your hair thin before your eyes? Your journey to thicker, fuller hair starts now. Our clinically-proven red light technology awakens your dormant follicles at the cellular level, delivering visible results you can see and feel.
             </motion.p>
             
-            {/* Animated timeframes */}
-            <div className="mt-4 mb-6 md:mb-8">
-              <motion.div 
-                className="flex items-center space-x-2"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                {timelineData.map((item, index) => (
-                  <motion.div 
-                    key={index}
-                    className={`py-3 px-4 rounded-lg flex-1 ${
-                      showTimeframe === index 
-                        ? 'bg-white/20 backdrop-blur-sm shadow-lg' 
-                        : 'bg-transparent'
-                    }`}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      boxShadow: '0 0 15px rgba(212, 98, 124, 0.4)' 
-                    }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                  >
-                    <span className="block font-bold text-lg md:text-2xl text-white">{item.days}</span>
-                    <span className={`block text-xs ${showTimeframe === index ? 'text-white/90' : 'text-white/60'}`}>
-                      Days {item.text}
-                    </span>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
+            {/* Animated Timeline Blocks */}
+            <motion.div 
+              className="mt-8 space-y-4"
+              variants={staggerContainer} // Apply stagger container variants
+              initial="hidden"
+              animate="visible" // Animate when the component mounts (after delay)
+            >
+              {timelineData.map((item, index) => (
+                <motion.div 
+                  key={index} 
+                  className="flex items-center gap-3"
+                  variants={fadeInUp} // Apply fade in up to each item
+                >
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary">
+                    <span className="text-xs font-bold">{item.days}</span>
+                  </div>
+                  <span className="text-sm text-white/90">{item.text}</span>
+                </motion.div>
+              ))}
+            </motion.div>
             
             {/* Enhanced CTA Button with improved hover effects */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              className="relative"
-            >
-              <Link
-                to={`/products/${product.handle}`}
-                prefetch="intent"
-                className="inline-flex items-center justify-center bg-var(--brand-primary, #d4627c) px-8 py-4 text-lg font-medium text-white rounded-full transition-all duration-300 hover:shadow-xl"
-                onMouseEnter={() => setIsHoveringCTA(true)}
-                onMouseLeave={() => setIsHoveringCTA(false)}
-                style={{
-                  transform: isHoveringCTA ? 'translateY(-2px)' : 'translateY(0)',
-                  boxShadow: isHoveringCTA ? '0 24px 48px rgba(212, 98, 124, 0.2)' : 'none'
-                }}
+            <div className="mt-10">
+              <motion.div 
+                whileHover={{ scale: 1.03 }} 
+                whileTap={{ scale: 0.98 }} 
+                className="inline-block"
+                onHoverStart={() => setIsHoveringCTA(true)}
+                onHoverEnd={() => setIsHoveringCTA(false)}
               >
-                Start Your Transformation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              
-              {/* Loss aversion micro-trigger */}
-              {showLossAversion && (
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-rose-400 text-sm font-medium mt-3 absolute"
+                <ButtonLink
+                  to={`/products/${product.handle}`}
+                  variant="primary"
+                  size="lg"
+                  className="shadow-lg"
                 >
-                  Every day you wait is more hair lost
-                </motion.p>
-              )}
-            </motion.div>
+                  Shop Care•tin Device <ArrowRight size={18} className="ml-2" />
+                </ButtonLink>
+              </motion.div>
+              
+              {/* Hover state text */}
+              <AnimatePresence>
+                {isHoveringCTA && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="mt-3 text-xs text-white/70"
+                  >
+                    90-day risk-free trial included
+                  </motion.p>
+                )}
+              </AnimatePresence>
+              {/* Secondary Inline Prompt */}
+              <p className="mt-4 text-sm text-white/60">
+                Or learn the science behind the results ↓
+              </p>
+            </div>
           </div>
           
           {/* Social proof stat */}
@@ -375,18 +390,16 @@ export function Hero({ product }: HeroProps) {
           <AnimatePresence>
             {recentPurchase && (
               <motion.div
-                className="absolute bottom-[-80px] left-0 bg-white/10 backdrop-blur-md p-3 rounded-lg text-sm text-white max-w-xs"
-                initial={{ opacity: 0, y: 10 }}
+                className="absolute bottom-6 right-6 z-30 flex items-center gap-3 rounded-lg bg-white/90 p-3 text-xs text-neutral-700 shadow-md backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 5 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                <div className="flex items-center">
-                  <div className="h-2 w-2 rounded-full bg-green-400 mr-2"></div>
-                  <p>
-                    <span className="font-medium">{recentPurchase.name}</span> from {recentPurchase.location} just purchased,{' '}
-                    <span className="text-xs">{recentPurchase.time} min ago</span>
-                  </p>
+                <Users size={16} className="text-primary flex-shrink-0" />
+                <div>
+                  <strong>{recentPurchase.name}</strong> in {recentPurchase.location} just purchased!
+                  <span className="ml-1 text-neutral-500">({recentPurchase.time} min ago)</span>
                 </div>
               </motion.div>
             )}

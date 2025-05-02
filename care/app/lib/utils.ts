@@ -337,3 +337,19 @@ export function isLocalPath(url: string) {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+/**
+ * Ensures a store domain has the https:// protocol prefix
+ * This is particularly important for Shop Pay which needs a fully qualified URL
+ */
+export function getStoreDomainWithProtocol(domain: string): string {
+  if (!domain) return '';
+  
+  // If the domain already has a protocol, return as is
+  if (domain.startsWith('http://') || domain.startsWith('https://')) {
+    return domain;
+  }
+  
+  // Otherwise, add the https:// protocol
+  return `https://${domain}`;
+}

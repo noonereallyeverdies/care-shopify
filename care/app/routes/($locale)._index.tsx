@@ -40,14 +40,16 @@ import {seoPayload} from '~/lib/seo.server';
 import {HOMEPAGE_PRODUCT_QUERY} from '~/queries/homepage';
 import {Hero} from '~/components/sections/Hero';
 import {BeforeAfterSliderSection} from '~/components/sections/BeforeAfterSliderSection';
-import {HairLossVisualization} from '~/components/sections/HairLossVisualization';
-import {ProblemSolutionSection} from '~/components/sections/ProblemSolutionSection';
 import {SelfCareRitualSection} from '~/components/sections/SelfCareRitualSection';
-import {ResultsTimeline} from '~/components/sections/ResultsTimeline';
 import {ProductHighlight} from '~/components/sections/ProductHighlight';
 import {ClientOnly} from '~/components/utility/ClientOnly';
-import {SocialProofBanner} from '~/components/sections/SocialProofBanner';
 import {InteractiveScienceSection} from '~/components/sections/InteractiveScienceSection';
+import {HowItWorksSection} from '~/components/HowItWorksSection';
+import {ComparisonSection} from '~/components/ComparisonSection';
+import { EmotionalCtaSection } from '~/components/sections/EmotionalCtaSection';
+import { HairStagesSection } from '~/components/sections/HairStagesSection';
+import { ResultsJourneySection } from '~/components/sections/ResultsJourneySection';
+import { PricingSection } from '~/components/sections/PricingSection';
 
 export const headers = {
   'Cache-Control': 'public, max-age=60',
@@ -57,7 +59,9 @@ export interface HomepageProduct {
   id: string;
   title: string;
   handle: string;
-  descriptionHtml?: string;
+  descriptionHtml: string;
+  description: string;
+  vendor?: string;
   featuredImage?: {
     url: string;
     altText?: string;
@@ -71,7 +75,28 @@ export interface HomepageProduct {
     title?: string;
     description?: string;
   };
+  availableForSale?: boolean;
+  priceRange?: {
+    minVariantPrice: MoneyV2;
+  };
 }
+
+// --- Type Definitions for Loader Response ---
+interface ErrorResponse {
+  message: string;
+  error: string;
+}
+
+// Type guard to check for our specific error response structure
+function isErrorResponse(response: any): response is ErrorResponse {
+  return (
+    response &&
+    typeof response === 'object' &&
+    typeof response.message === 'string' &&
+    typeof response.error === 'string'
+  );
+}
+// --- End Type Definitions ---
 
 export async function loader({params, context}: LoaderFunctionArgs) {
   const {language, country} = context.storefront.i18n;
@@ -126,10 +151,9 @@ export async function loader({params, context}: LoaderFunctionArgs) {
         pageType: AnalyticsPageType.home,
       },
       seo,
-      storeDomain: cleanStoreDomain,
+      storeDomain: storeDomain,
     };
-
-    console.log('[Homepage Loader] Returning deferred data...');
+    
     return defer(deferredData, {
       headers: {
         'Cache-Control': CACHE_SHORT,
@@ -138,31 +162,45 @@ export async function loader({params, context}: LoaderFunctionArgs) {
     });
   } catch (error) {
     console.error('[Homepage Loader] Error fetching data:', error);
-    if (error instanceof Response) {
-      throw error;
-    }
-    throw new Response(JSON.stringify({message: 'Internal server error'}), {
-      status: 500,
+    
+    // Determine status code based on error type if possible
+    const status = error instanceof Response ? error.status : 500;
+    const message = error instanceof Error ? error.message : 'Internal server error';
+
+    // Always return a new, valid JSON Response
+    return new Response(JSON.stringify({ message, error: String(error) }), {
+      status: status,
       headers: {
         'Content-Type': 'application/json',
+        'Cache-Control': 'no-store', // Don't cache errors
       },
     });
   }
 }
 
+// Type MetaArgs data as SuccessData | ErrorResponse | undefined
 export const meta = ({data}: MetaArgs<typeof loader>) => {
-  const shopName = data?.shop?.name || 'care•atin';
+  // Use the type guard
+  if (isErrorResponse(data)) {
+    return [{ title: 'Error' }, { description: data.message }];
+  }
+  
+  // Proceed assuming inferred shape (or null/undefined), keep using optional chaining
+  const shopName = data?.shop?.name ?? 'care•atin';
   const defaultTitle = `${shopName} | The Science of Shine`;
   const defaultDescription = `Discover ${shopName}'s innovative approach to hair care, combining red light therapy and science for healthier, stronger hair.`;
 
-  const homeSeo: SeoConfig = {
-    title: `care•atin Red Light Therapy Hair Growth Device | Visible Results`,
-    description: `Revitalize your hair with care•atin's patented red light therapy device. Clinically proven for thicker, fuller hair growth & reduced shedding. Experience visible results & regain confidence. Shop now!`,
-    ...(data?.seo ?? {}),
-    titleTemplate: `%s`,
-  };
+  const homeSeo = data?.seo
+    ? {
+        title: `care•atin Red Light Therapy Hair Growth Device | Visible Results`,
+        description: `Revitalize your hair with care•atin's patented red light therapy device. Clinically proven for thicker, fuller hair growth & reduced shedding. Experience visible results & regain confidence. Shop now!`,
+        ...(data.seo ?? {}),
+        titleTemplate: `%s`,
+      } as SeoConfig
+    : { title: defaultTitle, description: defaultDescription };
 
-  if (!data) {
+  // Adjust check slightly - if data exists and is not error, check seo
+  if (!data || isErrorResponse(data) || !data.seo) {
     return [{title: defaultTitle}, {description: defaultDescription}];
   }
 
@@ -170,12 +208,47 @@ export const meta = ({data}: MetaArgs<typeof loader>) => {
 };
 
 export default function Homepage() {
-  const {product} = useLoaderData<typeof loader>();
+  // Revert useLoaderData type
+  const loaderData = useLoaderData<typeof loader>();
+
+  // Use the type guard
+  if (isErrorResponse(loaderData)) {
+    console.error("Error loading homepage data:", loaderData.error);
+    return (
+      <div className="container mx-auto px-6 py-20 text-center text-critical">
+        <h1 className="text-2xl font-bold mb-4">error loading page</h1>
+        <p>{loaderData.message || 'an unexpected error occurred.'}</p>
+        <p>please try refreshing the page.</p>
+      </div>
+    );
+  }
+
+  // If not error, assume inferred shape
+  const product = loaderData?.product;
+  const storeDomain = loaderData?.storeDomain;
+
+  // Add check for storeDomain as well, though less critical for render
+  if (!storeDomain) {
+    console.warn("Homepage storeDomain is missing from loader data.");
+    // Decide if this is critical enough to block render, maybe not.
+  }
+
+  if (!product) {
+     console.error("Homepage product data is missing after loader resolution.");
+     return (
+      <div className="container mx-auto px-6 py-20 text-center text-warning">
+        <h1 className="text-2xl font-bold mb-4">product data unavailable</h1>
+        <p>we couldn't load the product information for this page.</p>
+        <p>please try again later.</p>
+      </div>
+    );
+  }
 
   // State to track dynamically loaded components
   const [BeforeAfterSection, setBeforeAfterSection] = useState<React.ComponentType<any> | null>(null);
   
-  const [HairLossSection, setHairLossSection] = useState<React.ComponentType<any> | null>(null);
+  // Remove state for HairLossVisualization
+  // const [HairLossSection, setHairLossSection] = useState<React.ComponentType<any> | null>(null);
   
   // Load components on the client side
   useEffect(() => {
@@ -188,12 +261,12 @@ export default function Homepage() {
         console.error('Failed to load BeforeAfterSliderSection:', error);
       });
 
-    // Load HairLoss component
-    import('~/components/sections/HairLossVisualization')
-      .then((module) => setHairLossSection(() => module.HairLossVisualization))
-      .catch((error) => {
-        console.error('Failed to load HairLossVisualization:', error);
-      });
+    // Remove loading logic for HairLossVisualization
+    // import('~/components/sections/HairLossVisualization')
+    //   .then((module) => setHairLossSection(() => module.HairLossVisualization))
+    //   .catch((error) => {
+    //     console.error('Failed to load HairLossVisualization:', error);
+    //   });
   }, []);
 
   // Basic loading fallback UI
@@ -211,30 +284,47 @@ export default function Homepage() {
 
   return (
     <>
-      {/* 1. HERO - Brand promise and emotional impact */}
-        <Hero product={product} />
-      {/* 2. PROBLEM VISUALIZATION - Showing the cost of waiting */}
-      <ClientOnly>
-        {HairLossSection ? <HairLossSection /> : loadingSectionFallback}
-      </ClientOnly>
-      {/* 3. PROBLEM CONTEXT - Detailed problem explanation */}
-      <ProblemSolutionSection />
-      {/* 4. SOLUTION & PROOF - Before/After transformation with real results */}
+      {/* Section Order Updated: */}
+      
+      {/* 1. HERO */}
+      <Hero product={product} />
+
+      {/* 3. How It Works (Section 2) */}
+      <HowItWorksSection />
+
+      {/* 4. Testimonials (Section 3) */}
       <ClientOnly>
         {BeforeAfterSection ? <BeforeAfterSection /> : loadingSectionFallback}
       </ClientOnly>
-      {/* 5. SOCIAL PROOF - Statistics and testimonials */}
-      <SocialProofBanner />
-      {/* 6. CONSOLIDATED SCIENCE SECTION */}
+
+      {/* 5. Emotional CTA (Section 6) - Replaces Social Proof */}
+      <EmotionalCtaSection />
+
+      {/* 6. Science (Section 4) */}
       <InteractiveScienceSection />
-      {/* 7. USAGE - Simple 3-step ritual */}
+      
+      {/* 7. Comparison Table (Section 5) - Replaces ProblemSolution */}
+      <ComparisonSection />
+
+      {/* 8. Hair Stages (Section 7) - Replaces HairLossVisualization */}
+      <HairStagesSection />
+
+      {/* 9. Ritual (Section 8) */}
       <SelfCareRitualSection />
-      {/* 8. RESULTS JOURNEY - 90-day transformation timeline */}
-      <div id="results-section">
-      <ResultsTimeline />
-      </div>
-      {/* 9. CLOSING ACTION - Product showcase and final CTA */}
-      <ProductHighlight product={product} />
+
+      {/* 10. Results Journey (Section 10) - Replaces ResultsTimeline */}
+      <ResultsJourneySection />
+
+      {/* 11. Pricing (Section 9) */}
+      {storeDomain && product ? (
+         <PricingSection product={product} storeDomain={storeDomain} /> 
+      ) : (
+         <div className="text-center py-10 text-neutral-500">Pricing unavailable.</div>
+      )}
+      
+      {/* 12. Final CTA (Section 10 - Product Focus) */}
+      <ProductHighlight product={product as any} />
     </>
   );
 }
+

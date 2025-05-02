@@ -15,7 +15,7 @@ import {
 } from '@shopify/hydrogen';
 
 import {AppSession} from '~/lib/session.server';
-import {getLocaleFromRequest} from '~/lib/utils';
+import {getLocaleFromRequest, getStoreDomainWithProtocol} from '~/lib/utils';
 
 /**
  * Export a fetch handler in module format.
@@ -49,7 +49,7 @@ export default {
         i18n: getLocaleFromRequest(request),
         publicStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
         privateStorefrontToken: env.PRIVATE_STOREFRONT_API_TOKEN,
-        storeDomain: env.PUBLIC_STORE_DOMAIN,
+        storeDomain: getStoreDomainWithProtocol(env.PUBLIC_STORE_DOMAIN),
         storefrontId: env.PUBLIC_STOREFRONT_ID,
         storefrontHeaders: getStorefrontHeaders(request),
       });
@@ -68,10 +68,18 @@ export default {
         session,
         customerAccountId: env.PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID,
         shopId: env.SHOP_ID,
-        customerAccountUrl: env.PUBLIC_CUSTOMER_ACCOUNT_API_URL,
-        // Set the redirect URI based on the current host
-        redirectUriScheme: protocol.replace(':', ''),
-        redirectUriHost: host,
+        // For authUrl, use a standard format
+        authUrl: '/account/authorize',
+        // Preserve custom settings in a compatible way
+        customAuthStatusHandler: () => {
+          // Default redirect behavior with a custom path
+          return new Response(null, {
+            status: 302,
+            headers: {
+              Location: `/account/login?return_to=${encodeURIComponent(url.pathname + url.search)}`,
+            },
+          });
+        },
       });
 
       const cart = createCartHandler({
@@ -119,19 +127,43 @@ export default {
       if (existingCspHeader) {
         // If there's an existing CSP header, append the font-src directive
         if (existingCspHeader.includes('font-src')) {
-          // If font-src already exists, add data: to it
-          const updatedCsp = existingCspHeader.replace(
-            /(font-src\s[^;]*)/,
-            '$1 data:'
-          );
+          // If font-src already exists, add necessary domains to it
+          const updatedCsp = existingCspHeader
+            .replace(/(font-src\s[^;]*)/,
+             '$1 data: https://fonts.googleapis.com https://fonts.gstatic.com');
           response.headers.set('Content-Security-Policy', updatedCsp);
         } else {
           // If font-src doesn't exist, add it as a new directive
-          response.headers.set('Content-Security-Policy', `${existingCspHeader}; font-src data: 'self'`);
+          response.headers.set('Content-Security-Policy', `${existingCspHeader}; font-src data: 'self' https://fonts.googleapis.com https://fonts.gstatic.com`);
+        }
+        
+        // Add style-src if needed
+        if (!existingCspHeader.includes('style-src')) {
+          response.headers.set('Content-Security-Policy', 
+            response.headers.get('Content-Security-Policy') + 
+            "; style-src 'self' 'unsafe-inline' https://cdn.shopify.com https://fonts.googleapis.com");
+        } else if (!existingCspHeader.includes('fonts.googleapis.com')) {
+          // Add fonts.googleapis.com to existing style-src
+          const updatedStyleCsp = response.headers.get('Content-Security-Policy')
+            ?.replace(/(style-src\s[^;]*)/,
+            '$1 https://fonts.googleapis.com');
+          response.headers.set('Content-Security-Policy', updatedStyleCsp || '');
         }
       } else {
-        // If no CSP exists, create a minimal one that allows data: for fonts and preserves default behavior
-        response.headers.set('Content-Security-Policy', "default-src 'self' https://cdn.shopify.com https://shopify.com http://localhost:*; font-src data: 'self'");
+        // If no CSP exists, create a minimal one that allows Google Fonts
+        response.headers.set('Content-Security-Policy', 
+          "default-src 'self' https://cdn.shopify.com https://shopify.com http://localhost:*; " +
+          "font-src data: 'self' https://fonts.googleapis.com https://fonts.gstatic.com; " +
+          "style-src 'self' 'unsafe-inline' https://cdn.shopify.com https://fonts.googleapis.com; " +
+          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.shopify.com https://shopify.com https://www.google-analytics.com https://www.googletagmanager.com http://localhost:*");
+      }
+      
+      // Make sure script-src has unsafe-inline
+      if (existingCspHeader && existingCspHeader.includes('script-src') && !existingCspHeader.includes("script-src 'unsafe-inline'")) {
+        const updatedScriptCsp = response.headers.get('Content-Security-Policy')
+          ?.replace(/(script-src\s[^;]*)/,
+          "$1 'unsafe-inline' 'unsafe-eval' https://shopify.com https://www.google-analytics.com https://www.googletagmanager.com");
+        response.headers.set('Content-Security-Policy', updatedScriptCsp || '');
       }
 
       return response;

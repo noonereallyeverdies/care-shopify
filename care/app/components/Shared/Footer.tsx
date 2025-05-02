@@ -221,8 +221,19 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
               <img src="/images/payment/shopify.svg" alt="shop pay" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
             </div>
           </div>
-      </div>
-    </footer>
+
+          {/* Large C• Logo Element - Final Adjustments */}
+          <div className="absolute bottom-0 right-0 -mb-4 md:-mb-8 pointer-events-none select-none opacity-30 md:opacity-40 transform -translate-x-[10rem] md:-translate-x-[15rem]">
+            <div className="relative font-sans text-[18rem] md:text-[24rem] lg:text-[28rem] font-light text-stone-700 leading-none">
+              c
+              <span className="absolute -top-4 -right-4 md:-top-8 md:-right-8 text-3xl md:text-4xl text-rose-500">
+                •
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </footer>
     </>
   );
 }
