@@ -1,0 +1,47 @@
+/* Font is now self-hosted via /fonts/fonts.css */
+
+.luxury-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Shimmer effect for headline and CTA on hover */
+.shimmer-on-hover {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+.shimmer-on-hover:hover::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 150%; height: 100%;
+  background: linear-gradient(120deg, transparent 0%, #fff6fa 40%, #ffe4ec 60%, transparent 100%);
+  opacity: 0.7;
+  animation: shimmer 1.2s linear forwards;
+  pointer-events: none;
+}
+@keyframes shimmer {
+  0% { left: -75%; }
+  100% { left: 100%; }
+}
+
+/* Animated pastel pink border glow for CTA */
+.luxury-cta {
+  box-shadow: 0 0 0 0 #fbcfe8, 0 0 16px 4px #fbcfe8;
+  border-color: #fbcfe8;
+  transition: box-shadow 0.4s, border-color 0.4s;
+}
+.luxury-cta:hover, .luxury-cta:focus {
+  box-shadow: 0 0 0 4px #fbcfe8, 0 0 32px 8px #fbcfe8;
+  border-color: #f9a8d4;
+  outline: none;
+}
+
+/* Optional: subtle pulse for border glow */
+@keyframes border-glow {
+  0%, 100% { box-shadow: 0 0 0 0 #fbcfe8, 0 0 16px 4px #fbcfe8; }
+  50% { box-shadow: 0 0 0 4px #fbcfe8, 0 0 32px 8px #fbcfe8; }
+}
+.animate-border-glow {
+  animation: border-glow 2.5s infinite;
+} 

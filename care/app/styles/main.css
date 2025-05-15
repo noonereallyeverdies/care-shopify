@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Refined color palette */
+    --color-primary: 34, 33, 31; /* stone-800 */
+    --color-contrast: 250, 249, 247; /* stone-50 */
+    --color-accent: 233, 58, 121; /* Changed to rose-600 */
+    --color-brand: 233, 58, 121; /* Changed to rose-600 */
+    --color-shop-pay: 27, 29, 29;
+    --black: var(--color-primary);
+    
+    /* Soft shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.04);
+  }
+
+  body {
+    @apply bg-contrast text-neutral-800 antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-family-body); /* Consistent sans-serif font for body */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading); /* Use the serif font consistently */
+    @apply font-light text-neutral-900 tracking-tight lowercase; /* Use font-light and lowercase for headings */
+  }
+
+  /* Adjust heading weights for consistency */
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
+  h2 { @apply text-3xl md:text-4xl lg:text-5xl; }
+  h3 { @apply text-2xl md:text-3xl lg:text-4xl; }
+  h4 { @apply text-xl md:text-2xl lg:text-3xl; }
+  h5 { @apply text-lg md:text-xl lg:text-2xl; }
+  h6 { @apply text-base md:text-lg lg:text-xl; }
+
+  p {
+     @apply text-base leading-relaxed tracking-normal;
+     /* Ensure body paragraphs use the same sans-serif font */
+     font-family: var(--font-family-body);
+     font-weight: 300; /* Keep lighter body weight */
+   }
+
+  /* Other base styles */
+  a {
+    @apply text-neutral-900 hover:text-neutral-700 transition-colors duration-200;
+  }
+}
+
+@layer components {
+  /* Define text-primary class that was missing */
+  .text-primary {
+    @apply text-neutral-900;
+  }
+  
+  /* Apple-inspired loader */
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid theme('colors.rose.300');
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Apple-like glass effect */
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-apple-sm;
+  }
+  
+  /* Glossier-like button */
+  .btn-glossier {
+    @apply px-6 py-3 rounded-full bg-rose-100 text-rose-800 font-medium 
+           hover:bg-rose-200 hover:text-rose-900 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-rose-300 focus:ring-offset-2;
+  }
+  
+  /* Apple-like button */
+  .btn-apple {
+    @apply px-6 py-3 rounded-full bg-stone-900 text-white font-medium 
+           hover:bg-stone-800 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-offset-2;
+  }
+
+  /* Brand typography classes */
+  .brand-heading {
+    @apply font-light tracking-tight normal-case;
+  }
+
+  .brand-body {
+    @apply font-normal;
+  }
+
+  .brand-dot {
+    @apply text-rose-500 text-sm align-text-top mx-px;
+  }
+
+  /* Section layout standardization */
+  .section-spacing {
+    @apply py-8 md:py-14;
+  }
+
+  /* Container width standardization */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Card standardization */
+  .section-card {
+    @apply rounded-lg bg-white overflow-hidden;
+  }
+  
+  /* Refined Primary Button Style */
+  .btn-primary-refined {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ease-out;
+    background-color: rgb(var(--color-accent));
+    color: white;
+  }
+  
+  .btn-primary-refined:hover {
+    @apply bg-rose-700 transform -translate-y-1 shadow-lg;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}

@@ -1,259 +1,190 @@
 import { Link } from '@remix-run/react';
-import type { EnhancedMenu, ParentEnhancedMenuItem, ChildEnhancedMenuItem } from '~/lib/utils';
-import { Facebook, Instagram, Twitter, Youtube, Package, RotateCcw, Award, Heart, Star, Sparkles, Clock } from 'lucide-react';
-import { useEffect, useState } from 'react';
 
-// Import the CSS file for base structural styling
-import './Footer.css';
+export interface FooterProps {
+  footer?: any;
+}
 
-// --- Helper function for Policy Links ---
-function FooterPolicyLink({ to, children }: { to: string; children: React.ReactNode }) {
+export function Footer({ footer }: FooterProps) {
+  const currentYear = new Date().getFullYear();
+  
+  // Define footer sections with fallbacks if data isn't provided
+  const footerItems = footer?.items || [
+    { 
+      title: 'Shop',
+      links: [
+        { title: 'Products', url: '/products' },
+        { title: 'Hair Quiz', url: '/quiz' },
+        { title: 'Gift Cards', url: '/gift-cards' }
+      ] 
+    },
+    { 
+      title: 'Learn',
+      links: [
+        { title: 'The Science', url: '/science' },
+        { title: 'Hair Health', url: '/hair-health' },
+        { title: 'FAQ', url: '/faq' }
+      ] 
+    },
+    { 
+      title: 'Company',
+      links: [
+        { title: 'About Us', url: '/about' },
+        { title: 'Contact', url: '/contact' },
+        { title: 'Careers', url: '/careers' }
+      ] 
+    },
+    { 
+      title: 'Support',
+      links: [
+        { title: 'Shipping', url: '/shipping' },
+        { title: 'Returns', url: '/returns' },
+        { title: 'Privacy Policy', url: '/privacy' }
+      ] 
+    }
+  ];
+
+  // Social media links
+  const socialLinks = [
+    { name: 'Instagram', url: 'https://instagram.com', icon: 'instagram' },
+    { name: 'Facebook', url: 'https://facebook.com', icon: 'facebook' },
+    { name: 'Twitter', url: 'https://twitter.com', icon: 'twitter' }
+  ];
+
+  // Render social media icon based on name
+  const renderSocialIcon = (icon: string) => {
+    switch (icon) {
+      case 'instagram':
+        return (
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+          </svg>
+        );
+      case 'facebook':
+        return (
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+          </svg>
+        );
+      case 'twitter':
+        return (
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+          </svg>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
-    <Link 
-      to={to} 
-      className="text-stone-300 hover:text-rose-300 text-xs px-4 relative transition-colors duration-300 font-light"
-    >
-      {children}
-    </Link>
+    <footer className="bg-gray-50 border-t border-gray-100">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Main footer content */}
+        <div className="py-12 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {footerItems.map((section, index) => (
+            <div key={`footer-section-${index}`}>
+              <h3 className="text-sm font-semibold text-primary-500 uppercase tracking-wider mb-4">
+                {section.title}
+              </h3>
+              <ul className="space-y-3">
+                {section.links.map((link, linkIndex) => (
+                  <li key={`footer-link-${index}-${linkIndex}`}>
+                    <Link 
+                      to={link.url}
+                      className="text-sm text-gray-600 hover:text-primary-500 transition-colors"
+                    >
+                      {link.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Newsletter */}
+        <div className="py-8 border-t border-gray-100">
+          <div className="md:flex md:items-center md:justify-between">
+            <div className="mb-6 md:mb-0 md:max-w-md">
+              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Subscribe to our newsletter
+              </h3>
+              <p className="text-sm text-gray-600">
+                Stay updated with the latest hair wellness tips and product launches.
+              </p>
+            </div>
+            <div className="flex-1 md:ml-8 lg:ml-12">
+              <form className="sm:flex">
+                <label htmlFor="email-address" className="sr-only">Email address</label>
+                <input
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="w-full min-w-0 px-4 py-2 text-base text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  placeholder="Enter your email"
+                />
+                <div className="mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+                  <button
+                    type="submit"
+                    className="w-full bg-primary-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar with copyright and social links */}
+        <div className="py-6 border-t border-gray-100 md:flex md:items-center md:justify-between">
+          <div className="flex justify-center space-x-6 md:order-2">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                className="text-gray-400 hover:text-primary-500"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="sr-only">{link.name}</span>
+                {renderSocialIcon(link.icon)}
+              </a>
+            ))}
+          </div>
+          <div className="mt-8 md:mt-0 md:order-1 text-center md:text-left">
+            <p className="text-sm text-gray-500">
+              &copy; {currentYear} care•atin. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
 
 export function FooterFallback() {
   return (
-    <footer className="footer fallback bg-stone-900 text-stone-300 border-t border-stone-700">
-      <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} care•atin. all rights reserved.</p>
-      </div>
-    </footer>
-  );
-}
-
-export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
-  const [isVisible, setIsVisible] = useState(false);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.body.offsetHeight;
-      
-      // When user scrolls near the footer
-      if (scrollPosition > docHeight - windowHeight - 300) {
-        setIsVisible(true);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    // Initial check
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <>
-      {/* Benefits Bar */}
-      <div className="bg-gradient-to-r from-stone-50 to-rose-50 py-8 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className={`flex flex-col items-center group hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{animationDelay: '0ms'}}>
-            <div className="w-12 h-12 mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:shadow-rose-200">
-              <Package className="w-6 h-6 text-rose-400" />
-            </div>
-            <h3 className="uppercase text-sm font-light tracking-widest mb-2 text-stone-700">free us shipping</h3>
-            <p className="text-sm text-stone-500 font-light">on orders more than $20</p>
-          </div>
-          
-          <div className={`flex flex-col items-center group hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{animationDelay: '200ms'}}>
-            <div className="w-12 h-12 mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:shadow-rose-200">
-              <RotateCcw className="w-6 h-6 text-rose-400" />
-            </div>
-            <h3 className="uppercase text-sm font-light tracking-widest mb-2 text-stone-700">no-hassle return policy</h3>
-            <p className="text-sm text-stone-500 font-light">60 days to try risk-free</p>
-          </div>
-          
-          <div className={`flex flex-col items-center group hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{animationDelay: '400ms'}}>
-            <div className="w-12 h-12 mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:shadow-rose-200">
-              <Award className="w-6 h-6 text-rose-400" />
-            </div>
-            <h3 className="uppercase text-sm font-light tracking-widest mb-2 text-stone-700">1 year premium warranty</h3>
-            <p className="text-sm text-stone-500 font-light">free replacement for any product issues</p>
-          </div>
-        </div>
-      </div>
-    
-      {/* Main Footer */}
-      <footer className="bg-gradient-to-b from-stone-900 to-black text-stone-300 py-16 relative overflow-hidden">
-        {/* Background geometric patterns */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-rose-400 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          {/* Footer Links Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-16">
-            {/* Column 1: Hair Solutions */}
-            <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '0ms'}}>
-              <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">hair solutions</h3>
-              <ul className="space-y-3">
-                <li><Link to="/collections/all" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">shop all</Link></li>
-                <li><Link to="/products/photonique-touch" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">photonique touch device</Link></li>
-                <li><Link to="/collections/accessories" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">hair care accessories</Link></li>
-                <li><Link to="/pages/hair-quiz" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">find your hair solution</Link></li>
-              </ul>
-            </div>
-            
-            {/* Column 2: Discover */}
-            <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '200ms'}}>
-              <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">discover</h3>
-              <ul className="space-y-3">
-                <li><Link to="/pages/science" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">how red light therapy works</Link></li>
-                <li><Link to="/pages/results" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">before & after results</Link></li>
-                <li><Link to="/pages/our-story" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">our story</Link></li>
-                <li><Link to="/journal" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">hair care journal</Link></li>
-              </ul>
-            </div>
-            
-            {/* Column 3: Help */}
-            <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '400ms'}}>
-              <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">help & support</h3>
-              <ul className="space-y-3">
-                <li><Link to="/pages/faq" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">frequently asked questions</Link></li>
-                <li><Link to="/pages/warranty" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">warranty information</Link></li>
-                <li><Link to="/policies/refund-policy" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">returns & refunds</Link></li>
-                <li><Link to="/pages/support" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">help center</Link></li>
-                <li><Link to="/pages/contact" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">contact us</Link></li>
-              </ul>
-            </div>
-            
-            {/* Column 4: Newsletter */}
-            <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '600ms'}}>
-              <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">join our community</h3>
-              <p className="text-stone-300 text-sm mb-5 font-light">stay updated with tips, special offers, and hair care insights.</p>
-              <form className="mb-8">
-                <div className="relative mb-4 group">
-                  <input 
-                    type="email" 
-                    placeholder="your email address" 
-                    className="bg-black/30 border border-stone-700 rounded-full text-white placeholder-stone-400 focus:border-rose-300 focus:ring-0 w-full py-2.5 px-4 text-sm pr-14 transition-all duration-300 group-hover:border-rose-400" 
-                  />
-                  <button 
-                    type="submit" 
-                    className="absolute right-1 top-1 bg-rose-400 hover:bg-rose-500 text-white text-xs rounded-full h-8 w-12 flex items-center justify-center transition-all duration-300 hover:scale-105"
-                    aria-label="sign up for newsletter"
-                  >
-                    <Sparkles size={16} className="animate-pulse" />
-                  </button>
-                </div>
-                <p className="text-stone-500 text-xs font-light">by subscribing, you agree to our privacy policy</p>
-              </form>
-              
-              <h3 className="text-white text-base font-light tracking-wider mb-3 lowercase">follow us</h3>
-              <div className="flex space-x-4">
-                <a href="#" aria-label="instagram" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
-                  <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
-                    <Instagram size={16} />
-                  </div>
-                </a>
-                <a href="#" aria-label="facebook" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
-                  <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
-                    <Facebook size={16} />
-                  </div>
-                </a>
-                <a href="#" aria-label="twitter" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
-                  <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
-                    <Twitter size={16} />
-                  </div>
-                </a>
-                <a href="#" aria-label="youtube" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
-                  <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
-                    <Youtube size={16} />
-                  </div>
-                </a>
+    <footer className="bg-gray-50 border-t border-gray-100">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[...Array(4)].map((_, i) => (
+            <div key={`footer-skeleton-${i}`}>
+              <div className="animate-pulse bg-gray-200 h-4 w-24 rounded mb-6"></div>
+              <div className="space-y-4">
+                {[...Array(3)].map((_, j) => (
+                  <div key={`footer-link-skeleton-${i}-${j}`} className="animate-pulse bg-gray-200 h-3 w-20 rounded"></div>
+                ))}
               </div>
             </div>
-          </div>
-          
-          {/* Brand Logo */}
-          <div className="text-center mb-16 relative">
-            <div className="h-px bg-gradient-to-r from-transparent via-stone-700 to-transparent w-full absolute top-1/2 left-0"></div>
-            <Link to="/" className="inline-block bg-black relative px-6 transition-transform duration-500 hover:scale-105">
-              <h2 className="text-white text-5xl font-extralight tracking-wider">
-                care<span className="text-rose-400 font-normal animate-pulse">•</span>atin
-              </h2>
-            </Link>
-            <p className="text-stone-400 font-light text-xs mt-4 italic tracking-widest">designed in california. where beauty meets care.</p>
-          </div>
-          
-          {/* Disclaimers */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-black/30 border border-stone-800 p-5 rounded-lg text-xs text-stone-400 leading-relaxed font-light backdrop-blur-sm transition-all duration-500 hover:border-stone-700">
-              protected by patents globally to provide the best red light therapy technology for hair growth and scalp health.
-            </div>
-            <div className="bg-black/30 border border-stone-800 p-5 rounded-lg text-xs text-stone-400 leading-relaxed font-light backdrop-blur-sm transition-all duration-500 hover:border-stone-700">
-              the statements on this website have not been evaluated by the fda. the information provided on this site is not intended to diagnose, treat, cure, or prevent any disease and should not be construed as medical advice. results may not be typical.
-            </div>
-          </div>
-          
-          {/* Policy Links */}
-          <div className="text-center mb-10">
-            <div className="flex flex-wrap justify-center">
-              <FooterPolicyLink to="/policies/terms-of-service">terms & conditions</FooterPolicyLink>
-              <FooterPolicyLink to="/policies/privacy-policy">privacy policy</FooterPolicyLink>
-              <FooterPolicyLink to="/policies/shipping-policy">shipping policy</FooterPolicyLink>
-              <FooterPolicyLink to="/policies/refund-policy">refund policy</FooterPolicyLink>
-              <FooterPolicyLink to="/pages/cookies">cookie policy</FooterPolicyLink>
-            </div>
-          </div>
-          
-          {/* Copyright & Payment Methods */}
-          <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-stone-800">
-            <p className="text-stone-400 text-xs mb-6 md:mb-0 font-light">© {new Date().getFullYear()} care•atin. all rights reserved.</p>
-            
-            <div className="flex space-x-2 items-center">
-              <img src="/images/payment/visa.svg" alt="visa" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/mastercard.svg" alt="mastercard" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/amex.svg" alt="american express" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/discover.svg" alt="discover" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/paypal.svg" alt="paypal" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/applepay.svg" alt="apple pay" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/googlepay.svg" alt="google pay" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/shopify.svg" alt="shop pay" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-            </div>
-          </div>
+          ))}
+        </div>
+        <div className="mt-12 border-t border-gray-100 pt-8 flex justify-center">
+          <div className="animate-pulse bg-gray-200 h-4 w-48 rounded"></div>
+        </div>
       </div>
     </footer>
-    </>
   );
 }
-
-// Add these animation keyframes to your CSS file
-// @keyframes fadeInUp {
-//   from {
-//     opacity: 0;
-//     transform: translateY(20px);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// }
-
-// @keyframes fadeInRight {
-//   from {
-//     opacity: 0;
-//     transform: translateX(-20px);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateX(0);
-//   }
-// }
-
-// .animate-fade-in-up {
-//   animation: fadeInUp 0.6s ease-out forwards;
-// }
-
-// .animate-fade-in-right {
-//   animation: fadeInRight 0.6s ease-out forwards;
-// } 

@@ -40,7 +40,7 @@ export const HOMEPAGE_PRODUCT_QUERY = `#graphql
     }
   }
 
-  query homepageProduct($handle: String!) {
+  query homepageProduct($handle: String!, $country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {
     shop {
       name
       description
@@ -48,9 +48,10 @@ export const HOMEPAGE_PRODUCT_QUERY = `#graphql
         url
       }
     }
-    products(first: 1, query: "available_for_sale:true") {
+    products(first: 3, query: "available_for_sale:true") {
       nodes {
         handle
+        title
       }
     }
     product(handle: $handle) {

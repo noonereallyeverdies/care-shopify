@@ -1,0 +1,77 @@
+/* Font is now self-hosted via /fonts/fonts.css */
+
+.luxury-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Hide scrollbar for clean UI */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Timeline styles */
+.timeline-tab {
+  transition: all 0.3s ease;
+}
+
+/* Card glassmorphism effect */
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+}
+
+/* Gradient text effects */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.text-transparent {
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+/* Animated gradient for elements */
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-shift 5s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Soft hover effects for interactive elements */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(244, 114, 182, 0.25);
+}
+
+/* Phase indicator styles */
+.phase-indicator {
+  position: relative;
+}
+
+.phase-indicator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -40px;
+  right: -40px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(244, 114, 182, 0.3), transparent);
+  z-index: -1;
+} 

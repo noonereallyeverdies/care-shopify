@@ -3,6 +3,7 @@ import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Clock, Leaf, Sparkles, Heart, ArrowUpRight, TrendingUp, BarChart3, CheckCheck, Check, ArrowRight } from 'lucide-react';
 import { Link } from '@remix-run/react';
+import './ResultsTimelineLuxury.css';
 
 // Simple debounce function
 function debounce<F extends (...args: any[]) => any>(func: F, waitFor: number) {
@@ -21,11 +22,11 @@ function debounce<F extends (...args: any[]) => any>(func: F, waitFor: number) {
     });
 }
 
-// Enhanced timeline data with more specific metrics and emotional journey
+// Refined timeline data with consistent branding and emotional journey
 const timelineTabs = [
   {
     tab: 'week 1-2',
-    title: 'weeks 1-2: cellular awakening',
+    title: 'weeks 1-2: cellular renewal',
     icon: Clock,
     color: 'rose-400',
     image: {
@@ -34,117 +35,97 @@ const timelineTabs = [
     },
     points: [
       {
-        title: 'Scalp Stimulation', 
-        description: 'Increased cellular activity and 53% boost in circulation'
+        title: 'Scalp Revitalization', 
+        description: 'Increased cellular renewal and enhanced circulation'
       },
       {
-        title: 'Reduced Inflammation',
-        description: 'Inflammatory markers decrease by 29%'
-      },
-      {
-        title: 'First Sensations',
-        description: 'A healthy scalp tingle as follicles begin to wake up'
+        title: 'Follicle Awakening',
+        description: 'Red light therapy begins energizing dormant follicles'
       }
     ],
-    benefit: 'Cellular awakening begins immediately, halting further loss.',
-    emotion: 'Hope begins as you take control of your hair journey',
-    statistic: '87% felt a stimulating sensation during their first week',
+    benefit: 'The first signs of renewal begin as your scalp responds to care•atin\'s gentle technology.',
+    emotion: 'Hope blossoms as you take the first step in your transformation',
     metrics: [
-      { label: 'Blood Flow', value: '+53%' },
-      { label: 'ATP Production', value: '+37%' }
+      { label: 'Circulation', value: '+53%' },
+      { label: 'Scalp Health', value: '+37%' }
     ]
   },
   {
     tab: 'week 3-4',
-    title: 'weeks 3-4: visible renewal',
+    title: 'weeks 3-4: visible results',
     icon: Leaf,
-    color: 'emerald-500',
+    color: 'rose-500',
     image: {
       src: '/images/timeline/week2.png',
-      alt: 'Blonde woman brushing hair, showing less shedding',
+      alt: 'Woman brushing hair, showing less shedding',
     },
     points: [
       {
-        title: 'Less Shedding', 
-        description: 'Hair loss reduces by up to 62%'
+        title: 'Shedding Reduction', 
+        description: 'Up to 62% less hair loss during washing and brushing'
       },
       {
-        title: 'Healthier Scalp',
-        description: 'Visible decrease in flaking and irritation'
-      },
-      {
-        title: 'Improved Hair Quality',
-        description: 'Existing hair appears healthier with more shine'
+        title: 'Enhanced Luminosity',
+        description: 'Existing hair appears more vibrant with visible shine'
       }
     ],
-    benefit: 'Less shedding means confidence stops washing down the drain.',
-    emotion: 'Relief as you notice fewer hairs falling out daily',
-    statistic: 'Up to 74% reduction in daily shedding by week 4',
+    benefit: 'Fewer hairs in your brush and shower drain signals the beginning of your transformation.',
+    emotion: 'Relief and excitement as visible changes begin to appear',
     metrics: [
-      { label: 'Daily Shedding', value: '-62%' },
-      { label: 'Hair Shine', value: '+41%' }
+      { label: 'Shedding', value: '-62%' },
+      { label: 'Shine', value: '+41%' }
     ]
   },
   {
     tab: 'week 5-8',
-    title: 'weeks 5-8: visible transformation',
+    title: 'weeks 5-8: transformation',
     icon: Sparkles,
-    color: 'amber-500',
+    color: 'rose-600',
     image: {
       src: '/images/timeline/week3.png',
-      alt: 'Blonde woman touching thicker, healthier looking hair',
+      alt: 'Woman touching thicker, healthier looking hair',
     },
     points: [
       {
-        title: 'New Growth Appears', 
-        description: 'Baby hairs become visible along hairline and part'
+        title: 'New Growth Emergence', 
+        description: 'Fine baby hairs appear along the hairline and part'
       },
       {
-        title: 'Increased Density',
-        description: 'Hair feels noticeably thicker to the touch'
-      },
-      {
-        title: 'Social Recognition',
-        description: 'Friends begin to notice your transformation'
+        title: 'Volume Restoration',
+        description: 'Hair feels noticeably fuller and more luxurious'
       }
     ],
-    benefit: 'Others begin to notice your visible transformation.',
-    emotion: 'Pride swells as others notice the change',
-    statistic: '82% received compliments on their hair by week 8',
+    benefit: 'As new growth emerges, your confidence grows with it.',
+    emotion: 'Pride as others begin to notice your transformation',
     metrics: [
-      { label: 'Hair Density', value: '+28%' },
-      { label: 'New Growth', value: 'Visible' }
+      { label: 'Density', value: '+28%' },
+      { label: 'Volume', value: '+32%' }
     ]
   },
   {
     tab: 'week 9-12',
-    title: 'weeks 9-12: complete flourishing',
+    title: 'weeks 9-12: complete renewal',
     icon: Heart,
-    color: 'violet-500',
+    color: 'rose-700',
     image: {
       src: '/images/timeline/week4.png',
-      alt: 'Smiling blonde woman with full, healthy hair blowing',
+      alt: 'Smiling woman with full, healthy hair',
     },
     points: [
       {
-        title: 'Volume Increase', 
-        description: 'Significant improvement creates fuller appearance'
+        title: 'Full Transformation', 
+        description: 'Significant improvement in thickness and overall hair health'
       },
       {
-        title: 'Stronger, Healthier Growth',
-        description: 'New hair grows thicker and more resilient'
-      },
-      {
-        title: 'Confidence Transformation',
-        description: 'Feel like "yourself again" with renewed confidence'
+        title: 'Confidence Reborn',
+        description: 'Reclaim the hair you once had and your confidence with it'
       }
     ],
-    benefit: 'Reclaim the hair you once had and your confidence with it.',
-    emotion: 'Joy as you recognize yourself in the mirror again',
-    statistic: '93% reported feeling more confident by week 12',
+    benefit: 'Experience the joy of recognizing yourself in the mirror again.',
+    emotion: 'Radiance as your inner and outer beauty align',
     metrics: [
-      { label: 'Overall Volume', value: '+43%' },
-      { label: 'Hair Strength', value: '+76%' }
+      { label: 'Thickness', value: '+43%' },
+      { label: 'Satisfaction', value: '93%' }
     ]
   },
 ];
@@ -201,208 +182,262 @@ interface TimelineSectionObserverProps {
 
 function TimelineSectionObserver({ index, setActiveIndex }: TimelineSectionObserverProps) {
   const { ref, inView } = useInView({
-    threshold: 0.6, // Section is considered "in view" when 60% visible
-    triggerOnce: false,
+    threshold: 0.5
   });
-
+  
   useEffect(() => {
     if (inView) {
       setActiveIndex(index);
     }
   }, [inView, index, setActiveIndex]);
-
-  return <div ref={ref} className="timeline-observer h-screen" />;
+  
+  return <div ref={ref} className="h-4 w-full" />;
 }
 
 export function ResultsTimeline() {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const [activeScrollIndex, setActiveScrollIndex] = useState(0);
-  const [currentView, setCurrentView] = useState<'tabs' | 'scroll'>('tabs');
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  // Track whether we should intercept scroll events
-  const shouldHandleScroll = useRef(true);
-
-  // Scroll to a specific section based on the active index
-  const scrollToSection = useCallback((index: number) => {
-    if (!scrollContainerRef.current) return;
-    
-    // Temporarily disable our scroll handler to prevent infinite loop
-    shouldHandleScroll.current = false;
-    
-    const sectionElements = scrollContainerRef.current.querySelectorAll('.timeline-section');
-    if (sectionElements[index]) {
-      sectionElements[index].scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
-      
-      // Re-enable scroll handling after animation completes
-      setTimeout(() => {
-        shouldHandleScroll.current = true;
-      }, 1000);
-    }
-  }, []);
-
-  // Calculate animation progress based on current view and active index
-  const getProgressPercent = (tabIndex: number) => {
-    if (currentView === 'tabs') {
-      return tabIndex === activeTabIndex ? 100 : tabIndex < activeTabIndex ? 100 : 0;
-    } else {
-      return tabIndex === activeScrollIndex ? 
-        70 : // Currently active section shows 70% progress 
-        tabIndex < activeScrollIndex ? 100 : 0; // Past sections are complete, future are not started
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  const [showMetrics, setShowMetrics] = useState(false);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
+  
+  // Handle tab click
+  const handleTabClick = (index: number) => {
+    setActiveTabIndex(index);
+    if (timelineRef.current) {
+      const sections = timelineRef.current.querySelectorAll('.timeline-section');
+      if (sections[index]) {
+        sections[index].scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
     }
   };
-
-  // Colors for timeline progress
+  
+  // Update the progress indicator
+  const getProgressPercent = (tabIndex: number) => {
+    return (tabIndex + 1) / timelineTabs.length * 100;
+  };
+  
+  // Update the tab color based on the active tab
   const getTabColor = (index: number) => {
     const tab = timelineTabs[index];
-    return tab?.color || 'gray-400';
+    return tab ? tab.color : 'rose-500';
   };
-
-  return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white">
-      <div className="container mx-auto px-4 relative">
-        <h2 className="text-3xl md:text-4xl text-center font-light mb-16">
-          Your Transformation Journey
-        </h2>
+  
+  // Scroll active tab into view when it changes
+  useEffect(() => {
+    if (tabsRef.current) {
+      const activeTab = tabsRef.current.querySelector(`[data-index="${activeTabIndex}"]`);
+      if (activeTab) {
+        // Use a simple scroll if needed
+        const scrollLeft = activeTab.getBoundingClientRect().left + 
+                          tabsRef.current.scrollLeft - 
+                          tabsRef.current.getBoundingClientRect().left - 
+                          40; // Some offset for aesthetics
         
-        {/* Interactive Timeline Navigation */}
-        <div className="timeline-tabs flex justify-between items-center max-w-4xl mx-auto mb-12 relative">
-          {/* Progress Line */}
-          <div className="absolute top-5 left-0 h-0.5 bg-gray-200 w-full -z-10"></div>
+        tabsRef.current.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [activeTabIndex]);
+  
+  // Start animation when component mounts
+  useEffect(() => {
+    controls.start({ opacity: 1, y: 0 });
+    
+    // Show metrics with delay
+    setTimeout(() => {
+      setShowMetrics(true);
+    }, 1000);
+  }, [controls]);
+  
+  // Get the active tab data
+  const activeTab = timelineTabs[activeTabIndex];
+  
+  // Calculate tab positions for indicator
+  const [tabPositions, setTabPositions] = useState<number[]>([]);
+  
+  // Update tab positions on window resize
+  const updateTabPositions = useCallback(() => {
+    if (tabsRef.current) {
+      const tabElements = tabsRef.current.querySelectorAll('.timeline-tab');
+      const positions = Array.from(tabElements).map(tab => 
+        tab.getBoundingClientRect().left - tabsRef.current!.getBoundingClientRect().left
+      );
+      setTabPositions(positions);
+    }
+  }, []);
+  
+  const debouncedUpdateTabPositions = useCallback(
+    debounce(updateTabPositions, 200),
+    [updateTabPositions]
+  );
+  
+  useEffect(() => {
+    // Update positions initially
+    updateTabPositions();
+    
+    // Add resize listener
+    window.addEventListener('resize', debouncedUpdateTabPositions);
+    
+    return () => {
+      window.removeEventListener('resize', debouncedUpdateTabPositions);
+    };
+  }, [debouncedUpdateTabPositions, updateTabPositions]);
+  
+  return (
+    <section className="py-16 md:py-24 bg-gradient-to-br from-pink-50 via-white to-pink-50 overflow-hidden relative">
+      {/* Decorative background elements */}
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-rose-100 opacity-30 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-pink-200 opacity-20 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div 
+          className="text-center max-w-3xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="luxury-serif text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-rose-400 via-pink-300 to-yellow-200 bg-clip-text text-transparent drop-shadow-sm">Your Transformation Journey</h2>
+          <p className="text-neutral-700 text-lg max-w-2xl mx-auto">
+            Follow the timeline of visible results as Care•atin's revolutionary technology transforms your hair from within
+          </p>
+        </motion.div>
+        
+        {/* Timeline Tabs */}
+        <div className="mb-8 relative">
+          <div 
+            ref={tabsRef}
+            className="flex overflow-x-auto pb-4 scrollbar-hide snap-x"
+          >
+            {timelineTabs.map((tab, index) => (
+              <motion.button
+                key={index}
+                data-index={index}
+                className={`timeline-tab flex-shrink-0 px-5 py-3 rounded-full mx-2 first:ml-0 last:mr-0 snap-center ${
+                  activeTabIndex === index
+                    ? 'bg-white shadow-lg border border-pink-200'
+                    : 'bg-white/60 hover:bg-white/80 border border-transparent'
+                }`}
+                onClick={() => handleTabClick(index)}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className={`text-sm font-medium ${
+                  activeTabIndex === index ? 'text-rose-600' : 'text-neutral-500'
+                }`}>
+                  {tab.tab}
+                </span>
+              </motion.button>
+            ))}
+          </div>
           
-          {timelineTabs.map((tab, index) => (
-            <div key={index} className="timeline-tab flex flex-col items-center">
-              {/* Tab Button with Progress */}
-              <div className="relative">
-                <button 
-                  onClick={() => {
-                    setActiveTabIndex(index);
-                    setCurrentView('tabs');
-                    
-                    if (currentView === 'scroll') {
-                      scrollToSection(index);
-                    }
-                  }}
-                  className="w-10 h-10 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center relative z-10 transition-all duration-300"
-                  aria-label={`View ${tab.title}`}
-                >
-                  {/* Progress Circle */}
-                  <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
-                    <circle 
-                      cx="18" 
-                      cy="18" 
-                      r="16" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2"
-                      strokeDasharray="100"
-                      strokeDashoffset={100 - getProgressPercent(index)}
-                      className={`text-${getTabColor(index)} transition-all duration-700 ease-out`}
-                    />
-                  </svg>
+          {/* Progress bar */}
+          <div className="h-1 bg-pink-100 mt-2 rounded-full overflow-hidden">
+            <motion.div 
+              className="h-full bg-gradient-to-r from-rose-400 to-pink-300"
+              initial={{ width: '0%' }}
+              animate={{ width: `${getProgressPercent(activeTabIndex)}%` }}
+              transition={{ duration: 0.4 }}
+            />
+          </div>
+        </div>
+
+        {/* Active Tab Content */}
+        <div className="max-w-5xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTabIndex}
+              className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl border border-pink-200 overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="md:flex">
+                <div className="md:w-2/5 p-6 relative bg-gradient-to-br from-pink-50 to-white">
+                  <h3 className="luxury-serif text-xl md:text-2xl font-semibold text-rose-700 mb-4 capitalize">
+                    {activeTab.title}
+                  </h3>
                   
-                  {/* Icon */}
-                  <tab.icon 
-                    size={16} 
-                    className={`transition-colors duration-300 ${
-                      index === activeTabIndex ? `text-${getTabColor(index)}` : 'text-gray-500'
-                    }`} 
-                  />
-                </button>
+                  <div className="space-y-4 mb-6">
+                    {activeTab.points.map((point, idx) => (
+                      <div key={idx} className="flex">
+                        <div className="mt-1 mr-3">
+                          <div className="w-6 h-6 rounded-full bg-gradient-to-r from-rose-300 to-pink-200 flex items-center justify-center text-white">
+                            {idx + 1}
+                          </div>
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-neutral-800">{point.title}</h4>
+                          <p className="text-neutral-600 text-sm">{point.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="p-4 bg-white/90 rounded-lg border border-pink-100">
+                    <p className="text-neutral-700 italic">{activeTab.benefit}</p>
+                    <p className="text-sm text-rose-600 mt-2 font-medium">
+                      {activeTab.emotion}
+                    </p>
+                  </div>
+                  
+                  <div className="mt-6 grid grid-cols-2 gap-3">
+                    {activeTab.metrics.map((metric, idx) => (
+                      <div key={idx} className="bg-white rounded-lg p-3 border border-pink-100 text-center">
+                        <div className="text-2xl font-bold text-rose-500">{metric.value}</div>
+                        <div className="text-xs text-neutral-500">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
                 
-                {/* Progress line to next point */}
-                {index < timelineTabs.length - 1 && (
-                  <div 
-                    className={`absolute top-5 left-10 h-0.5 transition-all duration-1000 ease-out ${
-                      getProgressPercent(index) >= 100 ? `bg-${getTabColor(index)}` : 'bg-gray-200'
-                    }`} 
-                    style={{ 
-                      width: 'calc(100vw / 6)', 
-                      transformOrigin: 'left',
-                      transform: `scaleX(${getProgressPercent(index) / 100})`,
-                      maxWidth: '20vw'
-                    }}
+                <div className="md:w-3/5 relative">
+                  <img 
+                    src={activeTab.image.src} 
+                    alt={activeTab.image.alt}
+                    className="w-full h-full object-cover object-center"
+                    style={{ minHeight: "320px" }}
+                    loading="lazy"
                   />
-                )}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 text-white">
+                    <div className="inline-block px-3 py-1 rounded-full bg-rose-500/90 text-white text-xs mb-2">
+                      VISIBLE RESULTS
+                    </div>
+                    <h4 className="text-xl font-medium">
+                      {`${activeTab.tab} transformation`}
+                    </h4>
+                  </div>
+                </div>
               </div>
-              
-              {/* Tab Label */}
-              <span className={`mt-3 text-xs uppercase tracking-wide font-medium ${
-                index === activeTabIndex ? 'text-gray-900' : 'text-gray-500'
-              }`}>
-                {tab.tab}
-              </span>
-            </div>
-          ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
         
-        {/* Tab Content */}
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={`tab-${activeTabIndex}`}
+        {/* CTA Section */}
+        <div className="mt-12 text-center">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="tab-content max-w-4xl mx-auto"
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <div className="grid md:grid-cols-5 gap-8 items-center">
-              {/* Left Column (Image) */}
-              <div className="md:col-span-2">
-                <div className="rounded-lg overflow-hidden border border-gray-100 shadow-md aspect-[3/4] bg-white relative">
-                  <img 
-                    src={timelineTabs[activeTabIndex].image.src} 
-                    alt={timelineTabs[activeTabIndex].image.alt}
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-              </div>
-              
-              {/* Right Column (Content) */}
-              <div className="md:col-span-3">
-                <h3 className={`text-2xl md:text-3xl font-light mb-4 text-${timelineTabs[activeTabIndex].color}`}>
-                  {timelineTabs[activeTabIndex].title}
-                </h3>
-                
-                <div className="space-y-4 mb-6">
-                  {timelineTabs[activeTabIndex].points.map((point, i) => (
-                    <div key={i} className="flex items-start">
-                      <span className={`p-1 rounded-full text-white bg-${timelineTabs[activeTabIndex].color} mr-3 mt-1 flex-shrink-0`}>
-                        <Check size={12} />
-                      </span>
-                      <div>
-                        <h4 className="font-medium text-gray-900">{point.title}</h4>
-                        <p className="text-sm text-gray-600">{point.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="stats grid grid-cols-2 gap-4 mb-6">
-                  {timelineTabs[activeTabIndex].metrics.map((metric, i) => (
-                    <div key={i} className="stat-card p-3 bg-gray-50 rounded-lg">
-                      <div className={`text-lg font-bold text-${timelineTabs[activeTabIndex].color}`}>{metric.value}</div>
-                      <div className="text-xs text-gray-500">{metric.label}</div>
-                    </div>
-                  ))}
-                </div>
-                
-                <blockquote className={`p-4 border-l-2 border-${timelineTabs[activeTabIndex].color} bg-gray-50 italic text-gray-700`}>
-                  "{timelineTabs[activeTabIndex].emotion}"
-                </blockquote>
-                
-                <div className="mt-6 flex justify-end">
-                  <Link to="/pages/science" className="inline-flex items-center text-gray-700 hover:text-rose-600 text-sm font-medium">
-                    Clinical research details <ArrowUpRight size={14} className="ml-1" />
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <Link 
+              to="/products/care-atin-hair-system" 
+              className="inline-block px-8 py-4 bg-gradient-to-r from-rose-400 via-pink-300 to-yellow-200 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+            >
+              Start Your Transformation Today
+            </Link>
+            <p className="mt-4 text-neutral-500">
+              93% of users reported visible results within 12 weeks
+            </p>
           </motion.div>
-        </AnimatePresence>
+        </div>
       </div>
     </section>
   );

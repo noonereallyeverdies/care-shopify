@@ -1,0 +1,553 @@
+/* Enhanced Science Section with Advanced Visualizations */
+
+.enhanced-science-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.enhanced-science-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.science-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-header p {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+.credentials-bar {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.credential {
+  text-align: center;
+}
+
+.credential-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #dc2626;
+  margin-bottom: 0.5rem;
+}
+
+.credential-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Science Content */
+.science-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+/* Wavelength Section */
+.wavelength-section h3,
+.cellular-section h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.wavelength-section p,
+.cellular-section p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Wavelength Visualizer */
+.wavelength-visualizer {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scalp-cross-section {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(180deg, #d4b896 0%, #c49b7b  30%, #b08968 60%, #9c7756 100%);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.hair-follicle {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+}
+
+.follicle-shaft {
+  width: 3px;
+  height: 40px;
+  background: #4a5568;
+  border-radius: 2px;
+}
+
+.follicle-bulb {
+  width: 12px;
+  height: 12px;
+  background: #e53e3e;
+  border-radius: 50%;
+  margin: -3px auto 5px;
+}
+
+.follicle-papilla {
+  width: 8px;
+  height: 8px;
+  background: #dd6b20;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.light-beam {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 20px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 0, 0, 0.3) 20%, rgba(255, 0, 0, 0.6) 100%);
+  border-radius: 0 0 10px 10px;
+  transition: all 0.5s ease;
+}
+
+.light-beam.nm-630 {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 100, 100, 0.3) 20%, rgba(255, 50, 50, 0.6) 100%);
+}
+
+.light-beam.nm-660 {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 0, 0, 0.3) 20%, rgba(255, 0, 0, 0.6) 100%);
+}
+
+.light-beam.nm-680 {
+  background: linear-gradient(180deg, transparent 0%, rgba(200, 0, 0, 0.3) 20%, rgba(200, 0, 0, 0.6) 100%);
+}
+
+.cellular-indicators {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cell-activity {
+  width: 8px;
+  height: 8px;
+  background: #48bb78;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  box-shadow: 0 0 10px rgba(72, 187, 120, 0.5);
+}
+
+/* Wavelength Controls */
+.wavelength-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wavelength-button {
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+
+.wavelength-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(220, 38, 38, 0.5);
+}
+
+.wavelength-button.active {
+  background: rgba(220, 38, 38, 0.2);
+  border-color: #dc2626;
+}
+
+.wavelength-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.wavelength-effect {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Wavelength Details */
+.wavelength-details {
+  margin-top: 2rem;
+}
+
+.detail-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #dc2626;
+}
+
+.detail-stats {
+  display: grid;
+  gap: 1rem;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  color: white;
+  font-weight: 600;
+}
+
+/* Cellular Process Visualizer */
+.cellular-process-visualizer {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mitochondria-3d {
+  position: relative;
+  height: 200px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(0, 0, 0, 0.1) 70%);
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.mitochondria-membrane {
+  position: absolute;
+  width: 80px;
+  height: 40px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3));
+  border-radius: 40px;
+  border: 2px solid rgba(59, 130, 246, 0.5);
+}
+
+.cristae {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.crista {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: rgba(59, 130, 246, 0.6);
+  border-radius: 1px;
+}
+
+.crista:nth-child(1) { top: 20%; transform: rotate(5deg); }
+.crista:nth-child(2) { top: 35%; transform: rotate(-3deg); }
+.crista:nth-child(3) { top: 50%; transform: rotate(2deg); }
+.crista:nth-child(4) { top: 65%; transform: rotate(-4deg); }
+.crista:nth-child(5) { top: 80%; transform: rotate(3deg); }
+
+.atp-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.atp-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #48bb78;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(72, 187, 120, 0.6);
+}
+
+/* Process Details */
+.process-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.process-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.process-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(220, 38, 38, 0.5);
+}
+
+.process-card.active {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: #dc2626;
+}
+
+.process-card h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.process-card p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.result-badge {
+  background: rgba(72, 187, 120, 0.2);
+  color: #48bb78;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+/* Technical Deep Dive */
+.technical-deep-dive {
+  text-align: center;
+}
+
+.expand-technical-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.expand-technical-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(220, 38, 38, 0.5);
+}
+
+.expand-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.technical-content {
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.technical-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.technical-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.technical-card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #dc2626;
+}
+
+.technical-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.technical-card li {
+  padding: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.technical-card strong {
+  color: white;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .science-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .credentials-bar {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .wavelength-controls {
+    flex-direction: column;
+  }
+
+  .wavelength-button {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .enhanced-science-section {
+    padding: 4rem 0;
+  }
+
+  .science-container {
+    padding: 0 1rem;
+  }
+
+  .technical-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scalp-cross-section {
+    height: 150px;
+  }
+
+  .mitochondria-3d {
+    height: 150px;
+  }
+
+  .wavelength-visualizer,
+  .cellular-process-visualizer {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scalp-cross-section {
+    height: 120px;
+  }
+
+  .mitochondria-3d {
+    height: 120px;
+  }
+
+  .wavelength-visualizer,
+  .cellular-process-visualizer {
+    padding: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .credential-number {
+    font-size: 2rem;
+  }
+
+  .expand-technical-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

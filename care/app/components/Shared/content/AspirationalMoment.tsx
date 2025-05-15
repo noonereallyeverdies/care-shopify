@@ -11,7 +11,7 @@ export const AspirationalMoment: React.FC<{
   return (
     <div className="content-card"> {/* Base card style from app.css */}
       <div className="aspect-w-16 aspect-h-9 overflow-hidden">
-        <img src={image} alt="Aspirational moment" className="w-full h-full object-cover" />
+        <img src={image} alt="Aspirational moment" className="w-full h-full object-cover" loading="lazy" />
       </div>
       <div className="p-6 flex-grow flex flex-col justify-between border-t border-neutral-100">
         <blockquote className="text-base md:text-lg italic text-neutral-600 mb-4 leading-relaxed flex-grow">

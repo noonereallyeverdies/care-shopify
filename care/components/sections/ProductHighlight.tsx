@@ -11,7 +11,7 @@ interface ProductHighlightProps {
 export function ProductHighlight({ product }: ProductHighlightProps) {
   const productName = product?.title || 'photonique touch™';
   const productDescription = 'Our revolutionary device combines red light therapy, scalp massage, and precise serum application for your healthiest hair.';
-  const productImage = product?.featuredImage?.url || '/images/product.png';
+  const productImage = product?.featuredImage?.url || '/images/product.webp';
   
   const trustBadges = [
     {

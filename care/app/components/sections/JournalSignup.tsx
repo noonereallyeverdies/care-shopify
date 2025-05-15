@@ -46,6 +46,7 @@ export function JournalSignup() {
                 src="/images/woman-with-healthy-hair.jpg" 
                 alt="Woman with healthy hair" 
                 className="object-cover h-full w-full" 
+                loading="lazy"
               />
               
               {/* Testimonial overlay - creates social proof */}
@@ -158,7 +159,7 @@ export function JournalSignup() {
                 <div className="flex -space-x-2 mr-3">
                   {[1, 2, 3, 4].map((_, i) => (
                     <div key={i} className="w-6 h-6 rounded-full bg-neutral-300 border border-white overflow-hidden">
-                      <img src={`/images/testimonial-${i+1}.jpg`} alt="Community member" className="w-full h-full object-cover" />
+                      <img src={`/images/testimonial-${i+1}.jpg`} alt="Community member" className="w-full h-full object-cover" loading="lazy" />
                     </div>
                   ))}
                 </div>

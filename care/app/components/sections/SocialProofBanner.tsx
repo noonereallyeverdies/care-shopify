@@ -1,7 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useEffect, useRef, useState, Suspense, lazy, ReactNode } from 'react';
+// Dynamic imports for better code splitting
+const motion = {
+  div: lazy(() => import('framer-motion').then(mod => ({ default: mod.motion.div }))),
+  button: lazy(() => import('framer-motion').then(mod => ({ default: mod.motion.button }))),
+};
 import { useInView } from 'react-intersection-observer';
 import { Star, Award, TrendingUp, Quote, Users, UserCheck } from 'lucide-react';
+
+// Create a properly typed fallback component for lazy loaded motion components
+interface MotionFallbackProps {
+  children?: ReactNode;
+  className?: string;
+}
+
+const MotionFallback: React.FC<MotionFallbackProps> = ({ children, className = '' }) => (
+  <div className={className}>{children}</div>
+);
 
 export function SocialProofBanner() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,34 +27,34 @@ export function SocialProofBanner() {
   const [count, setCount] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   
-  // Parallax effect
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+  // Only load framer-motion if the component is in view or about to be in view
+  const [loadMotion, setLoadMotion] = useState(false);
   
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  useEffect(() => {
+    // Load motion components as the user scrolls closer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting || entries[0].boundingClientRect.top < window.innerHeight * 1.5) {
+          setLoadMotion(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '50% 0px' }
+    );
+    
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, []);
   
   // Counter animation
   useEffect(() => {
     if (inView) {
-      let startValue = 0;
+      // Start at the final value to avoid showing 0%
       const endValue = 93;
-      const duration = 2000;
-      const increment = Math.ceil(endValue / (duration / 16)); // 16ms per frame (approx 60fps)
-      
-      const timer = setInterval(() => {
-        startValue += increment;
-        if (startValue > endValue) {
-          setCount(endValue);
-          clearInterval(timer);
-        } else {
-          setCount(startValue);
-        }
-      }, 16);
-      
-      return () => clearInterval(timer);
+      setCount(endValue);
     }
   }, [inView]);
   
@@ -122,6 +136,10 @@ export function SocialProofBanner() {
   ];
 
   const featuredTestimonial = enhancedTestimonials[activeTestimonial];
+  
+  // Conditionally render motion components based on loadMotion state
+  const MotionDiv = loadMotion ? motion.div : MotionFallback;
+  const MotionButton = loadMotion ? motion.button : MotionFallback;
 
   return (
     <div 
@@ -129,12 +147,14 @@ export function SocialProofBanner() {
       className="relative py-20 overflow-hidden bg-gradient-to-r from-pink-50 via-white to-rose-50"
     >
       {/* Floating background elements */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        style={{ y, opacity }}
-      >
-        <div className="absolute inset-0 bg-pattern-dots opacity-10"></div>
-      </motion.div>
+      <Suspense fallback={<MotionFallback className="absolute inset-0 z-0" />}>
+        <MotionDiv 
+          className="absolute inset-0 z-0"
+          style={loadMotion ? { y: 0, opacity: 0.8 } : {}}
+        >
+          <div className="absolute inset-0 bg-pattern-dots opacity-10"></div>
+        </MotionDiv>
+      </Suspense>
       
       {/* Floating accent circles */}
       <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-rose-100/40 blur-3xl"></div>
@@ -212,6 +232,7 @@ export function SocialProofBanner() {
                       src={featuredTestimonial.beforeImg} 
                       alt={`${featuredTestimonial.author} before using care•atin`}
                       className="object-cover h-full w-full"
+                      loading="lazy"
                     />
                   </div>
                   <div className="w-1/2 h-full relative overflow-hidden">
@@ -220,6 +241,7 @@ export function SocialProofBanner() {
                       src={featuredTestimonial.afterImg} 
                       alt={`${featuredTestimonial.author} after using care•atin`}
                       className="object-cover h-full w-full"
+                      loading="lazy"
                     />
                   </div>
                   <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-white transform -translate-x-1/2 z-10"></div>
@@ -305,22 +327,24 @@ export function SocialProofBanner() {
           </div>
           
           {/* CTA Button */}
-          <motion.button 
-            className="mt-12 px-8 py-4 bg-rose-600 text-white rounded-full font-medium hover:bg-rose-700 transition-colors shadow-lg shadow-rose-200"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ delay: 0.5 }}
-            onClick={() => {
-              // Scroll to detailed results section
-              document.querySelector('#results-section')?.scrollIntoView({ 
-                behavior: 'smooth' 
-              });
-            }}
-          >
-            See More Transformation Stories
-          </motion.button>
+          <Suspense fallback={<button className="mt-12 px-8 py-4 bg-rose-600 text-white rounded-full font-medium hover:bg-rose-700 transition-colors shadow-lg shadow-rose-200">See More Transformation Stories</button>}>
+            <MotionButton 
+              className="mt-12 px-8 py-4 bg-rose-600 text-white rounded-full font-medium hover:bg-rose-700 transition-colors shadow-lg shadow-rose-200"
+              whileHover={loadMotion ? { scale: 1.05 } : {}}
+              whileTap={loadMotion ? { scale: 0.98 } : {}}
+              initial={loadMotion ? { opacity: 0 } : {}}
+              animate={loadMotion && inView ? { opacity: 1 } : {}}
+              transition={loadMotion ? { delay: 0.5 } : {}}
+              onClick={() => {
+                // Scroll to detailed results section
+                document.querySelector('#results-section')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
+            >
+              See More Transformation Stories
+            </MotionButton>
+          </Suspense>
         </div>
       </div>
     </div>

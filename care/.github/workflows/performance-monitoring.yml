@@ -1,0 +1,287 @@
+name: Performance Monitoring
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run performance checks daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  performance-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for trend analysis
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm install -g @lhci/cli bundlesize
+      
+      - name: Build application
+        run: npm run build
+        env:
+          NODE_ENV: production
+      
+      - name: Run bundle size analysis
+        run: |
+          npm run build:analyze
+          npm run bundle:check
+        continue-on-error: true
+      
+      - name: Run Core Web Vitals analysis
+        run: node scripts/test-web-vitals.js
+        continue-on-error: true
+      
+      - name: Run performance CI pipeline
+        run: ./scripts/performance-ci.sh
+        env:
+          LIGHTHOUSE_CONFIG_PATH: ./lighthouse.config.js
+          PERFORMANCE_REPORTS_PATH: ./performance-reports
+        continue-on-error: true
+      
+      - name: Upload performance artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: performance-reports-${{ github.sha }}
+          path: |
+            performance-reports/
+            bundle-analysis/
+            .lighthouseci/
+          retention-days: 30
+      
+      - name: Comment PR with performance results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Read bundle analysis
+            let bundleReport = '';
+            try {
+              const bundlePath = path.join(process.cwd(), 'bundle-analysis/bundle-summary.md');
+              if (fs.existsSync(bundlePath)) {
+                bundleReport = fs.readFileSync(bundlePath, 'utf8');
+              }
+            } catch (error) {
+              console.error('Failed to read bundle report:', error);
+            }
+            
+            // Read Lighthouse summary
+            let lighthouseReport = '';
+            try {
+              const lighthousePath = path.join(process.cwd(), '.lighthouseci/summary.json');
+              if (fs.existsSync(lighthousePath)) {
+                const summary = JSON.parse(fs.readFileSync(lighthousePath, 'utf8'));
+                lighthouseReport = `
+            ## 🏃‍♂️ Lighthouse Performance
+            - **Performance Score**: ${Math.round(summary.performance * 100)}/100
+            - **Accessibility Score**: ${Math.round(summary.accessibility * 100)}/100
+            - **Best Practices Score**: ${Math.round(summary.bestPractices * 100)}/100
+            - **SEO Score**: ${Math.round(summary.seo * 100)}/100
+                `;
+              }
+            } catch (error) {
+              console.error('Failed to read Lighthouse report:', error);
+            }
+            
+            const comment = `
+            ## 📊 Performance Report
+            
+            ${lighthouseReport}
+            
+            ${bundleReport}
+            
+            <details>
+            <summary>View detailed reports</summary>
+            
+            📁 **Artifacts**: Check the Actions artifacts for detailed reports
+            - Bundle Analysis Report
+            - Lighthouse HTML Report
+            - Performance History
+            
+            </details>
+            
+            ---
+            *Performance monitoring powered by Lighthouse CI and custom bundle analysis*
+            `;
+            
+            // Find existing comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            
+            const existingComment = comments.find(
+              comment => comment.body.includes('## 📊 Performance Report')
+            );
+            
+            if (existingComment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body: comment,
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment,
+              });
+            }
+
+  lighthouse-ci:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build for preview
+        run: npm run build
+        env:
+          NODE_ENV: production
+      
+      - name: Start preview server
+        run: |
+          npm run preview &
+          sleep 10  # Wait for server to start
+      
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      
+      - name: Upload Lighthouse results
+        uses: actions/upload-artifact@v3
+        with:
+          name: lighthouse-results-${{ github.sha }}
+          path: .lighthouseci/
+
+  bundle-analysis:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Download base branch bundle
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { execSync } = require('child_process');
+            
+            try {
+              // Get the base branch
+              const baseBranch = context.payload.pull_request.base.ref;
+              console.log(`Checking out base branch: ${baseBranch}`);
+              
+              // Checkout base branch and build
+              execSync(`git fetch origin ${baseBranch}`);
+              execSync(`git checkout origin/${baseBranch}`);
+              execSync('npm ci');
+              execSync('npm run build');
+              
+              // Save bundle analysis
+              execSync('npm run build:analyze');
+              execSync('cp -r bundle-analysis bundle-analysis-base');
+              
+              // Return to PR branch
+              execSync(`git checkout ${context.sha}`);
+              execSync('npm ci');
+              
+            } catch (error) {
+              console.error('Failed to analyze base branch:', error);
+            }
+      
+      - name: Build current branch
+        run: |
+          npm run build
+          npm run build:analyze
+      
+      - name: Compare bundle sizes
+        if: github.event_name == 'pull_request'
+        run: |
+          node -e "
+            const fs = require('fs');
+            const path = require('path');
+            
+            try {
+              // Read current bundle analysis
+              const currentPath = path.join(process.cwd(), 'bundle-analysis/bundle-analysis.json');
+              const basePath = path.join(process.cwd(), 'bundle-analysis-base/bundle-analysis.json');
+              
+              if (fs.existsSync(currentPath) && fs.existsSync(basePath)) {
+                const current = JSON.parse(fs.readFileSync(currentPath, 'utf8'));
+                const base = JSON.parse(fs.readFileSync(basePath, 'utf8'));
+                
+                const diff = {
+                  totalSize: current.totalSize - base.totalSize,
+                  jsSize: current.breakdown.js - base.breakdown.js,
+                  cssSize: current.breakdown.css - base.breakdown.css,
+                };
+                
+                console.log('Bundle size comparison:');
+                console.log(\`Total: \${diff.totalSize > 0 ? '+' : ''}\${(diff.totalSize / 1024).toFixed(1)}KB\`);
+                console.log(\`JS: \${diff.jsSize > 0 ? '+' : ''}\${(diff.jsSize / 1024).toFixed(1)}KB\`);
+                console.log(\`CSS: \${diff.cssSize > 0 ? '+' : ''}\${(diff.cssSize / 1024).toFixed(1)}KB\`);
+                
+                // Fail if bundle size increased significantly
+                if (diff.totalSize > 50 * 1024) { // 50KB threshold
+                  console.error('Bundle size increased by more than 50KB');
+                  process.exit(1);
+                }
+              }
+            } catch (error) {
+              console.error('Failed to compare bundle sizes:', error);
+            }
+          "
+      
+      - name: Upload bundle analysis
+        uses: actions/upload-artifact@v3
+        with:
+          name: bundle-analysis-${{ github.sha }}
+          path: |
+            bundle-analysis/
+            bundle-analysis-base/

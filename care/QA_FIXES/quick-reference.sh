@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# 🚀 care•atin Shopify - Quick Reference Commands
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🎯 CARE•ATIN SHOPIFY - QUICK REFERENCE"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+# Check Node.js version
+NODE_VERSION=$(node -v | cut -d'v' -f2 | cut -d'.' -f1)
+if [ "$NODE_VERSION" -ge 20 ]; then
+    echo "✅ Node.js: v$(node -v | cut -d'v' -f2) (Ready)"
+else
+    echo "⚠️  Node.js: v$(node -v | cut -d'v' -f2) (Needs upgrade to v20+)"
+fi
+
+echo ""
+echo "🔧 COMMON COMMANDS:"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "📦 SETUP:"
+echo "  npm install                    # Install dependencies"
+echo "  cp .env.example .env          # Setup environment"
+echo ""
+echo "🏗️  BUILD & RUN:"
+echo "  npm run build                 # Build for production"
+echo "  npm run dev                   # Start development server"
+echo "  npm run preview               # Preview production build"
+echo ""
+echo "🔍 QUALITY CHECKS:"
+echo "  npm run typecheck             # TypeScript validation"
+echo "  npm run lint                  # Code linting"
+echo "  npm run format                # Code formatting"
+echo ""
+echo "🚀 DEPLOYMENT:"
+echo "  npm run deploy                # Deploy to Shopify Oxygen"
+echo "  vercel --prod                 # Deploy to Vercel"
+echo "  netlify deploy --prod         # Deploy to Netlify"
+echo ""
+echo "🛠️  UTILITIES:"
+echo "  ./QA_FIXES/verification-script.sh    # Run full verification"
+echo "  npm run codegen                      # Regenerate GraphQL types"
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "📁 QUICK ACCESS:"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "📄 Documentation:"
+echo "  QA_FIXES/DEPLOYMENT_GUIDE.md         # Complete deployment guide"
+echo "  QA_FIXES/COMPLETE_PROJECT_HANDOFF.md # Project summary"
+echo "  QA_FIXES/FINAL_STATUS_REPORT.md      # Verification results"
+echo ""
+echo "🔧 Configuration Files:"
+echo "  tsconfig.json                        # TypeScript config"
+echo "  vite.config.ts                       # Vite config"
+echo "  app/remix.env.d.ts                   # Type definitions"
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🎯 NEXT STEPS:"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+if [ "$NODE_VERSION" -lt 20 ]; then
+    echo "1. 🔧 UPGRADE NODE.JS:"
+    echo "   nvm install 20 && nvm use 20"
+    echo ""
+fi
+
+echo "2. 🏗️  BUILD PROJECT:"
+echo "   npm run build"
+echo ""
+echo "3. 🚀 START DEVELOPMENT:"
+echo "   npm run dev"
+echo ""
+echo "4. 🌐 VISIT YOUR SITE:"
+echo "   http://localhost:3000"
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "✨ Your care•atin project is ready for success!"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

@@ -1,30 +1,56 @@
 :root {
   /* === Colors === */
-  /* Primary Neutrals */
+  /* Primary Brand Colors - Sophisticated Wellness */
   --c-primary-white: #FFFFFF;
-  --c-primary-bg: #FFFBF7; /* Placeholder: Warm Off-white */
-  --c-primary-text-dark: #1F1F1F; /* Placeholder: Deep Charcoal */
-  --c-primary-text-medium: #555555; /* Placeholder: Medium Grey */
-  --c-primary-border: #EAEAEA; /* Placeholder: Light Grey */
+  --c-primary-bg: #f9f8f7;
+  --c-primary-text-dark: #2d2d2d;
+  --c-primary-text-medium: #4d4d4d;
+  --c-primary-text-light: #6d6d6d;
+  --c-primary-border: #E8E4E0; /* Warmer border tone */
 
   /* Secondary Nature Accents (Use Sparingly) */
-  --c-secondary-nature-green: #A0BBA2; /* Placeholder: Muted Green */
-  --c-secondary-nature-beige: #F5EDE6; /* Placeholder: Warm Beige */
+  --c-secondary-nature-green: #9DBAA0; /* Refined muted green */
+  --c-secondary-nature-beige: #F5EDE6; /* Warm beige for sections */
+  --c-secondary-sage: #94a3a4;
 
-  /* Accent (RLT Tech & Radiance) */
-  --c-accent-rlt: #FF5A36; /* Placeholder: Vibrant Coral/Red-Orange */
+  /* Accent Colors - Tech Forward but Sophisticated */
+  --c-accent-primary: #c49b7c;
+  --c-accent-secondary: #a57c5e;
+  --c-accent-tech: #7a8b8c;
+
+  /* Brand-specific */
+  --c-brand-light: #f3e8e1;
+  --c-brand-ritual: #e6d7cf;
+
+  /* Color values in RGB format for use with rgba() */
+  --rgb-accent-primary: 196, 155, 124;
+  --rgb-accent-secondary: 165, 124, 94;
+  --rgb-accent-tech: 122, 139, 140;
+  --rgb-primary-text-dark: 45, 45, 45;
+  --rgb-primary-text-medium: 77, 77, 77;
 
   /* === Typography === */
-  /* Font Families */
-  --font-family-body: 'Manrope', sans-serif; /* Confirmed */
-  --font-family-heading: 'Inter', sans-serif; /* Confirmed */
+  /* Font Families - Optimized Google Fonts */
+  --font-family-heading: 'Manrope', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+
+  /* Clean Girl Fonts - Light and Airy */
+  --font-family-clean-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-clean-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Font Weights - Emphasizing Lightness */
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-body-regular: 400;
+  --font-weight-body-bold: 700;
+  --font-weight-heading: 700;
 
   /* Base */
   --font-size-base: 16px;
   --line-height-base: 1.6;
-  --font-weight-body-regular: 400;
-  --font-weight-body-bold: 700;
-  --font-weight-heading: 700;
 
   /* Scale (Placeholders - Needs Final Specs) */
   --font-size-h1: 3rem;    /* 48px */
@@ -38,16 +64,44 @@
   --font-size-small: 0.875rem; /* 14px */
   --line-height-small: 1.5;
 
+  /* Font Sizes - Clean Hierarchy */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+
   /* === Spacing === */
   /* Scale (Placeholders - Needs Final Specs) */
-  --space-xxs: 0.25rem; /* 4px */
-  --space-xs: 0.5rem;   /* 8px */
-  --space-sm: 0.75rem;  /* 12px */
-  --space-md: 1rem;     /* 16px */
-  --space-lg: 1.5rem;   /* 24px */
-  --space-xl: 2rem;     /* 32px */
-  --space-xxl: 3rem;    /* 48px */
-  --space-xxxl: 4rem;   /* 64px */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 4rem;
+  --space-xxxl: 6rem;
+
+  /* Generous Spacing for Breathing Room */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
 
   /* Layout */
   --container-padding-x: var(--space-lg); /* 24px */
@@ -59,7 +113,111 @@
   --border-radius-md: 8px;
   --border-width: 1px;
 
+  /* Borders & Radius */
+  --border-radius-lg: 1.5rem;
+  --border-radius-xl: 2rem;
+  --border-radius-2xl: 2.5rem;
+  --border-radius-3xl: 3rem;
+  --border-radius-full: 9999px;
+
   /* === Transitions === */
   --transition-duration: 0.2s;
   --transition-timing: ease-in-out;
+  
+  /* Clean Girl Transitions */
+  --transition-all: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+  --transition-colors: color 0.3s ease, background-color 0.3s ease;
+  --transition-transform: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+  
+  /* === Animations === */
+  --animation-shimmer: shimmer 1s ease-in-out;
+
+  /* === Shadows === */
+  /* Soft, Natural Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  
+  /* === Gradients === */
+  --gradient-hero: linear-gradient(180deg, var(--c-clean-stone-50) 0%, rgba(251, 246, 237, 1) 100%);
+  --gradient-soft-accent: linear-gradient(135deg, var(--c-rose-100) 0%, var(--c-amber-100) 100%);
+  --gradient-text: linear-gradient(135deg, var(--c-rose-200) 0%, var(--c-amber-200) 50%, var(--c-clean-stone-300) 100%);
+}
+
+/* Tech-forward animations */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skew(-12deg); }
+  100% { transform: translateX(200%) skew(-12deg); }
+}
+
+/* Clean Girl Animations */
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes soft-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.animate-gentle-float {
+  animation: gentle-float 8s ease-in-out infinite;
+}
+
+.animate-soft-glow {
+  animation: soft-glow 6s ease-in-out infinite;
+}
+
+/* Gradient text utilities for brand consistency */
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--c-accent-primary), var(--c-accent-secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-tech {
+  background: linear-gradient(135deg, var(--c-accent-tech), var(--c-secondary-sage));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Clean Girl Gradient Text */
+.text-gradient-clean {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-muted {
+  color: var(--c-clean-stone-500);
+}
+
+.text-light {
+  color: var(--c-clean-stone-400);
+}
+
+/* Tech-forward animations */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skew(-12deg); }
+  100% { transform: translateX(200%) skew(-12deg); }
+}
+
+/* Gradient text utilities for brand consistency */
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--c-accent-primary), var(--c-accent-secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-tech {
+  background: linear-gradient(135deg, var(--c-accent-tech), var(--c-secondary-sage));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 } 

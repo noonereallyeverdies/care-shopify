@@ -38,7 +38,7 @@ const contentVariants = {
 };
 
 export function DeviceSpotlight({ product }: DeviceSpotlightProps) {
-  const placeholderImageUrl = '/images/PRODUCTPHOTOT.png'; // Placeholder device image
+  const placeholderImageUrl = '/images/PRODUCTPHOTOT.webp'; // Placeholder device image
 
   if (!product) {
     return (
@@ -56,7 +56,14 @@ export function DeviceSpotlight({ product }: DeviceSpotlightProps) {
   const handle = product.handle;
   // Destructure description separately to potentially override it
   const { title, descriptionHtml, variants, description: originalDescription } = product;
-  const price = firstVariant?.price;
+  
+  // Make sure price is properly formatted with amount as a string
+  const price = firstVariant?.price && typeof firstVariant.price.amount === 'string' 
+    ? {
+        amount: firstVariant.price.amount,
+        currencyCode: firstVariant.price.currencyCode
+      }
+    : null;
 
   // --- Enhanced Science-Focused Description ---
   const scienceDescription = `
@@ -122,7 +129,7 @@ export function DeviceSpotlight({ product }: DeviceSpotlightProps) {
             </p>
           ) : null}
 
-          {price && (
+          {price ? (
             <div className="device-price-wrapper">
               <Money 
                 data={price} 
@@ -130,6 +137,10 @@ export function DeviceSpotlight({ product }: DeviceSpotlightProps) {
                 className="device-price"
               />
               {/* Add CompareAtPrice logic here if needed */}
+            </div>
+          ) : (
+            <div className="device-price-wrapper">
+              <span className="device-price">Price not available</span>
             </div>
           )}
 

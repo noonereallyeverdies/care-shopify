@@ -1,0 +1,183 @@
+/* === Clean Girl Landing Page Styles === */
+
+/* Base styles */
+.clean-girl-landing body {
+  font-family: var(--font-family-clean-body);
+  font-weight: var(--font-weight-normal);
+  color: var(--c-clean-stone-700);
+  background-color: var(--c-clean-stone-50);
+  line-height: 1.6;
+}
+
+/* Clean Girl Typography Hierarchy */
+.clean-girl-landing h1,
+.clean-girl-landing h2,
+.clean-girl-landing h3,
+.clean-girl-landing h4,
+.clean-girl-landing h5,
+.clean-girl-landing h6 {
+  font-family: var(--font-family-clean-heading);
+  font-weight: var(--font-weight-light);
+  color: var(--c-clean-stone-800);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.clean-girl-landing h1 {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-extralight);
+}
+
+.clean-girl-landing h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-light);
+}
+
+.clean-girl-landing h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-light);
+}
+
+.clean-girl-landing p {
+  color: var(--c-clean-stone-600);
+  line-height: 1.7;
+}
+
+/* === Clean Girl Component Styles === */
+
+/* Soft Button Styles */
+.btn-clean-primary {
+  background-color: var(--c-clean-stone-800);
+  color: var(--c-clean-white);
+  padding: var(--space-4) var(--space-10);
+  border-radius: var(--border-radius-full);
+  font-weight: var(--font-weight-light);
+  font-size: var(--text-lg);
+  transition: var(--transition-all);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-clean-primary:hover {
+  background-color: var(--c-clean-stone-700);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-xl);
+}
+
+.btn-clean-secondary {
+  background-color: transparent;
+  color: var(--c-clean-stone-700);
+  border: 1px solid var(--c-clean-stone-200);
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--border-radius-full);
+  font-weight: var(--font-weight-light);
+  font-size: var(--text-base);
+  transition: var(--transition-all);
+}
+
+.btn-clean-secondary:hover {
+  background-color: var(--c-clean-stone-100);
+  border-color: var(--c-clean-stone-300);
+}
+
+/* Card Styles */
+.card-clean {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--c-clean-stone-100);
+  border-radius: var(--border-radius-3xl);
+  padding: var(--space-8);
+  transition: var(--transition-all);
+}
+
+.card-clean:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Section Spacing */
+.section-clean {
+  padding: var(--space-24) 0;
+}
+
+.section-clean-sm {
+  padding: var(--space-16) 0;
+}
+
+/* Container */
+.container-clean {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Grid Layouts */
+.grid-clean-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-8);
+}
+
+.grid-clean-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-8);
+}
+
+/* Text Utilities */
+.text-gradient-clean {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-muted {
+  color: var(--c-clean-stone-500);
+}
+
+.text-light {
+  color: var(--c-clean-stone-400);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .clean-girl-landing h1 {
+    font-size: var(--text-4xl);
+  }
+  
+  .clean-girl-landing h2 {
+    font-size: var(--text-2xl);
+  }
+  
+  .text-hero {
+    font-size: var(--text-3xl);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c-clean-stone-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-clean-stone-300);
+  border-radius: var(--border-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-clean-stone-400);
+}
+
+/* Background Extensions */
+.bg-stone-25 {
+  background-color: #FCFCFB;
+}
+
+.bg-amber-25 {
+  background-color: #FFFEF7;
+}

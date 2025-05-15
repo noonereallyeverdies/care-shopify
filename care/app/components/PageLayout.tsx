@@ -14,6 +14,7 @@ import { Cart } from './Cart';
 import { CartLoading } from './CartLoading';
 import { HeartPulse, Instagram, Linkedin, Video } from 'lucide-react';
 import { WavyBackground } from '~/components/WavyBackground';
+import CustomCursor from '~/components/Shared/CustomCursor';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -57,7 +58,9 @@ export function PageLayout({ children, layout }: LayoutProps) {
     }
 
   return (
-        <div className="flex flex-col min-h-screen bg-contrast text-primary font-sans">
+    <>
+      <CustomCursor />
+      <div className="flex flex-col min-h-screen bg-contrast text-primary font-sans">
         <div className="">
           <a href="#mainContent" className="sr-only">
             Skip to content
@@ -75,6 +78,7 @@ export function PageLayout({ children, layout }: LayoutProps) {
         </main>
             <Footer menu={footerMenu} /> 
       </div>
+    </>
   );
 }
 

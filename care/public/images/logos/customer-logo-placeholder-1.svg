@@ -1,0 +1,13 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="58" fill="#FFF5F5" stroke="#FF5A36" stroke-width="1.5"/>
+  <path d="M47.7 41.8C47.7 39.5 45.8 37.6 43.5 37.6C41.2 37.6 39.3 39.5 39.3 41.8V51.7H47.7V41.8Z" fill="#FF5A36"/>
+  <path d="M80.7 41.8C80.7 39.5 78.8 37.6 76.5 37.6C74.2 37.6 72.3 39.5 72.3 41.8V51.7H80.7V41.8Z" fill="#FF5A36"/>
+  <path d="M56 67.7C56 65.4 54.1 63.5 51.8 63.5C49.5 63.5 47.6 65.4 47.6 67.7V77.6H56V67.7Z" fill="#FF5A36"/>
+  <path d="M72.4 67.7C72.4 65.4 70.5 63.5 68.2 63.5C65.9 63.5 64 65.4 64 67.7V77.6H72.4V67.7Z" fill="#FF5A36"/>
+  <path d="M64 51.7H56V59.4H64V51.7Z" fill="#FF5A36"/>
+  <path d="M72.3 51.7H80.7V59.4H72.3V51.7Z" fill="#FF5A36"/>
+  <path d="M39.3 51.7H47.7V59.4H39.3V51.7Z" fill="#FF5A36"/>
+  <path d="M60 82.4C71.0457 82.4 80 81.0569 80 79.4C80 77.7431 71.0457 76.4 60 76.4C48.9543 76.4 40 77.7431 40 79.4C40 81.0569 48.9543 82.4 60 82.4Z" fill="#F9D0CD"/>
+  <circle cx="60" cy="60" r="53" stroke="#FF5A36" stroke-width="0.5" stroke-dasharray="2 2"/>
+  <text x="60" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#444444">DERMATOLOGIST APPROVED</text>
+</svg> 

@@ -1,55 +1,213 @@
 /* care/app/components/ProblemSolution.css */
 
-.problem-solution-section {
-  background-color: var(--c-bg-secondary, #f9f9f9);
-  padding: var(--space-xl) var(--space-md);
+.wellness-journey-section {
+  padding: var(--space-xxxl) var(--space-md);
+  background: linear-gradient(135deg, var(--c-brand-light) 0%, var(--c-primary-bg) 50%, var(--c-brand-ritual) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.problem-solution-layout { /* Added class for the grid container */
+/* Subtle background pattern */
+.wellness-journey-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: radial-gradient(circle at 20% 20%, var(--c-accent-primary) 1px, transparent 1px),
+                    radial-gradient(circle at 80% 80%, var(--c-accent-tech) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.wellness-journey-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: var(--space-xl);
-  align-items: center; 
-  max-width: 1200px; /* Optional: constrain width */
-  margin: 0 auto; /* Optional: center layout */
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-.problem-column, 
-.solution-column {
-  /* Common column styles if any */
+@media (min-width: 768px) {
+  .wellness-journey-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
 }
 
-.problem-column .column-image,
-.solution-column .column-image { /* Added class to images */
-  width: 100%;
-  height: auto;
-  max-height: 300px; /* Keep constraints */
-  object-fit: cover;
-  border-radius: var(--border-radius-md, 8px); /* Use theme variable */
-  margin-bottom: var(--space-md);
+/* Column styling */
+.ritual-column,
+.science-column {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
 }
 
-.problem-column .column-title,
-.solution-column .column-title { /* Added class to h2 */
-  font-size: var(--text-heading);
-  margin-bottom: var(--space-sm);
+.ritual-column:hover,
+.science-column:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.1);
 }
 
-.problem-column .column-text,
-.solution-column .column-text { /* Added class to p */
-  font-size: var(--text-body);
-}
-
-/* Placeholder Icon Styles (if used) */
-.placeholder-icon {
-  width: 40px; 
-  height: 40px; 
-  background: var(--c-accent-rlt); 
-  border-radius: 50%; 
-  margin: 0 auto var(--space-md); 
-  color: var(--c-text-inverse, white); 
-  display: flex; 
-  align-items: center; 
+/* Enhanced icons with tech-forward design */
+.column-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-weight: bold;
-} 
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.ritual-icon {
+  background: linear-gradient(135deg, var(--c-accent-primary), var(--c-accent-secondary));
+  color: white;
+  box-shadow: 0 4px 20px rgba(196, 155, 124, 0.3);
+}
+
+.science-icon {
+  background: linear-gradient(135deg, var(--c-accent-tech), var(--c-secondary-sage));
+  color: white;
+  box-shadow: 0 4px 20px rgba(122, 139, 140, 0.3);
+}
+
+/* Add subtle animation to icons */
+.column-icon::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: iconGlow 3s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Typography enhancements */
+.column-title {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--c-primary-text-dark);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  text-transform: lowercase;
+  font-family: var(--font-family-heading);
+}
+
+.column-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--c-accent-secondary);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.column-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--c-primary-text-medium);
+  margin-bottom: 2rem;
+  font-family: var(--font-family-body);
+  font-weight: 300;
+}
+
+/* Enhanced benefits list */
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--c-primary-text-medium);
+}
+
+.benefit-symbol {
+  color: var(--c-accent-primary);
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  margin-top: 0.1rem;
+}
+
+/* CTA styling */
+.science-cta {
+  margin-top: 2rem;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: transparent;
+  border: 1px solid var(--c-accent-tech);
+  border-radius: 50px;
+  color: var(--c-accent-tech);
+  text-decoration: none;
+  font-weight: 400;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(122, 139, 140, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-secondary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary:hover {
+  background: var(--c-accent-tech);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(122, 139, 140, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .wellness-journey-section {
+    padding: var(--space-xxl) var(--space-md);
+  }
+  
+  .ritual-column,
+  .science-column {
+    padding: 2rem;
+  }
+  
+  .column-title {
+    font-size: 1.6rem;
+  }
+  
+  .column-text {
+    font-size: 1rem;
+  }
+}

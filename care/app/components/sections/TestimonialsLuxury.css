@@ -1,0 +1,56 @@
+/* Font is now self-hosted via /fonts/fonts.css */
+
+.luxury-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Glassmorphism card effect */
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+}
+
+/* Shimmer effect for headings and elements */
+.shimmer-text {
+  background: linear-gradient(
+    to right,
+    #f9a8d4 20%,
+    #f472b6 30%,
+    #fde68a 70%,
+    #f9a8d4 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shimmer 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Slider handle glow effect */
+.slider-handle-glow {
+  box-shadow: 0 0 15px rgba(244, 114, 182, 0.4), 0 0 8px rgba(251, 207, 232, 0.6);
+}
+
+/* Elegant hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(244, 114, 182, 0.25);
+}
+
+/* Card gradients */
+.card-gradient-bg {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(252,231,243,0.8) 100%);
+} 

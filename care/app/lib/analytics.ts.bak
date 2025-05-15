@@ -1,0 +1,404 @@
+import { useEffect } from 'react';
+import { useLocation } from '@remix-run/react';
+
+// Declare global types for third-party analytics
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+    fbq?: (...args: any[]) => void;
+    careAtinAnalytics?: {
+      track: (event: any) => void;
+    }
+  }
+}
+
+// Define event tracking interface
+interface TrackingEvent {
+  action: string;
+  category: string;
+  label?: string;
+  value?: number;
+  customParameters?: Record<string, any>;
+}
+
+// Care•atin specific tracking events
+export const careAtinEvents = {
+  // Hero section interactions
+  HERO_CTA_CLICK: {
+    action: 'click',
+    category: 'hero',
+    label: 'primary_cta'
+  },
+  
+  // Wellness journey engagement
+  RITUAL_LEARN_MORE: {
+    action: 'click',
+    category: 'wellness_journey',
+    label: 'ritual_details'
+  },
+  
+  SCIENCE_LEARN_MORE: {
+    action: 'click',
+    category: 'wellness_journey',
+    label: 'science_details'
+  },
+  
+  // Tech innovation interactions
+  TECH_FEATURE_SELECT: {
+    action: 'select',
+    category: 'tech_innovation',
+    label: 'feature_toggle'
+  },
+  
+  // Testimonial engagement
+  TESTIMONIAL_TOGGLE: {
+    action: 'toggle',
+    category: 'testimonials',
+    label: 'view_mode'
+  },
+  
+  TESTIMONIAL_PERSON_SELECT: {
+    action: 'select',
+    category: 'testimonials',
+    label: 'person_change'
+  },
+  
+  // Product interest
+  PRODUCT_CTA_CLICK: {
+    action: 'click',
+    category: 'product',
+    label: 'cta_conversion_intent'
+  },
+  
+  // Comparison interactions
+  COMPARISON_VS_SELECT: {
+    action: 'select',
+    category: 'comparison',
+    label: 'competitor_compare'
+  },
+  
+  // FAQ engagement
+  FAQ_EXPAND: {
+    action: 'expand',
+    category: 'faq',
+    label: 'question_open'
+  },
+  
+  // Final CTA
+  FINAL_CTA_CLICK: {
+    action: 'click',
+    category: 'final_cta',
+    label: 'transformation_start'
+  }
+};
+
+// Performance metrics
+interface PerformanceMetrics {
+  pageLoadTime: number;
+  timeToFirstByte: number;
+  firstContentfulPaint: number;
+  largestContentfulPaint: number;
+  cumulativeLayoutShift: number;
+  firstInputDelay: number;
+}
+
+// Track custom event
+export function trackEvent(event: TrackingEvent): void {
+  if (typeof window === 'undefined') return;
+  
+  // Google Analytics 4
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('event', event.action, {
+      event_category: event.category,
+      event_label: event.label,
+      value: event.value,
+      custom_parameters: event.customParameters,
+      // Care•atin specific context
+      brand: 'care_atin',
+      wellness_focus: true,
+      tech_innovation: true
+    });
+  }
+  
+  // Facebook Pixel
+  if (typeof window.fbq !== 'undefined') {
+    window.fbq('trackCustom', `careatin_${event.category}_${event.action}`, {
+      label: event.label,
+      value: event.value,
+      ...event.customParameters
+    });
+  }
+  
+  // Custom analytics
+  if (window.careAtinAnalytics) {
+    window.careAtinAnalytics.track(event);
+  }
+  
+  // Console log for development
+  if (process.env.NODE_ENV === 'development') {
+    console.log('Tracking Event:', event);
+  }
+}
+
+// Track page view with care•atin context
+export function trackPageView(path: string, title: string): void {
+  if (typeof window === 'undefined') return;
+  
+  const pageData = {
+    page_path: path,
+    page_title: title,
+    brand: 'care_atin',
+    content_category: getContentCategory(path),
+    user_journey_stage: getUserJourneyStage(path)
+  };
+  
+  // Google Analytics 4
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('config', 'GA_MEASUREMENT_ID', {
+      page_path: path,
+      page_title: title,
+      custom_map: pageData
+    });
+  }
+  
+  // Facebook Pixel
+  if (typeof window.fbq !== 'undefined') {
+    window.fbq('track', 'PageView', pageData);
+  }
+}
+
+// Determine content category from path
+function getContentCategory(path: string): string {
+  if (path === '/') return 'homepage';
+  if (path.includes('/products')) return 'product';
+  if (path.includes('/science')) return 'education';
+  if (path.includes('/results')) return 'social_proof';
+  if (path.includes('/pages')) return 'content';
+  return 'other';
+}
+
+// Determine user journey stage
+function getUserJourneyStage(path: string): string {
+  if (path === '/') return 'awareness';
+  if (path.includes('/science') || path.includes('/how-it-works')) return 'consideration';
+  if (path.includes('/products') || path.includes('/cart')) return 'conversion';
+  if (path.includes('/account') || path.includes('/support')) return 'retention';
+  return 'exploration';
+}
+
+// Performance tracking
+export function trackPerformanceMetrics(): void {
+  // Web Vitals
+  if (typeof window === 'undefined' || typeof performance === 'undefined') return;
+  
+  try {
+    // Get paint metrics
+    const paintMetrics = performance.getEntriesByType('paint');
+    const fcpEntry = paintMetrics.find(entry => entry.name === 'first-contentful-paint');
+    
+    // Get navigation timing
+    const navTiming = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+    
+    if (navTiming) {
+      const metrics: Partial<PerformanceMetrics> = {
+        pageLoadTime: navTiming.loadEventEnd - navTiming.fetchStart,
+        timeToFirstByte: navTiming.responseStart - navTiming.fetchStart,
+        firstContentfulPaint: fcpEntry?.startTime || 0
+      };
+      
+      // Track performance metrics
+      trackEvent({
+        action: 'performance_measured',
+        category: 'technical',
+        label: 'page_metrics',
+        customParameters: metrics
+      });
+    }
+  } catch (error) {
+    console.error('Error tracking performance metrics:', error);
+  }
+}
+
+// Scroll depth tracking
+export function useScrollTracking(): void {
+  useEffect(() => {
+    // Server-side rendering guard
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+    
+    let scrollDepths = [25, 50, 75, 90, 100];
+    let trackedDepths: number[] = [];
+    
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (window.scrollY / scrollHeight) * 100;
+      
+      scrollDepths.forEach(depth => {
+        if (scrolled >= depth && !trackedDepths.includes(depth)) {
+          trackedDepths.push(depth);
+          trackEvent({
+            action: 'scroll_depth',
+            category: 'engagement',
+            label: `${depth}_percent`,
+            value: depth
+          });
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+}
+
+// Time on page tracking
+export function useTimeTracking(): void {
+  const location = useLocation();
+  
+  useEffect(() => {
+    // Server-side rendering guard
+    if (typeof window === 'undefined') return;
+    
+    const startTime = Date.now();
+    
+    return () => {
+      const timeSpent = Date.now() - startTime;
+      trackEvent({
+        action: 'time_on_page',
+        category: 'engagement',
+        label: location.pathname,
+        value: Math.round(timeSpent / 1000) // Convert to seconds
+      });
+    };
+  }, [location.pathname]);
+}
+
+// Enhanced click tracking for care•atin specific elements
+export function trackCareAtinClick(elementType: string, elementLabel: string, additionalData?: Record<string, any>): void {
+  trackEvent({
+    action: 'click',
+    category: `care_atin_${elementType}`,
+    label: elementLabel,
+    customParameters: {
+      wellness_context: true,
+      tech_innovation: true,
+      brand_touchpoint: elementType,
+      ...additionalData
+    }
+  });
+}
+
+// Track ritual/wellness related interactions
+export function trackWellnessEngagement(action: string, section: string, detail?: string): void {
+  trackEvent({
+    action,
+    category: 'wellness_journey',
+    label: `${section}_${action}`,
+    customParameters: {
+      section,
+      detail,
+      ritual_focused: true,
+      holistic_approach: true
+    }
+  });
+}
+
+// Track technology feature interactions
+export function trackTechInnovation(feature: string, interaction: string, value?: number): void {
+  trackEvent({
+    action: interaction,
+    category: 'tech_innovation',
+    label: feature,
+    value,
+    customParameters: {
+      innovation_type: 'photonique_touch',
+      biomimetic_tech: true,
+      feature_name: feature
+    }
+  });
+}
+
+// Track user journey progression
+export function trackJourneyProgression(stage: string, milestone: string): void {
+  trackEvent({
+    action: 'journey_progression',
+    category: 'user_journey',
+    label: `${stage}_to_${milestone}`,
+    customParameters: {
+      journey_stage: stage,
+      milestone,
+      transformation_focus: true
+    }
+  });
+}
+
+// Track emotional engagement with content
+export function trackEmotionalEngagement(content: string, emotion: string, intensity: number): void {
+  trackEvent({
+    action: 'emotional_engagement',
+    category: 'content_resonance',
+    label: content,
+    value: intensity,
+    customParameters: {
+      emotion_type: emotion,
+      content_type: content,
+      wellness_story: true,
+      intensity_score: intensity
+    }
+  });
+}
+
+// Initialize tracking for care•atin
+export function initCareAtinTracking(): void {
+  // Server-side rendering guard
+  if (typeof window === 'undefined') return;
+
+  // Track initial page load
+  trackPerformanceMetrics();
+  
+  // Set up global error tracking
+  window.addEventListener('error', (event) => {
+    trackEvent({
+      action: 'javascript_error',
+      category: 'technical',
+      label: event.message,
+      customParameters: {
+        filename: event.filename,
+        lineno: event.lineno,
+        colno: event.colno
+      }
+    });
+  });
+  
+  // Track unhandled promise rejections
+  window.addEventListener('unhandledrejection', (event) => {
+    trackEvent({
+      action: 'promise_rejection',
+      category: 'technical',
+      label: event.reason?.message || 'Unknown error',
+      customParameters: {
+        reason: event.reason
+      }
+    });
+  });
+}
+
+// Hook for comprehensive page tracking
+export function useCareAtinPageTracking(): void {
+  const location = useLocation();
+  
+  // Only run these hooks when in the browser environment
+  if (typeof window !== 'undefined') {
+    useScrollTracking();
+    useTimeTracking();
+    
+    useEffect(() => {
+      // Track page view
+      trackPageView(location.pathname, document.title);
+      
+      // Track performance on route changes
+      setTimeout(() => {
+        trackPerformanceMetrics();
+      }, 1000);
+    }, [location.pathname]);
+  }
+}

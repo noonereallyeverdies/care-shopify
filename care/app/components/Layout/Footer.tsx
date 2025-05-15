@@ -153,14 +153,14 @@ export function Footer() {
           <p>© care<span className="brand-dot">•</span>atin {new Date().getFullYear()} • all rights reserved</p>
           
           <div className="flex space-x-2 mt-4 md:mt-0">
-            <img src="/images/payment/amex.svg" alt="American Express payment method" className="h-8" />
-            <img src="/images/payment/apple-pay.svg" alt="Apple Pay payment method" className="h-8" />
-            <img src="/images/payment/discover.svg" alt="Discover payment method" className="h-8" />
-            <img src="/images/payment/mastercard.svg" alt="Mastercard payment method" className="h-8" />
-            <img src="/images/payment/paypal.svg" alt="PayPal payment method" className="h-8" />
-            <img src="/images/payment/shop-pay.svg" alt="Shop Pay payment method" className="h-8" />
-            <img src="/images/payment/venmo.svg" alt="Venmo payment method" className="h-8" />
-            <img src="/images/payment/visa.svg" alt="Visa payment method" className="h-8" />
+            <img src="/images/payment/amex.svg" alt="American Express payment method" className="h-8" loading="lazy" />
+            <img src="/images/payment/apple-pay.svg" alt="Apple Pay payment method" className="h-8" loading="lazy" />
+            <img src="/images/payment/discover.svg" alt="Discover payment method" className="h-8" loading="lazy" />
+            <img src="/images/payment/mastercard.svg" alt="Mastercard payment method" className="h-8" loading="lazy" />
+            <img src="/images/payment/paypal.svg" alt="PayPal payment method" className="h-8" loading="lazy" />
+            <img src="/images/payment/shop-pay.svg" alt="Shop Pay payment method" className="h-8" loading="lazy" />
+            <img src="/images/payment/venmo.svg" alt="Venmo payment method" className="h-8" loading="lazy" />
+            <img src="/images/payment/visa.svg" alt="Visa payment method" className="h-8" loading="lazy" />
           </div>
         </div>
       </div>

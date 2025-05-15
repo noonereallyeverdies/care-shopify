@@ -1,137 +1,91 @@
-import { defer, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
-import { useLoaderData, type MetaFunction } from '@remix-run/react';
-import { AnalyticsPageType, Seo } from '@shopify/hydrogen';
-import { json } from '@shopify/remix-oxygen';
+import { type LoaderFunctionArgs } from '@shopify/remix-oxygen';
+import { useLoaderData } from '@remix-run/react';
+import { Image } from '@shopify/hydrogen';
 
-// Import the planned section components (create these next)
-// import { HeroSection } from '~/components/HeroSection';
-// import { ProblemSolution } from '~/components/ProblemSolution';
-// import { HowItWorksSnippet } from '~/components/HowItWorksSnippet';
-// import { DeviceSpotlight } from '~/components/DeviceSpotlight';
-// import { TestimonialSlider } from '~/components/TestimonialSlider';
-// import { BeforeAfter } from '~/components/BeforeAfter';
-// import { SocialProofLogos } from '~/components/SocialProofLogos';
-// import { FinalCta } from '~/components/FinalCta';
-
-// Import the HeroSection component
-import { HeroSection } from '~/components/HeroSection';
-// Import the HowItWorksSnippet component
-import { HowItWorksSnippet } from '~/components/HowItWorksSnippet';
-// Import the ProblemSolution component
-import { ProblemSolution } from '~/components/ProblemSolution';
-// Import the TestimonialSlider component
-import { TestimonialSlider } from '~/components/TestimonialSlider';
-// Import the BeforeAfter component
-import { BeforeAfter } from '~/components/BeforeAfter';
-// Import the DeviceSpotlight component
-import {DeviceSpotlight} from '~/components/DeviceSpotlight';
-// Import the FinalCta component
-import {FinalCta} from '~/components/FinalCta';
-// Import the SocialProofLogos component
-import {SocialProofLogos} from '~/components/SocialProofLogos';
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: 'Care-atin | Red Light Therapy for Hair Growth' },
-    {
-      name: 'description',
-      content:
-        'Revitalize your hair with Care-atin\'s science-backed Red Light Therapy device. Promote healthier, fuller hair naturally.',
-    },
-  ];
-};
-
-// Loader to fetch data needed specifically for the landing page sections
+// Simple loader for now
 export async function loader({ context }: LoaderFunctionArgs) {
-  const { storefront } = context;
-  // Fetch the product data
-  const { product } = await storefront.query(PRODUCT_QUERY, {
-    variables: {
-      handle: 'care-atin-rlt-device', // Ensure this handle is correct
-      country: storefront.i18n.country,
-      language: storefront.i18n.language,
-    },
-    // Optional: Add caching
-    // cache: storefront.CacheShort()
-  });
-
-  if (!product?.id) {
-    // Log a warning if the product isn't found, but don't crash the page
-    console.warn(`Product with handle 'care-atin-rlt-device' not found. DeviceSpotlight might not render correctly.`);
-  }
-
-  const analytics = { pageType: AnalyticsPageType.home };
-  
-  // Return both product and analytics data
-  // Use defer if you want analytics or other non-critical data to load later
-  return json({ product: product || null, analytics }); 
+  return {
+    shop: context.storefront.getShopPrimaryDomain(),
+  };
 }
 
 export default function Homepage() {
-  // Destructure product along with analytics
-  const { product, analytics } = useLoaderData<typeof loader>();
+  const data = useLoaderData<typeof loader>();
 
   return (
-    <>
-      {/* <Seo type="homepage" data={analytics} /> */}
-      
-      <HeroSection />
-      <HowItWorksSnippet />
-      <ProblemSolution />
-      <SocialProofLogos />
-      <TestimonialSlider />
-      <BeforeAfter />
-      {/* Render DeviceSpotlight only if product data exists */}
-      {product && <DeviceSpotlight product={product} />}
+    <div className="homepage">
+      {/* Hero Section */}
+      <section className="hero bg-gradient-to-r from-primary/10 to-secondary/10 py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-manrope font-bold mb-6">
+            care<span className="text-primary">•</span>atin
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Revolutionary hair wellness technology that transforms your hair from the inside out
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="btn-primary text-lg px-8 py-3">
+              Shop Now
+            </button>
+            <button className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-md transition-all duration-200">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </section>
 
-      {/* === Other Homepage Sections Go Here === */}
-      {/* Example:
-      <FeaturedProducts products={data.featuredProducts} />
-      */}
-      
-      {/* Temporary placeholder content */}
-      <div style={{ padding: '40px', textAlign: 'center' }}>
-        <h2>Homepage Content Placeholder</h2>
-        <p>Other sections like Featured Products will go here.</p>
-      </div>
+      {/* Features Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-manrope font-bold text-center mb-12">
+            Why Choose care•atin?
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-manrope font-semibold mb-2">Science-Backed</h3>
+              <p className="text-gray-600">Clinically proven formulations with natural ingredients</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-manrope font-semibold mb-2">Fast Results</h3>
+              <p className="text-gray-600">See visible improvements in just 2-4 weeks</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-manrope font-semibold mb-2">All Hair Types</h3>
+              <p className="text-gray-600">Suitable for every hair type and texture</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <FinalCta />
-    </>
+      {/* CTA Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-manrope font-bold mb-6">
+            Ready to Transform Your Hair?
+          </h2>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            Join thousands of satisfied customers who have discovered the power of care•atin
+          </p>
+          <button className="btn-primary text-lg px-8 py-3">
+            Start Your Journey
+          </button>
+        </div>
+      </section>
+    </div>
   );
 }
-
-// Basic GraphQL query to fetch product info
-const PRODUCT_QUERY = `#graphql
-  query HomepageProductQuery(
-    $handle: String!
-    $country: CountryCode
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
-    product(handle: $handle) {
-      id
-      title
-      descriptionHtml # Ensure we fetch HTML description
-      description # Keep plain text as fallback
-      handle # Ensure handle is fetched for the link
-      vendor # Added vendor
-      featuredImage {
-        url
-        altText
-        width
-        height
-      }
-      variants(first: 1) {
-        nodes {
-          id
-          availableForSale
-          title # Added variant title
-          price {
-            amount
-            currencyCode
-          }
-          # compareAtPrice { ... } # Uncomment if needed
-        }
-      }
-    }
-  }
-`; 

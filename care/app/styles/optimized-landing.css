@@ -1,0 +1,173 @@
+/* Optimized Landing Page Styles */
+.optimized-homepage {
+  /* CSS Custom Properties for Brand Colors */
+  --brand-primary: #C49B7C;
+  --brand-secondary: #E8B598;
+  --brand-accent: #E9C46A;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --bg-light: #F9FAFB;
+}
+
+/* Typography Enhancements */
+.optimized-homepage h1,
+.optimized-homepage h2,
+.optimized-homepage h3 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* Glassmorphism Effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(196, 155, 124, 0.5); }
+  50% { box-shadow: 0 0 30px rgba(196, 155, 124, 0.8); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(196, 155, 124, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(196, 155, 124, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(196, 155, 124, 0); }
+}
+
+/* Button Enhancements */
+.button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button--primary {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  box-shadow: 0 4px 15px rgba(196, 155, 124, 0.4);
+}
+
+.button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(196, 155, 124, 0.6);
+}
+
+/* Section Spacing */
+.optimized-homepage section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scroll Indicators */
+.scroll-indicator {
+  position: relative;
+}
+
+.scroll-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to bottom, var(--brand-primary), transparent);
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pattern Overlays */
+.pattern-dots {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+}
+
+.pattern-grid {
+  background-image: 
+    linear-gradient(currentColor 1px, transparent 1px),
+    linear-gradient(90deg, currentColor 1px, transparent 1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .optimized-homepage h1 {
+    font-size: 2.5rem;
+  }
+  
+  .optimized-homepage h2 {
+    font-size: 2rem;
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(5px);
+  }
+}
+
+/* Performance Optimizations */
+.optimized-homepage img,
+.optimized-homepage video {
+  will-change: transform;
+}
+
+.optimized-homepage .motion-reduce {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Accessibility Enhancements */
+.optimized-homepage:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+.optimized-homepage [data-focus-visible-added] {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbar */
+.optimized-homepage::-webkit-scrollbar {
+  width: 8px;
+}
+
+.optimized-homepage::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.optimized-homepage::-webkit-scrollbar-thumb {
+  background: var(--brand-primary);
+  border-radius: 4px;
+}
+
+.optimized-homepage::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-secondary);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .optimized-homepage {
+    --text-primary: #F9FAFB;
+    --text-secondary: #D1D5DB;
+    --bg-light: #111827;
+  }
+}

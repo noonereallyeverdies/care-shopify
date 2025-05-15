@@ -12,10 +12,29 @@ import {
   createStorefrontClient,
   storefrontRedirect,
   createCustomerAccountClient,
+  type LanguageCode,
+  type CountryCode,
 } from '@shopify/hydrogen';
 
-import {AppSession} from '~/lib/session.server';
-import {getLocaleFromRequest} from '~/lib/utils';
+import { AppSession } from '~/lib/session.server';
+
+function getLocaleFromRequest(request: Request): {language: LanguageCode; country: CountryCode} {
+  const url = new URL(request.url);
+  const pathParts = url.pathname.split('/').filter(Boolean);
+  
+  // Default locale
+  let language: LanguageCode = 'EN';
+  let country: CountryCode = 'US';
+  
+  // Check for locale in path
+  if (pathParts[0] && pathParts[0].match(/^[a-z]{2}-[a-z]{2}$/i)) {
+    const [lang, ctry] = pathParts[0].toUpperCase().split('-');
+    language = lang as LanguageCode;
+    country = ctry as CountryCode;
+  }
+  
+  return { language, country };
+}
 
 /**
  * Export a fetch handler in module format.
@@ -27,9 +46,6 @@ export default {
     executionContext: ExecutionContext,
   ): Promise<Response> {
     try {
-      /**
-       * Open a cache instance in the worker and a custom session instance.
-       */
       if (!env?.SESSION_SECRET) {
         throw new Error('SESSION_SECRET environment variable is not set');
       }
@@ -51,32 +67,26 @@ export default {
         privateStorefrontToken: env.PRIVATE_STOREFRONT_API_TOKEN,
         storeDomain: env.PUBLIC_STORE_DOMAIN,
         storefrontId: env.PUBLIC_STOREFRONT_ID,
+        storefrontApiVersion: env.PUBLIC_STOREFRONT_API_VERSION || '2025-01',
         storefrontHeaders: getStorefrontHeaders(request),
       });
 
       /**
        * Create a client for Customer Account API.
        */
-      // Get actual host and protocol from request
-      const url = new URL(request.url);
-      const host = url.host;
-      const protocol = url.protocol;
-      
-      const customerAccount = createCustomerAccountClient({
-        waitUntil,
-        request,
-        session,
-        customerAccountId: env.PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID,
-        shopId: env.SHOP_ID,
-        customerAccountUrl: env.PUBLIC_CUSTOMER_ACCOUNT_API_URL,
-        // Set the redirect URI based on the current host
-        redirectUriScheme: protocol.replace(':', ''),
-        redirectUriHost: host,
-      });
+      const customerAccount = env.PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID
+        ? createCustomerAccountClient({
+            request,
+            session,
+            waitUntil,
+            customerAccountId: env.PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID,
+            shopId: env.SHOP_ID,
+          })
+        : null;
 
       const cart = createCartHandler({
         storefront,
-        customerAccount,
+        customerAccount: customerAccount || undefined,
         getCartId: cartGetIdDefault(request.headers),
         setCartId: cartSetIdDefault(),
       });
@@ -95,7 +105,6 @@ export default {
           customerAccount,
           cart,
           env,
-          request,
         }),
       });
 
@@ -106,37 +115,11 @@ export default {
       }
 
       if (response.status === 404) {
-        /**
-         * Check for redirects only when there's a 404 from the app.
-         * If the redirect doesn't exist, then `storefrontRedirect`
-         * will pass through the 404 response.
-         */
         return storefrontRedirect({request, response, storefront});
-      }
-
-      // Update Content-Security-Policy to include font-src directive
-      const existingCspHeader = response.headers.get('Content-Security-Policy') || '';
-      if (existingCspHeader) {
-        // If there's an existing CSP header, append the font-src directive
-        if (existingCspHeader.includes('font-src')) {
-          // If font-src already exists, add data: to it
-          const updatedCsp = existingCspHeader.replace(
-            /(font-src\s[^;]*)/,
-            '$1 data:'
-          );
-          response.headers.set('Content-Security-Policy', updatedCsp);
-        } else {
-          // If font-src doesn't exist, add it as a new directive
-          response.headers.set('Content-Security-Policy', `${existingCspHeader}; font-src data: 'self'`);
-        }
-      } else {
-        // If no CSP exists, create a minimal one that allows data: for fonts and preserves default behavior
-        response.headers.set('Content-Security-Policy', "default-src 'self' https://cdn.shopify.com https://shopify.com http://localhost:*; font-src data: 'self'");
       }
 
       return response;
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error(error);
       return new Response('An unexpected error occurred', {status: 500});
     }

@@ -3,12 +3,27 @@ import typographyPlugin from '@tailwindcss/typography';
 import colors from 'tailwindcss/colors';
 
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./app/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',  // All app files
+    './components/**/*.{js,ts,jsx,tsx}', // All component files
+  ],
   theme: {
     extend: {
       colors: {
-        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        primary: {
+          50: '#fff1f2',
+          100: '#ffe4e6',
+          200: '#fecdd3',
+          300: '#fda4af',
+          400: '#fb7185',
+          500: '#f43f5e',
+          600: '#e11d48',
+          700: '#be123c',
+          800: '#9f1239',
+          900: '#881337',
+          950: '#4c0519',
+        },
         contrast: 'rgb(var(--color-contrast) / <alpha-value>)',
         accent: 'rgb(var(--color-accent) / <alpha-value>)',
         brand: 'rgb(var(--color-brand) / <alpha-value>)',
@@ -65,6 +80,10 @@ export default {
         pulse: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.5' },
+        },
+        breathe: {
+          '0%, 100%': { opacity: '0.8', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.03)' },
         }
       },
       animation: {
@@ -72,6 +91,7 @@ export default {
         fadeIn: 'fadeIn 0.5s ease-out',
         slideUp: 'slideUp 0.5s ease-out',
         pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        breathe: 'breathe 15s ease-in-out infinite',
       },
       typography: ({ theme }) => ({
         DEFAULT: {
@@ -97,8 +117,8 @@ export default {
               fontWeight: '400',
             },
             'h1, h2, h3, h4': {
-              fontFamily: theme('fontFamily.sans').join(', '),
-              fontWeight: '600',
+              fontFamily: theme('fontFamily.serif').join(', '),
+              fontWeight: '400',
             },
             p: {
               fontFamily: theme('fontFamily.sans').join(', '),
@@ -133,8 +153,8 @@ export default {
         mobileGallery: 'calc(100vw - 3rem)',
       },
       fontFamily: {
-        sans: ['"SF Pro Display"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['"New York"', '"IBMPlexSerif"', 'Palatino', 'ui-serif'],
+        sans: ['Montserrat', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'ui-serif', 'Georgia', 'Cambria', 'serif'],
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],
@@ -161,12 +181,23 @@ export default {
         border: 'inset 0px 0px 0px 1px rgb(var(--color-primary) / 0.08)',
         darkHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.08)',
         lightHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.03)',
+        premium: '0 20px 50px -12px rgba(212, 98, 124, 0.15)',
       },
       backdropFilter: {
         'none': 'none',
         'blur': 'blur(20px)',
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [formsPlugin, typographyPlugin],
+  // Important performance optimizations
+  future: {
+    hoverOnlyWhenSupported: true, // Better performance on mobile
+    disableColorOpacityUtilitiesByDefault: true, // Reduce CSS size
+  },
+  // Aggressively purge unused tailwind styles
+  safelist: [],
 };

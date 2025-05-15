@@ -4,9 +4,14 @@ import {oxygen} from '@shopify/mini-oxygen/vite';
 import {vitePlugin as remix} from '@remix-run/dev';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+declare module "@remix-run/server-runtime" {
+  interface Future {
+    v3_singleFetch: true;
+  }
+}
+
 export default defineConfig({
   plugins: [
-    hydrogen(),
     oxygen(),
     remix({
       presets: [hydrogen.preset()],
@@ -15,63 +20,61 @@ export default defineConfig({
         v3_relativeSplatPath: true,
         v3_throwAbortReason: true,
         v3_lazyRouteDiscovery: true,
+        v3_singleFetch: true,
       },
     }),
+    hydrogen(),
     tsconfigPaths(),
   ],
-  // Force Vite to use a single instance of React/ReactDOM
-  // to prevent errors caused by multiple versions.
-  resolve: {
-    dedupe: ['react', 'react-dom'],
-  },
-  ssr: {
-    optimizeDeps: {
-      include: [
-        'use-sync-external-store/shim/with-selector.js',
-        'lodash/some',
-        'lodash/range',
-        'lodash/first',
-        'lodash/isBoolean',
-        'lodash/isPlainObject',
-        'lodash/minBy',
-        'lodash/maxBy',
-        'prop-types',
-        'lodash/last',
-        'lodash/isEqual',
-        'lodash/flatMap',
-        'lodash/min',
-        'lodash/max',
-        'lodash/throttle',
-        'lodash/sortBy',
-        'lodash/uniqBy',
-        'lodash/upperFirst',
-        'lodash/isNumber',
-        'lodash/isNaN',
-        'react-is',
-        'lodash/isObject',
-        'lodash/isFunction',
-        'lodash/isString',
-        'lodash/isNil',
-        'lodash/get',
-        'lodash',
-        'typographic-base',
-      ],
-    },
-  },
   optimizeDeps: {
     include: [
-      'clsx',
-      '@headlessui/react',
-      'typographic-base',
-      'react-intersection-observer',
-      'react-use/esm/useScroll',
-      'react-use/esm/useDebounce',
-      'react-use/esm/useWindowScroll',
+      'react',
+      'react-dom',
+      'react-dom/client',
+      'react-router-dom',
+      '@shopify/hydrogen',
+      '@remix-run/react',
+      // Add polyfills for development
+      'buffer',
+      'process',
+    ],
+    exclude: [
+      // Exclude problematic modules from optimization
+      'fsevents',
     ],
   },
-  build: {
-    // Allow a strict Content-Security-Policy
-    // withtout inlining assets as base64:
-    assetsInlineLimit: 0,
+  resolve: {
+    dedupe: ['react', 'react-dom'],
+    alias: {
+      // Polyfills for Node.js built-ins to fix SSR errors
+      path: 'path-browserify',
+      fs: 'browserify-fs',
+      process: 'process/browser',
+      util: 'util/',
+      assert: 'assert/',
+      stream: 'stream-browserify',
+      events: 'events/',
+      url: 'url/',
+      querystring: 'querystring-es3',
+      crypto: 'crypto-browserify',
+      buffer: 'buffer',
+    },
+  },
+  define: {
+    // Define globals
+    global: 'globalThis',
+    process: {
+      env: {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+      },
+    },
+  },
+  ssr: {
+    noExternal: [
+      // Ensure these are bundled for SSR
+      'react-hook-form',
+      'framer-motion',
+      'lucide-react',
+    ],
   },
 });

@@ -212,7 +212,7 @@ export function VisualScienceSection() {
                   <p className="text-neutral-700 mb-6">
                     {activeTab === 'redLight' && 'Clinically proven wavelengths (630-660nm) penetrate the scalp to energize cells, stimulate circulation, and reduce inflammation.'}
                     {activeTab === 'massage' && 'Gentle vibration stimulates follicles and increases blood flow to the scalp, delivering more nutrients to hair follicles.'}
-                    {activeTab === 'oil' && 'Targeted delivery system allows active ingredients to reach precisely where they're needed, maximizing effectiveness.'}
+                    {activeTab === 'oil' && 'Targeted delivery system allows active ingredients to reach precisely where they\'re needed, maximizing effectiveness.'}
                   </p>
                   
                   <div className="border-t border-neutral-100 pt-6">

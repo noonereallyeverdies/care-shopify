@@ -1,0 +1,357 @@
+/* Enhanced Hero Section with Streamlined Design */
+
+.hero-section-enhanced {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Video Background with Parallax */
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-video.loaded {
+  opacity: 1;
+}
+
+/* Fallback for when video fails to load */
+.hero-image-fallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, 
+    var(--c-brand-ritual) 0%, 
+    var(--c-accent-primary) 50%, 
+    var(--c-accent-secondary) 100%
+  );
+  position: relative;
+}
+
+.fallback-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-image-fallback::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/images/texture.png');
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.5) 40%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 2;
+}
+
+/* Content Container */
+.hero-content-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+/* Typography with Editorial Sophistication */
+.hero-headline {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  
+  /* Editorial film grain effect */
+  position: relative;
+}
+
+.subtitle-accent {
+  display: block;
+  font-size: 0.6em;
+  font-weight: 300;
+  color: var(--c-accent-primary);
+  margin-top: 0.5rem;
+}
+
+.hero-headline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 50% 50%, transparent 50%, rgba(255,255,255,0.01) 50.5%),
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.01) 0%, transparent 1%),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.01) 0%, transparent 1%);
+  background-size: 4px 4px, 6px 6px, 8px 8px;
+  pointer-events: none;
+}
+
+.hero-subheadline {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Brand tagline */
+.hero-tagline {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--c-accent-primary);
+  text-transform: lowercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+/* Effectiveness stat */
+.effectiveness-stat {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 1rem auto 2rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* Enhanced CTA Group */
+.hero-cta-group {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cta-primary-wrapper {
+  position: relative;
+}
+
+.hero-cta-primary {
+  padding: 1rem 2.5rem 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, var(--c-accent-primary) 0%, var(--c-accent-secondary) 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.hero-cta-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero-cta-primary:hover::before {
+  left: 100%;
+}
+
+.cta-arrow {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.hero-cta-primary:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+.hero-cta-secondary {
+  padding: 0.8rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.hero-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Guarantee badge */
+.guarantee-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 90px;
+  height: 90px;
+  background: var(--c-accent-primary);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transform: rotate(-5deg);
+  animation: pulse 2s infinite;
+  z-index: 20;
+}
+
+.offer-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.offer-subtext {
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1) rotate(-5deg); }
+  50% { transform: scale(1.05) rotate(-5deg); }
+  100% { transform: scale(1) rotate(-5deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content-container {
+    padding: 1.5rem;
+  }
+
+  .effectiveness-stat {
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .hero-cta-group {
+    margin-top: 2rem;
+  }
+
+  .hero-cta-primary {
+    padding: 0.9rem 2rem 0.9rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .hero-cta-secondary {
+    padding: 0.7rem 1.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .guarantee-badge {
+    top: 16px;
+    right: 16px;
+    width: 70px;
+    height: 70px;
+  }
+  
+  .offer-text {
+    font-size: 0.7rem;
+  }
+  
+  .offer-subtext {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-cta-group {
+    width: 100%;
+  }
+  
+  .cta-primary-wrapper, .cta-secondary-wrapper {
+    width: 100%;
+  }
+  
+  .hero-cta-primary, .hero-cta-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .hero-headline {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+  
+  .hero-subheadline {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+  }
+  
+  .guarantee-badge {
+    top: 10px;
+    right: 10px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .effectiveness-stat {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem auto 1.5rem;
+  }
+}

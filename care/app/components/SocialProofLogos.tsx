@@ -43,6 +43,7 @@ export function SocialProofLogos() {
               src={logo.src}
               alt={logo.alt}
               className="h-8 md:h-10 w-auto max-w-[120px] md:max-w-[150px]" // Use Tailwind for sizing
+              loading="lazy"
             />
           </a>
         ))}

@@ -3,24 +3,46 @@ import { motion, useViewportScroll, useTransform, useScroll } from 'framer-motio
 import { ArrowRight, AlertTriangle, TrendingDown, Clock, Zap, Waves, Droplet, Info, CheckCircle, User, ExternalLink, ChevronDown, ChevronUp, BarChart } from 'lucide-react';
 import { ClientOnly } from '~/components/utility/ClientOnly';
 import { Link } from '@remix-run/react';
+import { AnimatedCounter } from '~/components/Shared/AnimatedCounter';
+
+// Define a type for timeline items
+interface TimelineStageItem {
+  stage: string;
+  time: string;
+  points: string[];
+  opportunity: string;
+  success: string;
+  testimonial: {
+    quote: string;
+    author: string;
+  };
+  icon: any;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+  ctaText: string;
+  stageMessage: string;
+  hairLossImg: string;
+}
 
 // Enhanced timeline data with social proof and more emotional triggers
-const timeline = [
+const timeline: TimelineStageItem[] = [
   {
     stage: 'Early Signs',
     time: 'First ~30 Days',
     points: ['Slight increase in shedding', 'Hair feels less dense/vibrant'],
     opportunity: 'Early action = best results.',
-    success: '93% saw improvement',
+    success: '91%',
     testimonial: {
-      quote: 'I caught the signs early and my hair never thinned further.',
+      quote: 'I noticed early changes and took action immediately. My hair never thinned further.',
       author: 'Michael, 34',
     },
     icon: Clock,
-    color: 'text-orange-500',
-    bgColor: 'bg-orange-50',
-    borderColor: 'border-orange-200',
-    ctaText: 'Start Prevention',
+    color: 'text-rose-500',
+    bgColor: 'bg-pink-50',
+    borderColor: 'border-pink-200',
+    ctaText: 'Get Care•atin',
+    stageMessage: 'Best time to start - protect what you have',
     hairLossImg: '/images/hairloss/early-stage.png',
   },
   {
@@ -29,19 +51,19 @@ const timeline = [
     points: [
       'Noticeable thinning (part line, temples)',
       'Hair appears duller/brittle',
-      'Confidence may waver',
     ],
     opportunity: 'Dormant follicles still highly responsive.',
-    success: '78% experienced regrowth',
+    success: '76%',
     testimonial: {
-      quote: 'Within months, my confidence and hair were coming back.',
+      quote: 'Within months of treatment, my confidence and hair volume were returning.',
       author: 'Sarah, 41',
     },
     icon: TrendingDown,
-    color: 'text-red-500',
-    bgColor: 'bg-red-50',
-    borderColor: 'border-red-200',
-    ctaText: 'Act Now',
+    color: 'text-rose-500',
+    bgColor: 'bg-pink-50',
+    borderColor: 'border-pink-200',
+    ctaText: 'Get Care•atin',
+    stageMessage: 'Critical window - rapid response needed',
     hairLossImg: '/images/hairloss/visible-stage.png',
   },
   {
@@ -50,19 +72,19 @@ const timeline = [
     points: [
       'Recession more pronounced',
       'Follicle health declines',
-      'Self-consciousness increases',
     ],
     opportunity: 'Consistent care maximizes potential.',
-    success: '62% still saw improvement',
+    success: '60%',
     testimonial: {
-      quote: 'Careatin helped restore hair I thought was lost forever.',
+      quote: 'Care•atin helped restore hair I thought was permanently lost.',
       author: 'David, 47',
     },
     icon: AlertTriangle,
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-50',
-    borderColor: 'border-purple-200',
-    ctaText: 'Maximize Recovery',
+    color: 'text-rose-500',
+    bgColor: 'bg-pink-50',
+    borderColor: 'border-pink-200',
+    ctaText: 'Get Care•atin',
+    stageMessage: 'Recovery still possible - start immediately',
     hairLossImg: '/images/hairloss/advanced-stage.png',
   },
 ];
@@ -164,7 +186,7 @@ function HairLossContent() {
   useEffect(() => {
     if (!counterValue?.onChange) return;
     
-    const unsubscribe = counterValue.onChange(latest => {
+    const unsubscribe = counterValue.onChange((latest: number) => {
       setCount(Math.round(latest));
     });
     
@@ -183,7 +205,13 @@ function HairLossContent() {
   }, [counterValue, count]);
   
   // Enhanced stats data with more emotional impact
-  const stats = [
+  interface StatItem {
+    label: string;
+    value: string;
+    impact: string;
+  }
+
+  const stats: StatItem[] = [
     { 
       label: "Average strands lost daily", 
       value: "150",
@@ -202,7 +230,12 @@ function HairLossContent() {
   ];
   
   // Daily consequences of waiting
-  const dailyLoss = [
+  interface DailyLossItem {
+    day: number;
+    consequence: string;
+  }
+
+  const dailyLoss: DailyLossItem[] = [
     { day: 7, consequence: "Increased shedding becomes noticeable to you" },
     { day: 30, consequence: "Friends start to notice thinning at crown" },
     { day: 90, consequence: "Visible scalp areas expand by up to 23%" },
@@ -211,56 +244,56 @@ function HairLossContent() {
   
   try {
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative" ref={containerRef}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative" ref={containerRef}>
         {/* Left column - Stats */}
-        <div className="bg-white text-primary rounded-lg shadow-xl p-8 border-t-4 border-rose-500">
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold text-primary mb-3">The True Cost of Waiting</h2>
-            <p className="text-neutral-700 mb-6">Every day without treatment means <span className="font-semibold text-rose-600">permanent loss</span> of your hair's potential.</p>
+        <div className="bg-white text-primary rounded-lg shadow-md p-5 border-t-4 border-rose-500">
+          <div className="mb-6">
+            <h2 className="text-xl font-bold text-primary mb-2">The True Cost of Waiting</h2>
+            <p className="text-neutral-700 mb-4 text-sm">Every day without treatment means <span className="font-semibold text-rose-600">permanent loss</span> of your hair's potential.</p>
             
-            <div className={`text-6xl font-bold text-center mb-3 tabular-nums transition-all duration-300 ${isHighlighted ? 'text-rose-600 scale-105' : 'text-accent'}`}>
+            <div className={`text-5xl font-bold text-center mb-2 tabular-nums transition-all duration-300 ${isHighlighted ? 'text-rose-600 scale-105' : 'text-accent'}`}>
               {count.toLocaleString()}
             </div>
             <div className="text-center">
-              <div className="font-medium text-neutral-800">Hair strands lost</div>
-              <div className="text-sm text-rose-600 font-medium">This damage cannot be undone</div>
+              <div className="font-medium text-sm text-neutral-800">Hair strands lost</div>
+              <div className="text-xs text-rose-600 font-medium">This damage cannot be undone</div>
             </div>
           </div>
           
           {/* Progress bar */}
-          <div className="w-full h-3 bg-neutral-200 rounded-full mb-6">
+          <div className="w-full h-2 bg-neutral-200 rounded-full mb-4">
             <div 
               className="h-full bg-gradient-to-r from-amber-400 to-rose-600 rounded-full transition-all duration-1000 relative"
               style={{ width: `${(count / targetCount) * 100}%` }}
             >
               {/* Pulsing indicator at the end of the bar */}
-              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-rose-600 rounded-full animate-ping opacity-75"></div>
-              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-rose-600 rounded-full"></div>
+              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-2 h-2 bg-rose-600 rounded-full animate-ping opacity-75"></div>
+              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-2 h-2 bg-rose-600 rounded-full"></div>
             </div>
           </div>
           
           {/* Stats grid with improved contrast and emotional impact */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-3 gap-2 mb-4">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center p-4 bg-neutral-50 rounded-lg border border-neutral-200 shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="text-lg font-semibold text-rose-600">{stat.value}</div>
-                <div className="text-xs text-neutral-700 font-medium mb-2">{stat.label}</div>
-                <div className="text-xs text-neutral-500 italic">{stat.impact}</div>
+              <div key={index} className="text-center p-2 bg-neutral-50 rounded-lg border border-neutral-200 shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="text-base font-semibold text-rose-600">{stat.value}</div>
+                <div className="text-2xs text-neutral-700 font-medium mb-1">{stat.label}</div>
+                <div className="text-2xs text-neutral-500 italic">{stat.impact}</div>
               </div>
             ))}
           </div>
           
           {/* Timeline of consequences - NEW COMPONENT */}
-          <div className="bg-neutral-50 p-4 rounded-lg border border-neutral-200 mb-6">
-            <div className="flex items-center mb-3 text-rose-600">
-              <Clock size={16} className="mr-2" />
-              <h3 className="font-medium text-sm">Consequences of Waiting</h3>
+          <div className="bg-neutral-50 p-3 rounded-lg border border-neutral-200 mb-4">
+            <div className="flex items-center mb-2 text-rose-600">
+              <Clock size={14} className="mr-2" />
+              <h3 className="font-medium text-xs">Consequences of Waiting</h3>
             </div>
-            <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-1">
               {dailyLoss.map((item, index) => (
                 <div key={index} className="flex items-baseline">
-                  <div className="w-16 font-medium text-neutral-800 text-sm">Day {item.day}:</div>
-                  <div className="text-xs text-neutral-700">{item.consequence}</div>
+                  <div className="w-12 font-medium text-neutral-800 text-2xs">Day {item.day}:</div>
+                  <div className="text-2xs text-neutral-700">{item.consequence}</div>
                 </div>
               ))}
             </div>
@@ -271,16 +304,15 @@ function HairLossContent() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-4"
           >
             <Link 
               to="/products/photonique-touch" 
-              className="flex items-center justify-center w-full bg-rose-600 hover:bg-rose-700 text-white py-3 px-4 rounded-md font-medium transition-colors duration-200"
+              className="flex items-center justify-center w-full bg-rose-600 hover:bg-rose-700 text-white py-2 px-4 rounded-md font-medium transition-colors duration-200 text-sm"
             >
               Stop the loss today
-              <ArrowRight size={16} className="ml-2" />
+              <ArrowRight size={14} className="ml-2" />
             </Link>
-            <p className="text-xs text-center text-neutral-500 mt-2">
+            <p className="text-2xs text-center text-neutral-500 mt-1">
               Over 10,000 customers wish they had started sooner
             </p>
           </motion.div>
@@ -291,12 +323,12 @@ function HairLossContent() {
           <div className="relative w-full aspect-square max-w-md mx-auto">
             {/* Hair loss emotional context - NEW COMPONENT */}
             <motion.div 
-              className="absolute -top-12 right-0 bg-neutral-800 text-white px-4 py-2 rounded-lg shadow-lg text-sm flex items-center z-10"
+              className="absolute -top-8 right-0 bg-neutral-800 text-white px-3 py-1 rounded-lg shadow-lg text-xs flex items-center z-10"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <AlertTriangle size={14} className="mr-2 text-amber-400" />
+              <AlertTriangle size={12} className="mr-1 text-amber-400" />
               <span>Without intervention, this will be <span className="font-bold">your reality</span></span>
             </motion.div>
             
@@ -321,27 +353,27 @@ function HairLossContent() {
                   opacity: scrollYProgress.get() > 0.6 ? 0.9 : 0 
                 }}
               >
-                <div className="bg-black/70 backdrop-blur-sm p-4 rounded-lg text-white text-center max-w-[80%]">
-                  <h4 className="font-medium mb-1">This is happening right now</h4>
-                  <p className="text-xs text-white/80">Your hair doesn't wait for you to decide</p>
+                <div className="bg-black/70 backdrop-blur-sm p-3 rounded-lg text-white text-center max-w-[80%]">
+                  <h4 className="font-medium mb-1 text-sm">This is happening right now</h4>
+                  <p className="text-2xs text-white/80">Your hair doesn't wait for you to decide</p>
                 </div>
               </motion.div>
             </div>
             
             {/* Trend indicator */}
             <motion.div 
-              className="absolute -bottom-4 -right-4 bg-rose-600 text-white p-3 rounded-full shadow-lg"
+              className="absolute -bottom-4 -right-4 bg-rose-600 text-white p-2 rounded-full shadow-lg"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1, duration: 0.5 }}
             >
-              <TrendingDown size={24} />
+              <TrendingDown size={20} />
             </motion.div>
             
             {/* Black button at the bottom with stronger emotional trigger */}
             <div className="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2">
               <motion.button
-                className="bg-black text-white px-5 py-3 rounded-md text-sm font-medium shadow-lg hover:bg-neutral-800 transition-colors duration-200"
+                className="bg-black text-white px-4 py-2 rounded-md text-xs font-medium shadow-lg hover:bg-neutral-800 transition-colors duration-200"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -502,14 +534,14 @@ function HairVisualization({
 function ExpertQuote() {
   return (
     <motion.div
-      className="max-w-2xl mx-auto my-8 bg-neutral-50 p-5 rounded-lg border border-neutral-200 shadow-sm"
+      className="bg-neutral-50 p-4 rounded-lg border border-neutral-200 shadow-sm"
       initial={{opacity: 0, y: 20}}
       whileInView={{opacity: 1, y: 0}}
       viewport={{once: true}}
       transition={{duration: 0.6}}
     >
       <div className="flex items-start">
-        <div className="w-14 h-14 rounded-full bg-gray-200 flex-shrink-0 mr-3 overflow-hidden">
+        <div className="w-10 h-10 rounded-full bg-gray-200 flex-shrink-0 mr-2 overflow-hidden">
           <img
             src="/images/experts/dr-hansen.jpg"
             alt="Dr. Hansen"
@@ -517,11 +549,11 @@ function ExpertQuote() {
           />
         </div>
         <div>
-          <p className="text-neutral-700 italic mb-2 text-sm">
+          <p className="text-neutral-700 italic mb-1 text-xs">
             &quot;Hair loss follows a predictable pattern. The earlier you act, the more follicles you save from permanent miniaturization.&quot;
           </p>
-          <p className="text-neutral-500 text-xs flex items-center">
-            <User size={14} className="mr-1" />
+          <p className="text-neutral-500 text-2xs flex items-center">
+            <User size={12} className="mr-1" />
             Dr. Karen Hansen, Trichologist
           </p>
         </div>
@@ -531,307 +563,122 @@ function ExpertQuote() {
 }
 
 // Timeline stage component with expanded functionality
-function TimelineStage({item, index, setExpandedIndex, expandedIndex}) {
+function TimelineStage({item, index, setExpandedIndex, expandedIndex}: {
+  item: TimelineStageItem,
+  index: number,
+  setExpandedIndex: (index: number | null) => void,
+  expandedIndex: number | null
+}) {
   const isExpanded = expandedIndex === index;
+  const Icon = item.icon as React.ElementType;
   
   return (
-    <motion.div
-      key={index}
-      className={`p-5 rounded-xl shadow-sm border-l-4 ${item.borderColor} ${item.bgColor} relative overflow-hidden`}
-      initial={{opacity: 0, y: 30}}
-      whileInView={{opacity: 1, y: 0}}
-      viewport={{once: true}}
-      transition={{duration: 0.5, delay: index * 0.15}}
+    <motion.div 
+      layout
+      className={`mb-6 rounded-2xl backdrop-blur-sm bg-white/80 border ${item.borderColor} shadow-lg overflow-hidden`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.2 }}
     >
-      {/* Microscopic follicle background illustration */}
-      <div className="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
-        <div className="w-40 h-40 rounded-full border-4 border-dashed border-current"></div>
-      </div>
-      
-      <div className="flex items-center mb-3">
-        <item.icon className={`w-5 h-5 mr-2 ${item.color}`} />
-        <div>
-          <h3 className={`text-lg font-medium ${item.color}`}>{item.stage}</h3>
-          <p className="text-xs text-neutral-500 uppercase tracking-wide">
-            {item.time}
-          </p>
-        </div>
-      </div>
-      
-      {/* Visual hair representation */}
-      <div className="mb-3 relative h-16 border border-neutral-200 rounded bg-white flex items-center justify-center">
-        <div className="text-2xs text-neutral-400 absolute top-1 left-2">
-          Hair density
-        </div>
-        {item.hairLossImg ? (
-          <img 
-            src={item.hairLossImg}
-            alt={`Hair in ${item.stage}`}
-            className="h-full object-contain"
-          />
-        ) : (
-          <div className={`text-xs ${item.color}`}>
-            Hair visualization
+      <div 
+        className={`p-6 cursor-pointer ${isExpanded ? 'border-b border-neutral-100' : ''}`}
+        onClick={() => setExpandedIndex(isExpanded ? null : index)}
+      >
+        <div className="flex items-start justify-between">
+          <div className="flex items-center">
+            <div className={`mr-4 w-12 h-12 rounded-full ${item.bgColor} flex items-center justify-center`}>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-rose-300 via-pink-200 to-yellow-100 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">{index + 1}</span>
+              </div>
+            </div>
+            <div>
+              <h3 className="luxury-serif text-xl font-semibold text-rose-700">{item.stage}</h3>
+              <p className="text-sm text-neutral-500 mt-1">{item.time}</p>
+            </div>
           </div>
-        )}
-      </div>
-      
-      <ul className="list-disc list-inside space-y-1 text-neutral-700 text-xs mb-3 pl-1">
-        {item.points.map((point, pIndex) => (
-          <li key={pIndex}>{point}</li>
-        ))}
-      </ul>
-      
-      <div
-        className={`mt-3 pt-3 border-t ${item.borderColor} border-opacity-50 flex items-start`}
-      >
-        <Info size={14} className={`mr-2 mt-0.5 flex-shrink-0 ${item.color}`} />
-        <p className={`text-xs font-medium ${item.color}`}>{item.opportunity}</p>
-      </div>
-      
-      {/* Success statistics */}
-      <div className={`flex items-center mt-2 mb-2`}>
-        <BarChart size={12} className={`mr-1 ${item.color}`} />
-        <p className="text-2xs font-medium text-neutral-700">{item.success}</p>
-      </div>
-      
-      {/* Expandable section for testimonial */}
-      <div className="mt-3 flex justify-between items-center">
-        <div className="text-2xs italic text-neutral-500">
-          {!isExpanded ? `"${item.testimonial.quote.substring(0, 30)}..."` : ''}
+          <span className="text-neutral-400">
+            {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          </span>
         </div>
-        <button 
-          onClick={() => setExpandedIndex(isExpanded ? null : index)}
-          className="text-2xs ml-1 flex items-center text-neutral-500 hover:text-neutral-700 transition-colors"
-        >
-          {isExpanded ? 'Hide' : 'Read more'}
-          {isExpanded ? <ChevronUp size={12} className="ml-1" /> : <ChevronDown size={12} className="ml-1" />}
-        </button>
       </div>
-        
-      {isExpanded && (
-        <motion.div
-          initial={{opacity: 0, height: 0}}
-          animate={{opacity: 1, height: 'auto'}}
-          exit={{opacity: 0, height: 0}}
-          transition={{duration: 0.3}}
-          className="mt-2 bg-white p-2 rounded border border-neutral-200 text-2xs"
-        >
-          <p className="italic text-neutral-600">
-            &quot;{item.testimonial.quote}&quot;
-          </p>
-          <p className="text-neutral-500 mt-1">
-            — {item.testimonial.author}
-          </p>
-        </motion.div>
-      )}
       
-      {/* CTA button */}
-      <motion.div
-        className="mt-3"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{delay: 0.5 + index * 0.2}}
-      >
-        <Link
-          to="/products/hair-renewal-system"
-          className={`inline-flex items-center justify-center w-full py-1.5 px-3 rounded text-2xs bg-gradient-to-r ${
-            item.stage === 'Early Signs'
-              ? 'from-emerald-500 to-emerald-600'
-              : item.stage === 'Visible Changes'
-              ? 'from-amber-500 to-amber-600'
-              : 'from-purple-500 to-purple-600'
-          } text-white font-medium hover:shadow-md transition-shadow duration-300`}
-        >
-          {item.ctaText}
-          <ArrowRight size={10} className="ml-1" />
-        </Link>
-      </motion.div>
+      {isExpanded && (
+        <div className="p-6 bg-gradient-to-br from-pink-50 to-white">
+          <div className="mb-4">
+            <p className="text-neutral-700 font-medium mb-1">{item.stageMessage}</p>
+            <ul className="space-y-2">
+              {item.points.map((point, i) => (
+                <li key={i} className="flex items-start">
+                  <span className="inline-block w-2 h-2 rounded-full bg-rose-300 mt-1.5 mr-2"></span>
+                  <span className="text-neutral-600">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="mb-4 p-4 bg-white/50 rounded-lg border border-pink-100">
+            <div className="flex items-center mb-2">
+              <div className="w-8 h-8 rounded-full overflow-hidden mr-3 border border-pink-200">
+                <div className="w-full h-full bg-gradient-to-br from-rose-300 to-pink-100"></div>
+              </div>
+              <div>
+                <p className="text-sm font-semibold">Success Rate</p>
+                <p className="luxury-serif text-2xl font-bold bg-gradient-to-r from-rose-400 via-pink-300 to-yellow-200 bg-clip-text text-transparent">{item.success}</p>
+              </div>
+            </div>
+            <div className="pt-2 border-t border-pink-100 mt-2">
+              <p className="text-sm italic text-neutral-600">"{item.testimonial.quote}"</p>
+              <p className="text-xs text-neutral-500 mt-1">— {item.testimonial.author}</p>
+            </div>
+          </div>
+          
+          <button className="w-full bg-gradient-to-r from-rose-400 via-pink-300 to-yellow-200 text-white py-3 px-6 rounded-full font-semibold hover:shadow-lg hover:scale-[1.02] transition-all">
+            {item.ctaText}
+          </button>
+        </div>
+      )}
     </motion.div>
   );
 }
 
 // Main exported component
 export function HairLossVisualization() {
-  const [activeTimeframe, setActiveTimeframe] = useState(0);
-  const [showLossAversion, setShowLossAversion] = useState(false);
-  const [expandedIndex, setExpandedIndex] = useState(null);
-  const sectionRef = useRef(null);
-  
-  // Updated scroll effect using useScroll
-  const {scrollYProgress} = useScroll({target: sectionRef});
-  // Adjust input range for scrollYProgress (0 to 1)
-  const y = useTransform(scrollYProgress, [0, 0.1], [0, -50]);
-  
-  useEffect(() => {
-    // Rotate through timeframes every 5 seconds
-    const interval = setInterval(() => {
-      setActiveTimeframe((prev) => (prev + 1) % timeframes.length);
-    }, 5000);
-    
-    // Show loss aversion trigger after 3 seconds
-    const timer = setTimeout(() => {
-      setShowLossAversion(true);
-    }, 3000);
-    
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timer);
-    };
-  }, []);
-  
   return (
-    <section
-      ref={sectionRef}
-      className="bg-white py-12 md:py-20 overflow-hidden relative"
-      id="hair-journey-timeline"
-    >
-      {/* Subtle background pattern - Apply parallax effect here */}
-      <motion.div
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{y}} // Apply the transform here
-      >
-        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-gray-900 to-transparent opacity-5"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900 to-transparent opacity-5"></div>
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute bg-gray-900 rounded-full opacity-10"
-            style={{
-              width: Math.random() * 300 + 50 + 'px',
-              height: Math.random() * 300 + 50 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              transform: 'translate(-50%, -50%)',
-            }}
-          ></div>
-        ))}
-      </motion.div>
-      
+    <section className="hair-journey-section py-16 md:py-24 relative overflow-hidden bg-gradient-to-b from-white via-[#fadadd]/40 to-white">
+      {/* Soft pink/gold radial gradients and sparkles */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute left-1/4 top-0 w-96 h-96 bg-pink-200/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute right-1/4 bottom-0 w-80 h-80 bg-yellow-100/40 rounded-full blur-2xl animate-pulse" />
+        {/* Sparkles (SVG or CSS) */}
+        <div className="absolute left-1/2 top-1/3 w-8 h-8 bg-pink-100 rounded-full blur-xl opacity-60 animate-ping" />
+      </div>
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="mb-12 max-w-3xl mx-auto text-center"
-          initial={{opacity: 0, y: 20}}
-          whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, margin: '-100px'}}
-          transition={{duration: 0.6}}
-        >
-          <h2 className="text-3xl md:text-4xl text-gray-900 font-light mb-3">
-            Your Hair&apos;s Journey: Act Now
-          </h2>
-          <p className="text-gray-600 text-base md:text-lg">
-            See the stages and critical window to act before it&apos;s too late.
-          </p>
-          
-          {/* Loss aversion micro-trigger */}
-          {showLossAversion && (
-            <motion.p
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              className="text-rose-500 text-sm font-medium mt-3 italic"
-            >
-              Every day you wait is more hair lost
-            </motion.p>
-          )}
-        </motion.div>
-        
-        {/* Progress indicator */}
-        <div className="max-w-3xl mx-auto mb-8 relative">
-          <div className="h-1 bg-neutral-200 relative overflow-hidden rounded-full">
-            <div className="absolute inset-0 flex">
-              <div className="w-1/3 bg-orange-500"></div>
-              <div className="w-1/3 bg-red-500"></div>
-              <div className="w-1/3 bg-purple-500"></div>
+        {/* Expert Quote elegantly integrated */}
+        <div className="max-w-2xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center gap-3 bg-white/70 backdrop-blur-md rounded-full px-6 py-3 shadow-lg border border-pink-100">
+            <img src="/images/experts/dr-hansen.jpg" alt="Dr. Hansen" className="w-10 h-10 rounded-full object-cover border-2 border-pink-200" />
+            <div className="text-left">
+              <p className="text-lg md:text-xl font-serif italic text-neutral-700 mb-1">“The earlier you act, the more follicles you save from permanent miniaturization.”</p>
+              <p className="text-xs text-rose-400 font-medium">Dr. Karen Hansen, Trichologist</p>
             </div>
           </div>
-          <div className="flex justify-between mt-1 text-xs text-neutral-500">
-            <div>Early Signs</div>
-            <div>Visible Changes</div>
-            <div>Later Stages</div>
-          </div>
         </div>
-        
-        {/* Expert quote for authority */}
-        <ExpertQuote />
-        
-        {/* Timeline cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {timeline.map((item, index) => (
-            <TimelineStage
-              key={index}
-              item={item}
-              index={index}
-              expandedIndex={expandedIndex}
-              setExpandedIndex={setExpandedIndex}
-            />
+        {/* Three-Column Journey Stages */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {timeline.map((item: TimelineStageItem, idx: number) => (
+            <div key={item.stage} className="relative bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl border border-pink-100 flex flex-col items-center px-8 py-10 transition-transform duration-300 hover:scale-105 hover:shadow-pink-200/60">
+              {/* Animated Counter for percentage */}
+              <div className="mb-2">
+                <AnimatedCounter targetValue={parseInt(item.success)} suffix="%" duration={1.2} />
+              </div>
+              <div className="text-lg md:text-xl font-serif font-semibold text-neutral-800 mb-1 tracking-wide">{item.stage}</div>
+              <div className="text-xs text-neutral-500 mb-4">{item.time}</div>
+              <div className="mb-4 text-sm text-neutral-700 text-center min-h-[48px]">{item.points[0]}<br/>{item.points[1]}</div>
+              <div className="mb-4 text-xs text-rose-400 font-medium text-center">{item.stageMessage}</div>
+              <div className="italic text-neutral-600 text-sm mb-4">“{item.testimonial.quote}”<br/><span className="text-xs text-neutral-400 not-italic">— {item.testimonial.author}</span></div>
+              <a href="/products/photonique-touch" className="inline-block bg-[#fadadd] text-rose-700 font-semibold rounded-full px-6 py-2 mt-auto shadow-md hover:bg-pink-200 transition-all duration-200 focus:ring-2 focus:ring-pink-200">Get Care•atin</a>
+            </div>
           ))}
-        </div>
-        
-        <motion.div
-          className="text-center mt-12 max-w-xl mx-auto"
-          initial={{opacity: 0}}
-          whileInView={{opacity: 1}}
-          viewport={{once: true}}
-          transition={{delay: 0.5, duration: 0.5}}
-        >
-          <p className="text-neutral-700 italic mb-5 text-sm">
-            This progression isn&apos;t inevitable. Our clinically-proven formula targets all stages with scientifically-backed ingredients.
-          </p>
-          <Link
-            to="/products/hair-renewal-system"
-            className="inline-flex items-center justify-center py-2 px-6 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-sm font-medium hover:shadow-lg transition-shadow duration-300"
-          >
-            Find Your Solution
-            <ArrowRight size={14} className="ml-1" />
-          </Link>
-        </motion.div>
-        
-        {/* Microscopic follicle imagery - combined into one section */}
-        <div className="mt-12 bg-neutral-50 p-5 rounded-lg border border-neutral-200 max-w-3xl mx-auto">
-          <h3 className="text-base font-medium text-neutral-800 mb-3 text-center">
-            Clinical Results by Stage
-          </h3>
-          <div className="space-y-3 mb-5">
-            <div className="flex justify-between items-center">
-              <div className="w-1/4 text-xs font-medium text-orange-500">
-                Early Signs
-              </div>
-              <div className="w-2/4 bg-neutral-200 h-2 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-orange-500 rounded-full"
-                  style={{width: '93%'}}
-                ></div>
-              </div>
-              <div className="w-1/4 text-right text-xs font-medium text-neutral-700">93% success</div>
-            </div>
-            <div className="flex justify-between items-center">
-              <div className="w-1/4 text-xs font-medium text-red-500">
-                Visible Changes
-              </div>
-              <div className="w-2/4 bg-neutral-200 h-2 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-red-500 rounded-full"
-                  style={{width: '78%'}}
-                ></div>
-              </div>
-              <div className="w-1/4 text-right text-xs font-medium text-neutral-700">78% success</div>
-            </div>
-            <div className="flex justify-between items-center">
-              <div className="w-1/4 text-xs font-medium text-purple-500">
-                Later Stages
-              </div>
-              <div className="w-2/4 bg-neutral-200 h-2 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-purple-500 rounded-full"
-                  style={{width: '62%'}}
-                ></div>
-              </div>
-              <div className="w-1/4 text-right text-xs font-medium text-neutral-700">62% success</div>
-            </div>
-          </div>
-          <p className="text-2xs text-neutral-500 text-center">
-            *Percentage of users reporting significant improvement after 90 days
-          </p>
         </div>
       </div>
     </section>

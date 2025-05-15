@@ -49,11 +49,27 @@ export function ProductCard({
     controls.start('rest');
   };
 
-  const firstVariant = product.variants.nodes[0];
+  const firstVariant = product.variants?.nodes?.[0];
   if (!firstVariant) return null;
 
-  const {price, compareAtPrice} = firstVariant;
-  const isDiscounted = compareAtPrice != null && compareAtPrice.amount > price.amount;
+  // Ensure we have proper price data
+  const price = firstVariant.price && typeof firstVariant.price.amount === 'string' 
+    ? {
+        amount: firstVariant.price.amount,
+        currencyCode: firstVariant.price.currencyCode
+      }
+    : null;
+    
+  const compareAtPrice = firstVariant.compareAtPrice && typeof firstVariant.compareAtPrice.amount === 'string'
+    ? {
+        amount: firstVariant.compareAtPrice.amount,
+        currencyCode: firstVariant.compareAtPrice.currencyCode
+      }
+    : null;
+    
+  const isDiscounted = compareAtPrice != null && 
+    price != null && 
+    parseFloat(compareAtPrice.amount) > parseFloat(price.amount);
 
   let cardLabel = label;
   if (!cardLabel) {
@@ -160,9 +176,13 @@ export function ProductCard({
               animate={controls} variants={{rest: {y: 0}, hover: {y: -2}}} transition={{...spring, delay: 0.1}}
             >
               <span className={`${isDiscounted ? 'text-rose-600' : 'text-neutral-900'} text-sm font-medium`}>
-                <Money data={price} withoutTrailingZeros />
+                {price ? (
+                  <Money data={price} withoutTrailingZeros />
+                ) : (
+                  'Price not available'
+                )}
               </span>
-              {isDiscounted && (
+              {isDiscounted && compareAtPrice && (
                 <span className="line-through text-neutral-400 text-sm">
                   <Money data={compareAtPrice} withoutTrailingZeros />
                 </span>

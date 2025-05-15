@@ -4,8 +4,20 @@ import {
   defer,
   type MetaArgs,
   type LoaderFunctionArgs,
+  json,
+  redirect,
+  type ActionFunctionArgs,
 } from '@shopify/remix-oxygen';
-import {useLoaderData, Await, useNavigate} from '@remix-run/react';
+import {
+  useLoaderData, 
+  Await, 
+  useNavigate,
+  Form,
+  useActionData,
+  useNavigation,
+  useParams,
+  useRouteError,
+} from '@remix-run/react';
 import {
   getSeoMeta,
   Money,
@@ -18,6 +30,8 @@ import {
   getProductOptions,
   type MappedProductOptions,
   VariantSelector,
+  Image,
+  CartForm,
 } from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 import clsx from 'clsx';
@@ -31,7 +45,6 @@ import {Heading, Section, Text} from '~/components/Text';
 import {Link} from '~/components/Link';
 import {Button} from '~/components/Button';
 import {AddToCartButton} from '~/components/AddToCartButton';
-import {Skeleton} from '~/components/Skeleton';
 import {ProductSwimlane} from '~/components/ProductSwimlane';
 import {ProductGallery} from '~/components/ProductGallery';
 import {IconCaret, IconCheck, IconClose} from '~/components/Icon';
@@ -40,30 +53,8 @@ import {seoPayload} from '~/lib/seo.server';
 import type {Storefront} from '~/lib/type';
 import {routeHeaders} from '~/data/cache';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '~/components/ui/accordion';
-import {
-  Form,
-  useActionData,
-  useNavigation,
-  useParams,
-  useRouteError,
-} from '@remix-run/react';
-import {
-  json,
-  redirect,
-  type ActionFunctionArgs,
-} from '@shopify/remix-oxygen';
-import {
-  Image,
-  CartForm,
-} from '@shopify/hydrogen';
-import { getVariantUrl } from '~/lib/variants';
-import { StarRating } from '~/components/StarRating';
+import {StarRating} from '~/components/StarRating';
+import {ProductAssessment} from '~/components/ProductAssessment';
 
 // Simple mapping for color names to CSS colors (moved here)
 const colorMap: Record<string, string> = {
@@ -134,19 +125,18 @@ export async function loader(args: LoaderFunctionArgs) {
   // Fetch recommended products
   const recommended = getRecommendedProducts(context.storefront, product.id);
   
-  // Set up variants and SEO
-  const selectedVariant = product.selectedOrFirstAvailableVariant ?? {};
-  const variants = getAdjacentAndFirstAvailableVariants(product);
+  // Set up variants
+  const selectedVariant = product.selectedVariant ?? product.variants.nodes[0];
   
   const seo = seoPayload.product({
-    product: {...product, variants},
+    product,
     selectedVariant,
     url: request.url,
   });
 
   return defer({
     product,
-    variants,
+    selectedVariant,
     shop,
     storeDomain: shop.primaryDomain.url,
     recommended,
@@ -159,180 +149,81 @@ export const meta = ({data}: MetaArgs<typeof loader>) => {
 };
 
 export default function Product() {
-  const {product, shop, recommended, variants, storeDomain} =
+  const {product, shop, recommended, selectedVariant, storeDomain} =
     useLoaderData<typeof loader>();
-  const {media, title, vendor, descriptionHtml} = product;
-  const {shippingPolicy, refundPolicy} = shop;
 
-  // Reverted to getting selectedVariant directly
-  const selectedVariant = useOptimisticVariant(
-    product.selectedOrFirstAvailableVariant,
-    variants,
-  );
-  const productOptions = getProductOptions({
-    ...product,
-    selectedOrFirstAvailableVariant: selectedVariant,
-  });
+  if (!product) {
+    return <div className="p-8 text-center">Product not found</div>;
+  }
 
-  // Track selected option in URL for better UX
-  useSelectedOptionInUrlParam(selectedVariant.selectedOptions);
-
+  const {title, vendor, media, descriptionHtml} = product;
+  
   return (
     <>
       {/* Premium Header Banner */}
       <div className="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-3 px-4 text-center">
         <p className="text-sm font-medium tracking-wider">
-          FREE SHIPPING ON ORDERS OVER $75 | 30-DAY SATISFACTION GUARANTEE
+          FREE SHIPPING ON ORDERS OVER $75 | 60-DAY SATISFACTION GUARANTEE
         </p>
       </div>
       
       <Section className="px-4 md:px-8 lg:px-12 py-8 md:py-12 bg-contrast">
-        {/* Premium product title section */}
-        <div className="text-center mb-8 max-w-3xl mx-auto">
-          <Text className="text-sm uppercase tracking-widest text-rose-500 font-medium mb-2">
-            Revolutionary Hair Technology
-          </Text>
-          <Heading as="h1" className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3">
-            {title}
-          </Heading>
-          {vendor && (
-            <Text className="text-primary/60 italic">by {vendor}</Text>
-          )}
+        <div className="text-center mb-8">
+          <Heading as="h1" className="text-2xl font-bold">{title}</Heading>
+          {vendor && <Text>{vendor}</Text>}
         </div>
         
-        <div className="grid items-start md:gap-10 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
-          <ProductGallery
-            media={media.nodes}
-            className="w-full lg:col-span-2"
-          />
-          {/* Render the form section directly again */}
-          <div className="sticky md:top-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
-             <section className="flex flex-col w-full gap-8 p-6 md:p-8 bg-white rounded-xl shadow-sm border border-neutral-100 md:max-w-md md:mx-auto lg:gap-10">
-                <div className="grid gap-3">
-                   <ProductPrice 
-                     selectedVariant={selectedVariant} 
-                     className="text-3xl md:text-4xl"
-                   />
-                   {/* Customer reviews - Keep outside lazy load if possible, or include */}
-                   <div className="flex items-center gap-2 mt-2">
-                     <div className="flex text-yellow-400">
-                       {[...Array(5)].map((_, i) => (
-                         <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                           <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                         </svg>
-                       ))}
-                     </div>
-                     <Text className="text-sm text-primary/60">4.9 (94 reviews)</Text>
-                   </div>
-                   {/* Premium badges - Keep outside lazy load if possible, or include */}
-                   <div className="flex flex-wrap gap-2 mt-2">
-                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                       In Stock
-                     </span>
-                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                       Dermatologist Approved
-                     </span>
-                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                       Award Winning
-                     </span>
-                   </div>
-                </div>
-                {/* Product form with options */}
-                <ProductForm 
-                  productOptions={productOptions} 
-                  selectedVariant={selectedVariant} 
-                  storeDomain={storeDomain} 
-                />
-                {/* Satisfaction guarantee - Keep outside lazy load if possible, or include */}
-                <div className="bg-neutral-50 p-4 rounded-lg border border-neutral-100 flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <div>
-                    <Text className="font-medium text-sm">30-Day Money Back Guarantee</Text>
-                    <Text className="text-xs text-primary/60">We stand behind our products with complete confidence.</Text>
-                  </div>
-                </div>
-             </section>
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* Product Image */}
+          <div>
+            {media?.nodes[0]?.image && (
+              <Image
+                data={media.nodes[0].image}
+                sizes="(min-width: 64em) 60vw, 90vw"
+                aspectRatio="4/5"
+                alt={`Product image of ${title}`}
+                className="object-cover w-full h-full"
+              />
+            )}
           </div>
           
-          {/* Product details accordion section - moved outside lazy load */}
-          <div className="md:col-span-3 lg:col-span-1 lg:col-start-3 py-8 md:py-0">
-             <div className="grid gap-4 py-4 border-t border-primary/10">
-                {descriptionHtml && (
-                  <ProductDetail
-                    title="product details"
-                    content={descriptionHtml}
-                  />
-                )}
-                <ProductDetail
-                  title="key benefits"
-                  content="<ul><li><strong>Clinically Proven Results:</strong> 88% of users reported visibly fuller hair within 30 days</li><li><strong>Advanced Technology:</strong> Proprietary red light technology stimulates hair follicles at the cellular level</li><li><strong>Safe & Painless:</strong> Non-invasive treatment with zero side effects</li></ul>"
-                />
-                {shippingPolicy?.body && (
-                  <ProductDetail
-                    title="shipping"
-                    content={getExcerpt(shippingPolicy.body)}
-                    learnMore={`/policies/${shippingPolicy.handle}`}
-                  />
-                )}
-                {refundPolicy?.body && (
-                  <ProductDetail
-                    title="returns & warranty"
-                    content={getExcerpt(refundPolicy.body)}
-                    learnMore={`/policies/${refundPolicy.handle}`}
-                  />
-                )}
-             </div>
-          </div>
-        </div>
-        
-        {/* Expert endorsement section */}
-        <div className="mt-16 bg-neutral-50 rounded-xl p-8 border border-neutral-100">
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            <img 
-              src="/images/expert.jpg" 
-              alt="Dr. Elena Rostova" 
-              className="w-24 h-24 rounded-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150';
-              }}
-            />
-            <div>
-              <Text className="text-lg italic text-primary/80 mb-3">"The Photonique Touch represents a significant breakthrough in non-invasive hair restoration technology. Its clinically-proven red light therapy is precisely calibrated to stimulate follicles at the optimal cellular level."</Text>
-              <Text className="font-medium text-primary">Dr. Elena Rostova</Text>
-              <Text className="text-sm text-primary/60">Lead Formulator & Clinical Director</Text>
+          {/* Product Details */}
+          <div>
+            <div className="prose">
+              <div dangerouslySetInnerHTML={{__html: descriptionHtml || ''}} />
+            </div>
+            
+            {selectedVariant?.price && (
+              <div className="mt-4">
+                <Money data={selectedVariant.price} />
+              </div>
+            )}
+            
+            <div className="mt-4">
+              <AddToCartButton
+                lines={[{
+                  merchandiseId: selectedVariant?.id,
+                  quantity: 1
+                }]}
+                variant="primary"
+              >
+                Add to Cart
+              </AddToCartButton>
             </div>
           </div>
         </div>
       </Section>
       
-      <Suspense fallback={<Skeleton className="h-32" />}>
+      <Suspense fallback={<div>Loading recommended products...</div>}>
         <Await
           errorElement="There was a problem loading related products"
           resolve={recommended}
         >
           {(products) => (
-            <ProductSwimlane title="Complete Your Hair Wellness Routine" products={products} />
+            <ProductSwimlane title="You might also like" products={products} />
           )}
         </Await>
       </Suspense>
-      
-      <Analytics.ProductView
-        data={{
-          products: [
-            {
-              id: product.id,
-              title: product.title,
-              price: selectedVariant?.price.amount || '0',
-              vendor: product.vendor,
-              variantId: selectedVariant?.id || '',
-              variantTitle: selectedVariant?.title || '',
-              quantity: 1,
-            },
-          ],
-        }}
-      />
     </>
   );
 }
@@ -343,10 +234,9 @@ export function ProductForm({
   storeDomain,
 }: {
   productOptions: MappedProductOptions[];
-  selectedVariant: ProductFragment['selectedOrFirstAvailableVariant'];
+  selectedVariant: any; // Allow more flexible type
   storeDomain: string;
 }) {
-  const {lines, status: cartStatus, linesAdd} = useCart();
   const {state} = useNavigation();
   const [quantity, setQuantity] = useState(1);
   const [currentVariant, setCurrentVariant] = useState(selectedVariant);
@@ -400,26 +290,8 @@ export function ProductForm({
     }
   };
 
-   const handleAddToCart = async () => {
-    if (!currentVariant?.availableForSale) {
-      setShowError(true);
-      return;
-    }
-    setShowError(false);
-    if (currentVariant.quantityAvailable != null && quantity > currentVariant.quantityAvailable) {
-      setShowError(true);
-      return;
-    }
-    await linesAdd([
-      {
-        merchandiseId: currentVariant.id,
-        quantity,
-      },
-    ]);
-  };
-
   const isOutOfStock = !currentVariant?.availableForSale;
-  const isLoading = state !== 'idle' || cartStatus === 'fetching';
+  const isLoading = state !== 'idle';
 
   return (
     <div className="grid gap-6">
@@ -547,7 +419,7 @@ function ProductPrice({
   selectedVariant, 
   className
 }: {
-  selectedVariant: ProductFragment['selectedOrFirstAvailableVariant'];
+  selectedVariant: any; // Allow more flexible type
   className?: string;
 }) {
   if (!selectedVariant) return null;
@@ -587,7 +459,7 @@ function PurchaseControls({
   storeDomain,
   quantity
 }: {
-  selectedVariant: ProductFragment['selectedOrFirstAvailableVariant'];
+  selectedVariant: any; // Allow more flexible type
   storeDomain: string;
   quantity: number;
 }) {
@@ -632,10 +504,6 @@ function ProductDetail({
   content: string;
   learnMore?: string;
 }) {
-  const ChevronIcon = ({ open }: { open: boolean }) => (
-    <svg className={`w-5 h-5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-  );
-
   return (
     <Disclosure key={title} as="div" className="grid w-full gap-2">
       {({open}) => (
@@ -645,7 +513,9 @@ function ProductDetail({
               <Text size="lead" as="h4" className="font-medium text-primary">
                 {title}
               </Text>
-              <ChevronIcon open={open} />
+              <span className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
+                <IconCaret />
+              </span>
             </div>
           </Disclosure.Button>
 
@@ -727,10 +597,6 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
     }
     sku
     title
-    unitPrice {
-      amount
-      currencyCode
-    }
     product {
       title
       handle
@@ -746,30 +612,17 @@ const PRODUCT_FRAGMENT = `#graphql
     handle
     descriptionHtml
     description
-    encodedVariantExistence
-    encodedVariantAvailability
     options {
       name
-      optionValues {
-        name
-        firstSelectableVariant {
-          ...ProductVariant
-        }
-        swatch {
-          color
-          image {
-            previewImage {
-              url
-            }
-          }
-        }
+      values
+    }
+    selectedVariant: variantBySelectedOptions(selectedOptions: $selectedOptions) {
+      ...ProductVariant
+    }
+    variants(first: 100) {
+      nodes {
+        ...ProductVariant
       }
-    }
-    selectedOrFirstAvailableVariant(selectedOptions: $selectedOptions, ignoreUnknownOptions: true, caseInsensitiveMatch: true) {
-      ...ProductVariant
-    }
-    adjacentVariants (selectedOptions: $selectedOptions) {
-      ...ProductVariant
     }
     seo {
       description
@@ -782,7 +635,7 @@ const PRODUCT_FRAGMENT = `#graphql
     }
   }
   ${PRODUCT_VARIANT_FRAGMENT}
-` as const;
+`;
 
 const PRODUCT_QUERY = `#graphql
   query Product(
@@ -811,7 +664,7 @@ const PRODUCT_QUERY = `#graphql
   }
   ${MEDIA_FRAGMENT}
   ${PRODUCT_FRAGMENT}
-` as const;
+`;
 
 const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   query productRecommendations(
@@ -830,42 +683,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
     }
   }
   ${PRODUCT_CARD_FRAGMENT}
-` as const;
-
-export async function action({ request, context }: ActionFunctionArgs) {
-  const { session, storefront } = context;
-  const formData = await request.formData();
-
-  const productId = formData.get('productId');
-  const variantId = formData.get('variantId');
-  const quantity = Number(formData.get('quantity'));
-
-  // Input validation
-  invariant(productId, 'Missing productId');
-  invariant(variantId, 'Missing variantId');
-  invariant(quantity > 0, 'Quantity must be greater than 0');
-
-  try {
-    const { cart } = await cartCreate({
-      input: {
-        lines: [
-          {
-            quantity,
-            merchandiseId: variantId,
-          },
-        ],
-      },
-      storefront,
-    });
-
-    // Set cart id in session
-    session.set('cartId', cart.id);
-    return json({ cart }, { status: 200 });
-  } catch (error) {
-    console.error(error);
-    return json({ error: 'Failed to add to cart' }, { status: 400 });
-  }
-}
+`;
 
 export function ErrorBoundary() {
   const error = useRouteError();
@@ -879,21 +697,4 @@ export function ErrorBoundary() {
       </Button>
     </div>
   );
-}
-
-// Helper function for cart
-async function cartCreate({ input, storefront }) {
-  return await storefront.mutate(CREATE_CART_MUTATION, {
-    variables: { input },
-  });
-}
-
-const CREATE_CART_MUTATION = `#graphql
-  mutation CartCreate($input: CartInput!) {
-    cart: cartCreate(input: $input) {
-      cart {
-        id
-      }
-    }
-  }
-`; 
+} 
