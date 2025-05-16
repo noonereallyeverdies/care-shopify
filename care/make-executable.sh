@@ -1,0 +1,1 @@
+chmod +x /Users/yvonne/Desktop/shopify/care-shopify/care/performance-test.sh

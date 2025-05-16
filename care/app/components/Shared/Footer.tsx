@@ -2,6 +2,7 @@ import { Link } from '@remix-run/react';
 import type { EnhancedMenu, ParentEnhancedMenuItem, ChildEnhancedMenuItem } from '~/lib/utils';
 import { Facebook, Instagram, Twitter, Youtube, Package, RotateCcw, Award, Heart, Star, Sparkles, Clock } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 // Import the CSS file for base structural styling
 import './Footer.css';
@@ -137,13 +138,21 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
                     placeholder="your email address" 
                     className="bg-black/30 border border-stone-700 rounded-full text-white placeholder-stone-400 focus:border-rose-300 focus:ring-0 w-full py-2.5 px-4 text-sm pr-14 transition-all duration-300 group-hover:border-rose-400" 
                   />
-                  <button 
-                    type="submit" 
-                    className="absolute right-1 top-1 bg-rose-400 hover:bg-rose-500 text-white text-xs rounded-full h-8 w-12 flex items-center justify-center transition-all duration-300 hover:scale-105"
+                  <motion.button
+                    type="submit"
                     aria-label="sign up for newsletter"
+                    className="absolute right-1 top-1 bg-rose-400 text-white text-xs rounded-full h-8 w-12 flex items-center justify-center"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
+                      backgroundColor: "#f43f5e" // Tailwind rose-500
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    style={{ WebkitAppearance: 'button', cursor: 'pointer' }} // Ensure button appearance
                   >
                     <Sparkles size={16} className="animate-pulse" />
-                  </button>
+                  </motion.button>
                 </div>
                 <p className="text-stone-500 text-xs font-light">by subscribing, you agree to our privacy policy</p>
               </form>

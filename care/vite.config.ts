@@ -16,11 +16,10 @@ export default defineConfig({
         v3_throwAbortReason: true,
         v3_lazyRouteDiscovery: true,
       },
+      ignoredRouteFiles: ['**/.*', '**/*.backup', '**/*optimized*'],
     }),
     tsconfigPaths(),
   ],
-  // Force Vite to use a single instance of React/ReactDOM
-  // to prevent errors caused by multiple versions.
   resolve: {
     dedupe: ['react', 'react-dom'],
   },
@@ -28,50 +27,20 @@ export default defineConfig({
     optimizeDeps: {
       include: [
         'use-sync-external-store/shim/with-selector.js',
-        'lodash/some',
-        'lodash/range',
-        'lodash/first',
-        'lodash/isBoolean',
-        'lodash/isPlainObject',
-        'lodash/minBy',
-        'lodash/maxBy',
-        'prop-types',
-        'lodash/last',
-        'lodash/isEqual',
-        'lodash/flatMap',
-        'lodash/min',
-        'lodash/max',
-        'lodash/throttle',
-        'lodash/sortBy',
-        'lodash/uniqBy',
-        'lodash/upperFirst',
-        'lodash/isNumber',
-        'lodash/isNaN',
-        'react-is',
-        'lodash/isObject',
-        'lodash/isFunction',
-        'lodash/isString',
-        'lodash/isNil',
-        'lodash/get',
-        'lodash',
-        'typographic-base',
+        'react',
+        'react-dom',
       ],
     },
   },
-  optimizeDeps: {
-    include: [
-      'clsx',
-      '@headlessui/react',
-      'typographic-base',
-      'react-intersection-observer',
-      'react-use/esm/useScroll',
-      'react-use/esm/useDebounce',
-      'react-use/esm/useWindowScroll',
-    ],
-  },
   build: {
-    // Allow a strict Content-Security-Policy
-    // withtout inlining assets as base64:
     assetsInlineLimit: 0,
   },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react/jsx-runtime'],
+  },
+  server: {
+    watch: {
+      ignored: ['**/*.backup', '**/*optimized*']
+    }
+  }
 });

@@ -1,0 +1,96 @@
+{
+  "include": [
+    "remix.env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".env"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "public",
+    ".shopify"
+  ],
+  "compilerOptions": {
+    // Language and Environment
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
+    // Module Resolution
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Type Checking
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": false, // Disabled in dev for better DX
+    "noUnusedParameters": false, // Disabled in dev for better DX
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Emit
+    "noEmit": true,
+    "declaration": false,
+    "preserveWatchOutput": true,
+
+    // Interop Constraints
+    "verbatimModuleSyntax": false,
+
+    // Performance Optimizations
+    "incremental": true,
+    "skipLibCheck": true,
+    "assumeChangesOnlyAffectDirectDependencies": true,
+
+    // Path Mapping
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"],
+      "@/*": ["./app/*"],
+      "@/components/*": ["./app/components/*"],
+      "@/lib/*": ["./app/lib/*"],
+      "@/styles/*": ["./app/styles/*"],
+      "@/assets/*": ["./app/assets/*"],
+      "@/hooks/*": ["./app/hooks/*"],
+      "@/utils/*": ["./app/utils/*"],
+      "@/types/*": ["./app/types/*"]
+    },
+
+    // Advanced Options
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    // Project References
+    "composite": false,
+
+    // Type Acquisition
+    "typeRoots": ["node_modules/@types"],
+    "types": [
+      "node",
+      "react",
+      "react-dom",
+      "vite/client"
+    ]
+  },
+  "ts-node": {
+    "esm": true,
+    "compilerOptions": {
+      "module": "ESNext",
+      "target": "ES2022"
+    }
+  }
+}

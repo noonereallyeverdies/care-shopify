@@ -285,6 +285,105 @@ export type ApiAllProductsQuery = {
   };
 };
 
+export type ArticleDetailsQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  blogHandle: StorefrontAPI.Scalars['String']['input'];
+  articleHandle: StorefrontAPI.Scalars['String']['input'];
+}>;
+
+export type ArticleDetailsQuery = {
+  blog?: StorefrontAPI.Maybe<{
+    articleByHandle?: StorefrontAPI.Maybe<
+      Pick<
+        StorefrontAPI.Article,
+        'id' | 'title' | 'contentHtml' | 'publishedAt'
+      > & {
+        author?: StorefrontAPI.Maybe<Pick<StorefrontAPI.ArticleAuthor, 'name'>>;
+        image?: StorefrontAPI.Maybe<
+          Pick<
+            StorefrontAPI.Image,
+            'id' | 'altText' | 'url' | 'width' | 'height'
+          >
+        >;
+        seo?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Seo, 'description' | 'title'>
+        >;
+      }
+    >;
+  }>;
+};
+
+export type BlogArticlesQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  blogHandle: StorefrontAPI.Scalars['String']['input'];
+  pageBy: StorefrontAPI.Scalars['Int']['input'];
+}>;
+
+export type BlogArticlesQuery = {
+  blog?: StorefrontAPI.Maybe<{
+    articles: {
+      edges: Array<{
+        node: Pick<
+          StorefrontAPI.Article,
+          'id' | 'title' | 'handle' | 'publishedAt'
+        > & {
+          image?: StorefrontAPI.Maybe<
+            Pick<
+              StorefrontAPI.Image,
+              'id' | 'altText' | 'url' | 'width' | 'height'
+            >
+          >;
+        };
+      }>;
+    };
+  }>;
+};
+
+export type BlogQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  blogHandle: StorefrontAPI.Scalars['String']['input'];
+  pageBy: StorefrontAPI.Scalars['Int']['input'];
+  cursor?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['String']['input']>;
+}>;
+
+export type BlogQuery = {
+  blog?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Blog, 'title'> & {
+      seo?: StorefrontAPI.Maybe<
+        Pick<StorefrontAPI.Seo, 'title' | 'description'>
+      >;
+      articles: {
+        edges: Array<{
+          node: Pick<
+            StorefrontAPI.Article,
+            'contentHtml' | 'handle' | 'id' | 'publishedAt' | 'title'
+          > & {
+            author?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.ArticleAuthor, 'name'>
+            >;
+            image?: StorefrontAPI.Maybe<
+              Pick<
+                StorefrontAPI.Image,
+                'id' | 'altText' | 'url' | 'width' | 'height'
+              >
+            >;
+          };
+        }>;
+      };
+    }
+  >;
+};
+
+export type ArticleFragment = Pick<
+  StorefrontAPI.Article,
+  'contentHtml' | 'handle' | 'id' | 'publishedAt' | 'title'
+> & {
+  author?: StorefrontAPI.Maybe<Pick<StorefrontAPI.ArticleAuthor, 'name'>>;
+  image?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Image, 'id' | 'altText' | 'url' | 'width' | 'height'>
+  >;
+};
+
 export type CollectionDetailsQueryVariables = StorefrontAPI.Exact<{
   handle: StorefrontAPI.Scalars['String']['input'];
   country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
@@ -448,76 +547,6 @@ export type FeaturedItemsQuery = {
       }
     >;
   };
-};
-
-export type ArticleDetailsQueryVariables = StorefrontAPI.Exact<{
-  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
-  blogHandle: StorefrontAPI.Scalars['String']['input'];
-  articleHandle: StorefrontAPI.Scalars['String']['input'];
-}>;
-
-export type ArticleDetailsQuery = {
-  blog?: StorefrontAPI.Maybe<{
-    articleByHandle?: StorefrontAPI.Maybe<
-      Pick<StorefrontAPI.Article, 'title' | 'contentHtml' | 'publishedAt'> & {
-        author?: StorefrontAPI.Maybe<Pick<StorefrontAPI.ArticleAuthor, 'name'>>;
-        image?: StorefrontAPI.Maybe<
-          Pick<
-            StorefrontAPI.Image,
-            'id' | 'altText' | 'url' | 'width' | 'height'
-          >
-        >;
-        seo?: StorefrontAPI.Maybe<
-          Pick<StorefrontAPI.Seo, 'description' | 'title'>
-        >;
-      }
-    >;
-  }>;
-};
-
-export type BlogQueryVariables = StorefrontAPI.Exact<{
-  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
-  blogHandle: StorefrontAPI.Scalars['String']['input'];
-  pageBy: StorefrontAPI.Scalars['Int']['input'];
-  cursor?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['String']['input']>;
-}>;
-
-export type BlogQuery = {
-  blog?: StorefrontAPI.Maybe<
-    Pick<StorefrontAPI.Blog, 'title'> & {
-      seo?: StorefrontAPI.Maybe<
-        Pick<StorefrontAPI.Seo, 'title' | 'description'>
-      >;
-      articles: {
-        edges: Array<{
-          node: Pick<
-            StorefrontAPI.Article,
-            'contentHtml' | 'handle' | 'id' | 'publishedAt' | 'title'
-          > & {
-            author?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.ArticleAuthor, 'name'>
-            >;
-            image?: StorefrontAPI.Maybe<
-              Pick<
-                StorefrontAPI.Image,
-                'id' | 'altText' | 'url' | 'width' | 'height'
-              >
-            >;
-          };
-        }>;
-      };
-    }
-  >;
-};
-
-export type ArticleFragment = Pick<
-  StorefrontAPI.Article,
-  'contentHtml' | 'handle' | 'id' | 'publishedAt' | 'title'
-> & {
-  author?: StorefrontAPI.Maybe<Pick<StorefrontAPI.ArticleAuthor, 'name'>>;
-  image?: StorefrontAPI.Maybe<
-    Pick<StorefrontAPI.Image, 'id' | 'altText' | 'url' | 'width' | 'height'>
-  >;
 };
 
 export type PageDetailsQueryVariables = StorefrontAPI.Exact<{
@@ -990,6 +1019,16 @@ export type ProductRecommendationsQuery = {
   };
 };
 
+export type CartCreateMutationVariables = StorefrontAPI.Exact<{
+  input: StorefrontAPI.CartInput;
+}>;
+
+export type CartCreateMutation = {
+  cart?: StorefrontAPI.Maybe<{
+    cart?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Cart, 'id'>>;
+  }>;
+};
+
 export type AllProductsQueryVariables = StorefrontAPI.Exact<{
   country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
   language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
@@ -1091,33 +1130,6 @@ export type PaginatedProductsSearchQuery = {
   };
 };
 
-export type HomepageProductQueryQueryVariables = StorefrontAPI.Exact<{
-  handle: StorefrontAPI.Scalars['String']['input'];
-  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
-  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
-}>;
-
-export type HomepageProductQueryQuery = {
-  product?: StorefrontAPI.Maybe<
-    Pick<
-      StorefrontAPI.Product,
-      'id' | 'title' | 'descriptionHtml' | 'description' | 'handle' | 'vendor'
-    > & {
-      featuredImage?: StorefrontAPI.Maybe<
-        Pick<StorefrontAPI.Image, 'url' | 'altText' | 'width' | 'height'>
-      >;
-      variants: {
-        nodes: Array<
-          Pick<
-            StorefrontAPI.ProductVariant,
-            'id' | 'availableForSale' | 'title'
-          > & {price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>}
-        >;
-      };
-    }
-  >;
-};
-
 interface GeneratedQueryTypes {
   '#graphql\n  fragment HomepageProduct on Product {\n    id\n    title\n    description\n    descriptionHtml\n    vendor\n    handle\n    availableForSale\n    featuredImage {\n      url\n      altText\n      width\n      height\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 1) {\n      nodes {\n        id\n        availableForSale\n        title\n        price {\n          amount\n          currencyCode\n        }\n        compareAtPrice {\n          amount\n          currencyCode\n        }\n        selectedOptions {\n          name\n          value\n        }\n      }\n    }\n  }\n\n  query homepageProduct($handle: String!) {\n    shop {\n      name\n      description\n      primaryDomain {\n        url\n      }\n    }\n    products(first: 1, query: "available_for_sale:true") {\n      nodes {\n        handle\n      }\n    }\n    product(handle: $handle) {\n      ...HomepageProduct\n    }\n  }\n': {
     return: HomepageProductQuery;
@@ -1135,6 +1147,18 @@ interface GeneratedQueryTypes {
     return: ApiAllProductsQuery;
     variables: ApiAllProductsQueryVariables;
   };
+  '#graphql\n  query ArticleDetails(\n    $language: LanguageCode\n    $blogHandle: String!\n    $articleHandle: String!\n  ) @inContext(language: $language) {\n    blog(handle: $blogHandle) {\n      articleByHandle(handle: $articleHandle) {\n        id\n        title\n        contentHtml\n        publishedAt\n        author: authorV2 {\n          name\n        }\n        image {\n          id\n          altText\n          url\n          width\n          height\n        }\n        seo {\n          description\n          title\n        }\n      }\n    }\n  }\n': {
+    return: ArticleDetailsQuery;
+    variables: ArticleDetailsQueryVariables;
+  };
+  '#graphql\n  query BlogArticles(\n    $language: LanguageCode\n    $blogHandle: String!\n    $pageBy: Int!\n  ) @inContext(language: $language) {\n    blog(handle: $blogHandle) {\n      articles(first: $pageBy) {\n        edges {\n          node {\n            id\n            title\n            handle\n            publishedAt\n            image {\n              id\n              altText\n              url\n              width\n              height\n            }\n          }\n        }\n      }\n    }\n  }\n': {
+    return: BlogArticlesQuery;
+    variables: BlogArticlesQueryVariables;
+  };
+  '#graphql\nquery Blog(\n  $language: LanguageCode\n  $blogHandle: String!\n  $pageBy: Int!\n  $cursor: String\n) @inContext(language: $language) {\n  blog(handle: $blogHandle) {\n    title\n    seo {\n      title\n      description\n    }\n    articles(first: $pageBy, after: $cursor) {\n      edges {\n        node {\n          ...Article\n        }\n      }\n    }\n  }\n}\n\nfragment Article on Article {\n  author: authorV2 {\n    name\n  }\n  contentHtml\n  handle\n  id\n  image {\n    id\n    altText\n    url\n    width\n    height\n  }\n  publishedAt\n  title\n}\n': {
+    return: BlogQuery;
+    variables: BlogQueryVariables;
+  };
   '#graphql\n  query CollectionDetails(\n    $handle: String!\n    $country: CountryCode\n    $language: LanguageCode\n    $filters: [ProductFilter!]\n    $sortKey: ProductCollectionSortKeys!\n    $reverse: Boolean\n    $first: Int\n    $last: Int\n    $startCursor: String\n    $endCursor: String\n  ) @inContext(country: $country, language: $language) {\n    collection(handle: $handle) {\n      id\n      handle\n      title\n      description\n      seo {\n        description\n        title\n      }\n      image {\n        id\n        url\n        width\n        height\n        altText\n      }\n      products(\n        first: $first,\n        last: $last,\n        before: $startCursor,\n        after: $endCursor,\n        filters: $filters,\n        sortKey: $sortKey,\n        reverse: $reverse\n      ) {\n        filters {\n          id\n          label\n          type\n          values {\n            id\n            label\n            count\n            input\n          }\n        }\n        nodes {\n          ...ProductCard\n        }\n        pageInfo {\n          hasPreviousPage\n          hasNextPage\n          endCursor\n          startCursor\n        }\n      }\n    }\n    collections(first: 100) {\n      edges {\n        node {\n          title\n          handle\n        }\n      }\n    }\n  }\n  #graphql\n  fragment ProductCard on Product {\n    id\n    title\n    publishedAt\n    handle\n    vendor\n    variants(first: 1) {\n      nodes {\n        id\n        availableForSale\n        image {\n          url\n          altText\n          width\n          height\n        }\n        price {\n          amount\n          currencyCode\n        }\n        compareAtPrice {\n          amount\n          currencyCode\n        }\n        selectedOptions {\n          name\n          value\n        }\n        product {\n          handle\n          title\n        }\n      }\n    }\n  }\n\n': {
     return: CollectionDetailsQuery;
     variables: CollectionDetailsQueryVariables;
@@ -1146,14 +1170,6 @@ interface GeneratedQueryTypes {
   '#graphql\n  query FeaturedItems(\n    $country: CountryCode\n    $language: LanguageCode\n    $pageBy: Int = 12\n  ) @inContext(country: $country, language: $language) {\n    featuredCollections: collections(first: 3, sortKey: UPDATED_AT) {\n      nodes {\n        ...FeaturedCollectionDetails\n      }\n    }\n    featuredProducts: products(first: $pageBy) {\n      nodes {\n        ...ProductCard\n      }\n    }\n  }\n\n  #graphql\n  fragment ProductCard on Product {\n    id\n    title\n    publishedAt\n    handle\n    vendor\n    variants(first: 1) {\n      nodes {\n        id\n        availableForSale\n        image {\n          url\n          altText\n          width\n          height\n        }\n        price {\n          amount\n          currencyCode\n        }\n        compareAtPrice {\n          amount\n          currencyCode\n        }\n        selectedOptions {\n          name\n          value\n        }\n        product {\n          handle\n          title\n        }\n      }\n    }\n  }\n\n  #graphql\n  fragment FeaturedCollectionDetails on Collection {\n    id\n    title\n    handle\n    image {\n      altText\n      width\n      height\n      url\n    }\n  }\n\n': {
     return: FeaturedItemsQuery;
     variables: FeaturedItemsQueryVariables;
-  };
-  '#graphql\n  query ArticleDetails(\n    $language: LanguageCode\n    $blogHandle: String!\n    $articleHandle: String!\n  ) @inContext(language: $language) {\n    blog(handle: $blogHandle) {\n      articleByHandle(handle: $articleHandle) {\n        title\n        contentHtml\n        publishedAt\n        author: authorV2 {\n          name\n        }\n        image {\n          id\n          altText\n          url\n          width\n          height\n        }\n        seo {\n          description\n          title\n        }\n      }\n    }\n  }\n': {
-    return: ArticleDetailsQuery;
-    variables: ArticleDetailsQueryVariables;
-  };
-  '#graphql\nquery Blog(\n  $language: LanguageCode\n  $blogHandle: String!\n  $pageBy: Int!\n  $cursor: String\n) @inContext(language: $language) {\n  blog(handle: $blogHandle) {\n    title\n    seo {\n      title\n      description\n    }\n    articles(first: $pageBy, after: $cursor) {\n      edges {\n        node {\n          ...Article\n        }\n      }\n    }\n  }\n}\n\nfragment Article on Article {\n  author: authorV2 {\n    name\n  }\n  contentHtml\n  handle\n  id\n  image {\n    id\n    altText\n    url\n    width\n    height\n  }\n  publishedAt\n  title\n}\n': {
-    return: BlogQuery;
-    variables: BlogQueryVariables;
   };
   '#graphql\n  query PageDetails($language: LanguageCode, $handle: String!)\n  @inContext(language: $language) {\n    page(handle: $handle) {\n      id\n      title\n      body\n      seo {\n        description\n        title\n      }\n    }\n  }\n': {
     return: PageDetailsQuery;
@@ -1183,13 +1199,14 @@ interface GeneratedQueryTypes {
     return: PaginatedProductsSearchQuery;
     variables: PaginatedProductsSearchQueryVariables;
   };
-  '#graphql\n  query HomepageProductQuery(\n    $handle: String!\n    $country: CountryCode\n    $language: LanguageCode\n  ) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      id\n      title\n      descriptionHtml # Ensure we fetch HTML description\n      description # Keep plain text as fallback\n      handle # Ensure handle is fetched for the link\n      vendor # Added vendor\n      featuredImage {\n        url\n        altText\n        width\n        height\n      }\n      variants(first: 1) {\n        nodes {\n          id\n          availableForSale\n          title # Added variant title\n          price {\n            amount\n            currencyCode\n          }\n          # compareAtPrice { ... } # Uncomment if needed\n        }\n      }\n    }\n  }\n': {
-    return: HomepageProductQueryQuery;
-    variables: HomepageProductQueryQueryVariables;
-  };
 }
 
-interface GeneratedMutationTypes {}
+interface GeneratedMutationTypes {
+  '#graphql\n  mutation CartCreate($input: CartInput!) {\n    cart: cartCreate(input: $input) {\n      cart {\n        id\n      }\n    }\n  }\n': {
+    return: CartCreateMutation;
+    variables: CartCreateMutationVariables;
+  };
+}
 
 declare module '@shopify/hydrogen' {
   interface StorefrontQueries extends GeneratedQueryTypes {}
