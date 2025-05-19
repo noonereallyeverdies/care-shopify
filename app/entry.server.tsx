@@ -17,34 +17,31 @@ export default async function handleRequest(
       storeDomain: context.env.PUBLIC_STORE_DOMAIN,
     },
     directives: {
-      styleSrc: [
+      'style-src': [
         "'self'",
-        "'unsafe-inline'", // Required for certain dynamic styles and dev environments
+        "'unsafe-inline'",
         "https://cdn.shopify.com",
-        "http://localhost:*", // For local development
+        "http://localhost:*",
         "https://fonts.googleapis.com",
       ],
-      fontSrc: [
+      'font-src': [
         "'self'",
         "https://fonts.gstatic.com",
         "https://cdn.shopify.com",
       ],
-      imgSrc: [
+      'img-src': [
         "'self'",
         "data:",
         "https://cdn.shopify.com",
         "https://shopify.com",
-        "http://localhost:*", // For local development assets
+        "http://localhost:*",
       ],
-      // Retain default script-src, connect-src, etc., from createContentSecurityPolicy
-      // by not explicitly overriding them unless necessary.
+      // Default script-src, connect-src, etc., from createContentSecurityPolicy
+      // will be retained unless explicitly overridden here.
     }
   });
 
-  // The manual header manipulation below is no longer needed as directives are set above
-  // const headerParts = originalHeader.split(';');
-  // const imgSrcDirective = "img-src 'self' data: https://cdn.shopify.com https://shopify.com http://localhost:*";
-  // const header = [...headerParts, imgSrcDirective].join(';');
+  // The manual header manipulation previously here is no longer needed.
 
   const body = await renderToReadableStream(
     <NonceProvider>
