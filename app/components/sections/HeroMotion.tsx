@@ -109,16 +109,7 @@ function HeroMotion({ product }: { product: HomepageProduct | null }) {
         />
       </div>
 
-      {/* Fallback image if no video */}
-      {heroImageUrl && (
-        <HydrogenImage 
-          data={{ url: heroImageUrl, altText: heroImageAlt, width: 1920, height: 1080 }}
-          className="absolute inset-0 w-full h-full object-cover z-0" 
-          sizes="100vw"
-          loading="eager" 
-          fetchpriority="high"
-        />
-      )}
+      {/* Fallback image removed from HeroMotion as video is primary here */}
 
       <div className="relative z-20 container mx-auto pb-20 px-4 sm:pb-28 sm:px-6 md:pb-36 md:px-12 text-white">
         <div className="max-w-2xl">
