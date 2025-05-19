@@ -104,7 +104,7 @@ function HeroMotion({ product }: { product: HomepageProduct | null }) {
           Your browser does not support the video tag.
         </video>
         <motion.div 
-          variants={fadeIn}
+          // variants={fadeIn} removed - parent section handles fade-in
           className="absolute inset-0 bg-linear-to-r from-black/60 via-black/40 to-transparent z-10"
         />
       </div>
