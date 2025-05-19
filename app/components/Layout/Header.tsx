@@ -236,7 +236,7 @@ export const Header = memo(function Header({ header, cart, isLoggedIn }: HeaderP
             </div>
             
             {/* Mobile Links */}
-            <div className="flex flex-col space-y-3 p-6 pt-0">
+            <div className="flex flex-col gap-3 p-6 pt-0">
               {customNav.map((item) => (
                 <NavLink
                   key={item.id}

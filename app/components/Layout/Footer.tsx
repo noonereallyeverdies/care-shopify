@@ -96,7 +96,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
             {/* Column 1: Hair Solutions */}
             <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '0ms'}}>
               <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">hair solutions</h3>
-              <ul className="space-y-3">
+              <ul className="flex flex-col gap-3">
                 <li><Link to="/collections/all" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">shop all</Link></li>
                 <li><Link to="/products/photonique-touch" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">photonique touch device</Link></li>
                 <li><Link to="/collections/accessories" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">hair care accessories</Link></li>
@@ -107,7 +107,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
             {/* Column 2: Discover */}
             <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '200ms'}}>
               <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">discover</h3>
-              <ul className="space-y-3">
+              <ul className="flex flex-col gap-3">
                 <li><Link to="/pages/science" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">how red light therapy works</Link></li>
                 <li><Link to="/pages/results" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">before & after results</Link></li>
                 <li><Link to="/pages/our-story" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">our story</Link></li>
@@ -118,7 +118,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
             {/* Column 3: Help */}
             <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '400ms'}}>
               <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">help & support</h3>
-              <ul className="space-y-3">
+              <ul className="flex flex-col gap-3">
                 <li><Link to="/pages/faq" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">frequently asked questions</Link></li>
                 <li><Link to="/pages/warranty" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">warranty information</Link></li>
                 <li><Link to="/policies/refund-policy" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">returns & refunds</Link></li>
@@ -158,7 +158,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
               </form>
               
               <h3 className="text-white text-base font-light tracking-wider mb-3 lowercase">follow us</h3>
-              <div className="flex space-x-4">
+              <div className="flex gap-4">
                 <a href="#" aria-label="instagram" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
                   <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
                     <Instagram size={16} />
@@ -219,7 +219,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
           <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-stone-800">
             <p className="text-stone-400 text-xs mb-6 md:mb-0 font-light">© {new Date().getFullYear()} care•atin. all rights reserved.</p>
             
-            <div className="flex space-x-2 items-center">
+            <div className="flex gap-2 items-center">
               <img src="/images/payment/visa.svg" alt="visa" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
               <img src="/images/payment/mastercard.svg" alt="mastercard" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
               <img src="/images/payment/amex.svg" alt="american express" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
