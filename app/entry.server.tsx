@@ -11,17 +11,40 @@ export default async function handleRequest(
   remixContext: EntryContext,
   context: AppLoadContext,
 ) {
-  const {nonce, header: originalHeader, NonceProvider} = createContentSecurityPolicy({
+  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
     shop: {
       checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
       storeDomain: context.env.PUBLIC_STORE_DOMAIN,
     },
+    directives: {
+      styleSrc: [
+        "'self'",
+        "'unsafe-inline'", // Required for certain dynamic styles and dev environments
+        "https://cdn.shopify.com",
+        "http://localhost:*", // For local development
+        "https://fonts.googleapis.com",
+      ],
+      fontSrc: [
+        "'self'",
+        "https://fonts.gstatic.com",
+        "https://cdn.shopify.com",
+      ],
+      imgSrc: [
+        "'self'",
+        "data:",
+        "https://cdn.shopify.com",
+        "https://shopify.com",
+        "http://localhost:*", // For local development assets
+      ],
+      // Retain default script-src, connect-src, etc., from createContentSecurityPolicy
+      // by not explicitly overriding them unless necessary.
+    }
   });
 
-  // Create a modified header with img-src directive to allow data: URLs
-  const headerParts = originalHeader.split(';');
-  const imgSrcDirective = "img-src 'self' data: https://cdn.shopify.com https://shopify.com http://localhost:*";
-  const header = [...headerParts, imgSrcDirective].join(';');
+  // The manual header manipulation below is no longer needed as directives are set above
+  // const headerParts = originalHeader.split(';');
+  // const imgSrcDirective = "img-src 'self' data: https://cdn.shopify.com https://shopify.com http://localhost:*";
+  // const header = [...headerParts, imgSrcDirective].join(';');
 
   const body = await renderToReadableStream(
     <NonceProvider>
