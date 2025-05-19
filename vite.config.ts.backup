@@ -1,0 +1,112 @@
+import {defineConfig} from 'vite';
+import {hydrogen} from '@shopify/hydrogen/vite';
+import {oxygen} from '@shopify/mini-oxygen/vite';
+import {vitePlugin as remix} from '@remix-run/dev';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import tailwindcss from '@tailwindcss/vite';
+
+declare module '@remix-run/server-runtime' {
+  interface Future {
+    v3_singleFetch: true;
+  }
+}
+
+// List of Node.js built-in modules that need to be externalized in SSR
+const nodeModules = [
+  'node:buffer', 'buffer',
+  'node:crypto', 'crypto',
+  'node:events', 'events',
+  'node:fs', 'fs',
+  'node:http', 'http',
+  'node:https', 'https',
+  'node:net', 'net',
+  'node:os', 'os',
+  'node:path', 'path',
+  'node:querystring', 'querystring',
+  'node:stream', 'stream',
+  'node:tls', 'tls',
+  'node:url', 'url',
+  'node:util', 'util',
+  'node:zlib', 'zlib',
+  'node:assert', 'assert',
+  'node:child_process',
+  'node:worker_threads',
+  'node:process',
+  'node:module',
+  'node:https',
+  'node:tty',
+  'node:vm', 'vm',
+  'async_hooks',
+  'fs/promises'
+];
+
+// Additional dependencies that need special treatment
+const additionalExternals = [
+  '@remix-run/node',
+  'express',
+  'on-finished',
+  'body-parser',
+  'router',
+  'etag',
+  'asn1.js'
+];
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+    hydrogen(),
+    oxygen(),
+    remix({
+      presets: [hydrogen.v3preset()],
+      future: {
+        v3_fetcherPersist: true,
+        v3_relativeSplatPath: true,
+        v3_throwAbortReason: true,
+        v3_lazyRouteDiscovery: true,
+        v3_routeConfig: true,
+        v3_singleFetch: true,
+      },
+    }),
+    tsconfigPaths(),
+  ],
+  build: {
+    // Allow a strict Content-Security-Policy
+    // without inlining assets as base64:
+    assetsInlineLimit: 0,
+  },
+  resolve: {
+    // Make sure the system finds the proper modules when resolving node: imports
+    conditions: ['node', 'import', 'module', 'browser'],
+    // Remove node: prefix in browser
+    browserField: true,
+  },
+  optimizeDeps: {
+    // Don't try to bundle Node.js built-ins
+    exclude: nodeModules,
+    esbuildOptions: {
+      define: {
+        global: 'globalThis',
+      },
+    },
+  },
+  ssr: {
+    // Externalize all Node.js modules and certain libraries for SSR
+    external: [...nodeModules, ...additionalExternals],
+    // Don't externalize Hydrogen and Remix Oxygen
+    noExternal: ['@shopify/hydrogen', '@shopify/remix-oxygen'],
+    // Optimize these dependencies for SSR
+    optimizeDeps: {
+      include: [
+        'typographic-base',
+        'use-sync-external-store/with-selector',
+        '@headlessui/react',
+      ],
+    },
+  },
+  server: {
+    port: 4000,
+    hmr: {
+      timeout: 5000,
+    },
+  },
+});

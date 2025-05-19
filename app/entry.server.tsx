@@ -11,12 +11,17 @@ export default async function handleRequest(
   remixContext: EntryContext,
   context: AppLoadContext,
 ) {
-  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
+  const {nonce, header: originalHeader, NonceProvider} = createContentSecurityPolicy({
     shop: {
       checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
       storeDomain: context.env.PUBLIC_STORE_DOMAIN,
     },
   });
+
+  // Create a modified header with img-src directive to allow data: URLs
+  const headerParts = originalHeader.split(';');
+  const imgSrcDirective = "img-src 'self' data: https://cdn.shopify.com https://shopify.com http://localhost:*";
+  const header = [...headerParts, imgSrcDirective].join(';');
 
   const body = await renderToReadableStream(
     <NonceProvider>

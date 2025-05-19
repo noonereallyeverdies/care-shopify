@@ -1,0 +1,49 @@
+/* Custom Styling for Care•atin */
+
+/* Lowercase headings for feminine aesthetic */
+h1, h2, h3, h4, h5, h6 {
+  text-transform: lowercase;
+}
+
+/* Special styling for the interpunct in brand name */
+.brand-name {
+  font-weight: inherit;
+  position: relative;
+  display: inline-block;
+}
+
+.brand-name .interpunct {
+  color: var(--c-accent-rlt);
+  font-size: 0.6em;
+  position: relative;
+  top: -0.1em;
+  font-weight: 300;
+  margin: 0 0.08em;
+  display: inline-block;
+  opacity: 0.9;
+  text-transform: none;
+}
+
+/* For when brand name is in dark backgrounds */
+.bg-dark .brand-name .interpunct {
+  color: #FF7C61; /* Brighter shade for dark backgrounds */
+}
+
+/* For when we want to show the brand name in contexts outside headings */
+.product-name {
+  font-weight: 500;
+}
+
+.product-name .interpunct {
+  color: var(--c-accent-rlt);
+  font-size: 0.7em;
+  position: relative;
+  top: -0.05em;
+  font-weight: 300;
+}
+
+/* Helper class to make brand voice more feminine and delicate */
+.feminine-voice {
+  font-weight: 300;
+  letter-spacing: 0.02em;
+} 

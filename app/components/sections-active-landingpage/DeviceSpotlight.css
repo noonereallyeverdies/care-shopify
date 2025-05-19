@@ -1,0 +1,58 @@
+/* care/app/components/DeviceSpotlight.css */
+
+.device-spotlight-section {
+  padding: var(--space-xl) var(--space-md);
+  background-color: var(--c-bg-primary, white);
+}
+
+.device-spotlight-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  align-items: center;
+  max-width: 1000px; /* Max width for the section */
+  margin: 0 auto; /* Center the section */
+}
+
+/* Specific styling for the image if needed beyond hydrogen Image props */
+.device-image {
+  border-radius: var(--border-radius-lg, 8px); /* Use theme variable */
+  width: 100%; /* Ensure image scales within its column */
+  height: auto;
+}
+
+.content-column .device-title { /* Add class to h2 */
+  font-size: var(--text-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.content-column .device-description { /* Add class to description div/p */
+  margin-bottom: var(--space-lg);
+  font-size: var(--text-body);
+  /* Additional styles for links, paragraphs etc. within description */
+}
+
+.content-column .device-price-wrapper { /* Add class to price div */
+  margin-bottom: var(--space-lg);
+}
+
+.content-column .device-price { /* Add class to Money component */
+  font-size: var(--text-price, 1.5rem);
+  font-weight: bold;
+}
+
+/* Styles for the button (assuming .button classes handle base styling) */
+.content-column .button--primary.button--large {
+  /* Specific overrides for the spotlight button if needed */
+}
+
+/* Fallback loading state styles */
+.device-spotlight.loading-placeholder { /* Add class to fallback section */
+  padding: var(--section-padding-y, var(--space-xl)) var(--container-padding-x, var(--space-md));
+  text-align: center;
+  background-color: var(--c-bg-subtle, #f9f9f9);
+}
+
+.loading-placeholder h2 {
+  margin-bottom: var(--space-md);
+} 

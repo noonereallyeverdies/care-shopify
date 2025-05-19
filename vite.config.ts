@@ -11,6 +11,24 @@ declare module '@remix-run/server-runtime' {
   }
 }
 
+// List of Node.js built-in modules to externalize
+const nodeBuiltins = [
+  // Node.js modules with node: prefix
+  /^node:/,
+  
+  // Regular Node.js modules
+  'fs', 'path', 'crypto', 'stream', 'url', 'util', 'events', 'http', 'https',
+  'assert', 'buffer', 'querystring', 'os', 'net', 'zlib', 'tls', 'vm',
+  'async_hooks', 'worker_threads', 'diagnostics_channel', 'perf_hooks',
+  'tty', 'dns', 'http2', 'console', 'fs/promises', 'child_process'
+];
+
+// Packages known to cause issues
+const problemPackages = [
+  '@remix-run/node',  // Critical to externalize 
+  'undici'
+];
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -30,23 +48,31 @@ export default defineConfig({
     tsconfigPaths(),
   ],
   build: {
-    // Allow a strict Content-Security-Policy
-    // withtout inlining assets as base64:
     assetsInlineLimit: 0,
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: 'globalThis',
+      },
+    },
+  },
   ssr: {
+    // Critical for MiniOxygen compatibility - externalize problematic modules
+    external: [...nodeBuiltins, ...problemPackages],
+    noExternal: ['@shopify/hydrogen', '@shopify/remix-oxygen'],
     optimizeDeps: {
-      /**
-       * Include dependencies here if they throw CJS<>ESM errors.
-       * For example, for the following error:
-       *
-       * > ReferenceError: module is not defined
-       * >   at /Users/.../node_modules/example-dep/index.js:1:1
-       *
-       * Include 'example-dep' in the array below.
-       * @see https://vitejs.dev/config/dep-optimization-options
-       */
-      include: [],
+      include: [
+        'typographic-base',
+        'use-sync-external-store/with-selector',
+        '@headlessui/react',
+      ],
+    },
+  },
+  server: {
+    port: 4000,
+    hmr: {
+      timeout: 5000,
     },
   },
 });

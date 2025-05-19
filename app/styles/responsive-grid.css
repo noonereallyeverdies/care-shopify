@@ -1,0 +1,461 @@
+/**
+ * Responsive Grid System for Care•atin
+ * 
+ * A mobile-first 12-column grid system with special thumb-zone mapping
+ * for improved mobile interactions. This grid system includes both layout
+ * grid and interaction zone helpers.
+ */
+
+/* Base variables */
+:root {
+  /* Grid settings */
+  --grid-columns: 12;
+  --grid-gutter: 20px;
+  --container-padding: 20px;
+  --container-max-width: 1280px;
+  
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  
+  /* Interaction zones */
+  --thumb-zone-easy: #27ae60;     /* Easy to reach - green */
+  --thumb-zone-stretch: #f39c12;  /* Stretch to reach - orange */
+  --thumb-zone-difficult: #e74c3c; /* Difficult to reach - red */
+  
+  /* Touch target size */
+  --touch-target-size: 44px;
+  --touch-target-size-lg: 56px;
+}
+
+/* ====== Container ====== */
+
+.container {
+  width: 100%;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: var(--container-max-width);
+  }
+}
+
+/* ====== Row and Column Base ====== */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(-1 * var(--grid-gutter) / 2);
+  margin-right: calc(-1 * var(--grid-gutter) / 2);
+  box-sizing: border-box;
+}
+
+.row.no-gutters {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutters > [class*="col-"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+[class*="col-"] {
+  position: relative;
+  width: 100%;
+  padding-left: calc(var(--grid-gutter) / 2);
+  padding-right: calc(var(--grid-gutter) / 2);
+  box-sizing: border-box;
+}
+
+/* ====== Column Generator ====== */
+
+/* Extra small devices (phones, less than 576px) */
+/* Default - no media query needed */
+@for $i from 1 through 12 {
+  .col-$i {
+    flex: 0 0 calc(100% * $i / 12);
+    max-width: calc(100% * $i / 12);
+  }
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  @for $i from 1 through 12 {
+    .col-sm-$i {
+      flex: 0 0 calc(100% * $i / 12);
+      max-width: calc(100% * $i / 12);
+    }
+  }
+  
+  .col-sm {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  
+  .col-sm-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  @for $i from 1 through 12 {
+    .col-md-$i {
+      flex: 0 0 calc(100% * $i / 12);
+      max-width: calc(100% * $i / 12);
+    }
+  }
+  
+  .col-md {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  
+  .col-md-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  @for $i from 1 through 12 {
+    .col-lg-$i {
+      flex: 0 0 calc(100% * $i / 12);
+      max-width: calc(100% * $i / 12);
+    }
+  }
+  
+  .col-lg {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  
+  .col-lg-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  @for $i from 1 through 12 {
+    .col-xl-$i {
+      flex: 0 0 calc(100% * $i / 12);
+      max-width: calc(100% * $i / 12);
+    }
+  }
+  
+  .col-xl {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  
+  .col-xl-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* ====== Utilities ====== */
+
+/* Alignment utilities */
+.align-items-start { align-items: flex-start !important; }
+.align-items-center { align-items: center !important; }
+.align-items-end { align-items: flex-end !important; }
+.align-items-stretch { align-items: stretch !important; }
+
+.justify-content-start { justify-content: flex-start !important; }
+.justify-content-center { justify-content: center !important; }
+.justify-content: end { justify-content: flex-end !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-around { justify-content: space-around !important; }
+
+.align-self-start { align-self: flex-start !important; }
+.align-self-center { align-self: center !important; }
+.align-self-end { align-self: flex-end !important; }
+.align-self-stretch { align-self: stretch !important; }
+
+/* Display utilities */
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-flex { display: flex !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-inline-flex { display: inline-flex !important; }
+
+/* Responsive display utilities */
+@media (min-width: 576px) {
+  .d-sm-none { display: none !important; }
+  .d-sm-block { display: block !important; }
+  .d-sm-flex { display: flex !important; }
+  .d-sm-inline { display: inline !important; }
+  .d-sm-inline-block { display: inline-block !important; }
+  .d-sm-inline-flex { display: inline-flex !important; }
+}
+
+@media (min-width: 768px) {
+  .d-md-none { display: none !important; }
+  .d-md-block { display: block !important; }
+  .d-md-flex { display: flex !important; }
+  .d-md-inline { display: inline !important; }
+  .d-md-inline-block { display: inline-block !important; }
+  .d-md-inline-flex { display: inline-flex !important; }
+}
+
+@media (min-width: 992px) {
+  .d-lg-none { display: none !important; }
+  .d-lg-block { display: block !important; }
+  .d-lg-flex { display: flex !important; }
+  .d-lg-inline { display: inline !important; }
+  .d-lg-inline-block { display: inline-block !important; }
+  .d-lg-inline-flex { display: inline-flex !important; }
+}
+
+@media (min-width: 1200px) {
+  .d-xl-none { display: none !important; }
+  .d-xl-block { display: block !important; }
+  .d-xl-flex { display: flex !important; }
+  .d-xl-inline { display: inline !important; }
+  .d-xl-inline-block { display: inline-block !important; }
+  .d-xl-inline-flex { display: inline-flex !important; }
+}
+
+/* ====== Thumb-Zone Mapping ====== */
+
+/* 
+ * Thumb Zone Mapping for mobile
+ * These classes help position interactive elements in areas
+ * that are easy to reach with the thumb on mobile devices.
+ */
+
+/* Mobile-specific thumb zones (for one-handed use) */
+.thumb-zone-safe {
+  position: relative;
+}
+
+.thumb-zone-safe.show-zone::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(39, 174, 96, 0.2);
+  border: 2px solid var(--thumb-zone-easy);
+  pointer-events: none;
+  z-index: 100;
+}
+
+.thumb-zone-stretch {
+  position: relative;
+}
+
+.thumb-zone-stretch.show-zone::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(243, 156, 18, 0.2);
+  border: 2px solid var(--thumb-zone-stretch);
+  pointer-events: none;
+  z-index: 100;
+}
+
+.thumb-zone-difficult {
+  position: relative;
+}
+
+.thumb-zone-difficult.show-zone::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(231, 76, 60, 0.2);
+  border: 2px solid var(--thumb-zone-difficult);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Mobile bottom-safe area for navigation components */
+.bottom-safe-area {
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+/* Fixed bottom navigation for mobile */
+.mobile-nav-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px calc(var(--container-padding) - 5px);
+  padding-bottom: max(10px, calc(10px + env(safe-area-inset-bottom)));
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ====== Touch Target Sizing ====== */
+
+/*
+ * Touch Target Sizing
+ * Ensures all interactive elements are at least 44×44px for comfortable tapping
+ */
+
+.touch-target {
+  min-width: var(--touch-target-size);
+  min-height: var(--touch-target-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.touch-target.touch-target-lg {
+  min-width: var(--touch-target-size-lg);
+  min-height: var(--touch-target-size-lg);
+}
+
+/* If an element inside the touch target needs to be smaller */
+.touch-target-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* For debugging touch targets */
+.show-touch-target.touch-target::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* ====== Asymmetrical Grid Components ====== */
+
+/*
+ * Asymmetrical grid components for editorial layouts
+ * These provide more visual interest than traditional symmetric grids
+ */
+
+.asymm-container {
+  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 var(--container-padding);
+}
+
+/* Mobile-first base grid (2-column asymmetrical) */
+.asymm-grid-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--grid-gutter) / 2);
+}
+
+/* Medium screens (3-column asymmetrical) */
+@media (min-width: 768px) {
+  .asymm-grid-1 {
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: var(--grid-gutter);
+  }
+}
+
+/* Large screens (more complex layout) */
+@media (min-width: 992px) {
+  .asymm-grid-1 {
+    grid-template-columns: 1fr 3fr 2fr;
+    gap: var(--grid-gutter);
+  }
+}
+
+/* Content breakout for editorial layouts */
+.content-breakout {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .content-breakout {
+    width: calc(100% + var(--grid-gutter) * 2);
+    margin-left: calc(-1 * var(--grid-gutter));
+  }
+}
+
+/* Text columns for better readability */
+.text-columns-2 {
+  column-count: 1;
+}
+
+@media (min-width: 768px) {
+  .text-columns-2 {
+    column-count: 2;
+    column-gap: var(--grid-gutter);
+  }
+} 

@@ -1,0 +1,307 @@
+/* care/app/components/Shared/Footer.css */
+
+:root {
+  /* Define footer specific colors - REMOVED - Use Tailwind classes in component */
+
+  /* Keep spacing variables if used consistently */
+  --space-xxs: 0.25rem; /* 4px */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 0.75rem;  /* 12px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 2.5rem;   /* 40px */
+  --space-2xl: 3.5rem;  /* 56px */
+
+  /* Keep font size variables if used consistently */
+  --text-body-xs: 0.75rem; /* 12px */
+  --text-body-sm: 0.875rem;/* 14px */
+  --text-body: 1rem;     /* 16px */
+  --text-body-bold: 1rem; /* 16px bold */
+  --text-heading-sm: 1.5rem; /* 24px */
+
+  /* Keep border radius */
+  --border-radius-sm: 0.25rem;
+}
+
+.footer {
+  /* background-color: var(--c-bg-footer); */ /* Applied via Tailwind */
+  /* color: var(--c-text-footer-secondary); */ /* Default text color applied via Tailwind */
+  padding: var(--space-xl) var(--space-lg);
+  /* border-top: 1px solid var(--c-border-footer); */ /* Applied via Tailwind */
+}
+
+.footer.fallback {
+  /* Specific fallback styles if needed */
+}
+
+.footer-content {
+  display: grid; /* Use grid for better column control */
+  /* grid-template-columns: 1.5fr 1fr 1fr 1.5fr; */ /* New 4 columns */
+  /* Use Tailwind classes for responsive columns in component if preferred */
+  grid-template-columns: repeat(1, minmax(0, 1fr)); /* Mobile default */
+  gap: var(--space-xl); /* Keep gap */
+  margin-bottom: var(--space-xl); 
+  max-width: 1200px; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-column {
+  /* Removed flex properties, grid handles layout */
+  margin-bottom: var(--space-md); 
+}
+
+.footer-column-title {
+  font-size: var(--text-body-bold, 1rem);
+  font-weight: bold;
+  margin-bottom: var(--space-lg); /* Increased space below title */
+  /* color: var(--c-text-footer-primary); */ /* Applied via Tailwind */
+  text-transform: none;
+  letter-spacing: 0.05em; /* Optional: Add letter spacing */
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list-item {
+  margin-bottom: var(--space-sm); /* Slightly more space */
+}
+
+.footer-link {
+  text-decoration: none;
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+  font-size: var(--text-body-sm);
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  /* color: var(--c-footer-link-hover); */ /* Applied via Tailwind */
+  /* text-decoration: underline; */ /* Remove underline on hover for Omi style */
+}
+
+/* Styles for horizontal social links */
+.social-links-horizontal {
+  display: flex;
+  gap: var(--space-md); /* Space between icons */
+  align-items: center;
+}
+
+.social-link-icon svg {
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+  transition: color 0.2s ease;
+}
+
+.social-link-icon:hover svg {
+  /* color: var(--c-footer-link-hover); */ /* Applied via Tailwind */
+}
+
+/* Footer Bottom Styles */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center; /* Center items */
+  align-items: center;
+  gap: var(--space-md);
+  /* border-top: 1px solid var(--c-border-footer); */ /* Applied via Tailwind */
+  padding-top: var(--space-lg); /* Increased padding */
+  font-size: var(--text-body-xs);
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+  max-width: 1200px; 
+  margin: 0 auto;
+}
+
+.footer-bottom-center {
+  /* Let copyright take natural width, center text */
+  text-align: center;
+  width: 100%; /* Take full width initially */
+  order: 1; /* Ensure copyright appears first on mobile stack */
+}
+
+.footer-bottom-right {
+  text-align: right;
+  display: flex; /* Layout payment icons */
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+.footer-bottom-links {
+  display: flex;
+  flex-wrap: wrap; /* Allow links to wrap */
+  justify-content: center; /* Center links */
+  gap: var(--space-sm) var(--space-md); /* Vertical and horizontal gap */
+  width: 100%;
+  order: 2; /* Links appear below copyright on mobile stack */
+}
+
+.footer-bottom-link {
+  text-decoration: none;
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+  font-size: var(--text-body-xs);
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  padding: 0 var(--space-xs); /* Add padding */
+  position: relative;
+}
+
+.footer-bottom-link:hover {
+  /* color: var(--c-footer-link-hover); */ /* Applied via Tailwind */
+  text-decoration: underline;
+}
+
+/* Add separators using pseudo-elements (optional) */
+.footer-bottom-link:not(:last-child)::after {
+  content: '|';
+  position: absolute;
+  right: calc(var(--space-xs) * -1 - var(--space-sm) / 2); /* Position between links */
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+  opacity: 0.5;
+  padding-left: var(--space-md); /* Keep this for spacing */
+  /* Ensure this separator uses the updated secondary text color */
+}
+
+/* Placeholder styles - Keep minimal structural styles */
+.footer-selector-placeholder {
+  cursor: pointer;
+  display: inline-block;
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+  font-size: var(--text-body-xs);
+  opacity: 0.8;
+}
+
+.footer-selector-placeholder:hover {
+  opacity: 1;
+}
+
+.payment-icon-placeholder {
+  display: inline-block;
+  opacity: 0.6;
+  font-size: var(--text-body-xs);
+  margin: 0 var(--space-xxs);
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+}
+
+/* Responsive adjustments for GRID - Keep these */
+@media (min-width: 768px) { /* Apply 2 columns for md screens */
+  .footer-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) { /* Apply 4 columns for lg screens */
+  .footer-content {
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr; /* Revert to 4 columns */
+  }
+}
+
+/* Keep footer bottom responsive adjustments */
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column; /* Stack bottom elements */
+    text-align: center;
+  }
+  .footer-bottom-left, /* Ensure left aligns center on mobile */
+  .footer-bottom-center,
+  .footer-bottom-right {
+    text-align: center; /* Center all text */
+    width: 100%;
+    justify-content: center; /* Center payment icons */
+  }
+  .footer-bottom-links {
+     order: 3; /* Move links below selectors/payment on mobile */
+  }
+  .footer-bottom-link:not(:last-child)::after {
+    /* Hide separators on mobile if links stack or wrap significantly */
+    content: ''; 
+  }
+}
+
+.footer-brand-column {
+  /* Specific styles for the first column if needed */
+}
+
+.footer-brand-name {
+  font-size: var(--text-heading-sm, 1.5rem); /* Larger font size */
+  font-weight: bold;
+  /* color: var(--c-text-footer-primary); */ /* Applied via Tailwind */
+  text-decoration: none;
+  display: block; /* Ensure it takes block space */
+  margin-bottom: var(--space-sm); /* Space below name */
+}
+
+.footer-brand-description {
+  font-size: var(--text-body-sm);
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+  margin-bottom: var(--space-md);
+}
+
+/* Newsletter Styles - Remove color/border styles, keep structure */
+.follow-us-title {
+  margin-top: var(--space-lg); /* Space above Follow Us title */
+}
+
+.newsletter-title {
+  margin-top: var(--space-lg); /* Add space above newsletter title */
+}
+
+.footer-newsletter-text {
+  font-size: var(--text-body-xs);
+  margin-bottom: var(--space-md);
+}
+
+.newsletter-form-placeholder {
+  display: flex;
+  flex-direction: column; /* Stack input and button */
+  gap: var(--space-sm);
+}
+
+.newsletter-form-placeholder input[type="email"] {
+  padding-bottom: var(--space-sm); 
+  /* border: none; */ /* Let Tailwind handle border */
+  /* border-bottom: 1px solid var(--c-border-footer); */ 
+  /* border-radius: 0; */ 
+  /* background-color: transparent; */ 
+  /* color: var(--c-text-footer-primary); */
+  flex-grow: 1;
+  font-size: var(--text-body-sm);
+  width: 100%; 
+  margin-bottom: var(--space-sm); 
+}
+
+.newsletter-form-placeholder input[type="email"]::placeholder {
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+  opacity: 1;
+}
+
+.newsletter-form-placeholder button {
+  padding: var(--space-sm) 0; 
+  /* border: none; */
+  /* border-radius: 0; */
+  /* background-color: transparent; */
+  /* color: var(--c-text-footer-primary); */
+  /* font-weight: normal; */ 
+  cursor: pointer;
+  transition: color 0.2s ease; 
+  width: auto; 
+  font-size: var(--text-body-sm);
+  text-align: right; 
+  margin-top: var(--space-xs); 
+}
+
+.newsletter-form-placeholder button:hover {
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+}
+
+/* Disclaimer Styles - Remove color styles */
+.footer-disclaimer {
+  max-width: 1000px; /* Limit width */
+  margin: var(--space-lg) auto var(--space-xl) auto; /* Center with margins */
+  padding: var(--space-md) var(--space-lg);
+  /* border: 1px solid var(--c-border-footer); */ /* Applied via Tailwind */
+  border-radius: var(--border-radius-md);
+  font-size: var(--text-body-xs);
+  text-align: center;
+  /* color: var(--c-text-footer-secondary); */ /* Applied via Tailwind */
+  opacity: 0.8;
+} 
