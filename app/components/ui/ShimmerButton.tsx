@@ -57,7 +57,7 @@ export const ShimmerButton = forwardRef(function ShimmerButton<C extends Element
       <div className="absolute inset-0" style={{ background: "var(--background)" }} />
       <div className="absolute inset-0 flex items-center justify-center">
         <div
-          className="h-[var(--shimmer-size)] w-[var(--shimmer-size)] animate-shimmer rounded-full bg-white/75 shadow-[0_0_10px_10px_rgba(255,255,255,0.25)]"
+          className="h-(--shimmer-size) w-(--shimmer-size) animate-shimmer rounded-full bg-white/75 shadow-[0_0_10px_10px_rgba(255,255,255,0.25)]"
           style={{
             animation: `shimmer var(--shimmer-duration) cubic-bezier(0, 0, 0.12, 1) infinite`,
           }}

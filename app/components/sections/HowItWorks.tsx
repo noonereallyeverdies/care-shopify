@@ -66,7 +66,7 @@ export function HowItWorks() {
         {/* 3-Step Process */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16 relative">
           {/* Arrow Connector - Hidden on Mobile */}
-          <div className="hidden md:block absolute top-8 left-[25%] right-[25%] h-1 bg-gradient-to-r from-rose-100 via-rose-300 to-rose-100"></div>
+          <div className="hidden md:block absolute top-8 left-[25%] right-[25%] h-1 bg-linear-to-r from-rose-100 via-rose-300 to-rose-100"></div>
           
           <StepCard 
             icon={Zap} 

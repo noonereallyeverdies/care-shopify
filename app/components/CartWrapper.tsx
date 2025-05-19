@@ -37,7 +37,7 @@ export function CartWrapper({cart}: {cart: any}) {
 
   return (
     <div className="w-full pb-12 grid md:grid-cols-2 md:items-start gap-8 md:gap-8 lg:gap-12">
-      <div className="flex-grow">
+      <div className="grow">
         <CartLinesList cart={cart} />
       </div>
       
@@ -63,7 +63,7 @@ function CartLinesList({cart}: {cart: any}) {
     <ul className="grid gap-6 md:gap-10">
       {lines.map((line) => (
         <li key={line.id} className="flex gap-4">
-          <div className="flex-shrink">
+          <div className="shrink">
             {line.merchandise?.image && (
               <img 
                 src={line.merchandise.image.url}
@@ -75,7 +75,7 @@ function CartLinesList({cart}: {cart: any}) {
             )}
           </div>
           
-          <div className="flex justify-between flex-grow">
+          <div className="flex justify-between grow">
             <div className="grid gap-2">
               <Heading as="h3" size="copy">
                 {line.merchandise?.product?.handle ? (

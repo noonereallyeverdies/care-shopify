@@ -335,7 +335,7 @@ export default function EditAddress() {
               name="defaultAddress"
               id="defaultAddress"
               defaultChecked={defaultAddress?.id === address?.id}
-              className="border-gray-500 rounded-sm cursor-pointer border-1"
+              className="border-gray-500 rounded-sm cursor-pointer border"
             />
             <label
               className="inline-block ml-2 text-sm cursor-pointer"

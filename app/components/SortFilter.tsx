@@ -164,7 +164,7 @@ function AppliedFilters({filters = []}: {filters: AppliedFilter[]}) {
               className="flex px-2 border rounded-full gap"
               key={`${filter.label}-${JSON.stringify(filter.filter)}`}
             >
-              <span className="flex-grow">{filter.label}</span>
+              <span className="grow">{filter.label}</span>
               <span>
                 <IconXMark />
               </span>

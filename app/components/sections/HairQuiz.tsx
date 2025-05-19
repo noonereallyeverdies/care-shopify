@@ -458,7 +458,7 @@ export function HairQuiz() {
                     <div className="max-w-xl mx-auto">
                       <div className="p-6 bg-rose-50 rounded-xl border border-rose-100 mb-8">
                         <div className="flex items-start gap-4">
-                          <Award className="w-8 h-8 text-rose-500 flex-shrink-0 mt-1" />
+                          <Award className="w-8 h-8 text-rose-500 shrink-0 mt-1" />
                           <div>
                             <h3 className="text-lg font-medium text-neutral-900 mb-2">
                               Get your detailed regimen + 20% off your first order

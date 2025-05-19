@@ -133,7 +133,7 @@ export function ScienceHub() {
 
   return (
     <motion.section 
-      className="py-20 md:py-32 bg-gradient-to-b from-neutral-50 via-white to-white relative z-0 overflow-hidden"
+      className="py-20 md:py-32 bg-linear-to-b from-neutral-50 via-white to-white relative z-0 overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -243,7 +243,7 @@ export function ScienceHub() {
                     </div>
                     <h4 className="text-xl font-medium text-neutral-900 mb-2">{phase.name}</h4>
                     <div className="text-sm text-rose-600 mb-3">{phase.duration}</div>
-                    <p className="text-neutral-700 leading-relaxed text-sm flex-grow">{phase.description}</p>
+                    <p className="text-neutral-700 leading-relaxed text-sm grow">{phase.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -348,7 +348,7 @@ export function ScienceHub() {
                     <benefit.icon className="h-8 w-8 text-rose-600" />
                   </div>
                   <h4 className="text-xl font-medium text-neutral-900 mb-4">{benefit.title}</h4>
-                  <p className="text-neutral-700 leading-relaxed mb-4 flex-grow">{benefit.description}</p>
+                  <p className="text-neutral-700 leading-relaxed mb-4 grow">{benefit.description}</p>
                   <div className="mt-auto bg-rose-50 py-3 px-4 rounded-lg">
                     <p className="text-rose-600 font-medium text-sm">
                       What this means for you: {benefit.benefit}

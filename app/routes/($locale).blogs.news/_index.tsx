@@ -235,7 +235,7 @@ export default function Journals() {
               
               <div className="max-w-md mx-auto">
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <input type="email" placeholder="your email address" className="flex-grow rounded-full px-6 py-3 border border-neutral-300 focus:border-rose-400 focus:ring-2 focus:ring-rose-200 focus:outline-none" />
+                  <input type="email" placeholder="your email address" className="grow rounded-full px-6 py-3 border border-neutral-300 focus:border-rose-400 focus:ring-2 focus:ring-rose-200 focus:outline-none" />
                   <button type="submit" className="bg-rose-500 text-white px-6 py-3 rounded-full hover:bg-rose-600 transition-colors whitespace-nowrap">subscribe</button>
                 </div>
               </div>

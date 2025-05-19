@@ -46,7 +46,7 @@ export function HairWellnessJourney() {
   }, [isInView, wellnessStages.length]);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-warm-cream to-white">
+    <section className="py-20 bg-linear-to-b from-warm-cream to-white">
       <div className="container mx-auto px-6">
         
         {/* Gentle, positive header */}
@@ -77,7 +77,7 @@ export function HairWellnessJourney() {
             <div className="aspect-square max-w-md mx-auto relative">
               
               {/* Central wellness circle */}
-              <div className="absolute inset-0 bg-gradient-to-br from-sage-green/10 to-soft-rose/10 rounded-full">
+              <div className="absolute inset-0 bg-linear-to-br from-sage-green/10 to-soft-rose/10 rounded-full">
                 
                 {/* Hair strands growing animation */}
                 <svg
@@ -193,7 +193,7 @@ export function HairWellnessJourney() {
                   whileHover={{ scale: 1.02 }}
                 >
                   <div className="flex items-center space-x-4">
-                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br from-sage-green/20 to-soft-rose/20 flex items-center justify-center ${
+                    <div className={`w-12 h-12 rounded-full bg-linear-to-br from-sage-green/20 to-soft-rose/20 flex items-center justify-center ${
                       isActive ? 'scale-110' : ''
                     } transition-transform duration-300`}>
                       <IconComponent className="w-6 h-6 text-sage-green" />
@@ -220,7 +220,7 @@ export function HairWellnessJourney() {
                   <div className="mt-4">
                     <div className="h-1 bg-neutral-200 rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-gradient-to-r from-sage-green to-sage-green/80 rounded-full"
+                        className="h-full bg-linear-to-r from-sage-green to-sage-green/80 rounded-full"
                         initial={{ width: 0 }}
                         animate={isActive ? { width: `${stage.percentage}%` } : { width: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
@@ -248,7 +248,7 @@ export function HairWellnessJourney() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1.5 }}
         >
-          <div className="bg-gradient-to-r from-sage-green/10 via-white to-soft-rose/10 rounded-2xl p-8 border border-sage-green/20">
+          <div className="bg-linear-to-r from-sage-green/10 via-white to-soft-rose/10 rounded-2xl p-8 border border-sage-green/20">
             <h4 className="text-xl font-medium text-charcoal mb-4">
               your hair wellness journey starts here
             </h4>

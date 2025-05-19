@@ -23,11 +23,11 @@ const OldWayCard: React.FC<OldWayCardProps> = ({ icon, title, text, delay }) => 
       animate={cardInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay }}
     >
-      <div className="flex-shrink-0 mb-4">
+      <div className="shrink-0 mb-4">
         <IconComponent className="w-10 h-10 text-sage-green opacity-80" />
       </div>
       <h3 className="text-xl font-medium text-charcoal mb-2">{title}</h3>
-      <p className="text-neutral-600 text-sm leading-relaxed flex-grow">{text}</p>
+      <p className="text-neutral-600 text-sm leading-relaxed grow">{text}</p>
     </motion.div>
   );
 };

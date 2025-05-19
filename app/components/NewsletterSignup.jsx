@@ -47,7 +47,7 @@ export function NewsletterSignup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Your email address"
-            className="flex-grow px-4 py-2 border rounded-l"
+            className="grow px-4 py-2 border rounded-l"
             aria-label="Email address"
             data-testid="email-input"
           />

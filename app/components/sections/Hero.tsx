@@ -82,7 +82,7 @@ function StaticHero({ product, isClient }: HeroProps & { isClient: boolean }) {
           <source src="/hair-homepage.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/40 to-transparent z-10"></div>
       </div>
 
       {/* Fallback image if no video or product image */}

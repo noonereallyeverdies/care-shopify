@@ -109,7 +109,7 @@ export function SocialProofBanner() {
   return (
     <motion.section // Changed to section for semantic HTML
       ref={containerRef}
-      className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-br from-rose-50 via-white to-pink-50"
+      className="relative py-24 md:py-32 overflow-hidden bg-linear-to-br from-rose-50 via-white to-pink-50"
       initial={{ opacity: 0 }} // Simplified initial animation for the section itself
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
@@ -158,7 +158,7 @@ export function SocialProofBanner() {
             <AnimatedCounter 
               endValue={MAIN_SUCCESS_PERCENTAGE} 
               inView={inView} 
-              className="text-7xl sm:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-pink-400 mb-2 sm:mb-3 block"
+              className="text-7xl sm:text-8xl font-bold bg-clip-text text-transparent bg-linear-to-r from-rose-500 to-pink-400 mb-2 sm:mb-3 block"
               duration={2500}
             />
             <p className="text-lg sm:text-xl text-neutral-700 max-w-2xl mx-auto leading-relaxed">

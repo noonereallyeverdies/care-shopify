@@ -54,7 +54,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
   return (
     <>
       {/* Benefits Bar */}
-      <div className="bg-gradient-to-r from-stone-50 to-rose-50 py-8 px-4">
+      <div className="bg-linear-to-r from-stone-50 to-rose-50 py-8 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className={`flex flex-col items-center group hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{animationDelay: '0ms'}}>
             <div className="w-12 h-12 mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:shadow-rose-200">
@@ -83,7 +83,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
       </div>
     
       {/* Main Footer */}
-      <footer className="bg-gradient-to-b from-stone-900 to-black text-stone-300 py-16 relative overflow-hidden">
+      <footer className="bg-linear-to-b from-stone-900 to-black text-stone-300 py-16 relative overflow-hidden">
         {/* Background geometric patterns */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-0 w-64 h-64 bg-rose-400 rounded-full filter blur-3xl"></div>
@@ -185,7 +185,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
           
           {/* Brand Logo */}
           <div className="text-center mb-16 relative">
-            <div className="h-px bg-gradient-to-r from-transparent via-stone-700 to-transparent w-full absolute top-1/2 left-0"></div>
+            <div className="h-px bg-linear-to-r from-transparent via-stone-700 to-transparent w-full absolute top-1/2 left-0"></div>
             <Link to="/" className="inline-block bg-black relative px-6 transition-transform duration-500 hover:scale-105">
               <h2 className="text-white text-5xl font-extralight tracking-wider">
                 care<span className="text-rose-400 font-normal animate-pulse">•</span>atin

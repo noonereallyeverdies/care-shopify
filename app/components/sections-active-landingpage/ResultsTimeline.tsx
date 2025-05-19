@@ -262,7 +262,7 @@ export function ResultsTimeline() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-16 md:py-24 bg-linear-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4 relative">
         <h2 className="text-3xl md:text-4xl text-center font-light mb-16">
           Your Transformation Journey
@@ -352,7 +352,7 @@ export function ResultsTimeline() {
             <div className="grid md:grid-cols-5 gap-8 items-center">
               {/* Left Column (Image) */}
               <div className="md:col-span-2">
-                <div className="rounded-lg overflow-hidden border border-gray-100 shadow-md aspect-[3/4] bg-white relative">
+                <div className="rounded-lg overflow-hidden border border-gray-100 shadow-md aspect-3/4 bg-white relative">
                   <img 
                     src={timelineTabs[activeTabIndex].image.src} 
                     alt={timelineTabs[activeTabIndex].image.alt}
@@ -370,7 +370,7 @@ export function ResultsTimeline() {
                 <div className="space-y-4 mb-6">
                   {timelineTabs[activeTabIndex].points.map((point, i) => (
                     <div key={i} className="flex items-start">
-                      <span className={`p-1 rounded-full text-white bg-${timelineTabs[activeTabIndex].color} mr-3 mt-1 flex-shrink-0`}>
+                      <span className={`p-1 rounded-full text-white bg-${timelineTabs[activeTabIndex].color} mr-3 mt-1 shrink-0`}>
                         <Check size={12} />
                       </span>
                       <div>

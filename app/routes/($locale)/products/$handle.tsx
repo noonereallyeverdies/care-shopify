@@ -197,7 +197,7 @@ export default function Product() {
   return (
     <>
       {/* Premium Header Banner */}
-      <div className="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-3 px-4 text-center">
+      <div className="bg-linear-to-r from-rose-600 to-rose-500 text-white py-3 px-4 text-center">
         <p className="text-sm font-medium tracking-wider">
           FREE SHIPPING ON ORDERS OVER $75 | 30-DAY SATISFACTION GUARANTEE
         </p>

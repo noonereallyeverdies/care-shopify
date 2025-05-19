@@ -19,7 +19,7 @@ const DetailCard: React.FC<{icon: React.ElementType, title: string, children: Re
     variants={fadeInItem}
   >
     <h5 className="mb-3 flex items-center text-md font-semibold text-charcoal-primary md:text-lg">
-      <Icon size={18} style={{ color: iconColor }} className="mr-2.5 flex-shrink-0" aria-hidden="true" />
+      <Icon size={18} style={{ color: iconColor }} className="mr-2.5 shrink-0" aria-hidden="true" />
       <span>{title}</span>
     </h5>
     <div className="text-xs text-charcoal-secondary md:text-sm leading-relaxed">

@@ -39,7 +39,7 @@ export function CartLineItem({line}: {line: CartLine}) {
           )}
         </div>
         
-        <div className="flex-grow flex flex-col">
+        <div className="grow flex flex-col">
           <Link
             to={`/products/${merchandise.product.handle}`}
             className="text-sm hover:underline"

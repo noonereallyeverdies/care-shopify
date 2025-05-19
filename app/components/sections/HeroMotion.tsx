@@ -105,7 +105,7 @@ function HeroMotion({ product }: { product: HomepageProduct | null }) {
         </video>
         <motion.div 
           variants={fadeIn}
-          className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent z-10"
+          className="absolute inset-0 bg-linear-to-r from-black/60 via-black/40 to-transparent z-10"
         />
       </div>
 

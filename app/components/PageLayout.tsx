@@ -64,7 +64,7 @@ export function PageLayout({ children, layout }: LayoutProps) {
           </a>
         </div>
             <Header title="care•atin" menu={headerMenu} />
-        <main role="main" id="mainContent" className="flex-grow">
+        <main role="main" id="mainContent" className="grow">
                 <Suspense fallback={
                     <div className="flex items-center justify-center w-full h-64">
                         <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>

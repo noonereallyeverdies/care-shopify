@@ -51,7 +51,7 @@ export function ProductCardBase({
         prefetch="intent"
       >
         <div className="relative pt-6 px-6 pb-3 z-10">
-          <div className="rounded-xl overflow-hidden bg-neutral-50 relative aspect-[4/5]">
+          <div className="rounded-xl overflow-hidden bg-neutral-50 relative aspect-4/5">
             {label === 'Sale' && (
               <div className="absolute top-3 right-3 bg-rose-500 text-white text-xs font-medium px-2 py-1 rounded-full z-10">
                 Sale

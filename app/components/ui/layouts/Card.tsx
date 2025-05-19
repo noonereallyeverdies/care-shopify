@@ -125,8 +125,8 @@ export function CardImage({ src, alt, className, aspectRatio = '16/9' }: CardIma
         {
           'aspect-square': aspectRatio === '1/1',
           'aspect-video': aspectRatio === '16/9',
-          'aspect-[3/2]': aspectRatio === '3/2',
-          'aspect-[4/3]': aspectRatio === '4/3',
+          'aspect-3/2': aspectRatio === '3/2',
+          'aspect-4/3': aspectRatio === '4/3',
         },
         className
       )}
