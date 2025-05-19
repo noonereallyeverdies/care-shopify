@@ -20,37 +20,7 @@ interface HeroProps {
 }
 
 // Initial static version for server-side rendering and hydration
-function StaticHero({ product, isClient }: HeroProps & { isClient: boolean }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  
-  useEffect(() => {
-    if (!videoRef.current || !isClient) return;
-    
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && videoRef.current) {
-          videoRef.current.play().catch(error => console.error("Video play failed:", error));
-        } else if (videoRef.current) {
-          videoRef.current.pause();
-        }
-      });
-    }, options);
-    
-    observer.observe(videoRef.current);
-    
-    return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
-      }
-    };
-  }, [isClient]);
-  
+function StaticHero({ product }: HeroProps & { isClient: boolean }) { // Removed videoRef and its useEffect
   if (!product) {
     return (
       <section className="relative w-full min-h-screen bg-contrast flex items-center justify-center">
@@ -60,42 +30,25 @@ function StaticHero({ product, isClient }: HeroProps & { isClient: boolean }) {
   }
 
   const featuredImage = product?.featuredImage;
-  const heroImageUrl = featuredImage?.url || '/images/prettyhair.jpg';
+  // Use a more generic fallback or ensure poster is always available
+  const heroImageUrl = featuredImage?.url || "/images/hero-bg.jpg"; 
   const heroImageAlt = featuredImage?.altText || 'Care-atin product background';
 
   return (
     <section className="relative min-h-[90vh] flex items-end justify-start text-left overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay={isClient}
-          loop
-          muted
-          playsInline
-          poster="/images/hero-bg.jpg"
-          width={1920}
-          height={1080}
-          preload="metadata"
-        >
-          <source src="/hair-homepage.mp4" type="video/mp4" />
-          <source src="/hair-homepage.webm" type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/40 to-transparent z-10"></div>
-      </div>
-
-      {/* Fallback image if no video or product image */}
-      {!isClient && heroImageUrl && (
+        {/* Video tag and its logic removed from StaticHero */}
         <HydrogenImage 
           data={{ url: heroImageUrl, altText: heroImageAlt, width: 1920, height: 1080 }}
-          className="absolute inset-0 w-full h-full object-cover z-0" 
+          className="absolute inset-0 w-full h-full object-cover" 
           sizes="100vw"
           loading="eager" 
           fetchpriority="high"
         />
-      )}
+        <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/40 to-transparent z-10"></div>
+      </div>
 
+      {/* Content remains the same */}
       <div className="relative z-20 container mx-auto pb-20 px-4 sm:pb-28 sm:px-6 md:pb-36 md:px-12 text-white">
         <div className="max-w-2xl">
           <div className="mb-6 md:mb-8">
