@@ -8,14 +8,8 @@ import type { LoaderFunctionArgs } from '@shopify/remix-oxygen';
  */
 export function validateLocale(
   params: { locale?: string },
-  storefront: { i18n?: { language: string; country: string } }
+  storefront: { i18n: { language: string; country: string } }
 ): boolean {
-  // If storefront or i18n is missing, we can't validate
-  if (!storefront || !storefront.i18n) {
-    console.warn('Cannot validate locale: storefront or i18n missing');
-    return true; // Return true to avoid errors
-  }
-
   const { language, country } = storefront.i18n;
   const expectedLocale = `${language}-${country}`.toLowerCase();
   
@@ -30,13 +24,7 @@ export function validateLocale(
  * @param args - Loader function arguments
  * @throws Response with 404 status if locale is invalid
  */
-export function validateLocaleParameter({ params, context }: LoaderFunctionArgs): void {
-  // Check if we have the necessary objects
-  if (!params || !context || !context.storefront) {
-    console.warn('Cannot validate locale parameter: missing required context');
-    return; // Return without throwing to avoid errors
-  }
-
+export function validateLocaleParameter({ params, context, request }: LoaderFunctionArgs): void {
   if (!validateLocale(params, context.storefront)) {
     throw new Response(null, { status: 404 });
   }

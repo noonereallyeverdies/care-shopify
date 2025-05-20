@@ -22,10 +22,25 @@ import {seoPayload} from '~/lib/seo.server';
 import {HOMEPAGE_PRODUCT_QUERY} from '~/queries/homepage';
 import {Hero} from '~/components/sections/Hero';
 
+// New Section Imports
+import { KeyBenefitsSection } from '~/components/sections/KeyBenefitsSection';
+import { DeviceShowcaseSection } from '~/components/sections/DeviceShowcaseSection';
+import { ResultsTimelineSection } from '~/components/sections/ResultsTimelineSection';
+import { ScienceTechnologySection } from '~/components/sections/ScienceTechnologySection';
+import { TestimonialsSection } from '~/components/sections/TestimonialsSection';
+import { FounderStorySection } from '~/components/sections/FounderStorySection';
+import { ProductSpecificationsSection } from '~/components/sections/ProductSpecificationsSection';
+import { FAQSection } from '~/components/sections/FAQSection';
+import { FinalConversionSection } from '~/components/sections/FinalConversionSection';
+
+// Components above the fold are imported directly
+// import {ProblemSolutionSection} from '~/components/sections-active-landingpage/ProblemSolutionSection';
+// import {SocialProofBanner} from '~/components/sections-active-landingpage/SocialProofBanner';
+
 // Lazy load components that are below the fold
-const InteractiveScienceSection = lazy(() => import('~/components/sections-active-landingpage/InteractiveScienceSection').then(module => ({
-  default: module.InteractiveScienceSection
-})));
+/* // Commenting out old lazy-loaded sections for now
+// REMOVED ALL LAZY IMPORT STATEMENTS THAT WERE HERE
+*/
 
 export const headers = {
   'Cache-Control': 'public, max-age=60',
@@ -52,142 +67,61 @@ export interface HomepageProduct {
 }
 
 export async function loader({params, context}: LoaderFunctionArgs) {
-  // Create a mock product for development
-  const mockProduct = {
-    id: 'gid://shopify/Product/123456789',
-    title: 'care•atin Hair Treatment',
-    handle: 'photonique-touch',
-    descriptionHtml: '<p>The revolutionary hair treatment device that transforms your hair care routine.</p>',
-    featuredImage: {
-      url: 'https://cdn.shopify.com/s/files/1/0000/0000/products/hair-device.jpg',
-      altText: 'care•atin Hair Treatment Device',
-      width: 1920,
-      height: 1080
-    },
-    variants: {
-      nodes: [
-        {
-          id: 'gid://shopify/ProductVariant/123456789',
-          title: 'Default',
-          availableForSale: true,
-          price: {
-            amount: '299.00',
-            currencyCode: 'USD'
-          },
-          compareAtPrice: null,
-          selectedOptions: [
-            {
-              name: 'Title',
-              value: 'Default'
-            }
-          ]
-        }
-      ]
-    },
-    seo: {
-      title: 'care•atin Hair Treatment Device | Revolutionary Hair Care',
-      description: 'Experience the future of hair care with our revolutionary red light therapy device. Clinical results in just 8 weeks.'
-    }
-  };
+  validateLocaleParameter({ params, context } as LoaderFunctionArgs);
+  const {language, country} = context.storefront.i18n;
 
-  // Check if context.storefront exists
-  if (!context || !context.storefront) {
-    console.error('[Homepage Loader] Storefront context not available');
-    
-    // Return mock data for development
-    return defer({
-      shop: {
-        name: 'care•atin',
-        primaryDomain: {
-          url: 'https://care-atin.myshopify.com'
-        }
+  if (
+    params.locale &&
+    params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase()
+  ) {
+    throw new Response(null, {status: 404});
+  }
+  
+  try {
+    console.log('[Homepage Loader] Fetching product data...');
+    const {shop, product: fetchedProduct} = await context.storefront.query<{
+      shop: Shop;
+      product: HomepageProduct | null;
+    }>(HOMEPAGE_PRODUCT_QUERY, {
+        variables: {
+          handle: 'photonique-touch',
+        country,
+        language,
       },
-      product: mockProduct,
+    });
+    console.log('[Homepage Loader] Response received.');
+
+    if (!fetchedProduct) {
+      console.error(
+        '[Homepage Loader] Product not found handle: photonique-touch',
+      );
+      throw new Response(JSON.stringify({message: 'Product not found'}), {
+        status: 404,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    }
+
+    const seo = seoPayload.home({url: shop?.primaryDomain?.url || ''});
+
+    const storeDomain =
+      context.env.PUBLIC_STORE_DOMAIN ||
+      shop?.primaryDomain?.url ||
+      'luminancecare.myshopify.com';
+    const cleanStoreDomain = storeDomain
+      .replace(/^https?:\/\//, '')
+      .replace(/\/$/, '');
+
+    const deferredData = {
+      shop,
+      product: fetchedProduct,
       analytics: {
         pageType: AnalyticsPageType.home,
       },
-      seo: {
-        title: 'care•atin | The Science of Shine',
-        description: 'Discover care•atin\'s innovative approach to hair care, combining red light therapy and science for healthier, stronger hair.'
-      },
-      storeDomain: 'care-atin.myshopify.com',
-    }, {
-      headers: {
-        ...routeHeaders,
-      },
-    });
-  }
-
-  // Only validate locale if we have a storefront
-  if (typeof validateLocaleParameter === 'function') {
-    try {
-      validateLocaleParameter({params, context});
-    } catch (error) {
-      console.error('[Homepage Loader] Locale validation error:', error);
-      // Continue instead of stopping execution
-    }
-  }
-  
-  const {language, country} = context.storefront.i18n;
-
-  try {
-    console.log('[Homepage Loader] Fetching product data...');
-    let deferredData = {};
-    
-    try {
-      const {shop, product: fetchedProduct} = await context.storefront.query<{
-        shop: Shop;
-        product: HomepageProduct | null;
-      }>(HOMEPAGE_PRODUCT_QUERY, {
-        variables: {
-          handle: 'photonique-touch',
-          country,
-          language,
-        },
-      });
-      console.log('[Homepage Loader] Response received.');
-
-      const seo = seoPayload.home({url: shop?.primaryDomain?.url || ''});
-
-      const storeDomain =
-        context.env.PUBLIC_STORE_DOMAIN ||
-        shop?.primaryDomain?.url ||
-        'care-atin.myshopify.com';
-      const cleanStoreDomain = storeDomain
-        .replace(/^https?:\/\//, '')
-        .replace(/\/$/, '');
-
-      deferredData = {
-        shop,
-        product: fetchedProduct || mockProduct, // Fallback to mock product if none found
-        analytics: {
-          pageType: AnalyticsPageType.home,
-        },
-        seo,
-        storeDomain: cleanStoreDomain,
-      };
-    } catch (error) {
-      console.error('[Homepage Loader] Error fetching from storefront:', error);
-      
-      // Fallback to mock data
-      deferredData = {
-        shop: {
-          name: 'care•atin',
-          primaryDomain: {
-            url: 'https://care-atin.myshopify.com'
-          }
-        },
-        product: mockProduct,
-        analytics: {
-          pageType: AnalyticsPageType.home,
-        },
-        seo: {
-          title: 'care•atin | The Science of Shine',
-          description: 'Discover care•atin\'s innovative approach to hair care, combining red light therapy and science for healthier, stronger hair.'
-        },
-        storeDomain: 'care-atin.myshopify.com',
-      };
-    }
+      seo,
+      storeDomain: cleanStoreDomain,
+    };
 
     console.log('[Homepage Loader] Returning deferred data...');
     return defer(deferredData, {
@@ -196,28 +130,14 @@ export async function loader({params, context}: LoaderFunctionArgs) {
       },
     });
   } catch (error) {
-    console.error('[Homepage Loader] Error in loader:', error);
-    
-    // Return mock data as fallback
-    return defer({
-      shop: {
-        name: 'care•atin',
-        primaryDomain: {
-          url: 'https://care-atin.myshopify.com'
-        }
-      },
-      product: mockProduct,
-      analytics: {
-        pageType: AnalyticsPageType.home,
-      },
-      seo: {
-        title: 'care•atin | The Science of Shine',
-        description: 'Discover care•atin\'s innovative approach to hair care, combining red light therapy and science for healthier, stronger hair.'
-      },
-      storeDomain: 'care-atin.myshopify.com',
-    }, {
+    console.error('[Homepage Loader] Error fetching data:', error);
+    if (error instanceof Response) {
+      throw error;
+    }
+    throw new Response(JSON.stringify({message: 'Internal server error'}), {
+      status: 500,
       headers: {
-        ...routeHeaders,
+        'Content-Type': 'application/json',
       },
     });
   }
@@ -228,12 +148,59 @@ export const meta = ({data}: MetaArgs<typeof loader>) => {
   const defaultTitle = `${shopName} | The Science of Shine`;
   const defaultDescription = `Discover ${shopName}'s innovative approach to hair care, combining red light therapy and science for healthier, stronger hair.`;
 
+  const dataSeo = data?.seo ?? {};
+
   const homeSeo: SeoConfig = {
-    title: `care•atin Red Light Therapy Hair Growth Device | Visible Results`,
-    description: `Revitalize your hair with care•atin's patented red light therapy device. Clinically proven for thicker, fuller hair growth & reduced shedding. Experience visible results & regain confidence. Shop now!`,
-    ...(data?.seo ?? {}),
-    titleTemplate: `%s`,
+    title: dataSeo.title ?? defaultTitle,
+    description: dataSeo.description ?? defaultDescription,
+    titleTemplate: dataSeo.titleTemplate ?? (shopName ? `%s | ${shopName}` : '%s'),
   };
+
+  if (dataSeo.media !== undefined) {
+    homeSeo.media = dataSeo.media;
+  }
+  if (dataSeo.jsonLd !== undefined) {
+    homeSeo.jsonLd = dataSeo.jsonLd;
+  }
+
+  if (dataSeo.robots) {
+    homeSeo.robots = {}; // Initialize if not already
+    if (dataSeo.robots.noIndex !== undefined) homeSeo.robots.noIndex = dataSeo.robots.noIndex;
+    if (dataSeo.robots.noFollow !== undefined) homeSeo.robots.noFollow = dataSeo.robots.noFollow;
+    if (dataSeo.robots.noArchive !== undefined) homeSeo.robots.noArchive = dataSeo.robots.noArchive;
+    if (dataSeo.robots.noSnippet !== undefined) homeSeo.robots.noSnippet = dataSeo.robots.noSnippet;
+    if (dataSeo.robots.noImageIndex !== undefined) homeSeo.robots.noImageIndex = dataSeo.robots.noImageIndex;
+    if (dataSeo.robots.maxImagePreview !== undefined) homeSeo.robots.maxImagePreview = dataSeo.robots.maxImagePreview;
+    if (dataSeo.robots.maxSnippet !== undefined) homeSeo.robots.maxSnippet = dataSeo.robots.maxSnippet;
+    if (dataSeo.robots.maxVideoPreview !== undefined) homeSeo.robots.maxVideoPreview = dataSeo.robots.maxVideoPreview;
+    if (dataSeo.robots.unavailableAfter !== undefined) homeSeo.robots.unavailableAfter = dataSeo.robots.unavailableAfter;
+    // Add any other specific RobotsOptions properties here
+  }
+
+  if (dataSeo.alternates !== undefined) {
+    if (Array.isArray(dataSeo.alternates)) {
+      homeSeo.alternates = dataSeo.alternates.map(alt => {
+        const newAlt: { language: string; default?: boolean; url: string } = { // Explicitly type newAlt
+          language: alt.language,
+          url: alt.url,
+        };
+        if (alt.default !== undefined) {
+          newAlt.default = alt.default;
+        }
+        return newAlt;
+      });
+    } else {
+      // Single object case
+      const singleAlt: { language: string; default?: boolean; url: string } = { // Explicitly type singleAlt
+        language: dataSeo.alternates.language,
+        url: dataSeo.alternates.url,
+      };
+      if (dataSeo.alternates.default !== undefined) {
+        singleAlt.default = dataSeo.alternates.default;
+      }
+      homeSeo.alternates = singleAlt;
+    }
+  }
 
   if (!data) {
     return [{title: defaultTitle}, {description: defaultDescription}];
@@ -261,41 +228,46 @@ export default function Homepage() {
   return (
     <>
       {/* 1. HERO - Brand promise and emotional impact */}
-      <Hero product={product} />
+      {product && <Hero product={product} />}
 
-      {/* Due to current state of component migration, we'll show the interactive science section which we've fully implemented */}
-      <motion.section
-        className="py-16 md:py-24 bg-white"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-light mb-4 text-neutral-800">
-            The Science of Shine: How care•atin Works
-          </h2>
-          <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto mb-12">
-            Unlock the secrets to healthier hair with our Triple-Action Synergy: Red Light Therapy, Scalp Massage, and Nutrient-Rich Oil Delivery.
-          </p>
-        </div>
-        <Suspense fallback={<SectionFallback />}>
-          <InteractiveScienceSection />
-        </Suspense>
-      </motion.section>
+      {/* 2. KEY BENEFITS - Clear value propositions */}
+      <KeyBenefitsSection />
 
-      {/* Placeholder for other sections that would be added later */}
-      <div className="py-16 md:py-24 bg-neutral-50 text-center">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-light mb-8 text-neutral-800">
-            More Sections Coming Soon
-          </h2>
-          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-            We've successfully migrated the Hero and InteractiveScienceSection components.
-            The remaining sections will be added as we continue development.
-          </p>
-        </div>
-      </div>
+      {/* 3. DEVICE SHOWCASE - Product in detail */}
+      <DeviceShowcaseSection /> 
+
+      {/* 4. RESULTS TIMELINE - Manage expectations, show journey */}
+      <ResultsTimelineSection />
+
+      {/* 5. SCIENCE & TECHNOLOGY - Build trust and credibility */}
+      <ScienceTechnologySection />
+
+      {/* 6. TESTIMONIALS - Social proof */}
+      <TestimonialsSection />
+
+      {/* 7. FOUNDER STORY - Connect emotionally */}
+      <FounderStorySection /> 
+
+      {/* 8. PRODUCT SPECIFICATIONS - Detailed info */}
+      <ProductSpecificationsSection />
+
+      {/* 9. FAQ - Address concerns */}
+      <FAQSection />
+
+      {/* 10. FINAL CONVERSION - Strong CTA, reinforce offer */}
+      <FinalConversionSection />
+
+      {/* Existing Lazy Loaded Sections (Commented out - decide if needed) */}
+      {/* <Suspense fallback={<SectionFallback />}>
+        <ProblemSolutionSection />
+        <SocialProofBanner />
+        <BeforeAfterSliderSection />
+        <HairLossVisualization />
+        <SelfCareRitualSection />
+        <ResultsTimeline /> 
+        <ProductHighlight product={product} />
+        <InteractiveScienceSection />
+      </Suspense> */}
     </>
   );
-}
+} 

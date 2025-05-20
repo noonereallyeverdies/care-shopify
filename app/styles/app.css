@@ -12,6 +12,8 @@
   --color-contrast: 250 250 250;
   --color-accent: 191 72 0;
   --color-brand: 29 79 145;
+  --color-rose: 249 93 148; /* Brand rose color */
+  --color-stone-900: 26 25 24; /* Dark stone color for footer */
   --color-shop-pay: 99 113 191;
   --height-nav: 4rem;
   --screen-height: 100vh;
@@ -48,7 +50,7 @@
 
 /* Global styles */
 html {
-  font-family: var(--font-body);
+  font-family: "IBMPlexSerif", serif;
   height: 100%;
 }
 
@@ -56,6 +58,8 @@ body {
   background: rgb(var(--color-contrast));
   color: rgb(var(--color-primary));
   height: 100%;
+  letter-spacing: 0.01em;
+  font-weight: 400;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -63,6 +67,55 @@ body {
     background: rgb(var(--color-primary));
     color: rgb(var(--color-contrast));
   }
+}
+
+/* Brand-specific typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "IBMPlexSerif", serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: 2.75rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.25rem;
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: 1.75rem;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1.5rem;
+  line-height: 1.35;
+}
+
+p {
+  font-family: "IBMPlexSerif", serif;
+  line-height: 1.6;
+}
+
+/* Special brand elements */
+.brand-heading {
+  font-family: "IBMPlexSerif", serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.brand-body {
+  font-family: "IBMPlexSerif", serif;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.brand-accent {
+  color: rgb(var(--color-rose));
 }
 
 /* Animation utility classes */
@@ -76,6 +129,11 @@ body {
 
 .appear-third {
   transition: opacity 0.4s ease-in 0.4s;
+}
+
+/* Add relative positioning for scroll-based animations */
+.relative-container {
+  position: relative !important;
 }
 
 /* For screen readers only */

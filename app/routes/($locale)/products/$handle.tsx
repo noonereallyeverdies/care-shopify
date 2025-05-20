@@ -113,8 +113,11 @@ const PRODUCT_COLORS = {
 export const headers = routeHeaders;
 
 export async function loader(args: LoaderFunctionArgs) {
-  validateLocaleParameter(args);  const {params, request, context} = args;
+  console.log('[Product Handle Loader] Fired for path:', args.request.url);
+  validateLocaleParameter(args);
+  const {params, request, context} = args;
   const {productHandle} = params;
+  console.log('[Product Handle Loader] productHandle:', productHandle);
   invariant(productHandle, 'Missing productHandle param, check route filename');
 
   const selectedOptions = getSelectedProductOptions(request);

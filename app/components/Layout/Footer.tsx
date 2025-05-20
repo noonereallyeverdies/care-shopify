@@ -4,14 +4,14 @@ import { Facebook, Instagram, Twitter, Youtube, Package, RotateCcw, Award, Heart
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-// Import the CSS file for base structural styling
-import './Footer.css';
+// Import the CSS file for base structural styling - COMMENTED OUT TO RESTORE TAILWIND STYLING
+// import './Footer.css';
 
 // --- Helper function for Policy Links ---
 function FooterPolicyLink({ to, children }: { to: string; children: React.ReactNode }) {
   return (
-    <Link 
-      to={to} 
+    <Link
+      to={to}
       className="text-stone-300 hover:text-rose-300 text-xs px-4 relative transition-colors duration-300 font-light"
     >
       {children}
@@ -21,8 +21,9 @@ function FooterPolicyLink({ to, children }: { to: string; children: React.ReactN
 
 export function FooterFallback() {
   return (
-    <footer className="footer fallback bg-stone-900 text-stone-300 border-t border-stone-700">
-      <div className="footer-bottom">
+    // Restore original Tailwind classes for fallback
+    <footer className="bg-stone-900 text-stone-300 border-t border-stone-700 py-8">
+      <div className="max-w-7xl mx-auto px-4 text-center">
         <p>&copy; {new Date().getFullYear()} care•atin. all rights reserved.</p>
       </div>
     </footer>
@@ -38,14 +39,12 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
       const windowHeight = window.innerHeight;
       const docHeight = document.body.offsetHeight;
       
-      // When user scrolls near the footer
       if (scrollPosition > docHeight - windowHeight - 300) {
         setIsVisible(true);
       }
     };
     
     window.addEventListener('scroll', handleScroll);
-    // Initial check
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -53,7 +52,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
 
   return (
     <>
-      {/* Benefits Bar */}
+      {/* Benefits Bar - This section was largely unchanged and Tailwind-based */}
       <div className="bg-linear-to-r from-stone-50 to-rose-50 py-8 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className={`flex flex-col items-center group hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{animationDelay: '0ms'}}>
@@ -82,21 +81,22 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
         </div>
       </div>
     
-      {/* Main Footer */}
-      <footer className="bg-linear-to-b from-stone-900 to-black text-stone-300 py-16 relative overflow-hidden">
-        {/* Background geometric patterns */}
+      {/* Main Footer - Restore original Tailwind classes */}
+      <footer className="bg-gradient-to-b from-stone-900 to-black text-stone-300 py-16 relative overflow-hidden">
+        {/* Background geometric patterns - Was Tailwind, keep as is */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-0 w-64 h-64 bg-rose-400 rounded-full filter blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl"></div>
         </div>
         
+        {/* Restore original Tailwind main content wrapper */}
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          {/* Footer Links Section */}
+          {/* Footer Links Section - Restore original Tailwind grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-16">
-            {/* Column 1: Hair Solutions */}
+            {/* Column 1: Hair Solutions - Restore original Tailwind classes */}
             <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '0ms'}}>
               <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">hair solutions</h3>
-              <ul className="flex flex-col gap-3">
+              <ul className="space-y-3"> {/* Restore space-y or similar if used */}
                 <li><Link to="/collections/all" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">shop all</Link></li>
                 <li><Link to="/products/photonique-touch" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">photonique touch device</Link></li>
                 <li><Link to="/collections/accessories" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">hair care accessories</Link></li>
@@ -104,10 +104,10 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
               </ul>
             </div>
             
-            {/* Column 2: Discover */}
+            {/* Column 2: Discover - Restore original Tailwind classes */}
             <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '200ms'}}>
               <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">discover</h3>
-              <ul className="flex flex-col gap-3">
+              <ul className="space-y-3">
                 <li><Link to="/pages/science" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">how red light therapy works</Link></li>
                 <li><Link to="/pages/results" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">before & after results</Link></li>
                 <li><Link to="/pages/our-story" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">our story</Link></li>
@@ -115,10 +115,10 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
               </ul>
             </div>
             
-            {/* Column 3: Help */}
+            {/* Column 3: Help - Restore original Tailwind classes */}
             <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '400ms'}}>
               <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">help & support</h3>
-              <ul className="flex flex-col gap-3">
+              <ul className="space-y-3">
                 <li><Link to="/pages/faq" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">frequently asked questions</Link></li>
                 <li><Link to="/pages/warranty" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">warranty information</Link></li>
                 <li><Link to="/policies/refund-policy" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">returns & refunds</Link></li>
@@ -127,7 +127,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
               </ul>
             </div>
             
-            {/* Column 4: Newsletter */}
+            {/* Column 4: Newsletter - This was largely Tailwind, ensure consistency */}
             <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '600ms'}}>
               <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">join our community</h3>
               <p className="text-stone-300 text-sm mb-5 font-light">stay updated with tips, special offers, and hair care insights.</p>
@@ -145,11 +145,11 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
                     whileHover={{
                       scale: 1.05,
                       boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
-                      backgroundColor: "#f43f5e" // Tailwind rose-500
+                      backgroundColor: "#f43f5e" 
                     }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    style={{ WebkitAppearance: 'button', cursor: 'pointer' }} // Ensure button appearance
+                    style={{ WebkitAppearance: 'button', cursor: 'pointer' }}
                   >
                     <Sparkles size={16} className="animate-pulse" />
                   </motion.button>
@@ -158,7 +158,7 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
               </form>
               
               <h3 className="text-white text-base font-light tracking-wider mb-3 lowercase">follow us</h3>
-              <div className="flex gap-4">
+              <div className="flex space-x-4"> {/* Ensure original spacing if it was space-x-X */}
                 <a href="#" aria-label="instagram" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
                   <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
                     <Instagram size={16} />
@@ -183,9 +183,9 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
             </div>
           </div>
           
-          {/* Brand Logo */}
+          {/* Brand Logo - Restore original Tailwind */}
           <div className="text-center mb-16 relative">
-            <div className="h-px bg-linear-to-r from-transparent via-stone-700 to-transparent w-full absolute top-1/2 left-0"></div>
+            <div className="h-px bg-gradient-to-r from-transparent via-stone-700 to-transparent w-full absolute top-1/2 left-0"></div>
             <Link to="/" className="inline-block bg-black relative px-6 transition-transform duration-500 hover:scale-105">
               <h2 className="text-white text-5xl font-extralight tracking-wider">
                 care<span className="text-rose-400 font-normal animate-pulse">•</span>atin
@@ -194,75 +194,33 @@ export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
             <p className="text-stone-400 font-light text-xs mt-4 italic tracking-widest">designed in california. where beauty meets care.</p>
           </div>
           
-          {/* Disclaimers */}
+          {/* Disclaimers - Restore original Tailwind */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             <div className="bg-black/30 border border-stone-800 p-5 rounded-lg text-xs text-stone-400 leading-relaxed font-light backdrop-blur-sm transition-all duration-500 hover:border-stone-700">
               protected by patents globally to provide the best red light therapy technology for hair growth and scalp health.
             </div>
             <div className="bg-black/30 border border-stone-800 p-5 rounded-lg text-xs text-stone-400 leading-relaxed font-light backdrop-blur-sm transition-all duration-500 hover:border-stone-700">
-              the statements on this website have not been evaluated by the fda. the information provided on this site is not intended to diagnose, treat, cure, or prevent any disease and should not be construed as medical advice. results may not be typical.
+              these statements have not been evaluated by the food and drug administration. this product is not intended to diagnose, treat, cure, or prevent any disease. results may vary.
             </div>
           </div>
           
-          {/* Policy Links */}
-          <div className="text-center mb-10">
-            <div className="flex flex-wrap justify-center">
-              <FooterPolicyLink to="/policies/terms-of-service">terms & conditions</FooterPolicyLink>
+          {/* Policy Links & Copyright - Restore original Tailwind structure */}
+          <div className="border-t border-stone-800 pt-10 text-center md:flex md:justify-between md:items-center">
+            <p className="text-xs text-stone-400 mb-4 md:mb-0 font-light">&copy; {new Date().getFullYear()} care•atin. all rights reserved.</p>
+            <div className="flex justify-center flex-wrap gap-x-0 gap-y-2 md:gap-y-0">
               <FooterPolicyLink to="/policies/privacy-policy">privacy policy</FooterPolicyLink>
-              <FooterPolicyLink to="/policies/shipping-policy">shipping policy</FooterPolicyLink>
-              <FooterPolicyLink to="/policies/refund-policy">refund policy</FooterPolicyLink>
-              <FooterPolicyLink to="/pages/cookies">cookie policy</FooterPolicyLink>
+              <FooterPolicyLink to="/policies/terms-of-service">terms of service</FooterPolicyLink>
+              <FooterPolicyLink to="/policies/shipping-policy">shipping</FooterPolicyLink>
+              <FooterPolicyLink to="/pages/accessibility">accessibility</FooterPolicyLink>
             </div>
           </div>
-          
-          {/* Copyright & Payment Methods */}
-          <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-stone-800">
-            <p className="text-stone-400 text-xs mb-6 md:mb-0 font-light">© {new Date().getFullYear()} care•atin. all rights reserved.</p>
-            
-            <div className="flex gap-2 items-center">
-              <img src="/images/payment/visa.svg" alt="visa" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/mastercard.svg" alt="mastercard" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/amex.svg" alt="american express" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/discover.svg" alt="discover" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/paypal.svg" alt="paypal" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/applepay.svg" alt="apple pay" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/googlepay.svg" alt="google pay" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-              <img src="/images/payment/shopify.svg" alt="shop pay" className="h-6 w-10 opacity-70 hover:opacity-100 transition-opacity" />
-            </div>
-          </div>
-      </div>
-    </footer>
+        </div>
+      </footer>
     </>
   );
 }
 
-// Add these animation keyframes to your CSS file
-// @keyframes fadeInUp {
-//   from {
-//     opacity: 0;
-//     transform: translateY(20px);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// }
-
-// @keyframes fadeInRight {
-//   from {
-//     opacity: 0;
-//     transform: translateX(-20px);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateX(0);
-//   }
-// }
-
-// .animate-fade-in-up {
-//   animation: fadeInUp 0.6s ease-out forwards;
-// }
-
-// .animate-fade-in-right {
-//   animation: fadeInRight 0.6s ease-out forwards;
-// } 
+// --- Helper to determine if a menu item is a ParentEnhancedMenuItem ---
+function isParentMenuItem(item: ParentEnhancedMenuItem | ChildEnhancedMenuItem): item is ParentEnhancedMenuItem {
+  return (item as ParentEnhancedMenuItem).items !== undefined;
+} 

@@ -321,26 +321,35 @@ export type DetailedProductCardFragment = Pick<
   };
 };
 
-export type HomepageFeaturedProductsQueryVariables = StorefrontAPI.Exact<{
-  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
-  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
-}>;
-
-export type HomepageFeaturedProductsQuery = {
-  products: {
+export type HomepageProductFragment = Pick<
+  StorefrontAPI.Product,
+  | 'id'
+  | 'title'
+  | 'description'
+  | 'descriptionHtml'
+  | 'vendor'
+  | 'handle'
+  | 'availableForSale'
+> & {
+  featuredImage?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Image, 'url' | 'altText' | 'width' | 'height'>
+  >;
+  priceRange: {
+    minVariantPrice: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
+  };
+  variants: {
     nodes: Array<
-      Pick<StorefrontAPI.Product, 'id' | 'title' | 'handle'> & {
-        featuredImage?: StorefrontAPI.Maybe<
-          Pick<StorefrontAPI.Image, 'url' | 'altText' | 'width' | 'height'>
+      Pick<
+        StorefrontAPI.ProductVariant,
+        'id' | 'availableForSale' | 'title'
+      > & {
+        price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
+        compareAtPrice?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
         >;
-        variants: {
-          nodes: Array<{
-            price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
-            compareAtPrice?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
-            >;
-          }>;
-        };
+        selectedOptions: Array<
+          Pick<StorefrontAPI.SelectedOption, 'name' | 'value'>
+        >;
       }
     >;
   };
@@ -353,22 +362,32 @@ export type HomepageProductQueryVariables = StorefrontAPI.Exact<{
 }>;
 
 export type HomepageProductQuery = {
-  shop: Pick<StorefrontAPI.Shop, 'name'> & {
+  shop: Pick<StorefrontAPI.Shop, 'name' | 'description'> & {
     primaryDomain: Pick<StorefrontAPI.Domain, 'url'>;
   };
+  products: {nodes: Array<Pick<StorefrontAPI.Product, 'handle'>>};
   product?: StorefrontAPI.Maybe<
     Pick<
       StorefrontAPI.Product,
-      'id' | 'title' | 'handle' | 'descriptionHtml'
+      | 'id'
+      | 'title'
+      | 'description'
+      | 'descriptionHtml'
+      | 'vendor'
+      | 'handle'
+      | 'availableForSale'
     > & {
       featuredImage?: StorefrontAPI.Maybe<
         Pick<StorefrontAPI.Image, 'url' | 'altText' | 'width' | 'height'>
       >;
+      priceRange: {
+        minVariantPrice: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
+      };
       variants: {
         nodes: Array<
           Pick<
             StorefrontAPI.ProductVariant,
-            'id' | 'title' | 'availableForSale'
+            'id' | 'availableForSale' | 'title'
           > & {
             price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
             compareAtPrice?: StorefrontAPI.Maybe<
@@ -380,7 +399,6 @@ export type HomepageProductQuery = {
           }
         >;
       };
-      seo: Pick<StorefrontAPI.Seo, 'title' | 'description'>;
     }
   >;
 };
@@ -427,33 +445,6 @@ export type ArticleFragment = Pick<
   author?: StorefrontAPI.Maybe<Pick<StorefrontAPI.ArticleAuthor, 'name'>>;
   image?: StorefrontAPI.Maybe<
     Pick<StorefrontAPI.Image, 'id' | 'altText' | 'url' | 'width' | 'height'>
-  >;
-};
-
-export type HomepageProductQueryQueryVariables = StorefrontAPI.Exact<{
-  handle: StorefrontAPI.Scalars['String']['input'];
-  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
-  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
-}>;
-
-export type HomepageProductQueryQuery = {
-  product?: StorefrontAPI.Maybe<
-    Pick<
-      StorefrontAPI.Product,
-      'id' | 'title' | 'descriptionHtml' | 'description' | 'handle' | 'vendor'
-    > & {
-      featuredImage?: StorefrontAPI.Maybe<
-        Pick<StorefrontAPI.Image, 'url' | 'altText' | 'width' | 'height'>
-      >;
-      variants: {
-        nodes: Array<
-          Pick<
-            StorefrontAPI.ProductVariant,
-            'id' | 'availableForSale' | 'title'
-          > & {price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>}
-        >;
-      };
-    }
   >;
 };
 
@@ -1157,21 +1148,13 @@ interface GeneratedQueryTypes {
     return: SitemapIndexQuery;
     variables: SitemapIndexQueryVariables;
   };
-  '#graphql\n  query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    products(first: 8) {\n      nodes {\n        id\n        title\n        handle\n        featuredImage {\n          url\n          altText\n          width\n          height\n        }\n        variants(first: 1) {\n          nodes {\n            price {\n              amount\n              currencyCode\n            }\n            compareAtPrice {\n              amount\n              currencyCode\n            }\n          }\n        }\n      }\n    }\n  }\n': {
-    return: HomepageFeaturedProductsQuery;
-    variables: HomepageFeaturedProductsQueryVariables;
-  };
-  '#graphql\n  query homepageProduct($handle: String!, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    shop {\n      name\n      primaryDomain {\n        url\n      }\n    }\n    product(handle: $handle) {\n      id\n      title\n      handle\n      descriptionHtml\n      featuredImage {\n        url\n        altText\n        width\n        height\n      }\n      variants(first: 5) {\n        nodes {\n          id\n          title\n          availableForSale\n          price {\n            amount\n            currencyCode\n          }\n          compareAtPrice {\n            amount\n            currencyCode\n          }\n          selectedOptions {\n            name\n            value\n          }\n        }\n      }\n      seo {\n        title\n        description\n      }\n    }\n  }\n': {
+  '#graphql\n  fragment HomepageProduct on Product {\n    id\n    title\n    description\n    descriptionHtml\n    vendor\n    handle\n    availableForSale\n    featuredImage {\n      url\n      altText\n      width\n      height\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 1) {\n      nodes {\n        id\n        availableForSale\n        title\n        price {\n          amount\n          currencyCode\n        }\n        compareAtPrice {\n          amount\n          currencyCode\n        }\n        selectedOptions {\n          name\n          value\n        }\n      }\n    }\n  }\n\n  query homepageProduct($handle: String!, $country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    shop {\n      name\n      description\n      primaryDomain {\n        url\n      }\n    }\n    products(first: 1, query: "available_for_sale:true") {\n      nodes {\n        handle\n      }\n    }\n    product(handle: $handle) {\n      ...HomepageProduct\n    }\n  }\n': {
     return: HomepageProductQuery;
     variables: HomepageProductQueryVariables;
   };
   '#graphql\nquery Blog(\n  $language: LanguageCode\n  $blogHandle: String!\n  $pageBy: Int!\n  $cursor: String\n) @inContext(language: $language) {\n  blog(handle: $blogHandle) {\n    title\n    seo {\n      title\n      description\n    }\n    articles(first: $pageBy, after: $cursor) {\n      edges {\n        node {\n          ...Article\n        }\n      }\n    }\n  }\n}\n\nfragment Article on Article {\n  author: authorV2 {\n    name\n  }\n  contentHtml\n  handle\n  id\n  image {\n    id\n    altText\n    url\n    width\n    height\n  }\n  publishedAt\n  title\n}\n': {
     return: BlogQuery;
     variables: BlogQueryVariables;
-  };
-  '#graphql\n  query HomepageProductQuery(\n    $handle: String!\n    $country: CountryCode\n    $language: LanguageCode\n  ) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      id\n      title\n      descriptionHtml # Ensure we fetch HTML description\n      description # Keep plain text as fallback\n      handle # Ensure handle is fetched for the link\n      vendor # Added vendor\n      featuredImage {\n        url\n        altText\n        width\n        height\n      }\n      variants(first: 1) {\n        nodes {\n          id\n          availableForSale\n          title # Added variant title\n          price {\n            amount\n            currencyCode\n          }\n          # compareAtPrice { ... } # Uncomment if needed\n        }\n      }\n    }\n  }\n': {
-    return: HomepageProductQueryQuery;
-    variables: HomepageProductQueryQueryVariables;
   };
   '#graphql\n  query ArticleDetails(\n    $language: LanguageCode\n    $blogHandle: String!\n    $articleHandle: String!\n  ) @inContext(language: $language) {\n    blog(handle: $blogHandle) {\n      articleByHandle(handle: $articleHandle) {\n        id\n        title\n        contentHtml\n        publishedAt\n        author: authorV2 {\n          name\n        }\n        image {\n          id\n          altText\n          url\n          width\n          height\n        }\n        seo {\n          description\n          title\n        }\n      }\n    }\n  }\n': {
     return: ArticleDetailsQuery;

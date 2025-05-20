@@ -72,7 +72,13 @@ export default defineConfig({
   server: {
     port: 4000,
     hmr: {
-      timeout: 5000,
+      timeout: 10000,
+    },
+    fs: {
+      strict: false,
+    },
+    watch: {
+      usePolling: true,
     },
   },
 });

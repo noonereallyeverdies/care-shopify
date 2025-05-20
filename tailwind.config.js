@@ -134,7 +134,7 @@ export default {
       },
       fontFamily: {
         sans: ['"SF Pro Display"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['"New York"', '"IBMPlexSerif"', 'Palatino', 'ui-serif'],
+        serif: ['"IBMPlexSerif"', 'serif'],
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],

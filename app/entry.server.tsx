@@ -15,33 +15,23 @@ export default async function handleRequest(
     shop: {
       checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
       storeDomain: context.env.PUBLIC_STORE_DOMAIN,
-    },
-    directives: {
-      'style-src': [
-        "'self'",
-        "'unsafe-inline'",
-        "https://cdn.shopify.com",
-        "http://localhost:*",
-        "https://fonts.googleapis.com",
-      ],
-      'font-src': [
-        "'self'",
-        "https://fonts.gstatic.com",
-        "https://cdn.shopify.com",
-      ],
-      'img-src': [
-        "'self'",
-        "data:",
-        "https://cdn.shopify.com",
-        "https://shopify.com",
-        "http://localhost:*",
-      ],
-      // Default script-src, connect-src, etc., from createContentSecurityPolicy
-      // will be retained unless explicitly overridden here.
     }
   });
 
-  // The manual header manipulation previously here is no longer needed.
+  // Create a modified header to allow Google Fonts and data URIs
+  const originalHeader = header;
+  const styleSrcDirective = "style-src 'self' 'unsafe-inline' https://cdn.shopify.com http://localhost:* https://fonts.googleapis.com";
+  const fontSrcDirective = "font-src 'self' https://fonts.gstatic.com https://cdn.shopify.com";
+  const imgSrcDirective = "img-src 'self' data: https://cdn.shopify.com https://shopify.com http://localhost:*";
+  
+  const headerParts = originalHeader.split(';');
+  const filteredParts = headerParts.filter(part => 
+    !part.trim().startsWith('style-src') && 
+    !part.trim().startsWith('font-src') && 
+    !part.trim().startsWith('img-src')
+  );
+  
+  const newHeader = [...filteredParts, styleSrcDirective, fontSrcDirective, imgSrcDirective].join(';');
 
   const body = await renderToReadableStream(
     <NonceProvider>
@@ -62,7 +52,7 @@ export default async function handleRequest(
   }
 
   responseHeaders.set('Content-Type', 'text/html');
-  responseHeaders.set('Content-Security-Policy', header);
+  responseHeaders.set('Content-Security-Policy', newHeader);
 
   return new Response(body, {
     headers: responseHeaders,

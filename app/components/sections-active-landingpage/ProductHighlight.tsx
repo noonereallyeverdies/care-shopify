@@ -1,132 +1,126 @@
-import React from 'react';
+import { Link } from '@remix-run/react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Link } from '~/components/Link';
-import type { ProductFragment } from 'storefrontapi.generated';
+import type { HomepageProduct } from '~/queries/homepage';
 
 interface ProductHighlightProps {
-  product: ProductFragment | null;
+  product: HomepageProduct;
 }
 
-// Animation variants
-const fadeInCinematic = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { 
-      duration: 0.8,
-      ease: [0.25, 0.1, 0.25, 1.0]
-    }
-  }
-};
-
 export function ProductHighlight({ product }: ProductHighlightProps) {
-  if (!product) return null;
-  
-  // Updated image path
-  const productImageUrl = '/images/product/lifestyle-woman.jpg';
-  
+  // Format currency
+  const formatPrice = (amount: string, currencyCode: string) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currencyCode,
+      minimumFractionDigits: 0,
+    }).format(parseFloat(amount));
+  };
+
+  // Get price from product
+  const price = product?.priceRange?.minVariantPrice ? 
+    formatPrice(
+      product.priceRange.minVariantPrice.amount,
+      product.priceRange.minVariantPrice.currencyCode
+    ) : 
+    '$299';
+
   return (
-    <section className="relative py-16 bg-white overflow-hidden">
-      {/* Breathing glow layer */}
-      <div className="absolute inset-0 bg-gradient-radial from-rose-50 to-transparent opacity-10 animate-breathe pointer-events-none"></div>
-
-      <motion.div
-        className="container mx-auto px-6 backdrop-blur-md bg-white/60 rounded-3xl shadow-[0_10px_30px_rgba(252,29,89,0.1)] grid md:grid-cols-2 gap-8 py-12"
-        initial="hidden" whileInView="visible" viewport={{ once:true }}
-        variants={fadeInCinematic}
-      >
-        {/* Text + CTA */}
-        <div className="space-y-6">
-          <h2 className="text-5xl font-semibold tracking-tight text-neutral-900">
-            Unlock Your Hair's Fullest Potential in Just 8 Weeks
-          </h2>
-          <p className="text-xl text-neutral-600 leading-relaxed max-w-lg">
-            Feel the transformation as your scalp absorbs our clinically-proven red light therapy. In clinical studies, 84% of users experienced visibly thicker, fuller hair after just 8 weeks of consistent use.
-          </p>
-          
-          <div className="space-y-4 mt-6">
-            <h3 className="text-lg font-medium text-neutral-800">How will you benefit?</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-rose-500 mt-0.5 mr-2 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Boost your hair density by up to 32% in 90 days</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-rose-500 mt-0.5 mr-2 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Strengthen your follicles from day one with patented RLT technology</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-rose-500 mt-0.5 mr-2 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Feel renewed confidence as shedding decreases by 62%</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="flex flex-wrap gap-4 mt-8">
-            <button 
-              className="group relative overflow-hidden px-6 py-3 bg-rose-500 text-white text-base font-medium rounded-full shadow-md"
-              aria-label="Start your hair transformation"
-            >
-              Start Your 60-Day Risk-Free Trial
-              <ArrowRight className="inline-block ml-2 transition-transform group-hover:translate-x-1" />
-              {/* shine sweep */}
-              <motion.div 
-                className="absolute inset-0 bg-linear-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100"
-                animate={{ x: [-100,100] }} transition={{ ease:"easeInOut", duration:1 }} 
-              />
-            </button>
-
-            <Link to={`/products/${product.handle}`} className="px-5 py-3 text-base font-medium border border-neutral-300 hover:border-rose-300 hover:text-rose-500 rounded-full">
-              See the Science Behind Your Results
-            </Link>
-          </div>
-
-          {/* social proof */}
-          <div className="flex items-center space-x-3 text-sm text-neutral-500 mt-6 p-3 bg-neutral-50 rounded-lg">
-            <div className="flex items-center">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <svg 
-                  key={star} 
-                  className="w-4 h-4 text-yellow-400" 
-                  fill="currentColor" 
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
+    <section className="py-16 md:py-24 bg-white relative">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-light mb-4 text-stone-800">The Photonique Touch</h2>
+            <p className="text-lg text-stone-600 mb-6">
+              Our cutting-edge red light therapy device designed for effective, at-home hair restoration.
+            </p>
+            
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start">
+                <div className="text-rose-500 mr-3">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <p className="text-stone-700">Clinical-grade red light technology (650-670nm wavelength)</p>
+              </div>
+              <div className="flex items-start">
+                <div className="text-rose-500 mr-3">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <p className="text-stone-700">FDA-cleared and dermatologist recommended</p>
+              </div>
+              <div className="flex items-start">
+                <div className="text-rose-500 mr-3">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <p className="text-stone-700">Cordless design with 30+ treatments per charge</p>
+              </div>
+              <div className="flex items-start">
+                <div className="text-rose-500 mr-3">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <p className="text-stone-700">Built-in timer and automatic shut-off</p>
+              </div>
             </div>
-            <div>
-              <span className="font-medium">4.8/5</span> from <span className="font-medium">10,000+</span> happy customers
-              <p className="text-xs mt-1 italic">"From thinning to thriving - my hair has completely transformed in 12 weeks!" - Jessica K.</p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="bg-stone-50 p-4 rounded-lg flex-1 text-center">
+                <span className="block text-stone-500 text-sm mb-1">Starting at</span>
+                <span className="text-2xl font-light text-stone-800">{price}</span>
+              </div>
+              <div className="bg-stone-50 p-4 rounded-lg flex-1 text-center">
+                <span className="block text-stone-500 text-sm mb-1">Free Shipping</span>
+                <span className="text-stone-800">US & Canada</span>
+              </div>
+              <div className="bg-stone-50 p-4 rounded-lg flex-1 text-center">
+                <span className="block text-stone-500 text-sm mb-1">Warranty</span>
+                <span className="text-stone-800">1 Year</span>
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                to={`/products/${product.handle}`}
+                className="bg-rose-500 text-white text-center py-3 px-8 rounded-full hover:bg-rose-600 transition-colors font-medium"
+              >
+                Shop Now
+              </Link>
+              <Link
+                to="/pages/faq"
+                className="bg-white border border-stone-300 text-stone-700 text-center py-3 px-8 rounded-full hover:bg-stone-50 transition-colors font-medium"
+              >
+                Learn More
+              </Link>
             </div>
           </div>
           
-          <p className="text-xs text-neutral-500 mt-4">
-            Backed by our 60-day money-back guarantee. Try risk-free and see the difference or receive a full refund.
-          </p>
+          <div className="relative">
+            {/* Product image placeholder */}
+            <div className="bg-stone-100 rounded-lg aspect-square flex items-center justify-center">
+              {product.featuredImage?.url ? (
+                <img 
+                  src={product.featuredImage.url} 
+                  alt={product.featuredImage.altText || product.title}
+                  className="object-cover w-full h-full rounded-lg"
+                />
+              ) : (
+                <span className="text-stone-400">Product Image</span>
+              )}
+            </div>
+            {/* Decorative elements */}
+            <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-rose-50 rounded-full -z-10"></div>
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-stone-100 rounded-full -z-10"></div>
+          </div>
         </div>
-
-        {/* Product Image - Updated styling for lifestyle image */}
-        <motion.div className="flex justify-center"
-          initial={{ scale:0.95, opacity:0 }} whileInView={{ scale:1, opacity:1 }} 
-          transition={{ type:"spring", stiffness:120, damping:20 }}
-        >
-          <img 
-            src={productImageUrl} 
-            alt="Woman with healthy, vibrant hair in natural setting" 
-            className="rounded-xl shadow-lg max-h-[500px] object-cover"
-            loading="eager"
-          />
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
+
+export default ProductHighlight;
