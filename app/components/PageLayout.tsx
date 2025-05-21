@@ -15,6 +15,7 @@ import { CartLoading } from './CartLoading';
 import { HeartPulse, Instagram, Linkedin, Video } from 'lucide-react';
 import { Footer } from '~/components/Layout/Footer';
 import { WavyBackground } from '~/components/WavyBackground';
+import { GridOverlay } from '~/components/ui/GridOverlay';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -65,7 +66,7 @@ export function PageLayout({ children, layout }: LayoutProps) {
           </a>
         </div>
             <Header title="care•atin" menu={headerMenu} />
-        <main role="main" id="mainContent" className="grow">
+        <main role="main" id="mainContent" className="grow pt-24">
                 <Suspense fallback={
                     <div className="flex items-center justify-center w-full h-64">
                         <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
@@ -75,12 +76,14 @@ export function PageLayout({ children, layout }: LayoutProps) {
                 </Suspense>
         </main>
             <Footer menu={footerMenu} /> 
+            {/* Grid Overlay for debugging - toggle with Ctrl+G */}
+            <GridOverlay />
       </div>
   );
 }
 
 // Pass menu back for potential drawer usage
-function Header({ title, menu }: { title: string; menu?: EnhancedMenu | null }) { 
+function Header({ title, menu }: { title: string; menu?: EnhancedMenu | null | undefined }) { 
   const {
     isOpen: isCartOpen,
     openDrawer: openCart,
@@ -94,7 +97,7 @@ function Header({ title, menu }: { title: string; menu?: EnhancedMenu | null }) 
   } = useDrawer();
 
   // Safely handle the cart fetchers
-  let addToCartFetchers = [];
+  let addToCartFetchers: any[] = []; // Explicitly type as any[] for now, revisit if specific type known
   try {
     // Use a try-catch in case useCartFetchers throws an error
     addToCartFetchers = useCartFetchers(CartForm.ACTIONS?.LinesAdd || 'ADD_LINES');
@@ -155,7 +158,7 @@ export function MenuDrawer({
 }: {
   isOpen: boolean;
   onClose: () => void;
-  menu: EnhancedMenu;
+  menu?: EnhancedMenu;
 }) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
@@ -165,7 +168,7 @@ export function MenuDrawer({
             <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
           </div>
         }>
-        <MenuMobileNav menu={menu} onClose={onClose} />
+        {menu && <MenuMobileNav menu={menu} onClose={onClose} />}
         </Suspense>
       </div>
     </Drawer>
@@ -191,7 +194,7 @@ function MenuMobileNav({
             onClick={onClose}
           className="text-lg" 
           >
-              {item.title}
+              {item.title.toLowerCase()}
           </Link>
       ))}
     </nav>
@@ -235,53 +238,68 @@ function DesktopHeader({
             to="/collections"
             className="text-primary/80 hover:text-primary text-sm font-medium relative group px-1 py-2"
           >
-            Products
+            products
             <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-rose-400 group-hover:w-full transition-all duration-300"></span>
           </Link>
           <Link
             to="/collections/featured"
             className="text-primary/80 hover:text-primary text-sm font-medium relative group px-1 py-2"
           >
-            Featured
+            featured
             <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-rose-400 group-hover:w-full transition-all duration-300"></span>
           </Link>
           <Link
             to="/about"
             className="text-primary/80 hover:text-primary text-sm font-medium relative group px-1 py-2"
           >
-            About
+            about
             <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-rose-400 group-hover:w-full transition-all duration-300"></span>
           </Link>
+          <Link
+            to="/science"
+            className="text-primary/80 hover:text-primary text-sm font-medium relative group px-1 py-2"
+          >
+            science
+            <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-rose-400 group-hover:w-full transition-all duration-300"></span>
+          </Link>
+          {/* Example of a dropdown - adapt as needed */}
+          <div className="relative group">
+            <button className="text-primary/80 hover:text-primary text-sm font-medium px-1 py-2 focus:outline-none">
+              learn
+              {/* <ChevronDown className="h-4 w-4 inline-block ml-1 group-hover:rotate-180 transition-transform duration-200" /> */}
+            </button>
+            <div className="absolute left-0 mt-0 w-48 bg-white/90 backdrop-blur-md rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto z-50 border border-stone-200/30">
+              <Link to="/blog" className="block px-4 py-2.5 text-sm text-neutral-700 hover:bg-rose-50/70 hover:text-rose-600 transition-colors rounded-t-md">blog</Link>
+              <Link to="/our-story" className="block px-4 py-2.5 text-sm text-neutral-700 hover:bg-rose-50/70 hover:text-rose-600 transition-colors">our story</Link>
+              <Link to="/faq" className="block px-4 py-2.5 text-sm text-neutral-700 hover:bg-rose-50/70 hover:text-rose-600 transition-colors rounded-b-md">faq</Link>
+            </div>
+          </div>
         </nav>
       </div>
 
-      {/* Actions */}
-      <div className="flex items-center gap-5">
-        {/* Search button with hover effect */}
-        <button 
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/80 hover:text-primary"
-          aria-label="Search"
+      {/* Right side icons/actions */}
+      <div className="flex items-center gap-6">
+        <button
+          onClick={() => alert('Search clicked')} // Replace with actual search functionality
+          className="text-primary/80 hover:text-primary transition-colors"
+          aria-label="search"
         >
           <IconSearch className="w-5 h-5" />
         </button>
-
-        {/* Account button with hover effect */}
         <Link
           to="/account"
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/80 hover:text-primary"
-          aria-label="Account"
+          className="text-primary/80 hover:text-primary transition-colors"
+          aria-label="my account"
         >
           <IconAccount className="w-5 h-5" />
         </Link>
-
-        {/* Cart button with hover effect */}
         <button
           onClick={openCart}
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-stone-100 transition-colors duration-300 text-primary/80 hover:text-primary relative"
-          aria-label="Cart"
+          className="text-primary/80 hover:text-primary transition-colors relative"
+          aria-label="open cart"
         >
           <IconBag className="w-5 h-5" />
-          <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-rose-500 flex items-center justify-center text-[10px] text-white font-medium">0</div>
+          {/* Cart count can be added here if needed */}
         </button>
       </div>
     </header>

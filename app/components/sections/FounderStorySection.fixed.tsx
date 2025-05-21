@@ -17,7 +17,7 @@ export function FounderStorySection() {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <motion.h2 
-            className="text-3xl md:text-4xl font-serif font-light lowercase tracking-wide text-neutral-800 mb-10 md:mb-12 text-center"
+            className="text-3xl md:text-4xl font-serif font-thin text-neutral-800 mb-10 md:mb-12 text-center lowercase tracking-wider"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -64,11 +64,16 @@ export function FounderStorySection() {
                 her journey led her deep into the science of <span className="italic">photobiomodulation</span>, exploring how targeted light wavelengths could naturally stimulate cellular regeneration within the hair follicle. <span className="font-medium">photonique touch</span> is the culmination of that research – a device born from empathy, rigorous science, and a desire to make transformative hair wellness accessible to all.
               </p>
               
-              <blockquote className="relative border-l-4 border-photonique-peach pl-6 py-4 mb-8">
-                <p className="text-xl md:text-2xl font-serif italic text-neutral-800 leading-snug">
+              <blockquote className="relative border-l-4 border-photonique-peach pl-6 py-4 mb-8 bg-stone-50/70 shadow-sm rounded-r-lg">
+                <motion.div
+                  className="absolute -left-1 top-4 bottom-4 w-1 bg-photonique-coral/80"
+                  animate={{ height: ["0%", "95%", "0%"] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <p className="text-xl md:text-2xl font-serif italic text-neutral-800 leading-relaxed">
                   "my goal was simple: to create something truly effective, that people could trust and easily integrate into their lives. seeing the joy and confidence it brings is the greatest reward."
                 </p>
-                <p className="mt-3 text-md font-medium text-neutral-600">- dr. amelia chen, founder</p>
+                <p className="mt-4 text-md font-medium text-neutral-600">- dr. amelia chen, founder</p>
               </blockquote>
 
               {/* Optional: Link to a more detailed About Us page */}
@@ -86,13 +91,4 @@ export function FounderStorySection() {
   );
 }
 
-// Helper for ArrowRight if not globally available 
-// function ArrowRight(props: React.SVGProps<SVGSVGElement>) {
-//   return (
-//     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props} className={`ml-2 h-5 w-5 ${props.className || ''}`}>
-//       <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-//     </svg>
-//   );
-// }
-
-export default FounderStorySection; 
+export default FounderStorySection;

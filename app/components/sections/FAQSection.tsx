@@ -122,15 +122,15 @@ export function FAQSection() {
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-medium text-neutral-900 mb-4 lowercase">
+          <h2 className="text-3xl md:text-4xl font-serif font-light lowercase tracking-wide text-neutral-900 mb-4">
             frequently asked questions
           </h2>
         </div>
 
         <div className="max-w-3xl mx-auto">
           {faqData.map((category, categoryIdx) => (
-            <div key={category.categoryTitle} className="mb-10">
-              <h3 className="text-2xl font-semibold text-neutral-800 mb-6 border-b-2 border-rose-200 pb-2">
+            <div key={category.categoryTitle} className="mb-12 pt-4">
+              <h3 className="text-2xl font-bold text-neutral-900 mb-6 border-b-[3px] border-photonique-coral pb-3">
                 {category.categoryTitle}
               </h3>
               {category.items.map((item, itemIdx) => (

@@ -5,8 +5,8 @@ import { HeroSectionUI } from '~/components/ui/sections/HeroSectionUI';
 export function HeroSection() {
   // Extracted data that could come from props, context, or API
   const heroData = useMemo(() => ({
-    headline: "Cellular Activation for Advanced Hair Revitalization",
-    subheadline: "Harness clinically inspired Red Light Therapy to activate follicle receptors at the cellular level. Experience fortified follicles and profound results.",
+    headline: "Elevate Hair Health with Light-Powered Cellular Activation",
+    subheadline: "Clinically-inspired red light therapy to fortify follicles at the source.",
     ctaText: "Unlock Your Hair's Potential",
     ctaLink: "/products/care-atin-device",
     heroImage: {

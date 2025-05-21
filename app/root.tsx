@@ -156,7 +156,14 @@ export function Layout({children}: {children?: React.ReactNode}) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="preload" href="/fonts/IBMPlexSerif-Text.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* <link rel="preload" href="/fonts/IBMPlexSerif-Text.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /> */}
+        {/* Removed preload for IBMPlexSerif as it's being replaced by Playfair Display and Montserrat */}
+        
+        {/* Google Fonts Import */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+        
         <FontOptimization />
         <Meta />
         <Links />

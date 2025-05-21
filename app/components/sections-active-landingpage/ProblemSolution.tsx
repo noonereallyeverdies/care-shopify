@@ -48,10 +48,10 @@ export function ProblemSolution() {
   return (
     <motion.section 
       className="problem-solution-section section-padding" // Keep existing classes
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }} 
-      variants={sectionVariants}
+      initial={{ opacity: 0, y: 20 }} // Standardized
+      whileInView={{ opacity: 1, y: 0 }} // Standardized
+      transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1], delay: 0.1 }} // Standardized
+      viewport={{ once: true }} // Standardized
     >
       <div 
         className="two-column-layout problem-solution-layout" // Added specific layout class

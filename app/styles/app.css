@@ -6,6 +6,9 @@
 /* Import responsive-grid.css */
 @import './responsive-grid.css';
 
+/* Import animations.css */
+@import './animations.css';
+
 /* Custom CSS Variables */
 :root {
   --color-primary: 20 20 20;
@@ -147,4 +150,9 @@ p {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }

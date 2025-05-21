@@ -29,7 +29,9 @@ export const links: LinksFunction = () => {
 };
 
 export async function loader({request, params, context}: LoaderFunctionArgs) {
-  validateLocaleParameter(args);  console.log('[Journal Article Loader] Starting to fetch article data...');
+  const args = {request, params, context};
+  validateLocaleParameter(args);
+  
   const {language, country} = context.storefront.i18n;
 
   invariant(params.journalHandle, 'Missing journal handle');
@@ -43,24 +45,18 @@ export async function loader({request, params, context}: LoaderFunctionArgs) {
       },
     });
 
-    console.log('[Journal Article Loader] Blog query response:', blog ? 'received' : 'null');
-
     // If the blog doesn't exist, redirect to journal index
     if (!blog) {
-      console.log('[Journal Article Loader] Blog not found, redirecting to journal index');
       return redirect('/journal');
     }
 
     // If the article doesn't exist, redirect to journal index
     if (!blog.articleByHandle) {
-      console.log('[Journal Article Loader] Article not found, redirecting to journal index');
       return redirect('/journal');
     }
 
     const article = blog.articleByHandle;
     
-    console.log('[Journal Article Loader] Article found:', article.title);
-
     const formattedDate = new Intl.DateTimeFormat(`${language}-${country}`, {
       year: 'numeric',
       month: 'long',
@@ -109,7 +105,6 @@ export async function loader({request, params, context}: LoaderFunctionArgs) {
       currentUrl: request.url
     });
   } catch (error) {
-    console.error('[Journal Article Loader] Error fetching article data:', error);
     return redirect('/journal');
   }
 }

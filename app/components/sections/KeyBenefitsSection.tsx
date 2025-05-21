@@ -1,23 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Coffee, Smile } from 'lucide-react'; // Example icons
+import { Zap, Coffee, Smile, CheckCircle, ShieldCheck, Star, Target } from 'lucide-react'; // Added more icons for flexibility
+import { Container } from '~/components/ui/Container';
 
 const benefits = [
   {
-    icon: Zap,
-    headline: "Fast Results",
-    blurb: "Experience visibly healthier, fuller hair in weeks. Our technology accelerates your journey to radiance.",
-  },
-  {
-    icon: Coffee, // Using coffee as a metaphor for an easy daily ritual
-    headline: "Easy Routine",
-    blurb: "Just 10 minutes, 3 times a week. Seamlessly integrate Photonique into your life, effortlessly.",
-  },
-  {
     icon: Smile,
-    headline: "Lasting Confidence",
-    blurb: "Unlock the vibrant, confident you. Great hair is just the beginning of your transformation.",
+    headline: "sensory transformation",
+    blurb: "feel the subtle warmth as light energy awakens dormant follicles. experience the quiet confidence that comes with hair that moves and shines with renewed vitality.",
   },
+  {
+    icon: Target,
+    headline: "gentle precision",
+    blurb: "precisely calibrated dual light therapy (650nm red & 850nm infrared) gently nourishes follicles at optimal depths, exactly where needed.",
+  },
+  {
+    icon: Coffee,
+    headline: "elegant simplicity",
+    blurb: "ten minutes. three times weekly. a quiet moment of self-care that integrates effortlessly into your routine, creating transformation without disruption.",
+  },
+  // Example of a 4th card, if desired, for Social Validation or another benefit
+  /*
+  {
+    icon: Star, // Social Validation
+    headline: "Loved By Users",
+    blurb: "Join thousands experiencing transformative results. Our community rates Photonique 4.8 stars for visible improvements.", // Example: 17 words
+  },
+  */
 ];
 
 const sectionVariants = {
@@ -32,13 +41,13 @@ const sectionVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
-      ease: "easeOut",
+      duration: 0.7,
+      ease: [0.19, 1, 0.22, 1], // Custom easing for elegant motion
     },
   },
 };
@@ -46,44 +55,49 @@ const cardVariants = {
 export function KeyBenefitsSection() {
   return (
     <motion.section 
-      className="py-16 md:py-24 bg-white"
+      className="py-12 md:py-16 lg:py-20 bg-white"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={sectionVariants}
     >
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-medium text-neutral-900 mb-4 lowercase">
+      <Container>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-serif font-light text-neutral-900 mb-6 lowercase tracking-wide">
             why photonique exists
           </h2>
-          <p className="text-lg md:text-xl text-neutral-700 max-w-2xl mx-auto leading-relaxed">
-            We believe transformative hair wellness should be simple, effective, and empowering, giving you back time and confidence.
+          <p className="text-lg md:text-xl text-neutral-700 max-w-2xl mx-auto font-light leading-relaxed">
+            we believe transformative hair wellness should be simple, effective, and empowering, giving you back time and confidence.
           </p>
         </div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 xl:gap-20"
           variants={sectionVariants} // This applies stagger to children of this div
         >
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              className="bg-neutral-50 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
+              className={`p-6 md:p-8 flex flex-col items-center text-center transition-all duration-500 rounded-2xl ${index % 2 === 0 ? 'bg-stone-50/50' : 'bg-rose-50/20'}`}
               variants={cardVariants}
-              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              whileHover={{ 
+                y: -8, 
+                boxShadow: "0 10px 25px rgba(0, 0, 0, 0.05)",
+                backgroundColor: index % 2 === 0 ? "rgba(255, 127, 80, 0.05)" : "rgba(255, 127, 80, 0.1)"
+              }}
+              transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
             >
-              <benefit.icon className="h-12 w-12 text-rose-600 mb-6" />
-              <h3 className="text-xl font-sans font-semibold text-neutral-800 mb-3 uppercase tracking-wider">
+              {React.createElement(benefit.icon as any, { className: "h-8 w-8 md:h-10 md:w-10 text-rose-500/70 mb-4" })}
+              <h3 className="text-xl font-serif font-light text-neutral-800 mb-3 lowercase tracking-widest">
                 {benefit.headline}
               </h3>
-              <p className="text-neutral-600 leading-relaxed text-sm">
+              <p className="text-neutral-600 leading-relaxed text-base font-light">
                 {benefit.blurb}
               </p>
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </Container>
     </motion.section>
   );
 }

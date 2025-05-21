@@ -55,18 +55,38 @@ const researchCredentials = [
   {
     icon: Award,
     title: "Nobel Prize Foundation",
-    description: "Our technology is based on the science that won the 2019 Nobel Prize in Physiology or Medicine for understanding how cells sense and adapt to oxygen availability."
+    description: (
+      <>
+        Our technology is based on the science that won the{" "}
+        <strong>2019 Nobel Prize in Physiology or Medicine</strong> for
+        understanding{" "}
+        <strong>how cells sense and adapt to oxygen availability</strong>.
+      </>
+    ),
   },
   {
     icon: BookOpen,
     title: "30+ Published Studies",
-    description: "Red light therapy for hair growth is supported by over 30 peer-reviewed clinical studies in respected medical journals worldwide."
+    description: (
+      <>
+        Red light therapy for hair growth is supported by{" "}
+        <strong>over 30 peer-reviewed clinical studies</strong> in{" "}
+        <strong>respected medical journals worldwide</strong>.
+      </>
+    ),
   },
   {
     icon: FileText,
     title: "FDA Recognition",
-    description: "Low-level light therapy devices like ours are recognized by the FDA as safe and effective for stimulating hair follicles and promoting growth."
-  }
+    description: (
+      <>
+        Low-level light therapy devices like ours are{" "}
+        <strong>recognized by the FDA</strong> as{" "}
+        <strong>safe and effective for stimulating hair follicles</strong> and
+        promoting growth.
+      </>
+    ),
+  },
 ];
 
 export function ScienceHub() {
@@ -151,7 +171,7 @@ export function ScienceHub() {
           {/* Section Header */}
           <div className="text-center mb-20">
             <motion.div 
-              className="flex justify-center mb-8"
+              className="flex justify-center mb-4"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
@@ -192,7 +212,7 @@ export function ScienceHub() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-medium text-neutral-900 text-center mb-8">backed by serious science</h3>
+            <h3 className="text-2xl font-medium text-neutral-900 text-center mb-8">the science behind photonique</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {researchCredentials.map((credential, index) => (
                 <motion.div 
@@ -207,7 +227,7 @@ export function ScienceHub() {
                     <credential.icon className="h-8 w-8 text-rose-600" />
                   </div>
                   <h4 className="text-lg font-semibold text-neutral-800 mb-2">{credential.title}</h4>
-                  <p className="text-sm text-neutral-600 leading-relaxed">{credential.description}</p>
+                  <div className="text-sm text-neutral-600 leading-relaxed">{credential.description}</div>
                 </motion.div>
               ))}
             </div>
@@ -216,7 +236,7 @@ export function ScienceHub() {
 
           {/* Advanced Science Accordion */}
           <div className="bg-white border border-neutral-200 rounded-xl p-6 lg:p-8 mb-16 shadow-sm">
-            <h3 className="text-2xl font-medium text-neutral-900 text-center mb-8">the science simplified</h3>
+            <h3 className="text-2xl font-medium text-neutral-900 text-center mb-8">understanding the mechanisms</h3>
             {scienceConcepts.map((concept, index) => (
               <motion.div 
                 key={index} 

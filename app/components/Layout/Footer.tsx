@@ -1,226 +1,214 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@remix-run/react';
-import type { EnhancedMenu, ParentEnhancedMenuItem, ChildEnhancedMenuItem } from '~/lib/utils';
-import { Facebook, Instagram, Twitter, Youtube, Package, RotateCcw, Award, Heart, Star, Sparkles, Clock } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import {
+  Instagram, 
+  Facebook,
+  Twitter, 
+  Youtube,
+  ChevronDown,
+  Star
+} from 'lucide-react';
 
-// Import the CSS file for base structural styling - COMMENTED OUT TO RESTORE TAILWIND STYLING
-// import './Footer.css';
+const footerSections = [
+  {
+    title: "shop",
+    links: [
+      { name: "photonique touch device", href: "/products/photonique-touch" },
+      { name: "hair care accessories", href: "/collections/accessories" },
+      { name: "find your hair solution", href: "/quiz" },
+    ],
+  },
+  {
+    title: "our company",
+    links: [
+      { name: "before & after results", href: "/pages/before-after" },
+      { name: "our story", href: "/about" },
+      { name: "hair care journal", href: "/journal" },
+    ],
+  },
+  {
+    title: "Customer Care",
+    links: [
+      { name: "Warranty Information", href: "/pages/warranty" },
+      { name: "shipping policy", href: "/policies/shipping-policy" },
+      { name: "Help Center", href: "/pages/faq" },
+      { name: "Contact Us", href: "/pages/contact" },
+    ],
+  },
+];
 
-// --- Helper function for Policy Links ---
-function FooterPolicyLink({ to, children }: { to: string; children: React.ReactNode }) {
+const socialLinks = [
+  { name: "Instagram", Icon: Instagram, href: "https://instagram.com" },
+  { name: "Facebook", Icon: Facebook, href: "https://facebook.com" },
+  { name: "Twitter", Icon: Twitter, href: "https://twitter.com" },
+  { name: "Youtube", Icon: Youtube, href: "https://youtube.com" },
+];
+
+interface FooterLinkProps {
+  href: string;
+  children: React.ReactNode;
+}
+
+const FooterLink: React.FC<FooterLinkProps> = ({ href, children }) => {
   return (
-    <Link
-      to={to}
-      className="text-stone-300 hover:text-rose-300 text-xs px-4 relative transition-colors duration-300 font-light"
-    >
+    <Link to={href} prefetch="intent" className="group text-neutral-400 hover:text-neutral-100 transition-colors duration-200 block py-1 relative">
       {children}
+      <span className="absolute bottom-0 left-0 h-px w-0 bg-neutral-100 transition-all duration-300 ease-out group-hover:w-full"></span>
     </Link>
   );
+};
+
+interface CollapsibleLinkGroupProps {
+  title: string;
+  links: { name: string; href: string }[];
 }
 
-export function FooterFallback() {
+const CollapsibleLinkGroup: React.FC<CollapsibleLinkGroupProps> = ({ title, links }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    // Restore original Tailwind classes for fallback
-    <footer className="bg-stone-900 text-stone-300 border-t border-stone-700 py-8">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <p>&copy; {new Date().getFullYear()} care•atin. all rights reserved.</p>
-      </div>
-    </footer>
-  );
-}
-
-export function Footer({ footer }: { footer?: EnhancedMenu | null }) {
-  const [isVisible, setIsVisible] = useState(false);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.body.offsetHeight;
+    <div className="py-2">
+      <button 
+        className="flex md:hidden justify-between items-center w-full py-2 text-lg font-medium text-white"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {title}
+        <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+          <ChevronDown className="h-5 w-5" />
+        </motion.div>
+      </button>
+      <h3 className="hidden md:block text-xs font-normal text-neutral-300 mb-4">{title}</h3>
       
-      if (scrollPosition > docHeight - windowHeight - 300) {
-        setIsVisible(true);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: "auto", marginTop: '8px' },
+              collapsed: { opacity: 0, height: 0, marginTop: '0px' },
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden overflow-hidden"
+          >
+            <ul className="space-y-1">
+              {links.map((link) => (
+                <li key={link.name}><FooterLink href={link.href}>{link.name}</FooterLink></li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <ul className="hidden md:block space-y-1.5">
+        {links.map((link) => (
+          <li key={link.name}><FooterLink href={link.href}>{link.name}</FooterLink></li>
+        ))}
+      </ul>
+      </div>
+  );
+};
+
+export function Footer() {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <>
-      {/* Benefits Bar - This section was largely unchanged and Tailwind-based */}
-      <div className="bg-linear-to-r from-stone-50 to-rose-50 py-8 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className={`flex flex-col items-center group hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{animationDelay: '0ms'}}>
-            <div className="w-12 h-12 mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:shadow-rose-200">
-              <Package className="w-6 h-6 text-rose-400" />
-            </div>
-            <h3 className="uppercase text-sm font-light tracking-widest mb-2 text-stone-700">free us shipping</h3>
-            <p className="text-sm text-stone-500 font-light">on orders more than $20</p>
+    <footer className="bg-black text-neutral-300 pt-12 pb-4 font-sans">
+      <div className="container mx-auto px-6">
+
+        {/* "care • atin" Logo and Tagline Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-5xl font-bold text-white">
+            care<span className="text-red-500">•</span>atin
+          </h2>
+          <p className="text-neutral-400 text-sm mt-2">
+            designed in california. where beauty meets care.
+          </p>
+        </div>
+
+        {/* Top section: Links and Newsletter/Social */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Link Groups */}
+          <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {footerSections.map((section) => (
+              <CollapsibleLinkGroup key={section.title} title={section.title} links={section.links} />
+            ))}
           </div>
           
-          <div className={`flex flex-col items-center group hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{animationDelay: '200ms'}}>
-            <div className="w-12 h-12 mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:shadow-rose-200">
-              <RotateCcw className="w-6 h-6 text-rose-400" />
-            </div>
-            <h3 className="uppercase text-sm font-light tracking-widest mb-2 text-stone-700">no-hassle return policy</h3>
-            <p className="text-sm text-stone-500 font-light">60 days to try risk-free</p>
-          </div>
-          
-          <div className={`flex flex-col items-center group hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{animationDelay: '400ms'}}>
-            <div className="w-12 h-12 mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:shadow-rose-200">
-              <Award className="w-6 h-6 text-rose-400" />
-            </div>
-            <h3 className="uppercase text-sm font-light tracking-widest mb-2 text-stone-700">1 year premium warranty</h3>
-            <p className="text-sm text-stone-500 font-light">free replacement for any product issues</p>
-          </div>
-        </div>
-      </div>
-    
-      {/* Main Footer - Restore original Tailwind classes */}
-      <footer className="bg-gradient-to-b from-stone-900 to-black text-stone-300 py-16 relative overflow-hidden">
-        {/* Background geometric patterns - Was Tailwind, keep as is */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-rose-400 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl"></div>
-        </div>
-        
-        {/* Restore original Tailwind main content wrapper */}
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          {/* Footer Links Section - Restore original Tailwind grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-16">
-            {/* Column 1: Hair Solutions - Restore original Tailwind classes */}
-            <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '0ms'}}>
-              <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">hair solutions</h3>
-              <ul className="space-y-3"> {/* Restore space-y or similar if used */}
-                <li><Link to="/collections/all" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">shop all</Link></li>
-                <li><Link to="/products/photonique-touch" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">photonique touch device</Link></li>
-                <li><Link to="/collections/accessories" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">hair care accessories</Link></li>
-                <li><Link to="/pages/hair-quiz" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">find your hair solution</Link></li>
-              </ul>
-            </div>
-            
-            {/* Column 2: Discover - Restore original Tailwind classes */}
-            <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '200ms'}}>
-              <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">discover</h3>
-              <ul className="space-y-3">
-                <li><Link to="/pages/science" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">how red light therapy works</Link></li>
-                <li><Link to="/pages/results" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">before & after results</Link></li>
-                <li><Link to="/pages/our-story" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">our story</Link></li>
-                <li><Link to="/journal" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">hair care journal</Link></li>
-              </ul>
-            </div>
-            
-            {/* Column 3: Help - Restore original Tailwind classes */}
-            <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '400ms'}}>
-              <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">help & support</h3>
-              <ul className="space-y-3">
-                <li><Link to="/pages/faq" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">frequently asked questions</Link></li>
-                <li><Link to="/pages/warranty" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">warranty information</Link></li>
-                <li><Link to="/policies/refund-policy" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">returns & refunds</Link></li>
-                <li><Link to="/pages/support" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">help center</Link></li>
-                <li><Link to="/pages/contact" className="text-stone-300 hover:text-rose-300 text-sm transition-colors duration-300 font-light">contact us</Link></li>
-              </ul>
-            </div>
-            
-            {/* Column 4: Newsletter - This was largely Tailwind, ensure consistency */}
-            <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{animationDelay: '600ms'}}>
-              <h3 className="text-white text-base font-light tracking-wider mb-6 lowercase">join our community</h3>
-              <p className="text-stone-300 text-sm mb-5 font-light">stay updated with tips, special offers, and hair care insights.</p>
-              <form className="mb-8">
-                <div className="relative mb-4 group">
-                  <input 
-                    type="email" 
-                    placeholder="your email address" 
-                    className="bg-black/30 border border-stone-700 rounded-full text-white placeholder-stone-400 focus:border-rose-300 focus:ring-0 w-full py-2.5 px-4 text-sm pr-14 transition-all duration-300 group-hover:border-rose-400" 
-                  />
-                  <motion.button
-                    type="submit"
-                    aria-label="sign up for newsletter"
-                    className="absolute right-1 top-1 bg-rose-400 text-white text-xs rounded-full h-8 w-12 flex items-center justify-center"
-                    whileHover={{
-                      scale: 1.05,
-                      boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
-                      backgroundColor: "#f43f5e" 
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    style={{ WebkitAppearance: 'button', cursor: 'pointer' }}
-                  >
-                    <Sparkles size={16} className="animate-pulse" />
-                  </motion.button>
-                </div>
-                <p className="text-stone-500 text-xs font-light">by subscribing, you agree to our privacy policy</p>
-              </form>
-              
-              <h3 className="text-white text-base font-light tracking-wider mb-3 lowercase">follow us</h3>
-              <div className="flex space-x-4"> {/* Ensure original spacing if it was space-x-X */}
-                <a href="#" aria-label="instagram" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
-                  <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
-                    <Instagram size={16} />
-                  </div>
-                </a>
-                <a href="#" aria-label="facebook" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
-                  <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
-                    <Facebook size={16} />
-                  </div>
-                </a>
-                <a href="#" aria-label="twitter" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
-                  <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
-                    <Twitter size={16} />
-                  </div>
-                </a>
-                <a href="#" aria-label="youtube" className="text-stone-400 hover:text-rose-300 transition-colors duration-300">
-                  <div className="w-8 h-8 rounded-full bg-black/30 border border-stone-700 flex items-center justify-center hover:border-rose-300 transition-all duration-300 hover:scale-110">
-                    <Youtube size={16} />
-                  </div>
-                </a>
+          {/* Newsletter and Social */}
+          <div className="md:col-span-1 lg:col-span-1 flex flex-col items-start">
+            <h3 className="text-lg font-medium text-white mb-3">your email address</h3>
+            <form className="w-full mb-5">
+              <label htmlFor="footer-newsletter-email" className="sr-only">your email address</label>
+              <div className="flex items-stretch gap-2 w-full">
+                <input 
+                  type="email" 
+                  name="email" 
+                  id="footer-newsletter-email"
+                  placeholder="your email address" 
+                  className="flex-grow bg-neutral-800 border border-neutral-700 rounded-full py-3 px-4 text-neutral-100 placeholder-neutral-400 focus:border-pink-500 focus:ring-1 focus:ring-pink-500 outline-none text-sm text-center md:text-left"
+                />
+                <button 
+                  type="submit" 
+                  aria-label="Subscribe to newsletter"
+                  className="bg-pink-500 text-white rounded-full p-3 flex-shrink-0 hover:bg-pink-600 transition-colors aspect-square flex items-center justify-center"
+                >
+                  <Star className="h-5 w-5" />
+                </button>
               </div>
+              <p className="text-xs text-neutral-400 mt-2 ml-1">by subscribing, you agree to our privacy policy</p>
+            </form>
+            
+            <h4 className="text-lg font-medium text-white mb-3">follow us</h4>
+            <div className="flex space-x-2.5">
+              {socialLinks.map((social) => (
+                <a 
+                  key={social.name} 
+                  href={social.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label={social.name} 
+                  className="bg-neutral-700 text-neutral-100 rounded-full p-2 hover:bg-pink-500 hover:text-white transition-colors flex items-center justify-center w-9 h-9"
+                >
+                  <social.Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
-          
-          {/* Brand Logo - Restore original Tailwind */}
-          <div className="text-center mb-16 relative">
-            <div className="h-px bg-gradient-to-r from-transparent via-stone-700 to-transparent w-full absolute top-1/2 left-0"></div>
-            <Link to="/" className="inline-block bg-black relative px-6 transition-transform duration-500 hover:scale-105">
-              <h2 className="text-white text-5xl font-extralight tracking-wider">
-                care<span className="text-rose-400 font-normal animate-pulse">•</span>atin
-              </h2>
-            </Link>
-            <p className="text-stone-400 font-light text-xs mt-4 italic tracking-widest">designed in california. where beauty meets care.</p>
-          </div>
-          
-          {/* Disclaimers - Restore original Tailwind */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-black/30 border border-stone-800 p-5 rounded-lg text-xs text-stone-400 leading-relaxed font-light backdrop-blur-sm transition-all duration-500 hover:border-stone-700">
+        </div>
+
+        {/* Disclaimer Boxes Section */}
+        <div className="grid md:grid-cols-2 gap-6 my-12">
+          <div className="bg-neutral-800 p-5 rounded-md">
+            <p className="text-neutral-300 text-sm leading-relaxed">
               protected by patents globally to provide the best red light therapy technology for hair growth and scalp health.
-            </div>
-            <div className="bg-black/30 border border-stone-800 p-5 rounded-lg text-xs text-stone-400 leading-relaxed font-light backdrop-blur-sm transition-all duration-500 hover:border-stone-700">
+            </p>
+          </div>
+          <div className="bg-neutral-800 p-5 rounded-md">
+            <p className="text-neutral-300 text-sm leading-relaxed">
               these statements have not been evaluated by the food and drug administration. this product is not intended to diagnose, treat, cure, or prevent any disease. results may vary.
-            </div>
+            </p>
           </div>
+        </div>
           
-          {/* Policy Links & Copyright - Restore original Tailwind structure */}
-          <div className="border-t border-stone-800 pt-10 text-center md:flex md:justify-between md:items-center">
-            <p className="text-xs text-stone-400 mb-4 md:mb-0 font-light">&copy; {new Date().getFullYear()} care•atin. all rights reserved.</p>
-            <div className="flex justify-center flex-wrap gap-x-0 gap-y-2 md:gap-y-0">
-              <FooterPolicyLink to="/policies/privacy-policy">privacy policy</FooterPolicyLink>
-              <FooterPolicyLink to="/policies/terms-of-service">terms of service</FooterPolicyLink>
-              <FooterPolicyLink to="/policies/shipping-policy">shipping</FooterPolicyLink>
-              <FooterPolicyLink to="/pages/accessibility">accessibility</FooterPolicyLink>
-            </div>
+        {/* Bottom section: Legal and Copyright */}
+        <div className="border-t border-neutral-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+          <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2 mb-4 md:mb-0">
+            <FooterLink href="/policies/privacy-policy">privacy policy</FooterLink>
+            <FooterLink href="/policies/terms-of-service">terms of service</FooterLink>
+            <FooterLink href="/policies/shipping-policy">shipping</FooterLink>
+            <FooterLink href="/pages/accessibility-statement">accessibility</FooterLink>
           </div>
+          <p className="text-neutral-400 text-xs">
+            © 2025 care<span className="text-red-500">•</span>atin. all rights reserved.
+          </p>
+        </div>
         </div>
       </footer>
-    </>
   );
 }
 
-// --- Helper to determine if a menu item is a ParentEnhancedMenuItem ---
-function isParentMenuItem(item: ParentEnhancedMenuItem | ChildEnhancedMenuItem): item is ParentEnhancedMenuItem {
-  return (item as ParentEnhancedMenuItem).items !== undefined;
-} 
+export default Footer; 

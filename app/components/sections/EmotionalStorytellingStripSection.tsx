@@ -20,11 +20,29 @@ const storyContent = {
     "Imagine stepping out each morning, not just ready for the day, but truly feeling like your best self. It starts with a simple ritual, a quiet moment of care that blossoms into confidence.",
     "Photonique isn't just about healthier hair; it's about reclaiming your time, your energy, and that inner glow. It's your story, and every strand plays a part.",
   ],
-  images: [
-    { src: "https://images.pexels.com/photos/4467687/pexels-photo-4467687.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", alt: "Woman smiling confidently in natural light" },
-    { src: "https://images.pexels.com/photos/3760693/pexels-photo-3760693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", alt: "Close up of healthy, vibrant hair" },
-    { src: "https://images.pexels.com/photos/7619950/pexels-photo-7619950.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", alt: "Person enjoying a moment of self-care at home" },
-    { src: "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", alt: "Woman enjoying a peaceful moment outdoors" }
+  media: [
+    { 
+      type: 'image', 
+      src: "https://images.pexels.com/photos/4467687/pexels-photo-4467687.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", 
+      alt: "Woman smiling confidently in natural light" 
+    },
+    { 
+      type: 'video', 
+      videoSrc: "/videos/story_highlight_1.mp4",
+      src: "https://images.pexels.com/photos/3760693/pexels-photo-3760693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Close up of healthy, vibrant hair with light interaction - video" 
+    },
+    { 
+      type: 'image', 
+      src: "https://images.pexels.com/photos/7619950/pexels-photo-7619950.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", 
+      alt: "Person enjoying a moment of self-care at home" 
+    },
+    { 
+      type: 'video', 
+      videoSrc: "/videos/story_highlight_2.mp4",
+      src: "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Woman enjoying a peaceful moment outdoors with radiant hair - video" 
+    }
   ],
 };
 
@@ -72,13 +90,13 @@ export function EmotionalStorytellingStripSection() {
       viewport={{ once: true, amount: 0.1 }}
       variants={sectionVariants}
     >
-      <div className="container mx-auto px-0 md:px-6"> 
+      <div className="container mx-auto px-6"> 
         <motion.div 
           className="max-w-3xl mx-auto text-center mb-10 md:mb-12 px-6 md:px-0"
           variants={itemVariants} // This applies to the text block container
         >
           {/* Apply data-swiper-parallax to individual elements for parallax within the Swiper context */}
-          <h2 className="text-3xl md:text-4xl font-serif font-medium text-neutral-900 mb-6 lowercase" data-swiper-parallax="-500" data-swiper-parallax-duration="700">
+          <h2 className="text-3xl md:text-4xl font-serif font-light lowercase tracking-wide text-neutral-900 mb-6" data-swiper-parallax="-500" data-swiper-parallax-duration="700">
             {storyContent.title}
           </h2>
           {storyContent.paragraphs.map((p, idx) => (
@@ -126,28 +144,34 @@ export function EmotionalStorytellingStripSection() {
            */}
            {/* <div slot="container-start" className="swiper-parallax-bg" style={{ backgroundImage: "url('your-parallax-bg-image.jpg')"}} data-swiper-parallax="-23%" ></div> */}
 
-          {storyContent.images.map((image, index) => (
+          {storyContent.media.map((mediaItem, index) => (
             <SwiperSlide key={index} className="overflow-hidden rounded-lg shadow-xl bg-neutral-200"> 
-              {/* motion.div for hover effects and potential individual Framer animations if needed */}
               <motion.div
                 className="h-full w-full group relative"
-                // variants={imageMotionVariants} // Keep if you want specific Framer Motion animation on slide content load
-                // initial="hidden"
-                // whileInView="visible" // Swiper handles slide visibility, this might conflict or be redundant
-                // viewport={{ once: true, amount: 0.1 }}
-                whileHover={{ scale: 1.02, transition: { duration: 0.3 } }} // Hover on the slide itself
+                whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
               >
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  data-swiper-parallax="-20%" // Image moves slower than slide transition
-                  data-swiper-parallax-duration="1000" // Duration for parallax effect of this element
-                />
-                {/* Example: Text overlay on image with its own parallax */}
-                {/* <div className="absolute bottom-4 left-4 right-4 p-4 bg-black/60 rounded-md" data-swiper-parallax="-100" data-swiper-parallax-duration="1200">
-                  <p className="text-white text-sm font-sans">{image.alt}</p>
-                </div> */}
+                {mediaItem.type === 'video' && mediaItem.videoSrc ? (
+                  <video
+                    src={mediaItem.videoSrc}
+                    poster={mediaItem.src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    data-swiper-parallax="-20%"
+                    data-swiper-parallax-duration="1000"
+                  />
+                ) : (
+                  <img 
+                    src={mediaItem.src} 
+                    alt={mediaItem.alt} 
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    data-swiper-parallax="-20%"
+                    data-swiper-parallax-duration="1000"
+                    loading="lazy"
+                  />
+                )}
               </motion.div>
             </SwiperSlide>
           ))}

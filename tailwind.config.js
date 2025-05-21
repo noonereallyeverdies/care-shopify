@@ -14,6 +14,14 @@ export default {
         brand: 'rgb(var(--color-brand) / <alpha-value>)',
         notice: 'rgb(var(--color-accent) / <alpha-value>)',
         shopPay: 'rgb(var(--color-shop-pay) / <alpha-value>)',
+        photonique: {
+          coral: '#FF7F50',       // Primary
+          peach: '#FFDAB9',       // Secondary
+          gold: '#FFD700',        // Accent
+          cream: '#FFFDD0',       // Neutral
+          'warm-gray': '#808080', // Neutral
+          'off-black': '#333333', // Neutral
+        },
         stone: {
           50: '#faf9f7',
           100: '#f5f4f1',
@@ -96,9 +104,9 @@ export default {
               textDecoration: 'underline',
               fontWeight: '400',
             },
-            'h1, h2, h3, h4': {
-              fontFamily: theme('fontFamily.sans').join(', '),
-              fontWeight: '600',
+            'h1, h2, h3, h4, h5, h6': {
+              fontFamily: theme('fontFamily.serif').join(', '),
+              fontWeight: '700',
             },
             p: {
               fontFamily: theme('fontFamily.sans').join(', '),
@@ -123,6 +131,10 @@ export default {
         nav: 'var(--height-nav)',
         screen: 'var(--screen-height, 100vh)',
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
       height: {
         screen: 'var(--screen-height, 100vh)',
         'screen-no-nav':
@@ -133,8 +145,8 @@ export default {
         mobileGallery: 'calc(100vw - 3rem)',
       },
       fontFamily: {
-        sans: ['"SF Pro Display"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['"IBMPlexSerif"', 'serif'],
+        sans: ['Manrope', 'Montserrat', '"SF Pro Display"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', '"IBMPlexSerif"', 'serif'],
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],

@@ -8,6 +8,7 @@ import {X} from 'lucide-react';
 
 // Import our components
 import {PageHeader, Section} from '~/components/Text';
+import {ScienceSection} from '~/components/sections/ScienceSection';
 import {ScienceHub} from '~/components/sections/ScienceHub';
 import {HowItWorks} from '~/components/sections/HowItWorks';
 
@@ -159,6 +160,9 @@ export default function SciencePage() {
         heading="The Science Behind Care•Atin"
         className="text-3xl md:text-5xl font-light text-primary py-16 md:py-20 lg:py-24 text-center bg-contrast"
       />
+
+      {/* New Science Section */}
+      <ScienceSection />
 
       {/* Featured Science Hub Section */}
       <ScienceHub />

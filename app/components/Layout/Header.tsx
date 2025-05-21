@@ -1,9 +1,9 @@
 import { Link, NavLink } from '@remix-run/react';
-import { useState, useEffect, memo, useCallback, lazy, Suspense } from 'react';
+import { useState, useEffect, memo, useCallback, lazy, Suspense, ComponentType } from 'react';
 import type { Menu } from '@shopify/hydrogen/storefront-api-types';
 
 // Dynamic import for icons to reduce initial bundle size
-const Icons = lazy(() => import('./HeaderIcons').then(mod => ({ default: mod })));
+const Icons = lazy(() => import('./HeaderIcons'));
 
 // Define HeaderProps based on usage
 interface HeaderProps {
@@ -68,7 +68,7 @@ export function HeaderFallback() {
 // Add priority nav items - these are the core ones that should always be shown
 const PRIORITY_NAV_ITEMS = [
   { id: 'shop', title: 'shop', url: '/collections/all' },
-  { id: 'hair-science', title: 'hair science', url: '/pages/science' },
+  { id: 'hair-science', title: 'the science', url: '/pages/science' },
 ];
 
 // Secondary items that can be deferred or hidden on smaller screens
@@ -148,7 +148,7 @@ export const Header = memo(function Header({ header, cart, isLoggedIn }: HeaderP
               to={item.url}
               prefetch="intent"
               className={({ isActive }) => 
-                `text-sm font-normal tracking-wide transition-colors brand-body ${
+                `text-sm font-normal tracking-wide transition-colors brand-body transition-transform duration-200 ease-out hover:-translate-y-0.5 ${
                   isActive 
                     ? (isScrolled ? 'text-rose-500' : 'text-rose-300') 
                     : (isScrolled ? 'text-neutral-700 hover:text-rose-500' : 'text-neutral-100 hover:text-white')
@@ -167,7 +167,7 @@ export const Header = memo(function Header({ header, cart, isLoggedIn }: HeaderP
                 to={item.url}
                 prefetch="intent"
                 className={({ isActive }) => 
-                  `text-sm font-normal tracking-wide transition-colors brand-body ${
+                  `text-sm font-normal tracking-wide transition-colors brand-body transition-transform duration-200 ease-out hover:-translate-y-0.5 ${
                     isActive 
                       ? (isScrolled ? 'text-rose-500' : 'text-rose-300') 
                       : (isScrolled ? 'text-neutral-700 hover:text-rose-500' : 'text-neutral-100 hover:text-white')

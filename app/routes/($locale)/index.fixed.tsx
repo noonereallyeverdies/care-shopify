@@ -3,27 +3,29 @@ import { json, defer, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
 import { useLoaderData, type MetaFunction } from '@remix-run/react';
 import { AnalyticsPageType, Seo } from '@shopify/hydrogen';
 
-import { SectionDivider } from '~/components/sections/SectionDivider';
+// Import actual sections
 import { HeroSection } from '~/components/sections/HeroSection';
 import { KeyBenefitsSection } from '~/components/sections/KeyBenefitsSection';
 
-// Existing lazy-loaded sections
+// Existing lazy-loaded sections (some will be reordered, DataVisualizationTimeline might be temporarily removed or integrated later)
 const DeviceShowcaseSection = React.lazy(() => import('~/components/sections/DeviceShowcaseSection'));
-// SignatureFeatureShowcaseSection REMOVED
+const SignatureFeatureShowcaseSection = React.lazy(() => import('~/components/sections/SignatureFeatureShowcaseSection'));
 const ParallaxLightVisualizationSequence = React.lazy(() => import('~/components/sections-active-landingpage/ParallaxLightVisualizationSequence'));
 const InteractiveBeforeAfterTool = React.lazy(() => import('~/components/sections/InteractiveBeforeAfterTool'));
 const EmotionalStorytellingStripSection = React.lazy(() => import('~/components/sections/EmotionalStorytellingStripSection'));
+// const DataVisualizationTimeline = React.lazy(() => import('~/components/sections/DataVisualizationTimeline')); // Commented out per plan
 
-// HowItWorks REMOVED
+// NEW Lazy-loaded sections for the new narrative flow
+const HowItWorks = React.lazy(() => import('~/components/sections/HowItWorks').then(module => ({ default: module.HowItWorks })) );
+const ScienceTechnologySection = React.lazy(() => import('~/components/sections/ScienceTechnologySection').then(module => ({ default: module.ScienceTechnologySection })) );
 const TestimonialsSection = React.lazy(() => import('~/components/sections/TestimonialsSection').then(module => ({ default: module.TestimonialsSection })) );
 const SocialProofSection = React.lazy(() => import('~/components/sections/SocialProofSection').then(module => ({ default: module.SocialProofSection })) );
 const FounderStorySection = React.lazy(() => import('~/components/sections/FounderStorySection').then(module => ({ default: module.FounderStorySection })) );
 const ProductSpecificationsSection = React.lazy(() => import('~/components/sections/ProductSpecificationsSection').then(module => ({ default: module.ProductSpecificationsSection })) );
 const FAQSection = React.lazy(() => import('~/components/sections/FAQSection').then(module => ({ default: module.FAQSection })) );
-// ScienceHub REMOVED
+const ScienceHub = React.lazy(() => import('~/components/sections/ScienceHub').then(module => ({ default: module.ScienceHub })) );
 const FinalConversionSection = React.lazy(() => import('~/components/sections/FinalConversionSection').then(module => ({ default: module.FinalConversionSection })) );
 const TransformationJourneySection = React.lazy(() => import('~/components/sections/TransformationJourneySection').then(module => ({ default: module.TransformationJourneySection })) );
-const StatisticsSection = React.lazy(() => import('~/components/sections/StatisticsSection').then(module => ({ default: module.StatisticsSection })) );
 
 // GraphQL query to fetch basic product information
 const PRODUCT_QUERY = `#graphql
@@ -40,6 +42,8 @@ const PRODUCT_QUERY = `#graphql
       featuredImage {
         url
         altText
+        width
+        height
       }
       priceRange {
         minVariantPrice {
@@ -47,7 +51,7 @@ const PRODUCT_QUERY = `#graphql
           currencyCode
         }
       }
-      variants(first: 1) {
+      variants(first: 5) {
         nodes {
           id
           availableForSale
@@ -56,6 +60,28 @@ const PRODUCT_QUERY = `#graphql
             amount
             currencyCode
           }
+          compareAtPrice {
+            amount
+            currencyCode
+          }
+          selectedOptions {
+            name
+            value
+          }
+          image {
+            url
+            altText
+            width
+            height
+          }
+          sku
+        }
+      }
+      metafields(first: 10) {
+        nodes {
+          key
+          namespace
+          value
         }
       }
     }
@@ -87,17 +113,8 @@ export async function loader({ params, context, request }: LoaderFunctionArgs) {
         },
         cache: storefront.CacheShort(),
       });
-      // Add console log to inspect the raw result from storefront.query
-      console.log("[LOADER DIAGNOSTIC] Raw storefront.query result:", JSON.stringify(result, null, 2));
-
-      if (!result || result.errors || !result.data) {
-        console.error("[LOADER ERROR] GraphQL query failed or returned errors. Result:", JSON.stringify(result, null, 2));
-        // Potentially throw a new error here to be caught by the outer catch, or handle directly
-        // For now, let it proceed to product = result.product to see if that causes a more specific error
-      }
-      product = result.product; // This might fail if result.data is null/undefined
+      product = result.product;
     } catch (error: any) {
-      console.error("[LOADER ERROR] Error during storefront.query execution:", error);
       throw error; // Rethrow to be handled by the catch block below
     }
 
@@ -148,28 +165,19 @@ export default function Homepage() {
       {/* 1. Hook (Hero) */}
       <HeroSection />
 
-      {/* Section Divider: Hero to Benefits */}
-      <SectionDivider fromColor="bg-black" toColor="bg-white" height={16} />
-
       {/* 2. Core Emotional Benefits */}
       <KeyBenefitsSection />
 
-      {/* Product Showcase - Moved higher as requested */}
+      {/* 3. How It Works (Scientific Beauty) */}
+      <Suspense fallback={sectionFallback}><HowItWorks /></Suspense>
       {product && (
         <Suspense fallback={<div className="h-[80vh] bg-neutral-100" />}>
           <DeviceShowcaseSection product={product} />
         </Suspense>
       )}
-
-      {/* Science sections REMOVED from here */}
-      
-      {/* Section Divider: Features to Visualization (or relevant next section) */}
-      <SectionDivider fromColor="bg-white" toColor="bg-black" height={20} flip={true} />
-      
+      <Suspense fallback={sectionFallback}><ScienceTechnologySection /></Suspense>
+      <Suspense fallback={sectionFallback}><SignatureFeatureShowcaseSection product={product} /></Suspense>
       <Suspense fallback={sectionFallback}><ParallaxLightVisualizationSequence /></Suspense>
-      
-      {/* Section Divider: Visualization to Transformation */}
-      <SectionDivider fromColor="bg-black" toColor="bg-neutral-50" height={24} />
 
       {/* Transformation Journey - Placed after science/how-it-works and before social proof */}
       <Suspense fallback={<div className="h-[60vh] bg-neutral-50" />}>
@@ -178,25 +186,21 @@ export default function Homepage() {
 
       {/* DataVisualizationTimeline / ResultsTimelineSection are to be integrated or explicitly added later if needed */}
 
-      {/* 5. Results & Social Proof - Consolidated results section */}
-      <Suspense fallback={sectionFallback}><StatisticsSection /></Suspense>
-      <Suspense fallback={sectionFallback}><InteractiveBeforeAfterTool /></Suspense>
+      {/* 4. Social Proof & Authority */}
       <Suspense fallback={sectionFallback}><TestimonialsSection /></Suspense>
       <Suspense fallback={sectionFallback}><SocialProofSection /></Suspense>
       <Suspense fallback={sectionFallback}><EmotionalStorytellingStripSection /></Suspense>
       <Suspense fallback={sectionFallback}><FounderStorySection /></Suspense>
       
-      {/* 6. Technical Details & FAQs - Consolidated technical details */}
+      {/* 5. Deep Dive / FAQs */}
+      <Suspense fallback={sectionFallback}><InteractiveBeforeAfterTool /></Suspense>
       <Suspense fallback={sectionFallback}><ProductSpecificationsSection /></Suspense>
       <Suspense fallback={sectionFallback}><FAQSection /></Suspense>
-      {/* ScienceHub rendering REMOVED */}
+      <Suspense fallback={sectionFallback}><ScienceHub /></Suspense>
 
-      {/* Section Divider before Final CTA */}
-      <SectionDivider fromColor="bg-white" toColor="bg-rose-50" height={20} />
-
-      {/* 7. Final CTA */}
+      {/* 6. Final CTA */}
       <Suspense fallback={sectionFallback}><FinalConversionSection /></Suspense>
 
     </div>
   );
-} 
+}

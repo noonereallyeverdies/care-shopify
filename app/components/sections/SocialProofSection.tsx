@@ -13,10 +13,12 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 // import 'swiper/css/pagination';
 // import 'swiper/css/autoplay';
 
-const logos = [
-  { name: "As Featured In GLAMOUR", src: "/logos/placeholder-logo-1.svg", alt: "Glamour Magazine Logo" },
-  { name: "Partnered With DERM EXPERTS", src: "/logos/placeholder-logo-2.svg", alt: "Dermatologist Association Logo" },
-  { name: "Loved By WELLNESS TODAY", src: "/logos/placeholder-logo-3.svg", alt: "Wellness Today Publication Logo" },
+const logosData = [
+  { name: "As Featured In", brand: "Vogue", src: "/logos/vogue_logo_dark.svg", alt: "Vogue Logo" },
+  { name: "As Seen On", brand: "TechCrunch", src: "/logos/techcrunch_logo_color.svg", alt: "TechCrunch Logo" },
+  { name: "Partnered With", brand: "Derm Experts Inc.", src: "/logos/derm_experts_logo.svg", alt: "Dermatologist Association Logo" },
+  { name: "Loved By", brand: "Wellness Today", src: "/logos/wellness_today_logo.svg", alt: "Wellness Today Publication Logo" },
+  { name: "Award Winner", brand: "Beauty Innov. Awards", src: "/logos/beauty_innovation_logo.svg", alt: "Beauty Innovation Awards Logo" },
 ];
 
 const testimonials = [
@@ -78,7 +80,7 @@ export function SocialProofSection() {
           className="text-center mb-12 md:mb-16"
           variants={itemVariants}
         >
-          <h2 className="text-3xl md:text-4xl font-serif font-medium text-neutral-900 mb-4 lowercase">
+          <h2 className="text-3xl md:text-4xl font-serif font-light lowercase tracking-wide text-neutral-900 mb-6">
             Loved by Many, Trusted by Experts
           </h2>
           <p className="text-lg md:text-xl text-neutral-700 max-w-2xl mx-auto leading-relaxed font-serif">
@@ -88,20 +90,29 @@ export function SocialProofSection() {
 
         {/* Logos/Badges - Remain as a grid */}
         <motion.div 
-          className="flex flex-wrap justify-center items-center gap-x-10 gap-y-8 mb-16 md:mb-20"
+          className="flex flex-wrap justify-center items-center gap-x-10 sm:gap-x-12 md:gap-x-16 gap-y-8 mb-16 md:mb-20"
           variants={itemVariants} // Animate this block as a whole
         >
-          {logos.map((logo, index) => (
+          {logosData.map((logo, index) => (
             <motion.div 
               key={index} 
-              className="flex flex-col items-center text-center group"
+              className="flex flex-col items-center text-center group w-36 sm:w-44 md:w-48"
               variants={logoItemVariants} // Individual animation for each logo
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="h-16 w-40 bg-neutral-100 rounded-md flex items-center justify-center mb-2 group-hover:shadow-md transition-shadow">
-                <Building className="h-8 w-8 text-neutral-400" /> 
+              <div className="h-24 bg-white/50 rounded-md flex items-center justify-center mb-3 transition-all duration-300 p-4 border border-stone-100 shadow-sm group-hover:shadow-md group-hover:border-stone-200">
+                <img 
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300 group-hover:scale-105"
+                  loading="lazy"
+                  // For dark mode, consider a variant or CSS filter for light logos
+                />
               </div>
               <p className="text-xs text-neutral-500 font-sans uppercase tracking-wider group-hover:text-rose-600 transition-colors">
-                {logo.name}
+                <span className="block text-[11px] leading-tight mb-1">{logo.name}</span>
+                <span className="font-semibold text-neutral-600 group-hover:text-rose-700">{logo.brand}</span>
               </p>
             </motion.div>
           ))}
@@ -155,6 +166,7 @@ export function SocialProofSection() {
                       src={testimonial.image} 
                       alt={testimonial.name} 
                       className="h-12 w-12 rounded-full object-cover mr-4 border-2 border-rose-100 group-hover:border-rose-300 transition-colors"
+                      loading="lazy"
                     />
                     <div>
                       <h4 className="font-sans font-semibold text-neutral-800">{testimonial.name}</h4>

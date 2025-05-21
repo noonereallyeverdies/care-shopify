@@ -74,6 +74,26 @@ a:hover {
 
 /* Add more global styles or utility classes as needed */
 
+/* Standardized section spacing */
+.section-spacing {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
 /* Lenis Recommended Styles */
 html.lenis {
   height: auto;
