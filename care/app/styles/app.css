@@ -1,0 +1,412 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'); */ /* Re-commented fonts */
+
+/* Apple+Glossier Inspired Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apple-inspired loader */
+@layer components {
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid theme('colors.rose.300'); /* Rose border */
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Apple-like glass effect */
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-apple-sm;
+  }
+  
+  /* Glossier-like button */
+  .btn-glossier {
+    @apply px-6 py-3 rounded-full bg-rose-100 text-rose-800 font-medium 
+           hover:bg-rose-200 hover:text-rose-900 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-rose-300 focus:ring-offset-2;
+  }
+  
+  /* Apple-like button */
+  .btn-apple {
+    @apply px-6 py-3 rounded-full bg-stone-900 text-white font-medium 
+           hover:bg-stone-800 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-offset-2;
+  }
+
+  /* Brand typography classes */
+  .brand-heading {
+    @apply font-light tracking-tight normal-case;
+  }
+
+  .brand-body {
+    @apply font-normal;
+  }
+
+  .brand-dot {
+    @apply text-rose-500 text-sm align-text-top mx-px;
+  }
+
+  /* Section layout standardization */
+  .section-spacing {
+    @apply py-12 md:py-20;
+  }
+
+  /* Container width standardization */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Card standardization */
+  .section-card {
+    @apply rounded-lg bg-white overflow-hidden;
+  }
+
+  /* Fix for focus styling on interactive elements */
+  a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    @apply outline-none ring-2 ring-rose-500/50;
+  }
+
+  /* Standardized form inputs */
+  .form-input {
+    @apply w-full px-4 py-2 border border-neutral-300 rounded-md focus:border-rose-500 focus:ring-2 focus:ring-rose-500/50;
+  }
+
+  /* Consistent text color for primary content */
+  .text-primary-content {
+    @apply text-neutral-800;
+  }
+
+  /* Consistent text color for secondary content */
+  .text-secondary-content {
+    @apply text-neutral-600;
+  }
+
+  /* Consistent text color for tertiary content */
+  .text-tertiary-content {
+    @apply text-neutral-500;
+  }
+
+  /* Standardized color for accent elements */
+  .accent-color {
+    @apply text-rose-500;
+  }
+
+  /* Consistent background colors */
+  .bg-contrast {
+    @apply bg-neutral-50;
+  }
+
+  .bg-primary {
+    @apply bg-neutral-900;
+  }
+
+  /* Grid layout standardization */
+  .standard-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+  }
+
+  /* Animation utilities */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-1;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+:root {
+  /* Refined color palette */
+  --color-primary: 34, 33, 31; /* stone-800 */
+  --color-contrast: 250, 249, 247; /* stone-50 */
+  --color-accent: 233, 58, 121; /* Changed to rose-600 */
+  --color-brand: 233, 58, 121; /* Changed to rose-600 */
+  /* --color-red-light-accent: 233, 58, 121; */ /* Removed redundant variable */
+  --color-shop-pay: 27, 29, 29;
+  --black: var(--color-primary);
+  
+  /* Soft shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.04);
+}
+
+/* Ensure body uses theme colors by default */
+body {
+  @apply bg-contrast text-primary/80 antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'SF Pro Display', 'Inter', sans-serif; /* Consistent sans-serif font for body */
+}
+
+/* Add smooth transitions to all interactive elements */
+a, button, input, select, textarea {
+  @apply transition-all duration-200;
+}
+
+/* Improve focus states for accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-rose-400 ring-offset-2;
+}
+
+/* Apple-like input styles */
+input, textarea, select {
+  @apply rounded-xl border-stone-200 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50;
+}
+
+/* Define base body styles */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'New York', 'IBMPlexSerif', 'Palatino', serif; /* Use the serif font consistently */
+    @apply font-light text-neutral-900 tracking-tight lowercase; /* Use font-light and lowercase for headings */
+  }
+
+  /* Adjust heading weights for consistency */
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
+  h2 { @apply text-3xl md:text-4xl lg:text-5xl; }
+  h3 { @apply text-2xl md:text-3xl lg:text-4xl; }
+  h4 { @apply text-xl md:text-2xl lg:text-3xl; }
+  h5 { @apply text-lg md:text-xl lg:text-2xl; }
+  h6 { @apply text-base md:text-lg lg:text-xl; }
+
+  p {
+     @apply text-base leading-relaxed tracking-normal;
+     /* Ensure body paragraphs use the same sans-serif font */
+     font-family: 'SF Pro Display', 'Inter', sans-serif;
+     font-weight: 300; /* Keep lighter body weight */
+   }
+
+   /* Other base styles */
+   a {
+    @apply text-primary hover:text-primary/80 transition-colors duration-200;
+  }
+}
+
+/* Refined Primary Button Style */
+.btn-primary-refined {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ease-out;
+  /* background-color: #C70039; */ /* Use the main red color */
+  background-color: rgb(var(--color-accent)); /* Use theme accent color (rose-600) */
+  color: white;
+}
+
+.btn-primary-refined:hover {
+  /* background-color: #a1002d; */ /* Darker red on hover */
+  background-color: theme('colors.rose.700'); /* Use darker rose shade on hover */
+  transform: translateY(-1px); /* Subtle lift */
+  box-shadow: 0 4px 15px rgba(233, 58, 121, 0.2); /* Adjusted shadow color to match accent */
+}
+
+/* Base Content Card Style */
+.content-card {
+  @apply relative flex flex-col overflow-hidden rounded-2xl border border-neutral-100 bg-white p-6 transition-all duration-300 ease-out;
+}
+
+.content-card:hover {
+  @apply shadow-lg -translate-y-1;
+}
+
+/* Swiper Flip Card Styles */
+.swiper-slide {
+  /* Ensure slides have perspective for 3D effect */
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Swiper adds swiper-slide-active etc. The flip effect works by rotating the SwiperSlide itself */
+/* We position front and back absolutely within the inner container */
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  /* Add common styling for faces if needed (e.g., border-radius) */
+  border-radius: inherit; /* Inherit border-radius from parent */
+}
+
+/* Front face (starts visible) */
+.flip-card-front {
+  /* No rotation needed initially */
+}
+
+/* Back face (starts hidden, rotated) */
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Optional: Style Swiper Navigation/Pagination if needed */
+/* Example: Make navigation arrows more prominent */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: var(--color-primary); /* Use theme color */
+  font-size: 1.5rem; /* Make slightly larger */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-primary); /* Use theme color */
+}
+
+/* Helper classes for brand consistency */
+.brand-heading {
+  @apply font-serif font-light lowercase tracking-tight;
+}
+
+.brand-body {
+  @apply font-sans font-light;
+}
+
+/* Custom brand interpunct styling */
+.brand-dot {
+  @apply text-rose-400 text-sm align-text-top mx-px;
+}
+
+/* Card section consistent styling */
+.section-card {
+  @apply bg-white rounded-2xl shadow-sm border border-neutral-100 p-6 md:p-8 transition-all hover:shadow-md;
+}
+
+/* Consistent section spacing */
+.section-spacing {
+  @apply py-12 md:py-20 lg:py-24;
+}
+
+/* ================================== */
+/* Custom Swiper Overrides            */
+/* ================================== */
+
+/* Ensure Swiper container allows overflow for absolutely positioned elements if needed */
+.mySwiper {
+  position: relative; /* Needed for absolute positioning of nav buttons */
+}
+
+/* --- Navigation Arrows --- */
+.swiper-button-prev,
+.swiper-button-next {
+  color: theme('colors.neutral.600'); /* Use a neutral color */
+  width: 32px; /* Smaller size */
+  height: 32px;
+  /* background-color: rgba(255, 255, 255, 0.7); Optional: Add a subtle background */
+  /* border-radius: 50%; */
+  transition: color 0.3s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+   color: theme('colors.rose.600'); /* Accent color on hover */
+}
+
+/* Adjust positioning if needed */
+.swiper-button-prev {
+  left: -10px; /* Move slightly outside the card */
+}
+.swiper-button-next {
+  right: -10px; /* Move slightly outside the card */
+}
+
+/* Make arrows smaller */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 18px; /* Reduce default arrow size */
+  font-weight: 600;
+}
+
+
+/* --- Pagination Dots --- */
+.swiper-pagination-bullet {
+  background-color: theme('colors.neutral.300'); /* Inactive color */
+  width: 8px;
+  height: 8px;
+  opacity: 0.8;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: theme('colors.rose.600'); /* Active color (accent) */
+  opacity: 1;
+}
+
+/* Adjust pagination position if needed */
+.swiper-pagination {
+  bottom: 10px !important; /* Ensure it's visible and slightly offset from bottom */
+}
+
+/* --- Flip Card Specific (Optional) --- */
+/* Ensure backface visibility is handled correctly by Swiper */
+.flip-card-inner .swiper-slide-invisible-blank {
+  opacity: 0; /* Hide blank slides used by loop/flip effect */
+}
+
+/* ================================== */
+/* Results Timeline Tabs             */
+/* ================================== */
+
+/* Nav container */
+nav[aria-label="Timeline Stages"] {
+  position: relative;
+}
+
+/* Style for the static background connecting line */
+nav[aria-label="Timeline Stages"]::before {
+  content: '';
+  position: absolute;
+  left: 22px; /* Align with the animated line & point indicators */
+  top: 1rem; /* Start below first item's top padding/text */
+  bottom: 1rem; /* End above last item's bottom padding/text */
+  width: 3px; /* Match animated line thickness */
+  background-color: theme('colors.neutral.200'); /* Faint background color */
+  border-radius: 9999px;
+  z-index: 5; /* Below animated line and points */
+}
+
+/* Style for individual item points */
+.timeline-tab-item::before {
+  content: '';
+  position: absolute;
+  left: -8px; /* Overlap the lines slightly */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: theme('colors.neutral.200'); /* Default state - same as background line */
+  border: 2px solid theme('colors.contrast'); /* Match section background for cutout effect */
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  z-index: 25; /* Above lines */
+}
+
+/* Style for the active item point */
+.timeline-tab-item[aria-selected='true']::before {
+  background-color: theme('colors.rose.500'); /* Active color */
+}
+
+/* ... rest of your app.css */ 

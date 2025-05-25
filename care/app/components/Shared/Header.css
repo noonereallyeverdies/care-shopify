@@ -1,0 +1,232 @@
+/* care/app/components/Shared/Header.css */
+
+:root {
+  /* Define header specific colors - align with theme */
+  --c-bg-header: var(--c-bg-primary, white);
+  --c-text-header: var(--c-text-primary, #1E1E1E);
+  --c-border-header: var(--c-border, #E5E5E5); /* Softer border */
+  --c-header-link-hover: var(--c-primary, #555555); /* Define hover color */
+  --header-height: 70px; /* Define header height */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-lg); /* Vertical padding handled by height */
+  height: var(--header-height);
+  border-bottom: 1px solid var(--c-border-header);
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--c-bg-header);
+  z-index: 100; 
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Optional: Add subtle shadow on scroll */
+/* .header.scrolled { */
+/*   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); */
+/* } */
+
+.header.fallback {
+  /* Fallback styles */
+}
+
+.header-logo {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--c-text-header);
+  font-size: var(--text-heading-sm);
+  flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+.header-nav {
+  display: flex;
+  gap: var(--space-lg); /* Increase gap slightly */
+  height: 100%; /* Allow links to align vertically */
+  align-items: center;
+}
+
+.header-nav--desktop {
+  /* Desktop styles */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--c-text-header);
+  padding: var(--space-xs) 0;
+  position: relative;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent; /* Prepare for hover effect */
+  margin-bottom: -1px; /* Align border with header border */
+}
+
+.nav-link:hover {
+  color: var(--c-header-link-hover); 
+  border-bottom-color: var(--c-primary, var(--c-header-link-hover)); /* Add hover border */
+}
+
+.nav-link.active {
+  font-weight: bold;
+  border-bottom-color: var(--c-primary, var(--c-text-header)); /* Active link border */
+}
+
+.header-icons {
+  display: flex;
+  gap: var(--space-lg); /* Increase gap */
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.icon-link {
+  text-decoration: none;
+  color: var(--c-text-header);
+  display: flex; /* For icon alignment */
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.icon-link:hover {
+  color: var(--c-header-link-hover);
+}
+
+
+/* --- Mobile Menu Styles --- */
+
+.mobile-menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-sm); /* Increase touch area */
+  z-index: 120; 
+  position: relative; /* Needed for absolute positioning of lines */
+  width: 30px; /* Set fixed size */
+  height: 30px;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--c-text-header);
+  transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+  position: absolute; /* Position lines for animation */
+  left: 5px; /* Center lines */
+}
+
+.mobile-menu-toggle span:nth-child(1) {
+  top: 8px;
+}
+.mobile-menu-toggle span:nth-child(2) {
+  top: 14px;
+}
+.mobile-menu-toggle span:nth-child(3) {
+  top: 20px;
+}
+
+/* Animate burger to X */
+.mobile-menu-toggle.is-open span:nth-child(1) {
+  transform: rotate(45deg); 
+  top: 14px;
+}
+.mobile-menu-toggle.is-open span:nth-child(2) {
+  opacity: 0; 
+}
+.mobile-menu-toggle.is-open span:nth-child(3) {
+  transform: rotate(-45deg); 
+  top: 14px;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6); /* Slightly darker overlay */
+  z-index: 110;
+  display: flex;
+  justify-content: flex-end; 
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Delay hiding visibility */
+}
+
+.mobile-menu-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-nav {
+  background-color: var(--c-bg-header);
+  width: 85%; /* Slightly wider */
+  max-width: 320px; /* Max width */
+  height: 100%;
+  padding: var(--space-xl) var(--space-lg);
+  padding-top: calc(var(--header-height) + var(--space-lg)); /* Add space below header */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md); /* Adjust gap */
+  position: relative; 
+  box-sizing: border-box;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1); /* Smoother ease */
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+}
+
+.mobile-menu-overlay.is-open .mobile-menu-nav {
+    transform: translateX(0);
+}
+
+.mobile-menu-close {
+  /* Remove the default close button, toggle handles closing */
+ display: none; 
+}
+
+.mobile-nav-link {
+  text-decoration: none;
+  color: var(--c-text-header);
+  font-size: var(--text-body-lg); /* Slightly larger */
+  padding: var(--space-sm) 0;
+  display: block; /* Ensure full width clickable */
+  border-bottom: 1px solid var(--c-border-header);
+}
+.mobile-nav-link:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav-link.active {
+  font-weight: bold;
+  color: var(--c-primary); /* Use primary color for active */
+}
+
+/* --- Media Query for Mobile --- */
+@media (max-width: 768px) { 
+  .header-nav--desktop {
+    display: none;
+  }
+  .header-icons {
+    /* Keep icons on mobile for consistency unless specified otherwise */
+     gap: var(--space-md);
+  }
+  .mobile-menu-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) { /* Smaller gap for very small screens */
+  .header {
+    padding: 0 var(--space-md);
+  }
+  .header-icons {
+    gap: var(--space-sm);
+  }
+} 
